@@ -6,6 +6,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Xarial.XCad.Base.Attributes;
+using Xarial.XCad.UI.Commands.Attributes;
+using Xarial.XCad.UI.Commands.Enums;
 
 namespace DynamoSldWorks
 {
@@ -16,6 +18,7 @@ namespace DynamoSldWorks
     {
         [Title("Dynamo")]
         [Description("Dynamo command")]
+        [CommandItemInfo(WorkspaceTypes_e.All)]
         [Icon(typeof(Resources), nameof(Resources.logo_square_32x32))]
         Dynamo
     }
