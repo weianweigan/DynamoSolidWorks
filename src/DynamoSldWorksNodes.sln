@@ -1,0 +1,30 @@
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31903.59
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SldWorksNodes", "SldWorksNodes\SldWorksNodes.csproj", "{7D78759B-8657-4E83-8552-84C1858AF2F4}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SldWorksNodesUI", "SldWorksNodesUI\SldWorksNodesUI.csproj", "{4CED626C-F1BF-40FA-9E75-03EAEF731B53}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{7D78759B-8657-4E83-8552-84C1858AF2F4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7D78759B-8657-4E83-8552-84C1858AF2F4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7D78759B-8657-4E83-8552-84C1858AF2F4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7D78759B-8657-4E83-8552-84C1858AF2F4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4CED626C-F1BF-40FA-9E75-03EAEF731B53}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4CED626C-F1BF-40FA-9E75-03EAEF731B53}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4CED626C-F1BF-40FA-9E75-03EAEF731B53}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4CED626C-F1BF-40FA-9E75-03EAEF731B53}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {D27F3A0F-EC38-4CD2-A088-5BEDDD0289D0}
+	EndGlobalSection
+EndGlobal

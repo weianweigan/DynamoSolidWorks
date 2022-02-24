@@ -1,0 +1,26 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net48</TargetFramework>
+    <PlatformTarget>x64</PlatformTarget>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="DynamoVisualProgramming.Core" Version="2.13.1.3887" />
+    <PackageReference Include="DynamoVisualProgramming.WpfUILibrary" Version="2.13.1.3887" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="CustomProperty\" />
+    <Folder Include="EquationMgr\" />
+    <Folder Include="Feature\" />
+    <Folder Include="Selection\" />
+    <Folder Include="Solid\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\DynamoSldWorks\DynamoSldWorks.csproj">
+      <CopyLocal>False</CopyLocal>
+    </ProjectReference>
+  </ItemGroup>
+</Project>

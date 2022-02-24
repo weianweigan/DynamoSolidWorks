@@ -1,0 +1,5 @@
+﻿<ViewExtensionDefinition>
+	<!--SldWorksNodes's dll path-->
+	<AssemblyPath>C:\Users\username\Documents\Visual Studio 2015\Projects\SampleViewExtension\SampleViewExtension\bin\Debug\SampleViewExtension.dll</AssemblyPath>
+	<TypeName>SldWorksNodes.SldViewExtension</TypeName>
+</ViewExtensionDefinition>

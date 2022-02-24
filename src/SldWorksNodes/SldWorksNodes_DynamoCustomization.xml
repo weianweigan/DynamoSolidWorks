@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<doc>
+	<assembly>
+		<name>SldWorksNodes</name>
+	</assembly>
+	<namespaces>
+		<namespace name="SldWorksNodes.Sketch">
+			<category>SldWorks.Sketch</category>
+		</namespace>
+	</namespaces>
+</doc>

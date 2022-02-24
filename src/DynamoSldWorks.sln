@@ -7,6 +7,10 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DynamoSldWorks", "DynamoSld
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Installer", "Installer\Installer.csproj", "{F2FD1C56-F539-402F-86CD-D08ED53EB105}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SldWorksNodes", "SldWorksNodes\SldWorksNodes.csproj", "{7EA4992C-7153-4DB2-98E2-EFE7FE00AB7B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SldWorksNodesUI", "SldWorksNodesUI\SldWorksNodesUI.csproj", "{EC6BFCA3-F93F-4113-BA68-2E8D20758AB3}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +25,14 @@ Global
 		{F2FD1C56-F539-402F-86CD-D08ED53EB105}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F2FD1C56-F539-402F-86CD-D08ED53EB105}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F2FD1C56-F539-402F-86CD-D08ED53EB105}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7EA4992C-7153-4DB2-98E2-EFE7FE00AB7B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7EA4992C-7153-4DB2-98E2-EFE7FE00AB7B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7EA4992C-7153-4DB2-98E2-EFE7FE00AB7B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7EA4992C-7153-4DB2-98E2-EFE7FE00AB7B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EC6BFCA3-F93F-4113-BA68-2E8D20758AB3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EC6BFCA3-F93F-4113-BA68-2E8D20758AB3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EC6BFCA3-F93F-4113-BA68-2E8D20758AB3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EC6BFCA3-F93F-4113-BA68-2E8D20758AB3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

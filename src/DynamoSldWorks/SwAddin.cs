@@ -17,18 +17,18 @@ using Xarial.XCad.SolidWorks;
 using Xarial.XCad.UI.Commands;
 using Xarial.XCad.Base.Attributes;
 using System.Runtime.InteropServices;
+using SolidWorks.Interop.sldworks;
+using Xarial.XCad;
 
 namespace DynamoSldWorks
 {
     [ComVisible(true)]
     [Title("DynamoSolidWorks"),Description(" Graphical Programming for Design in SolidWorks")]
-    public class SwAddin:SwAddInEx
+    public class SwAddin:SwAddInEx,ISldWorksContext
     {
         #region Field
         private static readonly string _assemblyLocation = Assembly.GetExecutingAssembly().Location;
-
         private static string _dynamopath;
-
         private DynamoSetup _dynamoSetup;
         #endregion
 
@@ -44,6 +44,10 @@ namespace DynamoSldWorks
                 return _dynamopath;
             }
         }
+
+        public ISldWorks App => Application.Sw;
+
+        public IXServiceCollection Services => Application.CustomServices;
         #endregion
 
         #region Methods

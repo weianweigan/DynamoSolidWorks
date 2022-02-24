@@ -4,7 +4,7 @@ using System.IO;
 
 namespace DynamoSldWorks.Model
 {
-    public partial class SldDynamoModel : DynamoModel
+    public class SldDynamoModel : DynamoModel
     {
         protected SldDynamoModel(IStartConfiguration config) : base(config)
         {
@@ -18,8 +18,6 @@ namespace DynamoSldWorks.Model
 
         public static SldDynamoModel Start(SldStartConfiguation configuation)
         {
-            configuation.Context = "SolidWorks";
-
             return new SldDynamoModel(configuation);
         }
     }

@@ -22,7 +22,7 @@
                 <RowDefinition Height="40"></RowDefinition>
             </Grid.RowDefinitions>
             <Image Grid.Row="0"
-                   Source="pack://application:,,,/DynamoSldWorks;component/resources/logo_about.png"
+                   Source="../resources/logo_about.png"
                    Width="128"
                    RenderTransformOrigin="0.531,-0.086"
                    Margin="86,4,86,25" />
@@ -43,7 +43,7 @@
                      Foreground="#888888"
                      BorderThickness="0"
                      FontSize="14"
-                     
+                     Text="Loading"
                      IsReadOnlyCaretVisible="False"
                      HorizontalAlignment="Center"
                      VerticalAlignment="Center" />
