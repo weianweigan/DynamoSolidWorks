@@ -5,6 +5,7 @@
 		<EnableComHosting>true</EnableComHosting>
 		<BaseOutputPath>..\..\bin</BaseOutputPath>
 		<AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
+		<!--<AppendRuntimeIdentifierToOutputPath>false</AppendRuntimeIdentifierToOutputPath>-->
 		<AppendConfigurationToOutputPath>false</AppendConfigurationToOutputPath>
 	</PropertyGroup>
 	<ItemGroup>
