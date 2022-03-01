@@ -19,12 +19,15 @@ using Xarial.XCad.Base.Attributes;
 using System.Runtime.InteropServices;
 using SolidWorks.Interop.sldworks;
 using Xarial.XCad;
+using SldWorksService;
+using System.Threading;
+using Dynamo.Extensions;
 
 namespace DynamoSldWorks
 {
     [ComVisible(true)]
     [Title("DynamoSolidWorks"),Description(" Graphical Programming for Design in SolidWorks")]
-    public class SwAddin:SwAddInEx,ISldWorksContext
+    public class SwAddin:SwAddInEx
     {
         #region Field
         private static readonly string _assemblyLocation = Assembly.GetExecutingAssembly().Location;
@@ -47,7 +50,6 @@ namespace DynamoSldWorks
 
         public ISldWorks App => Application.Sw;
 
-        public IXServiceCollection Services => Application.CustomServices;
         #endregion
 
         #region Methods
@@ -61,7 +63,7 @@ namespace DynamoSldWorks
 
         private void SwAddin_CommandClick(Commands spec)
         {
-            _dynamoSetup = DynamoSetup.Create(this.Application);
+            if(_dynamoSetup == null) _dynamoSetup = DynamoSetup.Create(this.Application);
             _dynamoSetup.RunApp(this.Application.WindowHandle);   
         }
         #endregion
@@ -98,6 +100,12 @@ namespace DynamoSldWorks
                 {
                     var parentDirectory = Directory.GetParent(assemblyDirectory);
                     assemblyPath = CombinePath(parentDirectory.FullName, assemblyName);
+                }
+
+                if (!File.Exists(assemblyPath))
+                {
+                    var name = Thread.CurrentThread?.CurrentCulture?.Name;
+                    assemblyPath = Path.Combine(assemblyDirectory, name,assemblyName);
                 }
 
                 if (File.Exists(assemblyPath))

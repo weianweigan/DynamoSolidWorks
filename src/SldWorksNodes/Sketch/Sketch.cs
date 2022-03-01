@@ -1,8 +1,7 @@
 ﻿using Dynamo.Graph.Nodes;
 
-namespace SldWorksNodes
+namespace SldWorksNodes.Sketch
 {
-    [NodeCategory("SldWorks")]
     public class Sketch
     {
         private string _name;

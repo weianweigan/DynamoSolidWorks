@@ -4,6 +4,7 @@ using Dynamo.Scheduler;
 using Dynamo.Updates;
 using Greg;
 using System.Collections.Generic;
+using System.Reflection;
 using static Dynamo.Models.DynamoModel;
 
 namespace DynamoSldWorks.Model
@@ -25,7 +26,7 @@ namespace DynamoSldWorks.Model
 
         public IPreferences Preferences { get; set; }
 
-        public IPathResolver PathResolver { get; set; }
+        public IPathResolver PathResolver { get; set; } = new PathReSolver();
 
         public bool StartInTestMode { get; set; }
 
@@ -43,5 +44,4 @@ namespace DynamoSldWorks.Model
 
         public bool IsHeadless { get; set; }
     }
-
 }

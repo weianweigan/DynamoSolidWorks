@@ -2,11 +2,18 @@
 using Dynamo.Controls;
 using Dynamo.Models;
 using Dynamo.ViewModels;
+using Dynamo.Wpf.Interfaces;
 using Dynamo.Wpf.ViewModels.Watch3D;
 using DynamoSldWorks.Model;
+using DynamoSldWorks.Util;
 using System;
+using System.Diagnostics;
+using System.IO;
+using System.Linq;
+using System.Reflection;
 using System.Runtime.InteropServices;
 using System.Windows;
+using System.Windows.Markup;
 using Xarial.XCad.SolidWorks;
 
 namespace DynamoSldWorks.View
@@ -15,7 +22,6 @@ namespace DynamoSldWorks.View
     {
         #region Field
         private readonly ISwApplication _swApplication;
-        private SettingMigrationWindow _migrationWindow = new SettingMigrationWindow();
         private string _commandFilePath;
         #endregion
 
@@ -48,25 +54,25 @@ namespace DynamoSldWorks.View
             return setup;
         }
 
+        SldDynamoModel _model;
         public void RunApp(IntPtr windowHandle)
         {
             try
             {
-                _migrationWindow.Show();
-                SldDynamoModel model;
+                //var migrationWindow = new SettingMigrationWindow();
                 StartupUtils.ASMPreloadFailure += ASMPreloadFailureHandler;
 
-                model = SldDynamoModel.Start();
+                _model = SldDynamoModel.Start(_swApplication);
 
                 ViewModel = DynamoViewModel.Start(
                     new DynamoViewModel.StartConfiguration()
                     {
-                        DynamoModel = model,
+                        DynamoModel = _model,
                         Watch3DViewModel = HelixWatch3DViewModel.TryCreateHelixWatch3DViewModel
                         (
                             null,
-                            new Watch3DViewModelStartupParams(model),
-                            model.Logger
+                            new Watch3DViewModelStartupParams(_model),
+                            _model.Logger
                         ),
                         ShowLogin = true
                     });
@@ -77,7 +83,7 @@ namespace DynamoSldWorks.View
                 //var windowHelper = new WindowInteropHelper(view);
                 //windowHelper.Owner = windowHandle;
 
-                var app = Application.Current ?? new Application();
+                var app = Application.Current ?? ApplicationUtil.Create();
                 if (app != null)
                 {
                     app.DispatcherUnhandledException += App_DispatcherUnhandledException;
@@ -85,7 +91,7 @@ namespace DynamoSldWorks.View
                 }
                 else
                 {
-                    _migrationWindow.Close();
+                    //migrationWindow.Close();
                     view.Show();
                 }
 
@@ -112,12 +118,28 @@ namespace DynamoSldWorks.View
         private void OnDynamoViewLoaded(object sender, System.Windows.RoutedEventArgs e)
         {
             CloseMigrationWindow();
+            UpdateLibraryLayoutSpec();
         }
 
         private void CloseMigrationWindow()
         {
-            _migrationWindow?.Close();
-            _migrationWindow = null;
+            //_migrationWindow?.Close();
+            //_migrationWindow = null;
+        }
+
+        private  void UpdateLibraryLayoutSpec()
+        {
+             var customization = _model.ExtensionManager.Service<ILibraryViewCustomization>();
+            if (customization == null) return;
+
+            LayoutSpecification sldworksSpecs;
+            var str = File.ReadAllText(SwAddin.DynamoCorePath + @"\Resources\LayoutSpecs.json");
+            sldworksSpecs = LayoutSpecification.FromJSONString(str);
+
+            //The steelSpec should have only one section, add all its child elements to the customization
+            var elements = sldworksSpecs.sections.First().childElements;
+            customization.AddElements(elements); //add all the elements to default section
+            
         }
         #endregion
     }

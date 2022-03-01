@@ -9,26 +9,46 @@
 		<AppendConfigurationToOutputPath>false</AppendConfigurationToOutputPath>
 	</PropertyGroup>
 	<ItemGroup>
+	  <None Remove="app.config" />
+	</ItemGroup>
+	<ItemGroup>
 	  <PackageReference Include="Xarial.XCad.SolidWorks" Version="0.7.12" />
+	</ItemGroup>
+	<ItemGroup>
+	  <ProjectReference Include="..\SldWorksService\SldWorksService.csproj" />
 	</ItemGroup>
 	<ItemGroup>
 	  <Reference Include="DynamoApplications">
 	    <HintPath>..\..\DynamoRuntime\DynamoApplications.dll</HintPath>
+	    <CopyLocal>False</CopyLocal>
 	  </Reference>
 	  <Reference Include="DynamoCore">
 	    <HintPath>..\..\DynamoRuntime\DynamoCore.dll</HintPath>
+	    <CopyLocal>False</CopyLocal>
 	  </Reference>
 	  <Reference Include="DynamoCoreWpf">
 	    <HintPath>..\..\DynamoRuntime\DynamoCoreWpf.dll</HintPath>
+	    <CopyLocal>False</CopyLocal>
 	  </Reference>
 	  <Reference Include="DynamoUtilities">
 	    <HintPath>..\..\DynamoRuntime\DynamoUtilities.dll</HintPath>
+	    <CopyLocal>False</CopyLocal>
 	  </Reference>
 	  <Reference Include="Greg">
 	    <HintPath>..\..\DynamoRuntime\Greg.dll</HintPath>
+	    <CopyLocal>False</CopyLocal>
 	  </Reference>
 	  <Reference Include="Microsoft.Practices.Prism">
 	    <HintPath>..\..\DynamoRuntime\Microsoft.Practices.Prism.dll</HintPath>
+	    <CopyLocal>False</CopyLocal>
 	  </Reference>
+	</ItemGroup>
+	<ItemGroup>
+	  <None Update="Resources\LayoutSpecs.json">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </None>
+	  <None Update="Resources\logo_about.png">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </None>
 	</ItemGroup>
 </Project>

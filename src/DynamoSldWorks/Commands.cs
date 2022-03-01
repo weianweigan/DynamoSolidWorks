@@ -18,7 +18,7 @@ namespace DynamoSldWorks
     {
         [Title("Dynamo")]
         [Description("Dynamo command")]
-        [CommandItemInfo(WorkspaceTypes_e.All)]
+        [CommandItemInfo(true,true,WorkspaceTypes_e.All,true)]
         [Icon(typeof(Resources), nameof(Resources.logo_square_32x32))]
         Dynamo
     }

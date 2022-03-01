@@ -1,26 +1,43 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
-  <PropertyGroup>
-    <TargetFramework>net48</TargetFramework>
-    <PlatformTarget>x64</PlatformTarget>
-  </PropertyGroup>
+	<PropertyGroup>
+		<TargetFramework>net48</TargetFramework>
+		<PlatformTarget>x64</PlatformTarget>
+		<EnableComHosting>true</EnableComHosting>
+		<BaseOutputPath>..\..\bin</BaseOutputPath>
+		<AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
+		<!--<AppendRuntimeIdentifierToOutputPath>false</AppendRuntimeIdentifierToOutputPath>-->
+		<AppendConfigurationToOutputPath>false</AppendConfigurationToOutputPath>
 
-  <ItemGroup>
-    <PackageReference Include="DynamoVisualProgramming.Core" Version="2.13.1.3887" />
-    <PackageReference Include="DynamoVisualProgramming.WpfUILibrary" Version="2.13.1.3887" />
-  </ItemGroup>
+	</PropertyGroup>
 
-  <ItemGroup>
-    <Folder Include="CustomProperty\" />
-    <Folder Include="EquationMgr\" />
-    <Folder Include="Feature\" />
-    <Folder Include="Selection\" />
-    <Folder Include="Solid\" />
-  </ItemGroup>
+	<ItemGroup>
+	  <Compile Remove="bin\**" />
+	  <EmbeddedResource Remove="bin\**" />
+	  <None Remove="bin\**" />
+	</ItemGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\DynamoSldWorks\DynamoSldWorks.csproj">
-      <CopyLocal>False</CopyLocal>
-    </ProjectReference>
-  </ItemGroup>
+	<ItemGroup>
+		<PackageReference Include="DynamoVisualProgramming.Core" Version="2.13.1.3887" />
+		<PackageReference Include="DynamoVisualProgramming.WpfUILibrary" Version="2.13.1.3887" />
+	</ItemGroup>
+	
+	<ItemGroup>
+		<ProjectReference Include="..\SldWorksService\SldWorksService.csproj" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<None Update="pkg.json">
+			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</None>
+		<None Update="SldWorksNodes.Migrations.xml">
+			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</None>
+		<None Update="SldWorksNodes_DynamoCustomization.xml">
+			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</None>
+		<None Update="extra\SldWorksNodes_ViewExtensionDefinition.xml">
+			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</None>
+	</ItemGroup>
 </Project>

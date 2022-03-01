@@ -5,7 +5,7 @@
   "version": "1.0.0",
   "description": "SldWorks Nodes",
   "group": "dududu",
-  "keywords": [ "grid", "random" ],
+  "keywords": [ "sldworks", "geometry" ],
   "dependencies": [],
   "contents": "Sample node",
   "engine_version": "1.3.0",
@@ -15,7 +15,6 @@
   "repository_url": "",
   "contains_binaries": true,
   "node_libraries": [
-    "CustomNodeModel, Version=1.0.0, Culture=neutral, PublicKeyToken=null",
-    "CustomNodeModelFunction, Version=1.0.0, Culture=neutral, PublicKeyToken=null"
+    "SldWorksNodes, Version=1.0.0, Culture=neutral, PublicKeyToken=null"  
   ]
 }

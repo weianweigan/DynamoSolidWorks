@@ -1,5 +1,7 @@
-﻿using Dynamo.Wpf.Extensions;
-using DynamoSldWorks;
+﻿using Dynamo.ViewModels;
+using Dynamo.Wpf.Extensions;
+using SldWorksNodes.Util;
+using SldWorksService;
 using System.Windows.Controls;
 
 namespace SldWorksNodes
@@ -14,34 +16,23 @@ namespace SldWorksNodes
 
         public void Dispose()
         {
+
         }
 
         public void Loaded(ViewLoadedParams viewLoadedParams)
         {
-            // Save a reference to your loaded parameters.
-            // You'll need these later when you want to use
-            // the supplied workspaces
-            var sldContext = viewLoadedParams.DynamoWindow.DataContext as ISldWorksContext;
+            //Init Context
+            var vm = viewLoadedParams.DynamoWindow.DataContext as DynamoViewModel;
+            var sldContext = vm.Model as ISldWorksContext;
+            SldContextManager.Init(sldContext);
             
-            _sampleMenuItem = new MenuItem { Header = "Show View Extension Sample Window" };
+            _sampleMenuItem = new MenuItem { Header = "SolidWorks Info" };
+
             _sampleMenuItem.Click += (sender, args) =>
             {
-                //var viewModel = new SampleWindowViewModel(p);
-                //var window = new SampleWindow
-                //{
-                //    // Set the data context for the main grid in the window.
-                //    MainGrid = { DataContext = viewModel },
-
-                //    // Set the owner of the window to the Dynamo window.
-                //    Owner = p.DynamoWindow
-                //};
-
-                //window.Left = window.Owner.Left + 400;
-                //window.Top = window.Owner.Top + 200;
-
-                // Show a modeless window.
-                //window.Show();
+                
             };
+
             viewLoadedParams.AddMenuItem(MenuBarType.View, _sampleMenuItem);
         }
 

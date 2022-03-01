@@ -1,0 +1,35 @@
+{
+  "sections": [
+    {
+      "text": "default",
+      "iconUrl": "",
+      "elementType": "section",
+      "showHeader": false,
+      "include": [],
+      "childElements": [
+        {
+          "text": "SldWorks",
+          "iconUrl": "",
+          "elementType": "category",
+          "include": [],
+          "childElements": [
+            {
+              "text": "Sketch",
+              "iconUrl": "",
+              "elementType": "group",
+              "include": [
+                {
+                  "path": "SldWorksNodes.Sketch",
+                  "inclusive": false
+                }
+              ],
+              "childElements": [
+
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
