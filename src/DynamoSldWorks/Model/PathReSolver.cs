@@ -22,12 +22,14 @@ namespace DynamoSldWorks.Model
             userDataRootFolder = userDataFolder;
             commonDataRootFolder = commonDataFolder;
 
-            string sldWorksNodesDirectory = SwAddin.DynamoCorePath;
+            var nodesDirectory = Path.Combine(SwAddin.DynamoCorePath, "nodes");
+            var sldWorksNodesDirectory = SwAddin.DynamoCorePath;
 
-            additionalNodeDirectories = new List<string> { sldWorksNodesDirectory };
-            additionalResolutionPaths = new List<string> { sldWorksNodesDirectory };
+            additionalNodeDirectories = new List<string> { nodesDirectory };
+            additionalResolutionPaths = new List<string> { };
 
             var sldWorksNodesDll = Path.Combine(sldWorksNodesDirectory, "SldWorksNodes.dll");
+            var sldWorksNodesUIDll = Path.Combine(sldWorksNodesDirectory, "SldWorksNodesUI.dll");
 
             preloadLibraryPaths = new List<string>
             {
@@ -45,7 +47,8 @@ namespace DynamoSldWorks.Model
                 "Tessellation.dll",
                 "Analysis.dll",
                 "GeometryColor.dll",
-                 sldWorksNodesDll
+                 sldWorksNodesDll,
+                 //sldWorksNodesUIDll
             };
         }
 

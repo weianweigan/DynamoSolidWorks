@@ -13,6 +13,7 @@ using System.Linq;
 using System.Reflection;
 using System.Runtime.InteropServices;
 using System.Windows;
+using System.Windows.Interop;
 using System.Windows.Markup;
 using Xarial.XCad.SolidWorks;
 
@@ -64,26 +65,32 @@ namespace DynamoSldWorks.View
 
                 _model = SldDynamoModel.Start(_swApplication);
 
-                ViewModel = DynamoViewModel.Start(
-                    new DynamoViewModel.StartConfiguration()
-                    {
-                        DynamoModel = _model,
-                        Watch3DViewModel = HelixWatch3DViewModel.TryCreateHelixWatch3DViewModel
+                var watch3DModel = HelixWatch3DViewModel.TryCreateHelixWatch3DViewModel
                         (
                             null,
                             new Watch3DViewModelStartupParams(_model),
                             _model.Logger
-                        ),
+                        );
+                watch3DModel.Active = false;
+
+                ViewModel = DynamoViewModel.Start(
+                    new DynamoViewModel.StartConfiguration()
+                    {
+                        DynamoModel = _model,
+                        Watch3DViewModel = watch3DModel,
                         ShowLogin = true
                     });
+
+                ViewModel.BackgroundPreviewViewModel.IsGridVisible = false;
 
                 var view = new DynamoView(ViewModel);
                 view.Loaded += OnDynamoViewLoaded;
 
-                //var windowHelper = new WindowInteropHelper(view);
-                //windowHelper.Owner = windowHandle;
+                //view.Topmost = true;
+                var windowHelper = new WindowInteropHelper(view);
+                windowHelper.Owner = windowHandle;
 
-                var app = Application.Current ?? ApplicationUtil.Create();
+                var app = Application.Current;// ?? ApplicationUtil.Create();
                 if (app != null)
                 {
                     app.DispatcherUnhandledException += App_DispatcherUnhandledException;

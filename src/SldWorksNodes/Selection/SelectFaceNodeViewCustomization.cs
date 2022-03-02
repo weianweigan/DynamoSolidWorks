@@ -2,14 +2,23 @@
 using CoreNodeModelsWpf.Nodes;
 using Dynamo.Wpf;
 using Dynamo.Controls;
+using System.Windows.Controls;
+using Autodesk.DesignScript.Runtime;
 
 namespace SldWorksNodes.Selection
 {
-    public class SelectFaceNodeViewCustomization : SelectionBaseNodeViewCustomization<IFace2, Brep.Face>, INodeViewCustomization<SelectFace>
+    [IsVisibleInDynamoLibrary(false)]
+    public class SelectFaceNodeViewCustomization : INodeViewCustomization<SelectFace>
     {
         public void CustomizeView(SelectFace model, NodeView nodeView)
         {
-            base.CustomizeView(model, nodeView);
+            var btn = new Button() { Content = "Select"};
+            btn.DataContext = model;
+            nodeView.inputGrid.Children.Add(btn);
+        }
+
+        public void Dispose()
+        {
         }
     }
 }

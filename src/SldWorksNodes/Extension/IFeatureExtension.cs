@@ -32,6 +32,18 @@ namespace SolidWorks.Interop.sldworks
                 subFeat = subFeat.GetNextSubFeature() as IFeature;
             }
         }
-    }
 
+        /// <summary>
+        /// 获取特征的所有尺寸
+        /// </summary>
+        public static IEnumerable<IDisplayDimension> GetAllDimensions(this IFeature feat)
+        {
+            var displayDimension = feat.GetFirstDisplayDimension() as IDisplayDimension;
+            while (displayDimension != null)
+            {
+                yield return displayDimension;
+                displayDimension = feat.GetNextDisplayDimension(displayDimension) as IDisplayDimension;
+            }
+        }
+    }
 }

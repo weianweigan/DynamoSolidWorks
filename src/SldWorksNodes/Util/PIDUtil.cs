@@ -1,4 +1,5 @@
 ﻿using Autodesk.DesignScript.Runtime;
+using SldWorksNodes.SwException;
 using SolidWorks.Interop.sldworks;
 using SolidWorks.Interop.swconst;
 using System;
@@ -16,6 +17,11 @@ namespace SldWorksNodes.Util
             return data == null ? string.Empty : ByteArrayToString(data);
         }
 
+        public static string GetPID(object obj)
+        {
+            return GetPID(SwContextUtil.GetCurrentPartDocContext(), obj);
+        }
+
         /// <summary>
         /// 判断两个PID是否是同一个
         /// </summary>
@@ -26,6 +32,14 @@ namespace SldWorksNodes.Util
         {
             var res = (swObjectEquality)extension.IsSamePersistentID(Convert.FromBase64String(p1), Convert.FromBase64String(p2));
             return res == swObjectEquality.swObjectSame;
+        }
+
+        internal static void AssertState(swPersistReferencedObjectStates_e state)
+        {
+            if (state != swPersistReferencedObjectStates_e.swPersistReferencedObject_Ok)
+            {
+                throw new PIDErrorException(state);
+            }
         }
 
         /// <summary>
@@ -43,6 +57,11 @@ namespace SldWorksNodes.Util
             state = (swPersistReferencedObjectStates_e)errorCode;
 
             return obj;
+        }
+
+        public static object GetObjectFromPID(string pid, out swPersistReferencedObjectStates_e state)
+        {
+            return GetObjectFromPID(SwContextUtil.GetCurrentPartDocContext(), pid, out state);
         }
 
         private static string ByteArrayToString(byte[] byteArray)

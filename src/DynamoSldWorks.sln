@@ -7,11 +7,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DynamoSldWorks", "DynamoSld
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Installer", "Installer\Installer.csproj", "{F2FD1C56-F539-402F-86CD-D08ED53EB105}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SldWorksNodes", "SldWorksNodes\SldWorksNodes.csproj", "{7EA4992C-7153-4DB2-98E2-EFE7FE00AB7B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SldWorksService", "SldWorksService\SldWorksService.csproj", "{F6FB5ACD-B3C3-4186-ACFA-8A6502E1F26D}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SldWorksNodesUI", "SldWorksNodesUI\SldWorksNodesUI.csproj", "{EC6BFCA3-F93F-4113-BA68-2E8D20758AB3}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SldWorksNodes", "SldWorksNodes\SldWorksNodes.csproj", "{4CA70DA0-75B9-4345-8D3E-2945F54577F0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SldWorksService", "SldWorksService\SldWorksService.csproj", "{F6FB5ACD-B3C3-4186-ACFA-8A6502E1F26D}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SldWorksNodesUI", "SldWorksNodesUI\SldWorksNodesUI.csproj", "{766E4647-4FF5-499C-9560-2E25961E6BC3}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -27,18 +27,18 @@ Global
 		{F2FD1C56-F539-402F-86CD-D08ED53EB105}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F2FD1C56-F539-402F-86CD-D08ED53EB105}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F2FD1C56-F539-402F-86CD-D08ED53EB105}.Release|Any CPU.Build.0 = Release|Any CPU
-		{7EA4992C-7153-4DB2-98E2-EFE7FE00AB7B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{7EA4992C-7153-4DB2-98E2-EFE7FE00AB7B}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{7EA4992C-7153-4DB2-98E2-EFE7FE00AB7B}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{7EA4992C-7153-4DB2-98E2-EFE7FE00AB7B}.Release|Any CPU.Build.0 = Release|Any CPU
-		{EC6BFCA3-F93F-4113-BA68-2E8D20758AB3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{EC6BFCA3-F93F-4113-BA68-2E8D20758AB3}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{EC6BFCA3-F93F-4113-BA68-2E8D20758AB3}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{EC6BFCA3-F93F-4113-BA68-2E8D20758AB3}.Release|Any CPU.Build.0 = Release|Any CPU
 		{F6FB5ACD-B3C3-4186-ACFA-8A6502E1F26D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{F6FB5ACD-B3C3-4186-ACFA-8A6502E1F26D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F6FB5ACD-B3C3-4186-ACFA-8A6502E1F26D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F6FB5ACD-B3C3-4186-ACFA-8A6502E1F26D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4CA70DA0-75B9-4345-8D3E-2945F54577F0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4CA70DA0-75B9-4345-8D3E-2945F54577F0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4CA70DA0-75B9-4345-8D3E-2945F54577F0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4CA70DA0-75B9-4345-8D3E-2945F54577F0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{766E4647-4FF5-499C-9560-2E25961E6BC3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{766E4647-4FF5-499C-9560-2E25961E6BC3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{766E4647-4FF5-499C-9560-2E25961E6BC3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{766E4647-4FF5-499C-9560-2E25961E6BC3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

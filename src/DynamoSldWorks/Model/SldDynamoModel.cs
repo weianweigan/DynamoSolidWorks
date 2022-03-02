@@ -28,7 +28,7 @@ namespace DynamoSldWorks.Model
             return new SldDynamoModel(configuation)
             {
                 HostName = "Dynamo SolidWorks",
-                HostAnalyticsInfo = new HostAnalyticsInfo() { HostName = "Dynamo SolidWorks" },
+                //HostAnalyticsInfo = new HostAnalyticsInfo() { HostName = "Dynamo SolidWorks" },
                 HostVersion = swApp.Version.ToString(),
                 SwApplication = swApp,
             };

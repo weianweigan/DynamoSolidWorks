@@ -9,7 +9,7 @@
       "childElements": [
         {
           "text": "SolidWorks",
-          "iconUrl": "",
+          "iconUrl": "/Icons/solidworks.svg",
           "elementType": "category",
           "include": [],
           "childElements": [
@@ -38,23 +38,100 @@
                 }
               ]
             }
-            ,
+           ,
             {
-              "text": "Selection",
+              "text": "Dimension",
               "iconUrl": "",
               "elementType": "group",
               "include": [
                 {
-                  "path": "SldWorksNodes.SldWorksNodes.Selection.SelectFace",
+                  "path": "SldWorksNodes.SldWorksNodes.Dimension.Dimension",
                   "inclusive": false
+                }
+              ]
+            },
+            {
+              "text": "Geometry",
+              "iconUrl": "",
+              "elementType": "group",
+              "include": [],
+              "childElements": [
+                {
+                  "text": "Line3D",
+                  "iconUrl": "",
+                  "elementType": "group",
+                  "include": [
+                    {
+                      "path": "SldWorksNodes.SldWorksNodes.Geometry.Line3D",
+                      "inclusive": false
+                    }
+                  ]
                 },
                 {
-                  "path": "SldWorksNodes.SldWorksNodes.Selection.SelectEdge",
-                  "inclusive": false
+                  "text": "Point3D",
+                  "iconUrl": "",
+                  "elementType": "group",
+                  "include": [
+                    {
+                      "path": "SldWorksNodes.SldWorksNodes.Geometry.Point3D",
+                      "inclusive": false
+                    }
+                  ]
                 },
                 {
-                  "path": "SldWorksNodes.SldWorksNodes.Selection.SelectFeature",
-                  "inclusive": false
+                  "text": "Vector3D",
+                  "iconUrl": "",
+                  "elementType": "group",
+                  "include": [
+                    {
+                      "path": "SldWorksNodes.SldWorksNodes.Geometry.Vector3D",
+                      "inclusive": false
+                    }
+                  ]
+                },
+                {
+                  "text": "Arc3D",
+                  "iconUrl": "",
+                  "elementType": "group",
+                  "include": [
+                    {
+                      "path": "SldWorksNodes.SldWorksNodes.Geometry.Arc3D",
+                      "inclusive": false
+                    }
+                  ]
+                },
+                {
+                  "text": "Circle3D",
+                  "iconUrl": "",
+                  "elementType": "group",
+                  "include": [
+                    {
+                      "path": "SldWorksNodes.SldWorksNodes.Geometry.Circle3D",
+                      "inclusive": false
+                    }
+                  ]
+                },
+                {
+                  "text": "Body",
+                  "iconUrl": "",
+                  "elementType": "group",
+                  "include": [
+                    {
+                      "path": "SldWorksNodes.SldWorksNodes.Geometry.Body",
+                      "inclusive": false
+                    }
+                  ]
+                },
+                {
+                  "text": "BodyBoolOperation",
+                  "iconUrl": "",
+                  "elementType": "group",
+                  "include": [
+                    {
+                      "path": "SldWorksNodes.SldWorksNodes.Geometry.BodyBoolOperation",
+                      "inclusive": false
+                    }
+                  ]
                 }
               ]
             }

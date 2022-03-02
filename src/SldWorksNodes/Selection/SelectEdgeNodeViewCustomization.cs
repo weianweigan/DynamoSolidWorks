@@ -1,4 +1,5 @@
-﻿using CoreNodeModelsWpf.Nodes;
+﻿using Autodesk.DesignScript.Runtime;
+using CoreNodeModelsWpf.Nodes;
 using Dynamo.Controls;
 using Dynamo.Wpf;
 using SolidWorks.Interop.sldworks;
@@ -9,18 +10,14 @@ namespace SldWorksNodes.Selection
     /// <summary>
     /// Select Edge node
     /// </summary>
+    [IsVisibleInDynamoLibrary(false)]
     public class SelectEdgeNodeViewCustomization : INodeViewCustomization<SelectEdge>
     {
         public void CustomizeView(SelectEdge model, NodeView nodeView)
         {
-            var btn = new Button();
-            btn.Click += Btn_Click;
+            var btn = new Button() { Content = "Select" };
+            btn.DataContext = model;
             nodeView.inputGrid.Children.Add(btn);
-        }
-
-        private void Btn_Click(object sender, System.Windows.RoutedEventArgs e)
-        {
-            
         }
 
         public void Dispose()
