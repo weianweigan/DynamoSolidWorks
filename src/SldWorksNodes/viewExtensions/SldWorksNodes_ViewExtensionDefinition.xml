@@ -1,0 +1,5 @@
+﻿<ViewExtensionDefinition>
+	<!--SldWorksNodes's dll path-->
+	<AssemblyPath>..\SldWorksNodes.dll</AssemblyPath>
+	<TypeName>SldWorksNodes.SldViewExtension</TypeName>
+</ViewExtensionDefinition>

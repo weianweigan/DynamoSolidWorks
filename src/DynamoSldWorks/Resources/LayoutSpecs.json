@@ -8,7 +8,7 @@
       "include": [],
       "childElements": [
         {
-          "text": "SldWorks",
+          "text": "SolidWorks",
           "iconUrl": "",
           "elementType": "category",
           "include": [],
@@ -19,12 +19,43 @@
               "elementType": "group",
               "include": [
                 {
-                  "path": "SldWorksNodes.Sketch",
+                  "path": "SldWorksNodes.SldWorksNodes.Sketch.Sketch",
+                  "inclusive": false
+
+                }
+              ]
+
+            }
+            ,
+            {
+              "text": "Feature",
+              "iconUrl": "",
+              "elementType": "group",
+              "include": [
+                {
+                  "path": "SldWorksNodes.SldWorksNodes.Feature.Feature",
                   "inclusive": false
                 }
-              ],
-              "childElements": [
-
+              ]
+            }
+            ,
+            {
+              "text": "Selection",
+              "iconUrl": "",
+              "elementType": "group",
+              "include": [
+                {
+                  "path": "SldWorksNodes.SldWorksNodes.Selection.SelectFace",
+                  "inclusive": false
+                },
+                {
+                  "path": "SldWorksNodes.SldWorksNodes.Selection.SelectEdge",
+                  "inclusive": false
+                },
+                {
+                  "path": "SldWorksNodes.SldWorksNodes.Selection.SelectFeature",
+                  "inclusive": false
+                }
               ]
             }
           ]

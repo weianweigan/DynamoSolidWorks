@@ -1,4 +1,5 @@
-﻿using Dynamo.ViewModels;
+﻿using Autodesk.DesignScript.Runtime;
+using Dynamo.ViewModels;
 using Dynamo.Wpf.Extensions;
 using SldWorksNodes.Util;
 using SldWorksService;
@@ -6,6 +7,7 @@ using System.Windows.Controls;
 
 namespace SldWorksNodes
 {
+    [IsVisibleInDynamoLibrary(false)]
     public class SldViewExtension : IViewExtension
     {
         private MenuItem _sampleMenuItem;

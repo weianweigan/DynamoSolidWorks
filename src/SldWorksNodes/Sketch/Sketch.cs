@@ -1,16 +1,29 @@
-﻿using Dynamo.Graph.Nodes;
+﻿using SldWorksNodes.Base;
+using SldWorksNodes.Util;
+using SldWorksNodes.SwException;
+using SolidWorks.Interop.sldworks;
 
 namespace SldWorksNodes.Sketch
 {
-    public class Sketch
+    /// <summary>
+    /// SolidWork Sketch
+    /// </summary>
+    public class Sketch:SwNodeModel<ISketch>
     {
-        private string _name;
-
-        internal Sketch(string name)
+        internal Sketch(string sketchName)
         {
-            _name = name;
+            SketchName = sketchName;
+            SolveSketch();
         }
 
+        #region Properties
+        /// <summary>
+        /// Name of Sketch Feature
+        /// </summary>
+        public string SketchName { get; set; }
+        #endregion
+
+        #region Public Static Methods
         /// <summary>
         /// Create a sketch in solidworks.
         /// </summary>
@@ -20,5 +33,31 @@ namespace SldWorksNodes.Sketch
         {
             return new Sketch(name);
         }
+        #endregion
+
+        #region Private Methods
+        private void SolveSketch()
+        {
+            var doc = SldContextManager.Sw.IActiveDoc2;
+            if (doc == null) throw new ActiveDocNotFoundException();
+
+            if (!doc.IsPartDocContext(out var currentDoc))
+            {
+                throw new ActiveDocIsNotPartDocException();
+            }
+            var existFeat = currentDoc.FindFeat(SketchName);
+            if (existFeat == null)
+            {
+                throw new FeatureNotFoundException(SketchName);
+            }
+
+            if (existFeat.GetTypeName2() != FeatTypeNameUtil.ProfileFeature)
+            {
+                throw new FeatureTypeNameErrorException(existFeat.Name,existFeat.GetTypeName2());
+            }
+
+            SwObject = existFeat.GetSpecificFeature2() as ISketch;
+        }
+        #endregion
     }
 }

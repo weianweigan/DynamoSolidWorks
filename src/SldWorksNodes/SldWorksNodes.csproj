@@ -4,10 +4,12 @@
 		<TargetFramework>net48</TargetFramework>
 		<PlatformTarget>x64</PlatformTarget>
 		<EnableComHosting>true</EnableComHosting>
+		<UseWPF>true</UseWPF>
 		<BaseOutputPath>..\..\bin</BaseOutputPath>
 		<AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
 		<!--<AppendRuntimeIdentifierToOutputPath>false</AppendRuntimeIdentifierToOutputPath>-->
 		<AppendConfigurationToOutputPath>false</AppendConfigurationToOutputPath>
+		<GenerateDocumentationFile>True</GenerateDocumentationFile>
 
 	</PropertyGroup>
 
@@ -36,8 +38,13 @@
 		<None Update="SldWorksNodes_DynamoCustomization.xml">
 			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
 		</None>
-		<None Update="extra\SldWorksNodes_ViewExtensionDefinition.xml">
+		<None Update="viewExtensions\SldWorksNodes_ViewExtensionDefinition.xml">
 			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
 		</None>
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Folder Include="Geometry\" />
+	  <Folder Include="View\" />
 	</ItemGroup>
 </Project>

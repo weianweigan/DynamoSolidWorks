@@ -45,7 +45,7 @@ namespace DynamoSldWorks.Model
                 "Tessellation.dll",
                 "Analysis.dll",
                 "GeometryColor.dll",
-                sldWorksNodesDll
+                 sldWorksNodesDll
             };
         }
 

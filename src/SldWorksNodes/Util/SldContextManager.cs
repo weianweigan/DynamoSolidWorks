@@ -1,7 +1,10 @@
-﻿using SldWorksService;
+﻿using Autodesk.DesignScript.Runtime;
+using SldWorksService;
+using SolidWorks.Interop.sldworks;
 
 namespace SldWorksNodes.Util
 {
+    [IsVisibleInDynamoLibrary(false)]
     public class SldContextManager
     {
         private SldContextManager(ISldWorksContext context)
@@ -20,5 +23,7 @@ namespace SldWorksNodes.Util
                 Instance = new SldContextManager(context);
             }
         }
+
+        public static ISldWorks Sw => SldContextManager.Instance.Context.App;
     }
 }
