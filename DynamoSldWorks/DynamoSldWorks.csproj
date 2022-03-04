@@ -22,6 +22,7 @@
 	  <EmbeddedResource Include="Resources\Category.SolidWorks.svg" />
 	</ItemGroup>
 	<ItemGroup>
+	  <PackageReference Include="System.Resources.Extensions" Version="7.0.0-preview.1.22076.8" />
 	  <PackageReference Include="Xarial.XCad.SolidWorks" Version="0.7.12" />
 	</ItemGroup>
 	<ItemGroup>
@@ -29,28 +30,22 @@
 	</ItemGroup>
 	<ItemGroup>
 	  <Reference Include="DynamoApplications">
-	    <HintPath>..\..\DynamoRuntime\DynamoApplications.dll</HintPath>
-	    <CopyLocal>False</CopyLocal>
+	    <HintPath>..\DynamoRuntime\DynamoApplications.dll</HintPath>
 	  </Reference>
 	  <Reference Include="DynamoCore">
-	    <HintPath>..\..\DynamoRuntime\DynamoCore.dll</HintPath>
-	    <CopyLocal>False</CopyLocal>
+	    <HintPath>..\DynamoRuntime\DynamoCore.dll</HintPath>
 	  </Reference>
 	  <Reference Include="DynamoCoreWpf">
-	    <HintPath>..\..\DynamoRuntime\DynamoCoreWpf.dll</HintPath>
-	    <CopyLocal>False</CopyLocal>
+	    <HintPath>..\DynamoRuntime\DynamoCoreWpf.dll</HintPath>
 	  </Reference>
 	  <Reference Include="DynamoUtilities">
-	    <HintPath>..\..\DynamoRuntime\DynamoUtilities.dll</HintPath>
-	    <CopyLocal>False</CopyLocal>
+	    <HintPath>..\DynamoRuntime\DynamoUtilities.dll</HintPath>
 	  </Reference>
 	  <Reference Include="Greg">
-	    <HintPath>..\..\DynamoRuntime\Greg.dll</HintPath>
-	    <CopyLocal>False</CopyLocal>
+	    <HintPath>..\DynamoRuntime\Greg.dll</HintPath>
 	  </Reference>
 	  <Reference Include="Microsoft.Practices.Prism">
-	    <HintPath>..\..\DynamoRuntime\Microsoft.Practices.Prism.dll</HintPath>
-	    <CopyLocal>False</CopyLocal>
+	    <HintPath>..\DynamoRuntime\Microsoft.Practices.Prism.dll</HintPath>
 	  </Reference>
 	</ItemGroup>
 	<ItemGroup>
