@@ -13,12 +13,16 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SldWorksNodes", "SldWorksNo
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SldWorksNodesUI", "SldWorksNodesUI\SldWorksNodesUI.csproj", "{766E4647-4FF5-499C-9560-2E25961E6BC3}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "_build", "build\_build.csproj", "{96F2E7FD-2430-4C8B-9ACB-5B5DCEF08542}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{96F2E7FD-2430-4C8B-9ACB-5B5DCEF08542}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{96F2E7FD-2430-4C8B-9ACB-5B5DCEF08542}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A8E8D07A-A567-4716-A540-56623644545A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{A8E8D07A-A567-4716-A540-56623644545A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A8E8D07A-A567-4716-A540-56623644545A}.Release|Any CPU.ActiveCfg = Release|Any CPU
