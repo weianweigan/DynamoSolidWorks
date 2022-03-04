@@ -69,4 +69,9 @@ class Build : NukeBuild
                 .SetNodeReuse(IsLocalBuild));
         });
 
+    Target Run => _ => _
+        .Executes(() =>
+        {
+            //Build Package
+        });
 }
