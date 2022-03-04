@@ -8,7 +8,7 @@ using System.Windows.Media;
 
 namespace SldWorksNodes.Geometry
 {
-    public class Arc3D : SwBodyNode
+    public class Arc3D : SwCurveBodyNode
     {
         internal Arc3D(Point3D center, Vector3D axis, double radius, Point3D startPoint, Point3D endPoint)
         {

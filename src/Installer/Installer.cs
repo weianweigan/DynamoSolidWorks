@@ -1,22 +1,21 @@
-﻿using System;
+﻿using Microsoft.Deployment.WindowsInstaller;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Text;
-using System.Text.RegularExpressions;
 using WixSharp;
 using WixSharp.CommonTasks;
-using WixSharp.Controls;
 
-const string installationDir = @"%AppDataFolder%\Autodesk\Revit\Addins\";
+const string installationDir = @"%ProgramFiles%\Dynamo\DynamoSolidWorks";
 const string projectName = "DynamoSldWorks";
 const string outputName = "DynamoSldWorks";
 const string outputDir = "output";
-var version = "1.0.2";
+var version = GetVersion();
 var fileName = new StringBuilder().Append(outputName).Append("-").Append(version);
 
-var project = new Project
+var project = new ManagedProject
 {
     Name = projectName,
     OutDir = outputDir,
@@ -24,46 +23,90 @@ var project = new Project
     UI = WUI.WixUI_InstallDir,
     Version = new Version(version),
     OutFileName = fileName.ToString(),
-    InstallScope = InstallScope.perUser,
+    InstallScope = InstallScope.perMachine,
+    InstallPrivileges = InstallPrivileges.elevated,
     MajorUpgrade = MajorUpgrade.Default,
     GUID = new Guid("62E8D571-F797-428D-A8A5-BDEAE1EADDF9"),
-    BackgroundImage = @"Installer\Resources\Icons\logo_about.png",
-    BannerImage = @"Installer\Resources\Icons\logo_about.png",
+    //BackgroundImage = @"Installer\Resources\Icons\logo_about.png",
+    //BannerImage = @"Installer\Resources\Icons\logo_about.png",
     ControlPanelInfo =
     {
         Manufacturer = "WeiGan",
         HelpLink = "https://github.com/weianweigan/DynamoSolidWorks",
-        ProductIcon = @"Installer\Resources\Icons\ShellIcon.ico"
+        //ProductIcon = @"Installer\Resources\Icons\ShellIcon.ico"
     },
     Dirs = new Dir[]
     {
         new InstallDir(installationDir, GenerateWixEntities())
+    },
+    Actions = new WixSharp.Action[]
+    {
+        new WixSharp.InstalledFileAction(
+            "uninstall_bat","",
+            Return.ignore,
+            When.Before,
+            Step.RemoveFiles,
+            Condition.Always)
+    }
+    //LicenceFile = 
+};
+
+project.AfterInstall += (e) =>
+{
+    try
+    {
+        if(e.Mode == SetupEventArgs.SetupMode.Installing)
+            Process.Start(e.InstallDir.PathCombine("Install.bat"));
+    }
+    catch (global::System.Exception ex)
+    {
+        
     }
 };
 
 MajorUpgrade.Default.AllowSameVersionUpgrades = true;
-project.RemoveDialogsBetween(NativeDialogs.WelcomeDlg, NativeDialogs.InstallDirDlg);
-project.BuildMsi();
+var location = project.BuildMsi();
+Console.WriteLine($"Finish:{location}");
 
 WixEntity[] GenerateWixEntities()
 {
-    var versionRegex = new Regex(@"\d+");
-    var versionStorages = new Dictionary<string, List<WixEntity>>();
+    var directory = GetBinDirectory();
 
-    foreach (var directory in args)
+    var directoryInfo = new DirectoryInfo(directory);
+    var files = new Files($@"{directory}\*.*",p => !p.EndsWith(".bat"));
+
+    var entities = new List<WixEntity>
     {
-        var directoryInfo = new DirectoryInfo(directory);
-        var fileVersion = versionRegex.Match(directoryInfo.Name).Value;
-        var files = new Files($@"{directory}\*.*");
-        if (versionStorages.ContainsKey(fileVersion))
-            versionStorages[fileVersion].Add(files);
-        else
-            versionStorages.Add(fileVersion, new List<WixEntity> { files });
+        files,
+        new WixSharp.File(new Id("install_bat"),Path.Combine(directory,"Install.bat")),
+        new WixSharp.File(new Id("uninstall_bat"),Path.Combine(directory,"UnInstall.bat")),
+    }.ToArray();
+    return entities;
+}
 
-        var assemblies = Directory.GetFiles(directory, "*", SearchOption.AllDirectories);
-        Console.WriteLine($"Added '{fileVersion}' version files: ");
-        foreach (var assembly in assemblies) Console.WriteLine($"'{assembly}'");
+string GetBinDirectory()
+{
+    var dirStr = Path.GetDirectoryName(typeof(Program).Assembly.Location);
+    var dir = new DirectoryInfo(dirStr);
+
+    //Find git location
+    while (!dir.GetDirectories().Any(p => p.Name == ".git"))
+    {
+        dir = dir.Parent;
     }
 
-    return versionStorages.Select(storage => new Dir(storage.Key, storage.Value.ToArray())).Cast<WixEntity>().ToArray();
+    var desDir = Path.Combine(dir.FullName, "bin", "Debug");
+
+    return desDir;
+}
+
+string GetVersion()
+{
+    var directory = GetBinDirectory();
+
+    var mainDll = Path.Combine(directory, "DynamoSldWorks.dll");
+
+    var version = FileVersionInfo.GetVersionInfo(mainDll);
+
+    return version.FileVersion;
 }

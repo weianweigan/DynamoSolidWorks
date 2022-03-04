@@ -15,19 +15,7 @@ namespace SldWorksNodes.Geometry
             if (SwObject != null)
                 DisplayBody(doc, Color);
         }
-
-        public static Body ByBox(Point3D LeftDown,Point3D TopRight)
-        {
-            var body = BodyBuilder.CreateFromBox(
-                SldContextManager.Modeler,
-                LeftDown.ToData(),
-                TopRight.ToData());
-            if (body == null)
-                throw new NullReferenceException("Create Body Error");
-
-            return new Body(body);
-        }
-        
+      
         public static Body ByClinder(Point3D center,Vector3D axis,double radius,double height)
         {
             if (radius <= 0)

@@ -9,7 +9,7 @@
       "childElements": [
         {
           "text": "SolidWorks",
-          "iconUrl": "/Icons/solidworks.svg",
+          "iconUrl": "/icons/Category.SolidWorks.svg",
           "elementType": "category",
           "include": [],
           "childElements": [
@@ -118,6 +118,17 @@
                   "include": [
                     {
                       "path": "SldWorksNodes.SldWorksNodes.Geometry.Body",
+                      "inclusive": false
+                    }
+                  ]
+                },
+                {
+                  "text": "Cube",
+                  "iconUrl": "",
+                  "elementType": "group",
+                  "include": [
+                    {
+                      "path": "SldWorksNodes.SldWorksNodes.Geometry.Cube",
                       "inclusive": false
                     }
                   ]

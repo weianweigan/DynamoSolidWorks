@@ -1,4 +1,5 @@
 ﻿using Autodesk.DesignScript.Runtime;
+using SldWorksNodes.Util;
 using System;
 
 namespace SldWorksNodes.Geometry
@@ -30,7 +31,9 @@ namespace SldWorksNodes.Geometry
 
         internal System.Windows.Media.Media3D.Vector3D ToData()
         {
-            return new System.Windows.Media.Media3D.Vector3D(X, Y, Z);
+            return SwContextUtil.UseMM ? 
+                new System.Windows.Media.Media3D.Vector3D(X/1000,Y/1000,Z/1000):
+                new System.Windows.Media.Media3D.Vector3D(X, Y, Z);
         }
     }
 }

@@ -5,7 +5,7 @@ using System.IO;
 
 namespace DynamoSldWorks.Model
 {
-    public class PathReSolver : IPathResolver
+    public class SwPathReSolver : IPathResolver
     {
         private readonly List<string> preloadLibraryPaths;
         private readonly List<string> additionalNodeDirectories;
@@ -13,7 +13,7 @@ namespace DynamoSldWorks.Model
         private readonly string userDataRootFolder;
         private readonly string commonDataRootFolder;
 
-        public PathReSolver()
+        public SwPathReSolver()
         {
             var userDataFolder = System.IO.Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "Dynamo", "Dynamo SolidWorks");
             var commonDataFolder = System.IO.Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.CommonApplicationData), "Dynamo", "Dynamo SolidWorks");
@@ -23,10 +23,10 @@ namespace DynamoSldWorks.Model
             commonDataRootFolder = commonDataFolder;
 
             var nodesDirectory = Path.Combine(SwAddin.DynamoCorePath, "nodes");
-            var sldWorksNodesDirectory = SwAddin.DynamoCorePath;
+            var sldWorksNodesDirectory = Path.Combine(SwAddin.DynamoCorePath,"SolidWorks");
 
             additionalNodeDirectories = new List<string> { nodesDirectory };
-            additionalResolutionPaths = new List<string> { };
+            additionalResolutionPaths = new List<string> {sldWorksNodesDirectory };
 
             var sldWorksNodesDll = Path.Combine(sldWorksNodesDirectory, "SldWorksNodes.dll");
             var sldWorksNodesUIDll = Path.Combine(sldWorksNodesDirectory, "SldWorksNodesUI.dll");

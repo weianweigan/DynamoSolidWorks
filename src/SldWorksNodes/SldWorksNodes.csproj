@@ -17,11 +17,11 @@
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
-    <OutputPath>..\..\bin\Debug\</OutputPath>
+    <OutputPath>..\..\bin\Debug\SolidWorks\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <DocumentationFile>..\..\bin\Debug\SldWorksNodes.xml</DocumentationFile>
+    <DocumentationFile>..\..\bin\Debug\SolidWorks\SldWorksNodes.xml</DocumentationFile>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -140,6 +140,7 @@
       <Private>False</Private>
     </Reference>
     <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
     <Reference Include="System.Memory, Version=4.0.1.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Memory.4.5.4\lib\net461\System.Memory.dll</HintPath>
       <Private>False</Private>
@@ -202,13 +203,20 @@
     <Compile Include="Geometry\Body.cs" />
     <Compile Include="Geometry\BodyBoolOperation.cs" />
     <Compile Include="Geometry\Circle3D.cs" />
+    <Compile Include="Geometry\Cube.cs" />
     <Compile Include="Geometry\Line3D.cs" />
     <Compile Include="Geometry\Point3D.cs" />
     <Compile Include="Geometry\SheetBody.cs" />
     <Compile Include="Geometry\SurfaceBody.cs" />
-    <Compile Include="Geometry\SwBodyNode.cs" />
+    <Compile Include="Geometry\Base\SwBodyNode.cs" />
+    <Compile Include="Geometry\Base\SwCurveBodyNode.cs" />
     <Compile Include="Geometry\Vector3D.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Resources\SldWorksNodesImages.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SldWorksNodesImages.resx</DependentUpon>
+    </Compile>
     <Compile Include="Sketch\Sketch.cs" />
     <Compile Include="SldViewExtension.cs" />
     <Compile Include="SwException\ActiveDocIsNotPartDocException.cs" />
@@ -227,17 +235,13 @@
     <Compile Include="Util\SldContextManager.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Icons\solidworks.png" />
+    <None Include="Resources\Dimension.png" />
     <Content Include="SldWorksNodes.Migrations.xml" />
     <Content Include="SldWorksNodes_DynamoCustomization.xml" />
-    <Content Include="viewExtensions\SldWorksNodes_ViewExtensionDefinition.xml">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
-    <None Include="Icons\solidworks.svg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
     <None Include="packages.config" />
     <None Include="pkg.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
@@ -256,5 +260,24 @@
       <Name>SldWorksService</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\SldWorksNodesImages.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>SldWorksNodesImages.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Target Name="AfterBuild">
+    <!-- Get System.Drawing.dll -->
+    <GetReferenceAssemblyPaths TargetFrameworkMoniker=".NETFramework, Version=v4.8">
+      <Output TaskParameter="FullFrameworkReferenceAssemblyPaths" PropertyName="FrameworkAssembliesPath" />
+    </GetReferenceAssemblyPaths>
+    <!-- Get assembly -->
+    <GetAssemblyIdentity AssemblyFiles="$(OutDir)$(TargetName).dll">
+      <Output TaskParameter="Assemblies" ItemName="AssemblyInfo" />
+    </GetAssemblyIdentity>
+    <!-- Generate customization dll -->
+    <GenerateResource SdkToolsPath="$(TargetFrameworkSDKToolsDirectory)" UseSourcePath="true" Sources="$(ProjectDir)\Resources\SldWorksNodesImages.resx" OutputResources="$(ProjectDir)\Resources\SldWorksNodesImages.resources" References="$(FrameworkAssembliesPath)System.Drawing.dll" />
+    <AL SdkToolsPath="$(TargetFrameworkSDKToolsDirectory)" TargetType="library" EmbedResources="$(ProjectDir)\Resources\SldWorksNodesImages.resources" OutputAssembly="$(OutDir)SldWorksNodes.customization.dll" Version="%(AssemblyInfo.Version)" />
+  </Target>
 </Project>

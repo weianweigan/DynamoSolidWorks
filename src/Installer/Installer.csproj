@@ -17,4 +17,12 @@
 		<PackageReference Include="WixSharp.wix.bin">
 			<Version>3.11.*</Version>
 		</PackageReference>
+	</ItemGroup>
+	<ItemGroup>
+	  <None Update="Resources\Icons\logo_about.png">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </None>
+	  <None Update="Resources\Icons\ShellIcon.ico">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </None>
 	</ItemGroup></Project>

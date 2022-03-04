@@ -10,6 +10,16 @@
 	</PropertyGroup>
 	<ItemGroup>
 	  <None Remove="app.config" />
+	  <None Remove="Resources\Category.SolidWorks.svg" />
+	  <None Remove="viewExtensions\SldWorksNodes_ViewExtensionDefinition.xml" />
+	</ItemGroup>
+	<ItemGroup>
+	  <Content Include="viewExtensions\SldWorksNodes_ViewExtensionDefinition.xml">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </Content>
+	</ItemGroup>
+	<ItemGroup>
+	  <EmbeddedResource Include="Resources\Category.SolidWorks.svg" />
 	</ItemGroup>
 	<ItemGroup>
 	  <PackageReference Include="Xarial.XCad.SolidWorks" Version="0.7.12" />
@@ -44,10 +54,19 @@
 	  </Reference>
 	</ItemGroup>
 	<ItemGroup>
+	  <None Update="Install.bat">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </None>
+	  <None Update="RegAsm.exe">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </None>
 	  <None Update="Resources\LayoutSpecs.json">
 	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
 	  </None>
 	  <None Update="Resources\logo_about.png">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </None>
+	  <None Update="UnInstall.bat">
 	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
 	  </None>
 	</ItemGroup>

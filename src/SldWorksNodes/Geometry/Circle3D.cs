@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace SldWorksNodes.Geometry
 {
-    public class Circle3D:SwBodyNode
+    public class Circle3D: SwCurveBodyNode
     {
        internal Circle3D(Point3D center, double radius, Vector3D axis)
         {

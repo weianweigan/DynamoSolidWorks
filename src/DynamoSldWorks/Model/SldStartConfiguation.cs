@@ -26,7 +26,7 @@ namespace DynamoSldWorks.Model
 
         public IPreferences Preferences { get; set; }
 
-        public IPathResolver PathResolver { get; set; } = new PathReSolver();
+        public IPathResolver PathResolver { get; set; } = new SwPathReSolver();
 
         public bool StartInTestMode { get; set; }
 
