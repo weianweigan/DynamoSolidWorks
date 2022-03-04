@@ -15,11 +15,11 @@ using System.Windows.Shapes;
 namespace DynamoSldWorks.View
 {
     /// <summary>
-    /// TestWindow.xaml 的交互逻辑
+    /// DynamoTaskPane.xaml 的交互逻辑
     /// </summary>
-    public partial class TestWindow : Window
+    public partial class DynamoTaskPane : UserControl
     {
-        public TestWindow()
+        public DynamoTaskPane()
         {
             InitializeComponent();
         }

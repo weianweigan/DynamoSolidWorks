@@ -14,6 +14,7 @@ const string outputName = "DynamoSldWorks";
 const string outputDir = "output";
 var version = GetVersion();
 var fileName = new StringBuilder().Append(outputName).Append("-").Append(version);
+string IconDir = Path.Combine(GetGitDirectory(),"src");
 
 var project = new ManagedProject
 {
@@ -27,13 +28,13 @@ var project = new ManagedProject
     InstallPrivileges = InstallPrivileges.elevated,
     MajorUpgrade = MajorUpgrade.Default,
     GUID = new Guid("62E8D571-F797-428D-A8A5-BDEAE1EADDF9"),
-    //BackgroundImage = @"Installer\Resources\Icons\logo_about.png",
-    //BannerImage = @"Installer\Resources\Icons\logo_about.png",
+    BackgroundImage = $@"{IconDir}\Installer\Resources\Icons\logo_about.png",
+    BannerImage = $@"{IconDir}\Installer\Resources\Icons\logo_about.png",
     ControlPanelInfo =
     {
         Manufacturer = "WeiGan",
         HelpLink = "https://github.com/weianweigan/DynamoSolidWorks",
-        //ProductIcon = @"Installer\Resources\Icons\ShellIcon.ico"
+        ProductIcon = $@"{IconDir}\Installer\Resources\Icons\ShellIcon.ico"
     },
     Dirs = new Dir[]
     {
@@ -86,6 +87,15 @@ WixEntity[] GenerateWixEntities()
 
 string GetBinDirectory()
 {
+    string dir = GetGitDirectory();
+
+    var desDir = Path.Combine(dir, "bin", "Debug");
+
+    return desDir;
+}
+
+string GetGitDirectory()
+{
     var dirStr = Path.GetDirectoryName(typeof(Program).Assembly.Location);
     var dir = new DirectoryInfo(dirStr);
 
@@ -95,9 +105,7 @@ string GetBinDirectory()
         dir = dir.Parent;
     }
 
-    var desDir = Path.Combine(dir.FullName, "bin", "Debug");
-
-    return desDir;
+    return dir.FullName;
 }
 
 string GetVersion()
