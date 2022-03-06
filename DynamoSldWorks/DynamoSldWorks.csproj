@@ -7,11 +7,10 @@
 		<AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
 		<!--<AppendRuntimeIdentifierToOutputPath>false</AppendRuntimeIdentifierToOutputPath>-->
 		<AppendConfigurationToOutputPath>false</AppendConfigurationToOutputPath>
-		<Version>0.0.1.1</Version>
+		<Version>0.0.2.2</Version>
 	</PropertyGroup>
 	<ItemGroup>
 	  <None Remove="app.config" />
-	  <None Remove="Resources\Category.SolidWorks.svg" />
 	  <None Remove="Resources\logo_about.png" />
 	  <None Remove="viewExtensions\SldWorksNodes_ViewExtensionDefinition.xml" />
 	</ItemGroup>
@@ -19,9 +18,6 @@
 	  <Content Include="viewExtensions\SldWorksNodes_ViewExtensionDefinition.xml">
 	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
 	  </Content>
-	</ItemGroup>
-	<ItemGroup>
-	  <EmbeddedResource Include="Resources\Category.SolidWorks.svg" />
 	</ItemGroup>
 	<ItemGroup>
 	  <PackageReference Include="System.Resources.Extensions" Version="7.0.0-preview.1.22076.8" />

@@ -4,7 +4,8 @@
  * <ResourceDictionary Source="pack://application:,,,/DynamoCoreWpf;component/UI/Themes/Modern/DynamoModern.xaml" />
  * Or it will cause a wpf exception.
  * See Issue https://github.com/DynamoDS/Dynamo/issues/12650
- * 
+ * --------------------------------------------------------------------
+ *  * The thing seems changed.You need to see https://stackoverflow.com/questions/6850713/weird-xaml-parsing-error-when-trying-to-set-textbox-isreadonly
  */
 
 using System;

@@ -87,7 +87,15 @@ namespace DynamoSldWorks.ViewModel
 
         private void OpenDynamo()
         {
-            _swAddin.DynamoSetup.Start(_swAddin.Application.WindowHandle);
+            try
+            {
+                _swAddin.InitDynamoSetup();
+                _swAddin.DynamoSetup.Start(_swAddin.Application.WindowHandle);
+            }
+            catch (Exception ex)
+            {
+                _swAddin.Application.ShowMessageBox(ex.Message);
+            }
         }
     }
 }
