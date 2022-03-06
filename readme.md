@@ -8,6 +8,10 @@ This repos contain the src file for DynamoSldWorks,that connects Dynamo with Sol
 
 [Release](https://github.com/weianweigan/DynamoSolidWorks/releases)
 
+Then check your addin startup state.
+
+![Addin](./resources/Addin.png)
+
 # Build
 
 1. For some reason,you need build Dynamo core.
