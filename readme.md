@@ -1,4 +1,4 @@
-# Dynamo Addin for SolidWorks -- Building
+# Dynamo Addin for SolidWorks
 
 This repos contain the src file for DynamoSldWorks,that connects Dynamo with SolidWorks.
 
