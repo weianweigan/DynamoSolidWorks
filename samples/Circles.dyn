@@ -1,0 +1,359 @@
+{
+  "Uuid": "8f8ca25e-66cb-4aea-8592-cf2921c6624e",
+  "IsCustomNode": false,
+  "Description": null,
+  "Name": "circles",
+  "ElementResolver": {
+    "ResolutionMap": {
+      "List.ge": {
+        "Key": "List",
+        "Value": "BuiltIn.ds"
+      }
+    }
+  },
+  "Inputs": [],
+  "Outputs": [],
+  "Nodes": [
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "SldWorksNodes.Geometry.Circle3D.ByCenterRadius@SldWorksNodes.Geometry.Point3D,double",
+      "Id": "c6fa473d254b4495b28c93864e5e86a2",
+      "Inputs": [
+        {
+          "Id": "c8914c28f2b745f988445599eef3763d",
+          "Name": "center",
+          "Description": "Point3D",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "6c5ff59ce9e54bafab35ca546f1be290",
+          "Name": "radius",
+          "Description": "double",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "2b40ae25d15a4bcba365a1de4cb324e2",
+          "Name": "Circle3D",
+          "Description": "Circle3D",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "Circle3D.ByCenterRadius (center: Point3D, radius: double): Circle3D"
+    },
+    {
+      "ConcreteType": "CoreNodeModels.Sequence, CoreNodeModels",
+      "NodeType": "ExtensionNode",
+      "Id": "a51a2ddf9ba84c9a8e1dbb25b853569a",
+      "Inputs": [
+        {
+          "Id": "f55bbba2960f48fdaab1617b7f20365d",
+          "Name": "start",
+          "Description": "序列开始的数字或字母\r\n默认值：0",
+          "UsingDefaultValue": true,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "d08b6abaa0e84170a6b10c58dd3969e9",
+          "Name": "amount",
+          "Description": "序列中数字或字母的数量\r\n默认值: 10",
+          "UsingDefaultValue": true,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "ec9c1ef477bc4d3ebef2acf39176ba2c",
+          "Name": "step",
+          "Description": "数字或字母之间的空间\r\n默认值：1",
+          "UsingDefaultValue": true,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "7665e264c75d4c27a990de5a04823229",
+          "Name": "seq",
+          "Description": "新列表(类型: var[]..[])",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "Creates a sequence of numbers."
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.CodeBlockNodeModel, DynamoCore",
+      "NodeType": "CodeBlockNode",
+      "Code": "10;\n10;",
+      "Id": "13d9fa423bba4afcb6c1057ef2019ef1",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "9c0fd25bbb154dc49625fd5d79826529",
+          "Name": "",
+          "Description": "行 1 中的表达式值",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "bf13ea5fca39476496262eabe5d06e85",
+          "Name": "",
+          "Description": "行 2 中的表达式值",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "允许直接编写 DesignScript 代码"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "SldWorksNodes.Geometry.Point3D.ByCoordiate@double,double,double",
+      "Id": "6357e5bf85c044aeb7f96790f90d0120",
+      "Inputs": [
+        {
+          "Id": "69af26c237934374b7f4732bda969fe0",
+          "Name": "x",
+          "Description": "double",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "a79f27be9b7e41069fc3337ad5caf311",
+          "Name": "y",
+          "Description": "double",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "ca54d5699024429984daf196f4fc1c5c",
+          "Name": "z",
+          "Description": "double",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "e1419566c6584038a832418e28b61fdf",
+          "Name": "Point3D",
+          "Description": "Point3D",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "Point3D.ByCoordiate (x: double, y: double, z: double): Point3D"
+    },
+    {
+      "ConcreteType": "CoreNodeModels.Input.DoubleInput, CoreNodeModels",
+      "NodeType": "NumberInputNode",
+      "NumberType": "Double",
+      "InputValue": 0.0,
+      "Id": "28c1747e0ec248a7bbcbc3ffc1950d3b",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "8baa71b85552450e9ebeb908f9e8027b",
+          "Name": "",
+          "Description": "Double",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Creates a number."
+    },
+    {
+      "ConcreteType": "CoreNodeModels.Input.DoubleSlider, CoreNodeModels",
+      "NodeType": "NumberInputNode",
+      "NumberType": "Double",
+      "MaximumValue": 100.0,
+      "MinimumValue": 0.0,
+      "StepValue": 0.1,
+      "InputValue": 15.600000000000001,
+      "Id": "6f7babac963048f687de306c5d404f3c",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "49768132567247d9b302d0cc7ad58047",
+          "Name": "",
+          "Description": "Double",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "A slider that produces numeric values."
+    }
+  ],
+  "Connectors": [
+    {
+      "Start": "7665e264c75d4c27a990de5a04823229",
+      "End": "ca54d5699024429984daf196f4fc1c5c",
+      "Id": "3c2928b93f4048518e3489389222c671"
+    },
+    {
+      "Start": "7665e264c75d4c27a990de5a04823229",
+      "End": "6c5ff59ce9e54bafab35ca546f1be290",
+      "Id": "4e4ba651dbd04c468251fd366b3deccc"
+    },
+    {
+      "Start": "9c0fd25bbb154dc49625fd5d79826529",
+      "End": "f55bbba2960f48fdaab1617b7f20365d",
+      "Id": "49d468e7e2bc43ae8e1f2d682decd0d0"
+    },
+    {
+      "Start": "bf13ea5fca39476496262eabe5d06e85",
+      "End": "ec9c1ef477bc4d3ebef2acf39176ba2c",
+      "Id": "3a95828543d149b5b6a7b0fe0d5cc95f"
+    },
+    {
+      "Start": "e1419566c6584038a832418e28b61fdf",
+      "End": "c8914c28f2b745f988445599eef3763d",
+      "Id": "47572431a76d44b2b6212c28b80c1699"
+    },
+    {
+      "Start": "8baa71b85552450e9ebeb908f9e8027b",
+      "End": "69af26c237934374b7f4732bda969fe0",
+      "Id": "52ccca4b12a742e585a1c5cabcb29890"
+    },
+    {
+      "Start": "8baa71b85552450e9ebeb908f9e8027b",
+      "End": "a79f27be9b7e41069fc3337ad5caf311",
+      "Id": "82f126e40dac4f8aad79a2e0c1d7fb82"
+    },
+    {
+      "Start": "49768132567247d9b302d0cc7ad58047",
+      "End": "d08b6abaa0e84170a6b10c58dd3969e9",
+      "Id": "b724f51a7bf846c7a27049215e345146"
+    }
+  ],
+  "Dependencies": [],
+  "NodeLibraryDependencies": [],
+  "Bindings": [],
+  "View": {
+    "Dynamo": {
+      "ScaleFactor": 1.0,
+      "HasRunWithoutCrash": true,
+      "IsVisibleInDynamoLibrary": true,
+      "Version": "2.7.0.15211",
+      "RunType": "Automatic",
+      "RunPeriod": "1000"
+    },
+    "Camera": {
+      "Name": "背景预览",
+      "EyeX": -17.0,
+      "EyeY": 24.0,
+      "EyeZ": 50.0,
+      "LookX": 12.0,
+      "LookY": -13.0,
+      "LookZ": -58.0,
+      "UpX": 0.0,
+      "UpY": 1.0,
+      "UpZ": 0.0
+    },
+    "NodeViews": [
+      {
+        "ShowGeometry": true,
+        "Name": "Circle3D.ByCenterRadius",
+        "Id": "c6fa473d254b4495b28c93864e5e86a2",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 627.06307067707814,
+        "Y": 233.04041356386512
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Sequence",
+        "Id": "a51a2ddf9ba84c9a8e1dbb25b853569a",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 193.1839388731895,
+        "Y": 182.20139732745423
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Code Block",
+        "Id": "13d9fa423bba4afcb6c1057ef2019ef1",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 17.333333333333314,
+        "Y": 211.66666666666669
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Point3D.ByCoordiate",
+        "Id": "6357e5bf85c044aeb7f96790f90d0120",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 429.99999999999989,
+        "Y": 39.333333333333357
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Number",
+        "Id": "28c1747e0ec248a7bbcbc3ffc1950d3b",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 193.33333333333326,
+        "Y": 100.0
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Number Slider",
+        "Id": "6f7babac963048f687de306c5d404f3c",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 52.045064387346,
+        "Y": 395.6191683174896
+      }
+    ],
+    "Annotations": [],
+    "X": 29.835806481203861,
+    "Y": 9.6007504011729736,
+    "Zoom": 1.1047642563030273
+  }
+}

@@ -1,0 +1,210 @@
+{
+  "Uuid": "e8388218-d4ea-4fe7-85a1-6233a2e5bd3a",
+  "IsCustomNode": false,
+  "Description": null,
+  "Name": "Equation",
+  "ElementResolver": {
+    "ResolutionMap": {}
+  },
+  "Inputs": [],
+  "Outputs": [],
+  "Nodes": [
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "SldWorksNodes.EquationMgr.Equation.ByIndex@int",
+      "Id": "63c18daec4ae4fef84dceabc3d4fc31f",
+      "Inputs": [
+        {
+          "Id": "1f718d212ab443b49740fa77aa0683a4",
+          "Name": "index",
+          "Description": "int",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "34404623f3a741df83637f67b3ee6c20",
+          "Name": "Equation",
+          "Description": "Equation",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "Equation.ByIndex (index: int): Equation"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.CodeBlockNodeModel, DynamoCore",
+      "NodeType": "CodeBlockNode",
+      "Code": "0;",
+      "Id": "ffb3840ee1da4882b0ac9e8bd3a90084",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "62e2216762b84ea8aa7fa8359e2e84c3",
+          "Name": "",
+          "Description": "行 1 中的表达式值",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "允许直接编写 DesignScript 代码"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "SldWorksNodes.EquationMgr.Equation.SetValue@string",
+      "Id": "54744a7ec3c449dda30053a93f66aaab",
+      "Inputs": [
+        {
+          "Id": "ecf1a19db2134c66af73a8b0c5956f02",
+          "Name": "equation",
+          "Description": "SldWorksNodes.EquationMgr.Equation",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "16c5bc7cb81d4800be22c947582adaec",
+          "Name": "equation",
+          "Description": "string",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "5aee26466d774f7a8df17795b2d6a400",
+          "Name": "bool",
+          "Description": "bool",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "Equation.SetValue (equation: string): bool"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.CodeBlockNodeModel, DynamoCore",
+      "NodeType": "CodeBlockNode",
+      "Code": "\"\\\"a\\\"=30\";",
+      "Id": "57a35c733abc4764adbd9d7be2f348af",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "48d3778784f241d0bfdcc551dbbec1a8",
+          "Name": "",
+          "Description": "行 1 中的表达式值",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "允许直接编写 DesignScript 代码"
+    }
+  ],
+  "Connectors": [
+    {
+      "Start": "34404623f3a741df83637f67b3ee6c20",
+      "End": "ecf1a19db2134c66af73a8b0c5956f02",
+      "Id": "af6c52386338457297376f216a2ad8fe"
+    },
+    {
+      "Start": "62e2216762b84ea8aa7fa8359e2e84c3",
+      "End": "1f718d212ab443b49740fa77aa0683a4",
+      "Id": "d532fb40a433467e9a4d6e6ad13468bc"
+    },
+    {
+      "Start": "48d3778784f241d0bfdcc551dbbec1a8",
+      "End": "16c5bc7cb81d4800be22c947582adaec",
+      "Id": "053a9e6c176f49e6b234bb46a491e474"
+    }
+  ],
+  "Dependencies": [],
+  "NodeLibraryDependencies": [],
+  "Bindings": [],
+  "View": {
+    "Dynamo": {
+      "ScaleFactor": 1.0,
+      "HasRunWithoutCrash": true,
+      "IsVisibleInDynamoLibrary": true,
+      "Version": "2.7.0.15211",
+      "RunType": "Manual",
+      "RunPeriod": "1000"
+    },
+    "Camera": {
+      "Name": "背景预览",
+      "EyeX": -17.0,
+      "EyeY": 24.0,
+      "EyeZ": 50.0,
+      "LookX": 12.0,
+      "LookY": -13.0,
+      "LookZ": -58.0,
+      "UpX": 0.0,
+      "UpY": 1.0,
+      "UpZ": 0.0
+    },
+    "NodeViews": [
+      {
+        "ShowGeometry": true,
+        "Name": "Equation.ByIndex",
+        "Id": "63c18daec4ae4fef84dceabc3d4fc31f",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 476.33333333333337,
+        "Y": 330.00000000000011
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Code Block",
+        "Id": "ffb3840ee1da4882b0ac9e8bd3a90084",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 329.87492830153968,
+        "Y": 329.1785685021037
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Equation.SetValue",
+        "Id": "54744a7ec3c449dda30053a93f66aaab",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 778.41963188288878,
+        "Y": 368.85423324380838
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Code Block",
+        "Id": "57a35c733abc4764adbd9d7be2f348af",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 479.39271959887191,
+        "Y": 455.49263817263079
+      }
+    ],
+    "Annotations": [],
+    "X": -83.5905331240923,
+    "Y": -178.85391309868956,
+    "Zoom": 1.0298856394709861
+  }
+}

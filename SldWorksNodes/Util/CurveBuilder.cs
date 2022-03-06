@@ -21,6 +21,12 @@ namespace SldWorksNodes.Util
         /// <returns>创建完成的Curve对象</returns>
         public static ICurve CreatedTrimmedLine(this IModeler modeler, Point3D startPoint, Point3D endPoint)
         {
+            if (SwContextUtil.UseMM)
+            {
+                startPoint = startPoint.ToMeter();
+                endPoint = endPoint.ToMeter();
+            }
+
             if (startPoint.Equals(endPoint))
                 throw new ArgumentException($"{startPoint} == {endPoint}");
 
@@ -43,6 +49,14 @@ namespace SldWorksNodes.Util
         /// <returns>创建完成的Curve对象</returns>
         public static ICurve CreatedTrimmedArc(this IModeler modeler, Point3D center, Vector3D axis, double radius, Point3D startPoint, Point3D endPoint)
         {
+            if (SwContextUtil.UseMM)
+            {
+                center = center.ToMeter();
+                startPoint = startPoint.ToMeter();
+                endPoint = endPoint.ToMeter();
+                radius = radius / 1000;
+            }
+
             var arc = (ICurve)modeler.CreateArc(center.ToArray(), axis.ToArray(), radius, startPoint.ToArray(), endPoint.ToArray());
 
             arc = arc.CreateTrimmedCurve2(startPoint.X, startPoint.Y, startPoint.Z,
@@ -53,6 +67,12 @@ namespace SldWorksNodes.Util
 
         public static ICurve CreateCircle(this IModeler modeler, Point3D center, Vector3D axis, double radius)
         {
+            if (SwContextUtil.UseMM)
+            {
+                center = center.ToMeter();
+                radius = radius / 1000;
+            }
+
             var planeAxis = axis;
             planeAxis.X += 0.1; planeAxis.Y += 0.1; planeAxis.Z += 0.1;
             var direction = Vector3D.CrossProduct(axis, planeAxis);
@@ -62,8 +82,25 @@ namespace SldWorksNodes.Util
             return CreatedTrimmedArc(modeler, center, axis, radius, startPoint, startPoint);
         }
 
+        public static ICurve CreateTrimmedEllipse(this IModeler modeler,Point3D center,double majorRaduis,double minorRadius,Vector3D majorAxis,Vector3D minorAxis)
+        {
+            if (SwContextUtil.UseMM)
+            {
+                center = center.ToMeter();
+                majorAxis = majorAxis / 1000;
+                minorAxis = minorAxis / 1000;
+            }
+
+            var ellipse = modeler.CreateEllipse(center.ToArray(), majorRaduis, minorRadius, majorAxis.ToArray(), minorAxis.ToArray()) as ICurve;
+
+            //ellipse.
+
+            return ellipse;
+        }
+
         public static IEnumerable<ICurve> CreateBox(this IModeler modeler, Rect3D box)
         {
+
             var location = box.Location;
             var line1 = new Line3D(location, location + new Vector3D(box.SizeX, 0, 0));
             var line2 = new Line3D(location, location + new Vector3D(0, box.SizeY, 0));

@@ -32,6 +32,9 @@ namespace SldWorksNodes.Geometry
 
             var body = bodies?.FirstOrDefault() as IBody2;
 
+            body1.ClearBody();
+            body2.ClearBody();
+
             return new Body(body);
         }
 

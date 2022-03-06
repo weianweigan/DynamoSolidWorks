@@ -38,15 +38,15 @@ namespace SldWorksNodes.Geometry
             if (!SwObject.IsTemporaryBody())
                 return;
 
-            SetTransparency(SwObject,0.8);
 
             doc.WithNoRefresh(() =>
             {
                 SwObject.Display3(doc, Information.RGB(color.R, color.G, color.B), (int)swTempBodySelectOptions_e.swTempBodySelectOptionNone);
+                SetTransparency(SwObject,0.8);
             });
         }
 
-        private void ClearBody()
+        internal void ClearBody()
         {
             try
             {

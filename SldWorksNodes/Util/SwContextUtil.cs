@@ -57,6 +57,14 @@ namespace SldWorksNodes.Util
             return currentDoc;
         }
 
+        public static IModelDoc2 GetActivePartDocContext()
+        {
+            var doc = SldContextManager.Sw.IActiveDoc2;
+            if (doc == null) throw new ActiveDocNotFoundException();
+
+            return doc;
+        }
+
         public static IFeature GetCurrentSelectedFeature()
         {
             var currentDoc = GetCurrentPartDocContext();

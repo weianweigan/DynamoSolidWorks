@@ -66,24 +66,11 @@ namespace SolidWorks.Interop.sldworks
         /// </summary>
         public const string CosmeticThread = nameof(CosmeticThread);
 
-        public static bool IsCavity(string typeName)
-        {
-            return typeName == RevCut;
-        }
-
         /// <summary>
-        /// 出零件工程图时是否要压缩此特征
+        /// 组件
         /// </summary>
-        /// <returns></returns>
-        public static bool NeedToSuppressedWhenDrawing(string typeName)
-        {
-            return typeName == ICE || typeName == Chamfer;
-        }
+        public const string Reference = nameof(Reference);
 
-        public static bool IsTopCavityFeatureTypeName(string typeName)
-        {
-            return typeName == MacroFeature || typeName == LibraryFeature;
-        }
 
         public static bool IsEntity(int type)
         {

@@ -175,18 +175,25 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assembly\Component.cs" />
     <Compile Include="Base\BrepNode.cs" />
     <Compile Include="Base\SwNode.cs" />
     <Compile Include="Base\SwNodeModel.cs" />
-    <Compile Include="Brep\Body.cs" />
     <Compile Include="Brep\Edge.cs" />
     <Compile Include="Brep\Face.cs" />
     <Compile Include="Brep\Loop.cs" />
     <Compile Include="Brep\Vertex.cs" />
+    <Compile Include="CustomProperty\CustomProperty.cs" />
+    <Compile Include="CustomProperty\CustomPropertyCreation.cs" />
+    <Compile Include="CustomProperty\CustomPropertyManager.cs" />
+    <Compile Include="CustomProperty\StringCustomProperty.cs" />
     <Compile Include="Dimension\Dimension.cs" />
+    <Compile Include="Document\Document.cs" />
+    <Compile Include="EquationMgr\Equation.cs" />
     <Compile Include="Extension\FeatTypeNameUtil.cs" />
     <Compile Include="Extension\IFeatureExtension.cs" />
     <Compile Include="Extension\IModelDoc2Extension.cs" />
+    <Compile Include="FeaturesFunctions.cs" />
     <Compile Include="Feature\Feature.cs" />
     <Compile Include="Feature\RefPlane.cs" />
     <Compile Include="GeometryExtension\Line2D.cs" />
@@ -202,18 +209,22 @@
     <Compile Include="GeometryExtension\Vector3DExtenions.cs" />
     <Compile Include="GeometryExtension\Vector4Extension.cs" />
     <Compile Include="GeometryExtension\VectorExtension.cs" />
-    <Compile Include="Geometry\Arc3D.cs" />
+    <Compile Include="Geometry\Cone.cs" />
+    <Compile Include="Geometry\Curve.cs" />
+    <Compile Include="Geometry\Curve\Arc3D.cs" />
     <Compile Include="Geometry\Body.cs" />
     <Compile Include="Geometry\BodyBoolOperation.cs" />
-    <Compile Include="Geometry\Circle3D.cs" />
+    <Compile Include="Geometry\Curve\Circle3D.cs" />
     <Compile Include="Geometry\Cube.cs" />
-    <Compile Include="Geometry\Line3D.cs" />
-    <Compile Include="Geometry\Point3D.cs" />
-    <Compile Include="Geometry\SheetBody.cs" />
-    <Compile Include="Geometry\SurfaceBody.cs" />
+    <Compile Include="Geometry\Curve\Ellipse.cs" />
+    <Compile Include="Geometry\Curve\Line3D.cs" />
+    <Compile Include="Geometry\Curve\Point3D.cs" />
+    <Compile Include="Geometry\Base\SheetBody.cs" />
+    <Compile Include="Geometry\Base\SurfaceBody.cs" />
     <Compile Include="Geometry\Base\SwBodyNode.cs" />
     <Compile Include="Geometry\Base\SwCurveBodyNode.cs" />
-    <Compile Include="Geometry\Vector3D.cs" />
+    <Compile Include="Geometry\Curve\Vector3D.cs" />
+    <Compile Include="Geometry\Cylinder.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Resources\SldWorksNodesImages.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -224,6 +235,7 @@
     <Compile Include="SldViewExtension.cs" />
     <Compile Include="SwException\ActiveDocIsNotPartDocException.cs" />
     <Compile Include="SwException\ActiveDocNotFoundException.cs" />
+    <Compile Include="SwException\CustomPropertyAddException.cs" />
     <Compile Include="SwException\FeatureNotFoundException.cs" />
     <Compile Include="SwException\FeatureTypeNameErrorException.cs" />
     <Compile Include="SwException\PIDErrorException.cs" />
@@ -251,8 +263,6 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="CustomProperty\" />
-    <Folder Include="EquationMgr\" />
     <Folder Include="Selection\" />
     <Folder Include="Solid\" />
     <Folder Include="View\" />

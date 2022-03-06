@@ -15,6 +15,7 @@
   "repository_url": "",
   "contains_binaries": true,
   "node_libraries": [
-    "SldWorksNodes, Version=1.0.0, Culture=neutral, PublicKeyToken=null"  
+    "SldWorksNodes, Version=1.0.0, Culture=neutral, PublicKeyToken=null",
+    "SldWorksNodesUI, Version=1.0.0, Culture=neutral, PublicKeyToken=null"
   ]
 }

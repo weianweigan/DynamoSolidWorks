@@ -14,6 +14,19 @@
           "include": [],
           "childElements": [
             {
+              "text": "Document",
+              "iconUrl": "",
+              "elementType": "group",
+              "include": [
+                {
+                  "path": "SldWorksNodes.SldWorksNodes.Document",
+                  "inclusive": false
+
+                }
+              ]
+
+            },
+            {
               "text": "Sketch",
               "iconUrl": "",
               "elementType": "group",
@@ -25,8 +38,7 @@
                 }
               ]
 
-            }
-            ,
+            },
             {
               "text": "Feature",
               "iconUrl": "",
@@ -37,8 +49,7 @@
                   "inclusive": false
                 }
               ]
-            }
-           ,
+            },
             {
               "text": "Dimension",
               "iconUrl": "",
@@ -46,6 +57,36 @@
               "include": [
                 {
                   "path": "SldWorksNodes.SldWorksNodes.Dimension.Dimension",
+                  "inclusive": false
+                }
+              ]
+            },
+            {
+              "text": "Equation",
+              "iconUrl": "",
+              "elementType": "group",
+              "include": [
+                {
+                  "path": "SldWorksNodes.SldWorksNodes.EquationMgr.Equation",
+                  "inclusive": false
+                }
+              ]
+            },
+            {
+              "text": "CustomProperty",
+              "iconUrl": "",
+              "elementType": "group",
+              "include": [
+                {
+                  "path": "SldWorksNodes.SldWorksNodes.CustomProperty.CustomPropertyCreation",
+                  "inclusive": false
+                },
+                {
+                  "path": "SldWorksNodes.SldWorksNodes.CustomProperty.CustomPropertyManager",
+                  "inclusive": false
+                },
+                {
+                  "path": "SldWorksNodes.SldWorksNodes.CustomProperty.CustomProperty",
                   "inclusive": false
                 }
               ]
@@ -134,12 +175,105 @@
                   ]
                 },
                 {
+                  "text": "Cone",
+                  "iconUrl": "",
+                  "elementType": "group",
+                  "include": [
+                    {
+                      "path": "SldWorksNodes.SldWorksNodes.Geometry.Cone",
+                      "inclusive": false
+                    }
+                  ]
+                },
+                {
+                  "text": "Cylinder",
+                  "iconUrl": "",
+                  "elementType": "group",
+                  "include": [
+                    {
+                      "path": "SldWorksNodes.SldWorksNodes.Geometry.Cylinder",
+                      "inclusive": false
+                    }
+                  ]
+                },
+                {
                   "text": "BodyBoolOperation",
                   "iconUrl": "",
                   "elementType": "group",
                   "include": [
                     {
                       "path": "SldWorksNodes.SldWorksNodes.Geometry.BodyBoolOperation",
+                      "inclusive": false
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "text": "Brep",
+              "iconUrl": "",
+              "elementType": "group",
+              "include": [],
+              "childElements": [
+                {
+                  "text": "Face",
+                  "iconUrl": "",
+                  "elementType": "group",
+                  "include": [
+                    {
+                      "path": "SldWorksNodes.SldWorksNodes.Brep.Face",
+                      "inclusive": false
+                    }
+                  ]
+                },
+                {
+                  "text": "Edge",
+                  "iconUrl": "",
+                  "elementType": "group",
+                  "include": [
+                    {
+                      "path": "SldWorksNodes.SldWorksNodes.Brep.Edge",
+                      "inclusive": false
+                    }
+                  ]
+                },
+                {
+                  "text": "Loop",
+                  "iconUrl": "",
+                  "elementType": "group",
+                  "include": [
+                    {
+                      "path": "SldWorksNodes.SldWorksNodes.Brep.Loop",
+                      "inclusive": false
+                    }
+                  ]
+                },
+                {
+                  "text": "Vertex",
+                  "iconUrl": "",
+                  "elementType": "group",
+                  "include": [
+                    {
+                      "path": "SldWorksNodes.SldWorksNodes.Brep.Vertex",
+                      "inclusive": false
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "text": "Assembly",
+              "iconUrl": "",
+              "elementType": "group",
+              "include": [],
+              "childElements": [
+                {
+                  "text": "Component",
+                  "iconUrl": "",
+                  "elementType": "group",
+                  "include": [
+                    {
+                      "path": "SldWorksNodes.SldWorksNodes.Assembly.Component",
                       "inclusive": false
                     }
                   ]

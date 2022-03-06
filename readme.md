@@ -1,30 +1,30 @@
-# Dynamo for SolidWorks -- Building
+# Dynamo Addin for SolidWorks -- Building
 
-一个嵌入了Dynamo的SolidWorks插件，使SolidWorks也具有可视化编程的功能。
+This repos contain the src file for DynamoSldWorks,that connects Dynamo with SolidWorks.
 
-<div align="center">
-    <img src="resources/Dynamo.png" width="600"/>
-    <img src="resources/Addin.png" width="600"/>
-    <img src="resources/Demo.png" width="600"/>
-</div>
+![Preview](./resources/Geometry.png)
 
-## 接口
+# Download
 
-&emsp;&emsp;使用反射封装了大部分的SolidWorks api为C#的静态方法以便Dynamo加载调用。详细列表插件SolidWorks api，部分方法列表如下：
+[Release](https://github.com/weianweigan/DynamoSolidWorks/releases)
 
-<div align="center">
-    <image src="resources/MethodsOne.png" width="200"/>
-    <image src="resources/MethodsTwo.png" width="200"/>
-    <image src="resources/MethodsThree.png" width="200"/>
-</div>
+# Build
 
-## 发布
+1. For some reason,you need build Dynamo core.
+2. Copy it to DynamoRuntime folder.
+3. Run bat file or copy to bin/Debug.
+4. Build the Sultion.
 
-&emsp;&emsp;现在只封装了SolidWorks接口，具体业务功能还未实现。未有打包发布版
+# Nodes
 
-## Next
+![nodes](./resources/nodes.png)
 
-* 使用Dynamo变为进程内引用。
-* 添加具有SolidWorks 对象选择的功能。
-* 解决helix toolkit的问题。
-* 添加SolidWorks宏特征，使Dynamo的节点节点文件可以保存在SolidWorks文件中。使SolidWorks具有iLogic类似功能。
+You can take a look at this [file](https://github.com/weianweigan/DynamoSolidWorks/blob/dev/DynamoSldWorks/Resources/LayoutSpecs.json).
+
+# Samples
+
+[Samples](https://github.com/weianweigan/DynamoSolidWorks/tree/dev/DynamoSldWorks/samples)
+
+# License
+
+[License](https://github.com/weianweigan/DynamoSolidWorks/blob/dev/LICENSE)

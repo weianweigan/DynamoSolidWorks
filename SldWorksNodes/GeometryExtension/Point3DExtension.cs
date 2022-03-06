@@ -3,7 +3,7 @@
 namespace System.Windows.Media.Media3D
 {
     [IsVisibleInDynamoLibrary(false)]
-    public static class Point3DExtension
+    internal static class Point3DExtension
     {
         public static double[] ToArray(this Point3D point,bool asMeter = false)
         {

@@ -37,9 +37,9 @@ namespace SldWorksNodes.Geometry
         private void CreateWireCircle()
         {
             var doc = SwContextUtil.GetCurrentPartDocContext();
-            var curve = Util.CurveBuilder.CreateCircle(SldContextManager.Modeler, Center.ToData(), Axis.ToData(), Radius);
+            SwCurve = Util.CurveBuilder.CreateCircle(SldContextManager.Modeler, Center.ToData(), Axis.ToData(), Radius);
 
-            SwObject = curve.CreateWireBody();
+            SwObject = SwCurve.CreateWireBody();
 
             if (SwObject != null)
             {

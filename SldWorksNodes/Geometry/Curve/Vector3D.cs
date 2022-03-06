@@ -13,7 +13,7 @@ namespace SldWorksNodes.Geometry
             Z = z;
         }
 
-        public static Vector3D ByDirection(double x,double y,double z)
+        public static Vector3D ByCoordinate(double x,double y,double z)
         {
             return new Vector3D(x,y,z);
         }
@@ -23,6 +23,21 @@ namespace SldWorksNodes.Geometry
         public double Y { get; set; }
 
         public double Z { get; set; }
+
+        public static Vector3D XAxis()
+        {
+            return new Vector3D(1, 0, 0);
+        }
+
+        public static Vector3D YAxis()
+        {
+            return new Vector3D(0, 1, 0);
+        }
+
+        public static Vector3D ZAxis()
+        {
+            return new Vector3D(0, 0, 1);
+        }
 
         internal double[] ToArray()
         {

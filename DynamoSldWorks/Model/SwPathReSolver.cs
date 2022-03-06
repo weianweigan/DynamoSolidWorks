@@ -25,7 +25,7 @@ namespace DynamoSldWorks.Model
             var nodesDirectory = Path.Combine(SwAddin.DynamoCorePath, "nodes");
             var sldWorksNodesDirectory = Path.Combine(SwAddin.DynamoCorePath,"SolidWorks");
 
-            additionalNodeDirectories = new List<string> { nodesDirectory };
+            additionalNodeDirectories = new List<string> { /*nodesDirectory,*/sldWorksNodesDirectory };
             additionalResolutionPaths = new List<string> {sldWorksNodesDirectory };
 
             var sldWorksNodesDll = Path.Combine(sldWorksNodesDirectory, "SldWorksNodes.dll");

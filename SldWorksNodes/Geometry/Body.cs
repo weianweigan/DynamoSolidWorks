@@ -2,12 +2,14 @@
 using SolidWorks.Interop.sldworks;
 using SolidWorks.Interop.swconst;
 using System;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace SldWorksNodes.Geometry
 {
     public class Body : SwBodyNode
     {
-        internal Body(IBody2 body)
+        internal Body(IBody2 body,bool display = true)
         {
             SwObject=body;
 
@@ -15,44 +17,18 @@ namespace SldWorksNodes.Geometry
             if (SwObject != null)
                 DisplayBody(doc, Color);
         }
-      
-        public static Body ByClinder(Point3D center,Vector3D axis,double radius,double height)
+
+        public List<Brep.Face> Faces()
         {
-            if (radius <= 0)
-                throw new ArgumentException("Raduis > 0");
-            if (height <= 0)
-                throw new ArgumentException("Height > 0");
+            if (SwObject == null)
+                return null;
 
-            var body = BodyBuilder.CreateCylinderBody(
-                SldContextManager.Modeler,
-                center.ToData(),
-                axis.ToData(),
-                radius,
-                height);
+            var objs = SwObject.GetFaces() as object[];
 
-            if (body == null)
-                throw new NullReferenceException("Create Body Error");
-
-            return new Body(body);
-        }
-
-        public static Body ByCone(Point3D center,Vector3D axis,double bottomRaduis,double topRadius,double height)
-        {
-            if (bottomRaduis < 0)
-                throw new ArgumentException("bottomRaduis >= 0");
-            if (topRadius < 0)
-                throw new ArgumentException("topRadius >= 0");
-            if (height <= 0)
-                throw new ArgumentException("Height > 0");
-            if (topRadius == 0 && bottomRaduis ==0)
-                throw new ArgumentException("Radius cannot all zero");
-
-            var body= BodyBuilder.CreateConeBody(center.ToData(),axis.ToData(),bottomRaduis,topRadius,height);
-
-            if (body == null)
-                throw new NullReferenceException("Create Body Error");
-
-            return new Body(body);
+            return objs
+                .Cast<IFace2>()
+                .Select(p => new Brep.Face(p))
+                .ToList();
         }
 
         /// <summary>

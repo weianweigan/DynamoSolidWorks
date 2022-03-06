@@ -22,17 +22,24 @@ using Xarial.XCad;
 using SldWorksService;
 using System.Threading;
 using Dynamo.Extensions;
+using DynamoSldWorks.Model;
+using System.Collections.Generic;
+using SolidWorks.Interop.swconst;
+using Xarial.XCad.Base.Enums;
+using Xarial.XCad.SolidWorks.UI;
 
 namespace DynamoSldWorks
 {
     [ComVisible(true)]
     [Title("DynamoSolidWorks"),Description(" Graphical Programming for Design in SolidWorks")]
+    [Guid("62E8D571-F797-428D-A8A5-BDEAE1EADDF9")]
     public class SwAddin:SwAddInEx
     {
         #region Field
         private static readonly string _assemblyLocation = Assembly.GetExecutingAssembly().Location;
         private static string _dynamopath;
         private DynamoSetup _dynamoSetup;
+        private ISwTaskPane<DynamoTaskPane> _cmdTaskPane;
         #endregion
 
         #region Properties
@@ -50,6 +57,8 @@ namespace DynamoSldWorks
 
         public ISldWorks App => Application.Sw;
 
+        public DynamoSetup DynamoSetup { get => _dynamoSetup; set => _dynamoSetup = value; }
+
         #endregion
 
         #region Methods
@@ -58,13 +67,64 @@ namespace DynamoSldWorks
         {
             AppDomain.CurrentDomain.AssemblyResolve += ResolveAssembly;
 
+            _cmdTaskPane = CreateTaskPane<DynamoTaskPane>();
+            _cmdTaskPane.Control.Init(this);
+
             CommandManager.AddCommandGroup<Commands>().CommandClick += SwAddin_CommandClick;
         }
 
         private void SwAddin_CommandClick(Commands spec)
         {
-            if(_dynamoSetup == null) _dynamoSetup = DynamoSetup.Create(this.Application);
-            _dynamoSetup.RunApp(this.Application.WindowHandle);   
+            switch (spec)
+            {
+                case Commands.Dynamo:
+                    RunDynamo();
+                    break;
+                case Commands.SnoopPID:
+                    SnoopPID();
+                    break;
+                default:
+                    break;
+            }
+        }
+
+        private void SnoopPID()
+        {
+            var doc = Application.Documents.Active?.Model;
+            if (doc == null)
+            {
+                Application.ShowMessageBox("No active doc", MessageBoxIcon_e.Error);
+                return;
+            }
+
+            var count = doc.ISelectionManager.GetSelectedObjectCount();
+
+            List<SelectionPID> pids = new List<SelectionPID>();
+
+            for (int i = 1; i < count + 1; i++)
+            {
+                var mark = doc.ISelectionManager.GetSelectedObjectMark(i);
+                var obj = doc.ISelectionManager.GetSelectedObject6(i, mark);
+                var type = (swSelectType_e)doc.ISelectionManager.GetSelectedObjectType3(i, mark);
+                var pid = doc.Extension.GetPersistReference3(obj);
+
+                pids.Add(SelectionPID.Create(type, obj, mark, pid));
+            }
+
+            var window = CreatePopupWindow<SelectionPIDWindow>();
+            window.Control.VM = new SelectionPIDViewModel(pids, Application);
+            window?.Show();
+        }
+
+        private void RunDynamo()
+        {
+            InitDynamoSetup();
+            DynamoSetup.Start(this.Application.WindowHandle);
+        }
+
+        public void InitDynamoSetup()
+        {
+            if (DynamoSetup == null) DynamoSetup = DynamoSetup.Create(this.Application);
         }
         #endregion
 

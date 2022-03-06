@@ -1,4 +1,5 @@
-﻿using CoreNodeModels;
+﻿using Autodesk.DesignScript.Runtime;
+using CoreNodeModels;
 using Dynamo.Graph.Nodes;
 using Dynamo.Utilities;
 using Newtonsoft.Json;
@@ -13,7 +14,7 @@ namespace SldWorksNodesUI
 {
     [NodeName(nameof(Features))]
     [NodeDescription("Lists all feature in active doc")]
-    [NodeCategory("SldWorksNodes.SldWorksNodes.Feature")]
+    [NodeCategory("SldWorksNodes.Feature")]
     [OutPortNames(Features.outputName)]
     [OutPortTypes("string")]
     [OutPortDescriptions("Feature Name")]
@@ -52,6 +53,7 @@ namespace SldWorksNodesUI
             return SelectionState.Restore;
         }
 
+        [IsVisibleInDynamoLibrary(false)]
         public override IEnumerable<AssociativeNode> BuildOutputAst(List<AssociativeNode> inputAstNodes)
         {
             if (Items.Count == 0 ||
@@ -63,6 +65,7 @@ namespace SldWorksNodesUI
 
             var intNode = AstFactory.BuildStringNode((string)Items[SelectedIndex].Item);
             var assign = AstFactory.BuildAssignment(GetAstIdentifierForOutputIndex(0), intNode);
+
             return new List<AssociativeNode> { assign };
         }
     }

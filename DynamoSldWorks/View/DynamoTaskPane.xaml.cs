@@ -1,27 +1,27 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
+﻿using DynamoSldWorks.Properties;
+using DynamoSldWorks.ViewModel;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
+using Xarial.XCad.Base.Attributes;
 
 namespace DynamoSldWorks.View
 {
     /// <summary>
     /// DynamoTaskPane.xaml 的交互逻辑
     /// </summary>
+    [Title("DynamoSldWorks")]
+    [Icon(typeof(Resources), nameof(Properties.Resources.logo_square_32x32))]
     public partial class DynamoTaskPane : UserControl
     {
+        private DynamoTaskPaneViewModel _viewmodel;
+
         public DynamoTaskPane()
         {
             InitializeComponent();
+        }
+
+        public void Init(SwAddin addin)
+        {
+            DataContext = (_viewmodel = new DynamoTaskPaneViewModel(addin, SwAddin.DynamoCorePath));
         }
     }
 }

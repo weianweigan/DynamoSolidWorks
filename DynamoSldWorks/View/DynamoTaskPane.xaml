@@ -3,27 +3,74 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:DynamoSldWorks.View"
         mc:Ignorable="d" 
+        xmlns:local="clr-namespace:DynamoSldWorks.View" 
+        xmlns:viewmodel="clr-namespace:DynamoSldWorks.ViewModel"
+        d:DataContext="{d:DesignInstance Type=viewmodel:DynamoTaskPaneViewModel}"
         Background="#f7f7f7"
+        FontFamily="{DynamicResource x:Static SystemFonts.CaptionFontFamilyKey}"
         Height="500" Width="400">
+    <UserControl.Resources>
+        <ResourceDictionary Source="pack://application:,,,/DynamoSldWorks;component/Themes/Generic.xaml"/>
+    </UserControl.Resources>
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="80"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-        <Image Source="../Resources/logo_about.png"/>
+        <Button BorderThickness="0"
+                Background="{StaticResource SldBackground}"
+                Command="{Binding OpenDynamoCommand}">
+            <Image Source="../Resources/logo_about.png"/>
+        </Button>
         <StackPanel Grid.Row="1">
-            <Expander Header="Example">
-                <ItemsControl>
+            <Expander IsExpanded="True"
+                      Height="300">
+                <Expander.Header>
+                    <TextBlock FontWeight="Light">Example</TextBlock>
+                </Expander.Header>
+                <ListBox ItemsSource="{Binding SampleFiles}"
+                         Margin="10" 
+                         Background="#f7f7f7"
+                         SelectedItem="{Binding SelectedFile}"                         
+                         BorderThickness="0">
                     <ItemsControl.ItemTemplate>
                         <DataTemplate>
-                            <TextBlock>
-                                <Hyperlink Command="{Binding OpenFile}"/>
-                            </TextBlock>
+                            <Border Height="30"
+                                    ToolTip="{Binding FullName}">
+                                <TextBlock 
+                                    VerticalAlignment="Center"
+                                    Margin="10,0,0,0"
+                                    FontSize="12"
+                                    FontWeight="Black"
+                                    Text="{Binding Name}">
+                                </TextBlock>
+                            </Border>
                         </DataTemplate>
                     </ItemsControl.ItemTemplate>
-                </ItemsControl>
+                </ListBox>
+            </Expander>
+            <Expander
+                IsExpanded="True">
+                <Expander.Header>
+                    <TextBlock
+                        Text="Github" 
+                        FontWeight="Light"/>
+                </Expander.Header>
+                <Grid Height="30">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="30"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Image Source="{StaticResource github_fillDrawingImage}"/>
+                    <TextBlock 
+                        VerticalAlignment="Center"
+                        Margin="10,0,0,0"
+                        Grid.Column="1">
+                        <Hyperlink Command="{Binding OpenFileCommand}"
+                                   CommandParameter="https://github.com/weianweigan/DynamoSolidWorks">DynamoSldWorks</Hyperlink>
+                    </TextBlock>
+                </Grid>
             </Expander>
         </StackPanel>
     </Grid>

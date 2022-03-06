@@ -14,7 +14,7 @@ const string outputName = "DynamoSldWorks";
 const string outputDir = "output";
 var version = GetVersion();
 var fileName = new StringBuilder().Append(outputName).Append("-").Append(version);
-string IconDir = Path.Combine(GetGitDirectory(),"src");
+string IconDir = GetGitDirectory();
 
 var project = new ManagedProject
 {
@@ -28,7 +28,8 @@ var project = new ManagedProject
     InstallPrivileges = InstallPrivileges.elevated,
     MajorUpgrade = MajorUpgrade.Default,
     GUID = new Guid("62E8D571-F797-428D-A8A5-BDEAE1EADDF9"),
-    BackgroundImage = $@"{IconDir}\Installer\Resources\Icons\logo_about.png",
+    BackgroundImage = $@"{IconDir}\Installer\Resources\Icons\BackgroundImage.png",
+    ValidateBackgroundImage = false,
     BannerImage = $@"{IconDir}\Installer\Resources\Icons\logo_about.png",
     ControlPanelInfo =
     {
@@ -43,13 +44,13 @@ var project = new ManagedProject
     Actions = new WixSharp.Action[]
     {
         new WixSharp.InstalledFileAction(
-            "uninstall_bat","",
+            "uninstall_bat", "",
             Return.ignore,
             When.Before,
             Step.RemoveFiles,
             Condition.Always)
-    }
-    //LicenceFile = 
+    },
+    LicenceFile = $@"{IconDir}\Installer\Resources\SldWorksDynamoLicense.rtf",
 };
 
 project.AfterInstall += (e) =>

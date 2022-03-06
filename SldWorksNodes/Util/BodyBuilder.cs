@@ -13,7 +13,12 @@ namespace SldWorksNodes.Util
     {
         public static IBody2 CreateFromBox(IModeler modeler,Point3D downLeft,Point3D topRight)
         {
-            var data = ToBodyBox(new double[] {
+            var data = ToBodyBox(
+                SwContextUtil.UseMM ?
+                new double[] {
+                downLeft.X/1000, downLeft.Y/1000, downLeft.Z/1000,
+                topRight.X/1000, topRight.Y/1000, topRight.Z/1000 } :
+                new double[] {
                 downLeft.X, downLeft.Y, downLeft.Z,
                 topRight.X, topRight.Y, topRight.Z });
             return modeler.CreateBodyFromBox(data) as IBody2;
@@ -21,7 +26,16 @@ namespace SldWorksNodes.Util
 
         public static IBody2 CreateCylinderBody(IModeler modeler,Point3D center,Vector3D axis,double raduis,double height)
         {
-            return modeler.CreateBodyFromCyl(new double[]
+            return modeler.CreateBodyFromCyl(
+                SwContextUtil.UseMM ?
+                    new double[]
+            {
+                center.X/1000,center.Y/1000,center.Z/1000,
+                axis.X/1000,axis.Y/1000,axis.Z/1000,
+                raduis/1000,
+                height/1000
+            }
+                :new double[]
             {
                 center.X,center.Y,center.Z,
                 axis.X,axis.Y,axis.Z,
@@ -62,7 +76,17 @@ namespace SldWorksNodes.Util
 
         internal static IBody2 CreateConeBody(Point3D center, Vector3D axis, double bottomRaduis, double topRadius, double height)
         {
-            var data = new double[]
+            var data =
+                SwContextUtil.UseMM ?
+                new double[]
+            {
+                center.X/1000,center.Y/1000, center.Z/1000,
+                axis.X/1000, axis.Y/1000, axis.Z/1000,
+                bottomRaduis/1000,
+                topRadius/1000,
+                height/1000
+            }:
+                new double[]
             {
                 center.X,center.Y, center.Z,
                 axis.X, axis.Y, axis.Z,

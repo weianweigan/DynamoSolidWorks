@@ -19,7 +19,7 @@ namespace SldWorksNodes.Geometry
 
         public double Z { get; set; }
 
-        public static Point3D ByCoordiate(double x,double y,double z)
+        public static Point3D ByCoordinate(double x,double y,double z)
         {
             return new Point3D(x, y, z);
         }

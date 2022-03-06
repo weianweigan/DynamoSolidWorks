@@ -3,6 +3,7 @@ using Dynamo.ViewModels;
 using Dynamo.Wpf.Extensions;
 using SldWorksNodes.Util;
 using SldWorksService;
+using System.Windows;
 using System.Windows.Controls;
 
 namespace SldWorksNodes
@@ -12,7 +13,7 @@ namespace SldWorksNodes
     {
         private MenuItem _sampleMenuItem;
 
-        public string UniqueId => "";
+        public string UniqueId => "C840CEE2-4506-4601-8D12-581C79740AEE";
 
         public string Name => "SldWorks";
 
@@ -32,7 +33,8 @@ namespace SldWorksNodes
 
             _sampleMenuItem.Click += (sender, args) =>
             {
-                
+                var version = typeof(SldViewExtension).Assembly.GetName().Version;
+                MessageBox.Show(version.ToString());
             };
 
             viewLoadedParams.AddMenuItem(MenuBarType.View, _sampleMenuItem);

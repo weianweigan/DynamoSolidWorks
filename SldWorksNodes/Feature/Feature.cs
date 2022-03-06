@@ -34,10 +34,7 @@ namespace SldWorksNodes.Feature
 
             return new Feature(existFeat);
         }
-        /// <summary>
-        /// 特征名称
-        /// </summary>
-        
+  
         public static Feature ByPID(string pid)
         {
             var doc = SwContextUtil.GetCurrentPartDocContext();
@@ -101,6 +98,19 @@ namespace SldWorksNodes.Feature
         {
             var feature = SwContextUtil.GetCurrentSelectedFeature();
             return new Feature(feature);
+        }
+
+        public List<Brep.Face> Faces()
+        {
+            if (SwObject == null)
+                return null;
+
+            var objs = SwObject.GetFaces() as object[];
+
+            return objs
+                .Cast<IFace2>()
+                .Select(p => new Brep.Face(p))
+                .ToList();
         }
 
     }

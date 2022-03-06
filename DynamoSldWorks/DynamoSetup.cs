@@ -24,6 +24,7 @@ namespace DynamoSldWorks.View
         #region Field
         private readonly ISwApplication _swApplication;
         private string _commandFilePath;
+        SldDynamoModel _model;
         #endregion
 
         #region Ctor
@@ -43,6 +44,7 @@ namespace DynamoSldWorks.View
         public string ASMPath { get; }
 
         public DynamoViewModel ViewModel { get; private set; }
+        public DynamoView View { get; private set; }
         #endregion
 
         #region Public Methods
@@ -55,12 +57,16 @@ namespace DynamoSldWorks.View
             return setup;
         }
 
-        SldDynamoModel _model;
-        public void RunApp(IntPtr windowHandle)
+        public void Start(IntPtr windowHandle)
         {
             try
             {
-                //var migrationWindow = new SettingMigrationWindow();
+                if (View != null)
+                {
+                    View.Activate();
+                    return;
+                }
+
                 StartupUtils.ASMPreloadFailure += ASMPreloadFailureHandler;
 
                 _model = SldDynamoModel.Start(_swApplication);
@@ -83,36 +89,49 @@ namespace DynamoSldWorks.View
 
                 ViewModel.BackgroundPreviewViewModel.IsGridVisible = false;
 
-                var view = new DynamoView(ViewModel);
-                view.Loaded += OnDynamoViewLoaded;
+                View = new DynamoView(ViewModel);
+                View.Loaded += OnDynamoViewLoaded;
+                View.Closed += View_Closed;
 
-                //view.Topmost = true;
-                var windowHelper = new WindowInteropHelper(view);
-                windowHelper.Owner = windowHandle;
+                if (windowHandle != IntPtr.Zero)
+                {
+                    var windowHelper = new WindowInteropHelper(View);
+                    windowHelper.Owner = windowHandle;
+                }
 
-                var app = Application.Current;// ?? ApplicationUtil.Create();
-                if (app != null)
-                {
-                    app.DispatcherUnhandledException += App_DispatcherUnhandledException;
-                    app.Run(view);
-                }
-                else
-                {
-                    //migrationWindow.Close();
-                    view.Show();
-                }
+                View.Show();
 
                 StartupUtils.ASMPreloadFailure -= ASMPreloadFailureHandler;
-
             }
             catch (Exception ex)
             {
                 _swApplication.ShowMessageBox(ex.Message, Xarial.XCad.Base.Enums.MessageBoxIcon_e.Error);
             }   
         }
+
+        public void OpenDoc(string pathName,IntPtr parent)
+        {
+            if (View == null)
+                Start(parent);
+
+            if (!File.Exists(pathName))
+                throw new FileNotFoundException(pathName);
+
+            ViewModel.OpenCommand.Execute(pathName);
+            //_model.OpenFileFromPath(pathName);
+        }
         #endregion
 
         #region Private Methods
+        private void View_Closed(object sender, EventArgs e)
+        {
+            View.Closed -= View_Closed;
+
+            _model=null;
+            View = null;
+            ViewModel = null;
+        }
+
         private void App_DispatcherUnhandledException(object sender, System.Windows.Threading.DispatcherUnhandledExceptionEventArgs e)
         {
         }
@@ -124,14 +143,8 @@ namespace DynamoSldWorks.View
 
         private void OnDynamoViewLoaded(object sender, System.Windows.RoutedEventArgs e)
         {
-            CloseMigrationWindow();
             UpdateLibraryLayoutSpec();
-        }
-
-        private void CloseMigrationWindow()
-        {
-            //_migrationWindow?.Close();
-            //_migrationWindow = null;
+            View.Loaded -= OnDynamoViewLoaded;
         }
 
         private  void UpdateLibraryLayoutSpec()
