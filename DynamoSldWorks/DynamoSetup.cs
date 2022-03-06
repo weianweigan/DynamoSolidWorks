@@ -152,6 +152,12 @@ namespace DynamoSldWorks.View
              var customization = _model.ExtensionManager.Service<ILibraryViewCustomization>();
             if (customization == null) return;
 
+            //Register the icon resource
+            //using (var fs = new FileStream(SwAddin.DynamoCorePath + @"\Resources\Category.SolidWorks.png", FileMode.Open))
+            //{
+            //    customization.RegisterResourceStream("/icons/Category.SolidWorks.png",fs);
+            //}
+
             LayoutSpecification sldworksSpecs;
             var str = File.ReadAllText(SwAddin.DynamoCorePath + @"\Resources\LayoutSpecs.json");
             sldworksSpecs = LayoutSpecification.FromJSONString(str);
