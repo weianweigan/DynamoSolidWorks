@@ -9,6 +9,12 @@
 		<AppendConfigurationToOutputPath>false</AppendConfigurationToOutputPath>
 		<Version>0.0.4.4</Version>
 	</PropertyGroup>
+	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+	  <DefineConstants>$(DefineConstants)TRACE;V1_2_0;</DefineConstants>
+	</PropertyGroup>
+	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+	  <DefineConstants>$(DefineConstants)TRACE;V1_2_0;</DefineConstants>
+	</PropertyGroup>
 	<ItemGroup>
 	  <None Remove="app.config" />
 	  <None Remove="Resources\logo_about.png" />

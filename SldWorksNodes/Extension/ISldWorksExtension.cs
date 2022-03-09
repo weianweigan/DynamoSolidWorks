@@ -1,10 +1,12 @@
-﻿using SolidWorks.Interop.swconst;
+﻿using Autodesk.DesignScript.Runtime;
+using SolidWorks.Interop.swconst;
 using System;
 using System.IO;
 using System.Windows;
 
 namespace SolidWorks.Interop.sldworks
 {
+    [IsVisibleInDynamoLibrary(false)]
     public static class ISldWorksExtension
     {
 

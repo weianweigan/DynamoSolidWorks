@@ -273,6 +273,7 @@
     <Compile Include="SldViewExtension.cs" />
     <Compile Include="SwException\ActiveDocIsNotPartDocException.cs" />
     <Compile Include="SwException\ActiveDocNotFoundException.cs" />
+    <Compile Include="SwException\BodyOperationErrorException.cs" />
     <Compile Include="SwException\CustomPropertyAddException.cs" />
     <Compile Include="SwException\FeatureNotFoundException.cs" />
     <Compile Include="SwException\FeatureTypeNameErrorException.cs" />

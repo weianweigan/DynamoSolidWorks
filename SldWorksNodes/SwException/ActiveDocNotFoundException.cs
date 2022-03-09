@@ -11,12 +11,4 @@ namespace SldWorksNodes.SwException
             
         }
     }
-
-    public class BodyOperationErrorException:Exception
-    {
-        public BodyOperationErrorException(SolidWorks.Interop.swconst.swBodyOperationError_e error):base($"Body boo operation error:{error}")
-        {
-
-        }
-    }
 }

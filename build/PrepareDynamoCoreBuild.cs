@@ -14,7 +14,7 @@ partial class Build
     string AllRuntimeDir = @"D:\DynamoCoreRuntime";
 
     [Parameter(Name ="DynamoCoreRuntimeVersion")]
-    string DynamoVersion = "2.7.0";
+    string DynamoVersion = "1.2.0";
 
     Target InitDynamoCoreRuntime => _ => _
     .Executes(() =>

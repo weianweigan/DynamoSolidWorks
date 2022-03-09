@@ -73,7 +73,10 @@ namespace DynamoSldWorks.View
 
                 var watch3DModel = HelixWatch3DViewModel.TryCreateHelixWatch3DViewModel
                         (
-                            null,
+#if V1_2_0
+#else
+                            //null,
+#endif
                             new Watch3DViewModelStartupParams(_model),
                             _model.Logger
                         );
@@ -125,9 +128,9 @@ namespace DynamoSldWorks.View
             ViewModel.OpenCommand.Execute(pathName);
             //_model.OpenFileFromPath(pathName);
         }
-        #endregion
+#endregion
 
-        #region Private Methods
+#region Private Methods
         private void View_Closed(object sender, EventArgs e)
         {
             View.Closed -= View_Closed;
@@ -172,6 +175,6 @@ namespace DynamoSldWorks.View
             //customization.AddElements(elements); //add all the elements to default section
             
         }
-        #endregion
+#endregion
     }
 }

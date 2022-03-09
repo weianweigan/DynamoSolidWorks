@@ -44,7 +44,7 @@ project {
         text (
             "env.DynamoCoreRuntimeVersion",
             label = "DynamoCoreRuntimeVersion",
-            value = "2.7.0",
+            value = "1.2.0",
             allowEmpty = true,
             display = ParameterDisplay.NORMAL)
         select (
