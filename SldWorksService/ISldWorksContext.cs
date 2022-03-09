@@ -1,4 +1,5 @@
 ﻿using SolidWorks.Interop.sldworks;
+using Xarial.XCad.SolidWorks;
 
 namespace SldWorksService
 {
@@ -10,6 +11,8 @@ namespace SldWorksService
         /// <summary>
         /// Interface to visit SldWorks
         /// </summary>
-        ISldWorks App { get;}
+        ISldWorks Sw { get;}
+
+        ISwApplication SwApplication { get; }
     }
 }

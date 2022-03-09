@@ -16,7 +16,7 @@ namespace DynamoSldWorks.Model
             
         }
 
-        public ISldWorks App => SwApplication.Sw;
+        public ISldWorks Sw => SwApplication.Sw;
         
         public ISwApplication SwApplication { get; private set; }
 

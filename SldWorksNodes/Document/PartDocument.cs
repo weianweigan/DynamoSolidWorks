@@ -40,5 +40,10 @@ namespace SldWorksNodes.Document
                 .ToList();
 
         }
+
+        public override string ToString()
+        {
+            return SwObject?.GetTitle() ?? base.ToString();
+        }
     }
 }

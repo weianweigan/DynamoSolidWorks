@@ -34,5 +34,10 @@ namespace SldWorksNodes.Document
                 .Select(a => new Assembly.Component(a))
                 .ToList();
         }
+
+        public override string ToString()
+        {
+            return SwObject?.GetTitle() ?? base.ToString();
+        }
     }
 }

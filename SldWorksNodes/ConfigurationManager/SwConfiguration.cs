@@ -1,4 +1,5 @@
-﻿using SldWorksNodes.Base;
+﻿using Autodesk.DesignScript.Runtime;
+using SldWorksNodes.Base;
 using SolidWorks.Interop.sldworks;
 
 namespace SldWorksNodes.ConfigurationManager
@@ -36,5 +37,13 @@ namespace SldWorksNodes.ConfigurationManager
                     SwObject.Name = value;
             }
         }
+
+        [IsVisibleInDynamoLibrary(false)]
+        public override string ToString()
+        {
+            return Name;
+        }
+
+
     }
 }

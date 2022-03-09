@@ -136,5 +136,10 @@ namespace SldWorksNodes.Document
 
             return new ConfigurationManager.ConfigurationManager(SwObject.ConfigurationManager);
         }
+
+        public override string ToString()
+        {
+            return SwObject?.GetTitle() ?? base.ToString();
+        }
     }
 }

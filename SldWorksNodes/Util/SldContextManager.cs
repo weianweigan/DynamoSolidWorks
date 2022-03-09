@@ -1,6 +1,7 @@
 ﻿using Autodesk.DesignScript.Runtime;
 using SldWorksService;
 using SolidWorks.Interop.sldworks;
+using Xarial.XCad.SolidWorks;
 
 namespace SldWorksNodes.Util
 {
@@ -26,7 +27,9 @@ namespace SldWorksNodes.Util
             }
         }
 
-        public static ISldWorks Sw => SldContextManager.Instance.Context.App;
+        public static ISldWorks Sw => SldContextManager.Instance.Context.Sw;
+
+        public static ISwApplication SwApplication => SldContextManager.Instance.Context.SwApplication;
 
         public static IModeler Modeler => _modeler ?? (_modeler = Sw.GetModeler() as IModeler);
     }

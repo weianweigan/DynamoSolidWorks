@@ -5,6 +5,7 @@ using System;
 namespace SldWorksNodes.SwException
 {
     [IsVisibleInDynamoLibrary(false)]
+    [SupressImportIntoVM()]
     public class SelectionTypeErrorException:Exception
     {
         public SelectionTypeErrorException(swSelectType_e needType):base($"Selection Type Error,You Need Select a {needType.ToString()}")

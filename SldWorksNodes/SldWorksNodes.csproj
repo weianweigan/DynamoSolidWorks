@@ -12,6 +12,9 @@
     <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+    <XCadRegDll>false</XCadRegDll>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -33,69 +36,20 @@
     <DocumentationFile>..\bin\Release\SolidWorks\SldWorksNodes.xml</DocumentationFile>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="CoreNodeModels, Version=2.7.0.9206, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\DynamoVisualProgramming.WpfUILibrary.2.7.0.9206\lib\net48\CoreNodeModels.dll</HintPath>
-      <Private>False</Private>
+    <Reference Include="DynamoApplications">
+      <HintPath>..\DynamoRuntime\DynamoApplications.dll</HintPath>
     </Reference>
-    <Reference Include="CoreNodeModelsWpf, Version=2.7.0.9206, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\DynamoVisualProgramming.WpfUILibrary.2.7.0.9206\lib\net48\CoreNodeModelsWpf.dll</HintPath>
-      <Private>False</Private>
+    <Reference Include="DynamoCore">
+      <HintPath>..\DynamoRuntime\DynamoCore.dll</HintPath>
     </Reference>
-    <Reference Include="DesignScriptBuiltin, Version=2.7.0.9206, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\DynamoVisualProgramming.Core.2.7.0.9206\lib\net48\DesignScriptBuiltin.dll</HintPath>
-      <Private>False</Private>
+    <Reference Include="DynamoCoreWpf">
+      <HintPath>..\DynamoRuntime\DynamoCoreWpf.dll</HintPath>
     </Reference>
-    <Reference Include="DSIronPython, Version=2.7.0.9206, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\DynamoVisualProgramming.Core.2.7.0.9206\lib\net48\DSIronPython.dll</HintPath>
-      <Private>False</Private>
+    <Reference Include="DynamoServices">
+      <HintPath>..\DynamoRuntime\DynamoServices.dll</HintPath>
     </Reference>
-    <Reference Include="DynamoApplications, Version=2.7.0.9206, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\DynamoVisualProgramming.Core.2.7.0.9206\lib\net48\DynamoApplications.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="DynamoCore, Version=2.7.0.9206, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\DynamoVisualProgramming.Core.2.7.0.9206\lib\net48\DynamoCore.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="DynamoCoreWpf, Version=2.7.0.9206, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\DynamoVisualProgramming.WpfUILibrary.2.7.0.9206\lib\net48\DynamoCoreWpf.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="DynamoInstallDetective, Version=2.7.0.9206, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\DynamoVisualProgramming.Core.2.7.0.9206\lib\net48\DynamoInstallDetective.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="DynamoServices, Version=2.7.0.9206, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\DynamoVisualProgramming.DynamoServices.2.7.0.9206\lib\net48\DynamoServices.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="DynamoShapeManager, Version=2.7.0.9206, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\DynamoVisualProgramming.Core.2.7.0.9206\lib\net48\DynamoShapeManager.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="DynamoUnits, Version=2.7.0.9206, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\DynamoVisualProgramming.ZeroTouchLibrary.2.7.0.9206\lib\net48\DynamoUnits.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="DynamoUtilities, Version=2.7.0.9206, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\DynamoVisualProgramming.Core.2.7.0.9206\lib\net48\DynamoUtilities.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="Microsoft.Expression.Interactions, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\packages\Prism.4.1.0.0\lib\NET40\Microsoft.Expression.Interactions.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="Microsoft.Practices.Prism, Version=4.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\packages\Prism.4.1.0.0\lib\NET40\Microsoft.Practices.Prism.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="Microsoft.Practices.Prism.Interactivity, Version=4.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\packages\Prism.4.1.0.0\lib\NET40\Microsoft.Practices.Prism.Interactivity.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="Microsoft.Practices.ServiceLocation, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\packages\CommonServiceLocator.1.0\lib\NET35\Microsoft.Practices.ServiceLocation.dll</HintPath>
-      <Private>False</Private>
+    <Reference Include="Greg">
+      <HintPath>..\DynamoRuntime\Greg.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.VisualBasic">
       <Private>False</Private>
@@ -104,23 +58,14 @@
       <HintPath>..\packages\Newtonsoft.Json.8.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="nunit.framework, Version=2.6.3.13283, Culture=neutral, PublicKeyToken=96d09a1eb7f44a77, processorArchitecture=MSIL">
-      <HintPath>..\packages\NUnit.2.6.3\lib\nunit.framework.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
     <Reference Include="PresentationCore">
       <Private>False</Private>
     </Reference>
     <Reference Include="PresentationFramework">
       <Private>False</Private>
     </Reference>
-    <Reference Include="ProtoCore, Version=2.7.0.9206, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\DynamoVisualProgramming.Core.2.7.0.9206\lib\net48\ProtoCore.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="ProtoGeometry, Version=2.7.0.8935, Culture=neutral, processorArchitecture=AMD64">
-      <HintPath>..\packages\DynamoVisualProgramming.ZeroTouchLibrary.2.7.0.9206\lib\net48\ProtoGeometry.dll</HintPath>
-      <Private>False</Private>
+    <Reference Include="ProtoCore">
+      <HintPath>..\DynamoRuntime\ProtoCore.dll</HintPath>
     </Reference>
     <Reference Include="SolidWorks.Interop.sldworks, Version=28.1.0.74, Culture=neutral, PublicKeyToken=7c4797c3e4eeac03, processorArchitecture=MSIL">
       <HintPath>..\packages\Xarial.XCad.SolidWorks.Interops.0.3.0\lib\net40\SolidWorks.Interop.sldworks.dll</HintPath>
@@ -142,10 +87,6 @@
     </Reference>
     <Reference Include="System.Buffers, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Buffers.4.5.1\lib\net461\System.Buffers.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="System.Collections.Immutable, Version=1.2.5.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-      <HintPath>..\packages\System.Collections.Immutable.1.7.1\lib\net461\System.Collections.Immutable.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="System.Core">
@@ -173,6 +114,7 @@
       <HintPath>..\packages\System.Runtime.CompilerServices.Unsafe.4.5.3\lib\net461\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
       <Private>False</Private>
     </Reference>
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Windows.Interactivity, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Prism.4.1.0.0\lib\NET40\System.Windows.Interactivity.dll</HintPath>
       <Private>False</Private>
@@ -198,11 +140,20 @@
     <Reference Include="System.Xml">
       <Private>False</Private>
     </Reference>
-    <Reference Include="VMDataBridge, Version=2.7.0.9206, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\DynamoVisualProgramming.Core.2.7.0.9206\lib\net48\VMDataBridge.dll</HintPath>
+    <Reference Include="WindowsBase">
       <Private>False</Private>
     </Reference>
-    <Reference Include="WindowsBase">
+    <Reference Include="WindowsFormsIntegration" />
+    <Reference Include="Xarial.XCad, Version=0.7.12.0, Culture=neutral, PublicKeyToken=60dcaf351d4060db, processorArchitecture=MSIL">
+      <HintPath>..\packages\Xarial.XCad.0.7.12\lib\net461\Xarial.XCad.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Xarial.XCad.SolidWorks, Version=0.7.12.0, Culture=neutral, PublicKeyToken=60dcaf351d4060db, processorArchitecture=MSIL">
+      <HintPath>..\packages\Xarial.XCad.SolidWorks.0.7.12\lib\net461\Xarial.XCad.SolidWorks.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Xarial.XCad.Toolkit, Version=0.7.12.0, Culture=neutral, PublicKeyToken=60dcaf351d4060db, processorArchitecture=MSIL">
+      <HintPath>..\packages\Xarial.XCad.Toolkit.0.7.12\lib\net461\Xarial.XCad.Toolkit.dll</HintPath>
       <Private>False</Private>
     </Reference>
   </ItemGroup>
@@ -264,11 +215,6 @@
     <Compile Include="Geometry\Curve\Vector3D.cs" />
     <Compile Include="Geometry\Cylinder.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Resources\SldWorksNodesImages.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>SldWorksNodesImages.resx</DependentUpon>
-    </Compile>
     <Compile Include="Sketch\Sketch.cs" />
     <Compile Include="SldViewExtension.cs" />
     <Compile Include="SwException\ActiveDocIsNotPartDocException.cs" />
@@ -291,8 +237,12 @@
   <ItemGroup>
     <Content Include="Icons\solidworks.png" />
     <None Include="Resources\Dimension.png" />
-    <Content Include="SldWorksNodes.Migrations.xml" />
-    <Content Include="SldWorksNodes_DynamoCustomization.xml" />
+    <None Include="SldWorksNodes.Migrations.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="SldWorksNodes_DynamoCustomization.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
@@ -313,24 +263,12 @@
       <Private>False</Private>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Resources\SldWorksNodesImages.resx">
-      <Generator>PublicResXFileCodeGenerator</Generator>
-      <LastGenOutput>SldWorksNodesImages.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
-  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
-  <Target Name="AfterBuild">
-    <!-- Get System.Drawing.dll -->
-    <GetReferenceAssemblyPaths TargetFrameworkMoniker=".NETFramework, Version=v4.8">
-      <Output TaskParameter="FullFrameworkReferenceAssemblyPaths" PropertyName="FrameworkAssembliesPath" />
-    </GetReferenceAssemblyPaths>
-    <!-- Get assembly -->
-    <GetAssemblyIdentity AssemblyFiles="$(OutDir)$(TargetName).dll">
-      <Output TaskParameter="Assemblies" ItemName="AssemblyInfo" />
-    </GetAssemblyIdentity>
-    <!-- Generate customization dll -->
-    <GenerateResource SdkToolsPath="$(TargetFrameworkSDKToolsDirectory)" UseSourcePath="true" Sources="$(ProjectDir)\Resources\SldWorksNodesImages.resx" OutputResources="$(ProjectDir)\Resources\SldWorksNodesImages.resources" References="$(FrameworkAssembliesPath)System.Drawing.dll" />
-    <AL SdkToolsPath="$(TargetFrameworkSDKToolsDirectory)" TargetType="library" EmbedResources="$(ProjectDir)\Resources\SldWorksNodesImages.resources" OutputAssembly="$(OutDir)SldWorksNodes.customization.dll" Version="%(AssemblyInfo.Version)" />
+  <Import Project="..\packages\Xarial.XCad.SolidWorks.0.7.12\build\Xarial.XCad.SolidWorks.targets" Condition="Exists('..\packages\Xarial.XCad.SolidWorks.0.7.12\build\Xarial.XCad.SolidWorks.targets')" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>这台计算机上缺少此项目引用的 NuGet 程序包。使用“NuGet 程序包还原”可下载这些程序包。有关更多信息，请参见 http://go.microsoft.com/fwlink/?LinkID=322105。缺少的文件是 {0}。</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\Xarial.XCad.SolidWorks.0.7.12\build\Xarial.XCad.SolidWorks.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Xarial.XCad.SolidWorks.0.7.12\build\Xarial.XCad.SolidWorks.targets'))" />
   </Target>
 </Project>

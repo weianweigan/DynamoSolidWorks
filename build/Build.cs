@@ -103,7 +103,11 @@ using Nuke.Common.CI.TeamCity;
         //.Produces(OutputDirectory/"*.msi")
         .Executes(() =>
         {
-            var process = Process.Start(InstallerBuilder.ToString(), "/MSBUILD:Installer "+ Configuration.ToString());
+            var process = new Process();
+            process.StartInfo.FileName = InstallerBuilder.ToString();
+            process.StartInfo.Arguments =("/MSBUILD:Installer " + Configuration.ToString());
+            process.StartInfo.RedirectStandardOutput = true;
+            process.Start();
 
             process.WaitForExit();
             if (process.ExitCode != 0) throw new Exception("The installer creation failed.");

@@ -3,6 +3,7 @@ using Autodesk.DesignScript.Runtime;
 
 namespace System.Windows.Media.Media3D
 {
+    [IsVisibleInDynamoLibrary(false)]
     public enum VectorStatus
     {
         /// <summary>

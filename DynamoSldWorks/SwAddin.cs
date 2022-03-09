@@ -60,8 +60,6 @@ namespace DynamoSldWorks
             }
         }
 
-        public ISldWorks App => Application.Sw;
-
         public DynamoSetup DynamoSetup { get => _dynamoSetup; set => _dynamoSetup = value; }
 
         #endregion

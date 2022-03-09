@@ -45,6 +45,7 @@ namespace System.Windows
         }
     }
 
+    [IsVisibleInDynamoLibrary(false)]
     public static class PointsExtension
     {
         public static IEnumerable<Point3D> XYToX_Z(this IEnumerable<Point> points,bool toMeter = false)

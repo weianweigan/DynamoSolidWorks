@@ -5,6 +5,7 @@ using System;
 namespace SldWorksNodes.SwException
 {
     [IsVisibleInDynamoLibrary(false)]
+    [SupressImportIntoVM()]
     public class CustomPropertyAddException : Exception
     {
         public CustomPropertyAddException(swCustomInfoAddResult_e swCustomInfoAddResult_e):base(swCustomInfoAddResult_e.ToString())

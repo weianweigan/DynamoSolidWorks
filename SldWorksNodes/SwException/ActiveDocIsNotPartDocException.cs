@@ -4,6 +4,7 @@ using System;
 namespace SldWorksNodes.SwException
 {
     [IsVisibleInDynamoLibrary(false)]
+    [SupressImportIntoVM()]
     public class ActiveDocIsNotPartDocException : Exception
     {
         public ActiveDocIsNotPartDocException():base("ActiveDoc Is Not PartDoc")

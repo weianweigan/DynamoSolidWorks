@@ -34,6 +34,7 @@ namespace System.Windows.Media.Media3D
 
     }
 
+    [IsVisibleInDynamoLibrary(false)]
     public static class Vector3DExtension
     {
         public static double[] ToArray(this Vector3D vector3D,bool asMeter = false)

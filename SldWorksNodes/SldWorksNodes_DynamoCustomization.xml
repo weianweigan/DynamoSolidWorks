@@ -5,7 +5,40 @@
 	</assembly>
 	<namespaces>
 		<namespace name="SldWorksNodes.Sketch">
-			<category>SldWorks.Sketch</category>
+			<category>SolidWorks.Sketch</category>
+		</namespace>
+		<namespace name="SldWorksNodes.Assembly">
+			<category>SolidWorks.Assembly</category>
+		</namespace>
+		<namespace name="SldWorksNodes.Brep">
+			<category>SolidWorks.Brep</category>
+		</namespace>
+		<namespace name="SldWorksNodes.CustomProperty">
+			<category>SolidWorks.CustomProperty</category>
+		</namespace>
+		<namespace name="SldWorksNodes.ConfigurationManager">
+			<category>SolidWorks.ConfigurationManager</category>
+		</namespace>
+		<namespace name="SldWorksNodes.Dimension">
+			<category>SolidWorks.Dimension</category>
+		</namespace>
+		<namespace name="SldWorksNodes.Document">
+			<category>SolidWorks.Document</category>
+		</namespace>
+		<namespace name="SldWorksNodes.EquationMgr">
+			<category>SolidWorks.EquationMgr</category>
+		</namespace>
+		<namespace name="SldWorksNodes.Feature">
+			<category>SolidWorks.Feature</category>
+		</namespace>
+		<namespace name="SldWorksNodes.Geometry">
+			<category>SolidWorks.Geometry</category>
+		</namespace>
+		<namespace name="SolidWorks.Interop.swconst">
+			<category>SolidWorks.Enum</category>
+		</namespace>
+		<namespace name="System">
+			<category>SolidWorks.Enum</category>
 		</namespace>
 	</namespaces>
 </doc>

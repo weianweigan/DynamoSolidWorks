@@ -5,6 +5,7 @@
 	</PropertyGroup>
 
 	<ItemGroup>
+	  <PackageReference Include="Xarial.XCad.SolidWorks" Version="0.7.12" />
 	  <PackageReference Include="Xarial.XCad.SolidWorks.Interops" Version="0.3.0" />
 	</ItemGroup>
 </Project>
