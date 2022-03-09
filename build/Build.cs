@@ -1,5 +1,6 @@
 using System;
 using System.Linq;
+using System.IO;
 using Nuke.Common;
 using Nuke.Common.CI;
 using Nuke.Common.Execution;
@@ -14,9 +15,12 @@ using static Nuke.Common.EnvironmentInfo;
 using static Nuke.Common.IO.FileSystemTasks;
 using static Nuke.Common.IO.PathConstruction;
 using static Nuke.Common.Tools.MSBuild.MSBuildTasks;
+using System.Diagnostics;
+using Nuke.Common.CI.TeamCity;
 
+[TeamCity()]
 [CheckBuildProjectConfigurations]
-class Build : NukeBuild
+ partial class Build : NukeBuild
 {
     /// Support plugins are available for:
     ///   - JetBrains ReSharper        https://nuke.build/resharper
@@ -24,7 +28,11 @@ class Build : NukeBuild
     ///   - Microsoft VisualStudio     https://nuke.build/visualstudio
     ///   - Microsoft VSCode           https://nuke.build/vscode
 
-    public static int Main () => Execute<Build>(x => x.Compile);
+    public static int Main()
+    {
+        
+        return Execute<Build>(x => x.Clean);
+    }
 
     [Parameter("Configuration to build - Default is 'Debug' (local) or 'Release' (server)")]
     readonly Configuration Configuration = IsLocalBuild ? Configuration.Debug : Configuration.Release;
@@ -33,32 +41,42 @@ class Build : NukeBuild
     [GitRepository] readonly GitRepository GitRepository;
     [GitVersion] readonly GitVersion GitVersion;
 
-    AbsolutePath SourceDirectory => RootDirectory / "src";
+    AbsolutePath SourceDirectory => RootDirectory;
+    AbsolutePath BinDirectory => RootDirectory / "bin";
     AbsolutePath TestsDirectory => RootDirectory / "tests";
-    AbsolutePath OutputDirectory => RootDirectory / "output";
+    AbsolutePath OutputDirectory => RootDirectory / "Installer" / "output";
+    AbsolutePath InstallerBuilder => RootDirectory / "Installer" / "bin" / Configuration.ToString()/"Installer.exe";
 
+    string RuntimeDownloadPage => "https://github.com/DynamoDS/Dynamo/releases/download/v2.7.0/DynamoCoreRuntime_2.7.0.9206.zip";
+
+    /// <summary>
+    /// Clean bin files
+    /// </summary>
     Target Clean => _ => _
-        .Before(Restore)
         .Executes(() =>
         {
-            SourceDirectory.GlobDirectories("**/bin", "**/obj").ForEach(DeleteDirectory);
-            TestsDirectory.GlobDirectories("**/bin", "**/obj").ForEach(DeleteDirectory);
-
-            //«Â¿Ì
+            //SourceDirectory.GlobDirectories("**/bin", "**/obj").ForEach(DeleteDirectory);
+            //TestsDirectory.GlobDirectories("**/bin", "**/obj").ForEach(DeleteDirectory);
+            DeleteDirectory(BinDirectory);
 
             EnsureCleanDirectory(OutputDirectory);
-        });
+        })
+        .Triggers(ModifyIsReadonlyError)
+        .Triggers(Restore);
 
+    /// <summary>
+    /// Restore
+    /// </summary>
     Target Restore => _ => _
         .Executes(() =>
         {
             MSBuild(s => s
                 .SetTargetPath(Solution)
                 .SetTargets("Restore"));
-        });
+        }).Triggers(Compile);
 
     Target Compile => _ => _
-        .DependsOn(Restore)
+        .After(CopyRuntime)
         .Executes(() =>
         {
             MSBuild(s => s
@@ -70,11 +88,17 @@ class Build : NukeBuild
                 .SetInformationalVersion(GitVersion.InformationalVersion)
                 .SetMaxCpuCount(Environment.ProcessorCount)
                 .SetNodeReuse(IsLocalBuild));
-        });
+        })
+        .Triggers(Pack);
 
-    Target Run => _ => _
+    /// <summary>
+    /// Product Installer
+    /// </summary>
+    Target Pack => _ => _
+        .After(Compile)
+        .Produces(OutputDirectory/"*.msi")
         .Executes(() =>
         {
-            //Build Package
+            Process.Start(InstallerBuilder.ToString(), "/MSBUILD:Installer "+ Configuration.ToString());
         });
 }

@@ -11,4 +11,22 @@ namespace SldWorksNodes.SwException
 
         }
     }
+
+    [IsVisibleInDynamoLibrary(false)]
+    public class ActiveDocIsNotDrawingDocException : Exception
+    {
+        public ActiveDocIsNotDrawingDocException() : base("ActiveDoc Is Not DrawingDoc")
+        {
+
+        }
+    }
+
+    [IsVisibleInDynamoLibrary(false)]
+    public class ActiveDocIsNotAssemblyDocException : Exception
+    {
+        public ActiveDocIsNotAssemblyDocException() : base("ActiveDoc Is Not AssemblyDoc")
+        {
+
+        }
+    }
 }

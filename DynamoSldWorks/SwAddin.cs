@@ -6,6 +6,9 @@
  * See Issue https://github.com/DynamoDS/Dynamo/issues/12650
  * --------------------------------------------------------------------
  *  * The thing seems changed.You need to see https://stackoverflow.com/questions/6850713/weird-xaml-parsing-error-when-trying-to-set-textbox-isreadonly
+ *  
+ *  --------------------------------------------------------------------
+ *  I found dynamo set xaml resourcedictonary is not a resource,so you can modify the file dynamomodern.xaml in ui/theme/ and didn't need to build it self.
  */
 
 using System;
@@ -28,6 +31,7 @@ using System.Collections.Generic;
 using SolidWorks.Interop.swconst;
 using Xarial.XCad.Base.Enums;
 using Xarial.XCad.SolidWorks.UI;
+using System.Linq;
 
 namespace DynamoSldWorks
 {
@@ -147,27 +151,37 @@ namespace DynamoSldWorks
 
             try
             {
-                assemblyPath = CombinePath(DynamoCorePath, assemblyName);
-                if (File.Exists(assemblyPath))
-                {
-                    return Assembly.LoadFrom(assemblyPath);
-                }
+                var dir = new DirectoryInfo(DynamoCorePath);
+                var file = dir.GetFiles(args.Name, SearchOption.AllDirectories)
+                    .Where(p => p.Name == args.Name).FirstOrDefault();
 
-                var assemblyLocation = Assembly.GetExecutingAssembly().Location;
-                var assemblyDirectory = Path.GetDirectoryName(assemblyLocation);
+                //assemblyPath = CombinePath(DynamoCorePath, assemblyName);
+                //if (File.Exists(assemblyPath))
+                //{
+                //    return Assembly.LoadFrom(assemblyPath);
+                //}
 
-                assemblyPath = CombinePath(assemblyDirectory, assemblyName);
-                if (!File.Exists(assemblyPath))
-                {
-                    var parentDirectory = Directory.GetParent(assemblyDirectory);
-                    assemblyPath = CombinePath(parentDirectory.FullName, assemblyName);
-                }
+                //var assemblyLocation = Assembly.GetExecutingAssembly().Location;
+                //var assemblyDirectory = Path.GetDirectoryName(assemblyLocation);
 
-                if (!File.Exists(assemblyPath))
-                {
-                    var name = Thread.CurrentThread?.CurrentCulture?.Name;
-                    assemblyPath = Path.Combine(assemblyDirectory, name,assemblyName);
-                }
+                //assemblyPath = CombinePath(assemblyDirectory, assemblyName);
+                //if (!File.Exists(assemblyPath))
+                //{
+                //    var parentDirectory = Directory.GetParent(assemblyDirectory);
+                //    assemblyPath = CombinePath(parentDirectory.FullName, assemblyName);
+                //}
+
+                //if (!File.Exists(assemblyPath))
+                //{
+                //    var name = Thread.CurrentThread?.CurrentCulture?.Name;
+                //    assemblyPath = Path.Combine(assemblyDirectory, name,assemblyName);
+                //}
+
+                //if (!File.Exists(assemblyPath))
+                //{
+                //    var name = Thread.CurrentThread?.CurrentCulture?.Name;
+                //    assemblyPath = Path.Combine(assemblyDirectory,"nodes", name, assemblyName);
+                //}
 
                 if (File.Exists(assemblyPath))
                 {

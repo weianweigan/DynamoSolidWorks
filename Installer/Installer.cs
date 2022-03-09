@@ -12,8 +12,10 @@ const string installationDir = @"%ProgramFiles%\Dynamo\DynamoSolidWorks";
 const string projectName = "DynamoSldWorks";
 const string outputName = "DynamoSldWorks";
 const string outputDir = "output";
+string configuationName = args.Length > 1 ? args[1] : "Debug";
+
 var version = GetVersion();
-var fileName = new StringBuilder().Append(outputName).Append("-").Append(version);
+var fileName = new StringBuilder().Append(outputName).Append("-").Append(version).Append("-alpha");
 string IconDir = GetGitDirectory();
 
 var project = new ManagedProject
@@ -90,7 +92,7 @@ string GetBinDirectory()
 {
     string dir = GetGitDirectory();
 
-    var desDir = Path.Combine(dir, "bin", "Debug");
+    var desDir = Path.Combine(dir, "bin", configuationName);
 
     return desDir;
 }

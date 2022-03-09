@@ -32,11 +32,11 @@ namespace DynamoSldWorks.View
         {
             this._swApplication = swApplication;
 
-            var cmdLineArgs = StartupUtils.CommandLineArguments.Parse(args);
-            var locale = StartupUtils.SetLocale(cmdLineArgs);
-            _putenv(locale);
-            _commandFilePath = cmdLineArgs.CommandFilePath;
-            ASMPath = cmdLineArgs.ASMPath;
+            //var cmdLineArgs = StartupUtils.CommandLineArguments.Parse(args);
+            //var locale = StartupUtils.SetLocale(cmdLineArgs);
+            //_putenv(locale);
+            //_commandFilePath = cmdLineArgs.CommandFilePath;
+            //ASMPath = Path.Combine(SwAddin.DynamoCorePath, "libg_227_0_0");
         }
         #endregion
 
@@ -67,13 +67,13 @@ namespace DynamoSldWorks.View
                     return;
                 }
 
-                StartupUtils.ASMPreloadFailure += ASMPreloadFailureHandler;
+                //StartupUtils.ASMPreloadFailure += ASMPreloadFailureHandler;
 
-                _model = SldDynamoModel.Start(_swApplication);
+                _model = SldDynamoModel.Make(_swApplication);
 
                 var watch3DModel = HelixWatch3DViewModel.TryCreateHelixWatch3DViewModel
                         (
-                            null,
+                            //null,
                             new Watch3DViewModelStartupParams(_model),
                             _model.Logger
                         );
@@ -84,7 +84,7 @@ namespace DynamoSldWorks.View
                     {
                         DynamoModel = _model,
                         Watch3DViewModel = watch3DModel,
-                        ShowLogin = true
+                        ShowLogin = true,
                     });
 
                 ViewModel.BackgroundPreviewViewModel.IsGridVisible = false;
@@ -99,9 +99,14 @@ namespace DynamoSldWorks.View
                     windowHelper.Owner = windowHandle;
                 }
 
-                View.Show();
+                //var app = Application.Current ?? new Application();
 
-                StartupUtils.ASMPreloadFailure -= ASMPreloadFailureHandler;
+                if (Application.Current == null)
+                    View.Show();
+                else
+                    Application.Current.Run(View);
+
+                //StartupUtils.ASMPreloadFailure -= ASMPreloadFailureHandler;
             }
             catch (Exception ex)
             {
@@ -149,22 +154,22 @@ namespace DynamoSldWorks.View
 
         private  void UpdateLibraryLayoutSpec()
         {
-             var customization = _model.ExtensionManager.Service<ILibraryViewCustomization>();
-            if (customization == null) return;
+            // var customization = _model.ExtensionManager.Service<ILibraryViewCustomization>();
+            //if (customization == null) return;
 
-            //Register the icon resource
-            //using (var fs = new FileStream(SwAddin.DynamoCorePath + @"\Resources\Category.SolidWorks.png", FileMode.Open))
-            //{
-            //    customization.RegisterResourceStream("/icons/Category.SolidWorks.png",fs);
-            //}
+            ////Register the icon resource
+            ////using (var fs = new FileStream(SwAddin.DynamoCorePath + @"\Resources\Category.SolidWorks.png", FileMode.Open))
+            ////{
+            ////    customization.RegisterResourceStream("/icons/Category.SolidWorks.png",fs);
+            ////}            
 
-            LayoutSpecification sldworksSpecs;
-            var str = File.ReadAllText(SwAddin.DynamoCorePath + @"\Resources\LayoutSpecs.json");
-            sldworksSpecs = LayoutSpecification.FromJSONString(str);
+            //LayoutSpecification sldworksSpecs;
+            //var str = File.ReadAllText(SwAddin.DynamoCorePath + @"\Resources\LayoutSpecs.json");
+            //sldworksSpecs = LayoutSpecification.FromJSONString(str);
 
-            //The steelSpec should have only one section, add all its child elements to the customization
-            var elements = sldworksSpecs.sections.First().childElements;
-            customization.AddElements(elements); //add all the elements to default section
+            ////The steelSpec should have only one section, add all its child elements to the customization
+            //var elements = sldworksSpecs.sections.First().childElements;
+            //customization.AddElements(elements); //add all the elements to default section
             
         }
         #endregion
