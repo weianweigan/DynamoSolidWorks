@@ -25,7 +25,7 @@ namespace DynamoSldWorks.Model
             var nodesDirectory = Path.Combine(SwAddin.DynamoCorePath, "nodes");
             var sldWorksNodesDirectory = Path.Combine(SwAddin.DynamoCorePath,"SolidWorks");
 
-            additionalNodeDirectories = new List<string> { /*nodesDirectory,*/sldWorksNodesDirectory };
+            additionalNodeDirectories = new List<string> { nodesDirectory, /*sldWorksNodesDirectory*/ };
             additionalResolutionPaths = new List<string> {sldWorksNodesDirectory };
 
             var sldWorksNodesDll = Path.Combine(sldWorksNodesDirectory, "SldWorksNodes.dll");
@@ -34,7 +34,7 @@ namespace DynamoSldWorks.Model
             preloadLibraryPaths = new List<string>
             {
                 "VMDataBridge.dll",
-                //"ProtoGeometry.dll",
+                "ProtoGeometry.dll",//if not load will cause a library missing error.
                 "DesignScriptBuiltin.dll",
                 "DSCoreNodes.dll",
                 "DSOffice.dll",

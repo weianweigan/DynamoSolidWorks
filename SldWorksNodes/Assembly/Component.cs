@@ -2,16 +2,16 @@
 using SldWorksNodes.SwException;
 using SldWorksNodes.Util;
 using SolidWorks.Interop.sldworks;
+using SolidWorks.Interop.swconst;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace SldWorksNodes.Assembly
 {
-    public class Component:SwNodeModel<IComponent2>
+    public class Component : SwNodeModel<IComponent2>
     {
+        #region Ctor
         internal Component(IComponent2 comp)
         {
             SwObject = comp;
@@ -51,7 +51,31 @@ namespace SldWorksNodes.Assembly
             else
                 throw new SwObjectLostException(typeof(IComponent2));
         }
+        #endregion
 
+        #region Some Properties about component
+        public int ID => SwObject.GetID();
+
+        public bool IsFixed => SwObject.IsFixed();
+
+        public bool IdHidden(bool considerSuppressed = false)
+        {
+
+            return SwObject.IsHidden(false);
+        }
+
+        public bool IsMirrored => SwObject.IsMirrored();
+
+        public bool IsPatternInstance() => SwObject.IsPatternInstance();
+
+        public bool IsRoot() => SwObject.IsRoot();
+
+        public bool IsSmartComponent => SwObject.IsSmartComponent();
+
+        public bool IsSuppressed => SwObject.IsSuppressed();
+        #endregion
+
+        #region Methods
         public void SetName(string newName)
         {
             SwObject.Name2 = newName;
@@ -80,7 +104,7 @@ namespace SldWorksNodes.Assembly
         public Component Parent()
         {
             var parent = SwObject?.GetParent() as IComponent2;
-            if(parent ==null)
+            if (parent == null)
                 return null;
 
             return new Component(parent);
@@ -98,5 +122,31 @@ namespace SldWorksNodes.Assembly
                 .Select(c => new Component(c))
                 .ToList();
         }
+
+        public Document.Document Doc()
+        {
+            if (SwObject == null)
+                return null;
+
+            var doc = SwObject.GetModelDoc2() as IModelDoc2;
+
+            return doc != null ? new Document.Document(doc) : null;
+        }
+
+        public string ReferencedConfiguration => SwObject?.ReferencedConfiguration;
+
+        public List<Geometry.Body> Bodies()
+        {
+            var bodies = SwObject.GetBodies2((int)swBodyType_e.swAllBodies) as object[];
+
+            if (bodies == null)
+                return null;
+
+            return bodies
+                .Cast<IBody2>()
+                .Select(p => new Geometry.Body(p))
+                .ToList();
+        }
+        #endregion
     }
 }

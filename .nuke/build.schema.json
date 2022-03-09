@@ -73,6 +73,9 @@
             "enum": [
               "Clean",
               "Compile",
+              "CopyRuntime",
+              "ModifyIsReadonlyError",
+              "Pack",
               "Restore"
             ]
           }
@@ -89,6 +92,9 @@
             "enum": [
               "Clean",
               "Compile",
+              "CopyRuntime",
+              "ModifyIsReadonlyError",
+              "Pack",
               "Restore"
             ]
           }

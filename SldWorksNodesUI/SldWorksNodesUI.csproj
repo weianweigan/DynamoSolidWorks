@@ -167,10 +167,12 @@
     <ProjectReference Include="..\SldWorksNodes\SldWorksNodes.csproj">
       <Project>{4ca70da0-75b9-4345-8d3e-2945f54577f0}</Project>
       <Name>SldWorksNodes</Name>
+      <Private>False</Private>
     </ProjectReference>
     <ProjectReference Include="..\SldWorksService\SldWorksService.csproj">
       <Project>{f6fb5acd-b3c3-4186-acfa-8a6502e1f26d}</Project>
       <Name>SldWorksService</Name>
+      <Private>False</Private>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

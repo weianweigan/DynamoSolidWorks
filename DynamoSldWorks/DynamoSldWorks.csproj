@@ -7,7 +7,7 @@
 		<AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
 		<!--<AppendRuntimeIdentifierToOutputPath>false</AppendRuntimeIdentifierToOutputPath>-->
 		<AppendConfigurationToOutputPath>false</AppendConfigurationToOutputPath>
-		<Version>0.0.2.2</Version>
+		<Version>0.0.4.4</Version>
 	</PropertyGroup>
 	<ItemGroup>
 	  <None Remove="app.config" />
@@ -44,6 +44,9 @@
 	  </Reference>
 	  <Reference Include="Microsoft.Practices.Prism">
 	    <HintPath>..\DynamoRuntime\Microsoft.Practices.Prism.dll</HintPath>
+	  </Reference>
+	  <Reference Include="RestSharp">
+	    <HintPath>..\DynamoRuntime\RestSharp.dll</HintPath>
 	  </Reference>
 	</ItemGroup>
 	<ItemGroup>

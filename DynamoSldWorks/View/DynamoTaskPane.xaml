@@ -25,7 +25,7 @@
         </Button>
         <StackPanel Grid.Row="1">
             <Expander IsExpanded="True"
-                      Height="300">
+                      MaxHeight="300">
                 <Expander.Header>
                     <TextBlock FontWeight="Light">Example</TextBlock>
                 </Expander.Header>
