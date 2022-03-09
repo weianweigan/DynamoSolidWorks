@@ -34,6 +34,12 @@ project {
             value = "Release",
             options = listOf("Debug" to "Debug", "Release" to "Release"),
             display = ParameterDisplay.NORMAL)
+        text (
+            "env.DynamoCoreRuntimeVersion",
+            label = "DynamoCoreRuntimeVersion",
+            value = "2.7.0",
+            allowEmpty = true,
+            display = ParameterDisplay.NORMAL)
         select (
             "env.Verbosity",
             label = "Verbosity",

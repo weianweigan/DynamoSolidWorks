@@ -18,6 +18,9 @@
           "type": "boolean",
           "description": "Indicates to continue a previously failed build attempt"
         },
+        "DynamoCoreRuntimeVersion": {
+          "type": "string"
+        },
         "Help": {
           "type": "boolean",
           "description": "Shows the help text for this build assembly"
@@ -74,6 +77,7 @@
               "Clean",
               "Compile",
               "CopyRuntime",
+              "InitDynamoCoreRuntime",
               "ModifyIsReadonlyError",
               "Pack",
               "Restore"
@@ -93,6 +97,7 @@
               "Clean",
               "Compile",
               "CopyRuntime",
+              "InitDynamoCoreRuntime",
               "ModifyIsReadonlyError",
               "Pack",
               "Restore"
