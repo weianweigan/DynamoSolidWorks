@@ -73,7 +73,7 @@ namespace DynamoSldWorks.View
 
                 var watch3DModel = HelixWatch3DViewModel.TryCreateHelixWatch3DViewModel
                         (
-                            //null,
+                            null,
                             new Watch3DViewModelStartupParams(_model),
                             _model.Logger
                         );

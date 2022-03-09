@@ -103,7 +103,7 @@ string GetGitDirectory()
     var dir = new DirectoryInfo(dirStr);
 
     //Find git location
-    while (!dir.GetDirectories().Any(p => p.Name == ".git"))
+    while (!dir.GetDirectories().Any(p => p.Name == "Installer"))
     {
         dir = dir.Parent;
     }

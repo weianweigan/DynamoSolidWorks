@@ -66,7 +66,6 @@ project {
 }
 object Clean : BuildType({
     name = "Clean"
-    type = Type.DEPLOYMENT
     vcs {
         root(DslContext.settingsRoot)
         cleanCheckout = true
@@ -257,11 +256,11 @@ object Compile : BuildType({
 })
 object Pack : BuildType({
     name = "Pack"
+    type = Type.DEPLOYMENT
     vcs {
         root(DslContext.settingsRoot)
         cleanCheckout = true
     }
-    artifactRules = "Installer/output/*.msi => Installer/output"
     steps {
         exec {
             path = "build.cmd"

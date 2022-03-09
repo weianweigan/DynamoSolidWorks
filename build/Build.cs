@@ -20,9 +20,10 @@ using Nuke.Common.CI.TeamCity;
 
 [TeamCity(    
     VcsTriggeredTargets = new[] { nameof(Clean)},
+    Version = "2021.2",
     NightlyTriggeredTargets = new[] { nameof(Clean)},
     AutoGenerate = true,
-    ManuallyTriggeredTargets = new[] { nameof(Clean)})]
+    ManuallyTriggeredTargets = new[] { nameof(Pack)})]
 [CheckBuildProjectConfigurations]
  partial class Build : NukeBuild
 {
@@ -61,7 +62,7 @@ using Nuke.Common.CI.TeamCity;
             //SourceDirectory.GlobDirectories("**/bin", "**/obj").ForEach(DeleteDirectory);
             //TestsDirectory.GlobDirectories("**/bin", "**/obj").ForEach(DeleteDirectory);
             DeleteDirectory(BinDirectory);
-
+            DeleteDirectory(DynamoCoreRuntime);
             EnsureCleanDirectory(OutputDirectory);
         })
         .Triggers(InitDynamoCoreRuntime)
@@ -99,9 +100,12 @@ using Nuke.Common.CI.TeamCity;
     /// </summary>
     Target Pack => _ => _
         .After(Compile)
-        .Produces(OutputDirectory/"*.msi")
+        //.Produces(OutputDirectory/"*.msi")
         .Executes(() =>
         {
-            Process.Start(InstallerBuilder.ToString(), "/MSBUILD:Installer "+ Configuration.ToString());
-        });
+            var process = Process.Start(InstallerBuilder.ToString(), "/MSBUILD:Installer "+ Configuration.ToString());
+
+            process.WaitForExit();
+            if (process.ExitCode != 0) throw new Exception("The installer creation failed.");
+        }); 
 }

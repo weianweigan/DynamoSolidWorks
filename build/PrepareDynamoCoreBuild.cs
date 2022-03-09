@@ -21,9 +21,10 @@ partial class Build
     {
         var dir = new DirectoryInfo(AllRuntimeDir);
         string dynamoDirName = $"DynamoCoreRuntime_{DynamoVersion}";
+        var dirs = dir.GetDirectories();
         var coreDir = dir
             .GetDirectories()
-            .Where(dir => dir.FullName.StartsWith(dynamoDirName))
+            .Where(dir => dir.Name.StartsWith(dynamoDirName))
             .FirstOrDefault();
         if (coreDir != null && coreDir.Exists)
         {
