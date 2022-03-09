@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<vcs-root xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" uuid="e62c9b2e-2e0f-483a-ac33-08fdffe85a3a" type="jetbrains.git" xsi:noNamespaceSchemaLocation="https://www.jetbrains.com/teamcity/schemas/2021.1/project-config.xsd">
+  <name>DynamoSolidWorksGit</name>
+  <param name="agentCleanFilesPolicy" value="ALL_UNTRACKED" />
+  <param name="agentCleanPolicy" value="ON_BRANCH_CHANGE" />
+  <param name="authMethod" value="PRIVATE_KEY_FILE" />
+  <param name="branch" value="refs/heads/master" />
+  <param name="ignoreKnownHosts" value="true" />
+  <param name="privateKeyPath" value="D:\ssh\id_rsa" />
+  <param name="submoduleCheckout" value="CHECKOUT" />
+  <param name="url" value="git@github.com:weianweigan/DynamoSolidWorks.git" />
+  <param name="useAlternates" value="AUTO" />
+  <param name="usernameStyle" value="USERID" />
+</vcs-root>
+
