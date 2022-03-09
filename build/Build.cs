@@ -61,7 +61,7 @@ using Nuke.Common.CI.TeamCity;
 
             EnsureCleanDirectory(OutputDirectory);
         })
-        .Triggers(ModifyIsReadonlyError)
+        .Triggers(InitDynamoCoreRuntime)
         .Triggers(Restore);
 
     /// <summary>
