@@ -20,7 +20,9 @@ using Nuke.Common.CI.TeamCity;
 
 [TeamCity(    
     VcsTriggeredTargets = new[] { nameof(Clean)},
-    NightlyTriggeredTargets = new[] { nameof(Clean)})]
+    NightlyTriggeredTargets = new[] { nameof(Clean)},
+    AutoGenerate = true,
+    ManuallyTriggeredTargets = new[] { nameof(Clean)})]
 [CheckBuildProjectConfigurations]
  partial class Build : NukeBuild
 {

@@ -66,6 +66,7 @@ project {
 }
 object Clean : BuildType({
     name = "Clean"
+    type = Type.DEPLOYMENT
     vcs {
         root(DslContext.settingsRoot)
         cleanCheckout = true
