@@ -18,7 +18,9 @@ using static Nuke.Common.Tools.MSBuild.MSBuildTasks;
 using System.Diagnostics;
 using Nuke.Common.CI.TeamCity;
 
-[TeamCity()]
+[TeamCity(    
+    VcsTriggeredTargets = new[] { nameof(Clean)},
+    NightlyTriggeredTargets = new[] { nameof(Clean)})]
 [CheckBuildProjectConfigurations]
  partial class Build : NukeBuild
 {
@@ -30,7 +32,6 @@ using Nuke.Common.CI.TeamCity;
 
     public static int Main()
     {
-        
         return Execute<Build>(x => x.Clean);
     }
 

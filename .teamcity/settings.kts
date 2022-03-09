@@ -23,8 +23,15 @@ import jetbrains.buildServer.configs.kotlin.v2018_1.vcs.*
 version = "2021.2"
 
 project {
+    buildType(Clean)
+    buildType(InitDynamoCoreRuntime)
+    buildType(ModifyIsReadonlyError)
+    buildType(CopyRuntime)
+    buildType(Restore)
+    buildType(Compile)
+    buildType(Pack)
 
-    buildTypesOrder = arrayListOf()
+    buildTypesOrder = arrayListOf(Clean, InitDynamoCoreRuntime, ModifyIsReadonlyError, CopyRuntime, Restore, Compile, Pack)
 
     params {
         select (
@@ -57,3 +64,224 @@ project {
             display = ParameterDisplay.HIDDEN)
     }
 }
+object Clean : BuildType({
+    name = "Clean"
+    vcs {
+        root(DslContext.settingsRoot)
+        cleanCheckout = true
+    }
+    steps {
+        exec {
+            path = "build.cmd"
+            arguments = "Clean --skip"
+            conditions { contains("teamcity.agent.jvm.os.name", "Windows") }
+        }
+        exec {
+            path = "build.sh"
+            arguments = "Clean --skip"
+            conditions { doesNotContain("teamcity.agent.jvm.os.name", "Windows") }
+        }
+    }
+    params {
+        text(
+            "teamcity.ui.runButton.caption",
+            "Clean",
+            display = ParameterDisplay.HIDDEN)
+    }
+    triggers {
+        vcs {
+            triggerRules = "+:**"
+        }
+        schedule {
+            schedulingPolicy = daily {
+                hour = 3
+            }
+            triggerRules = "+:**"
+            triggerBuild = always()
+            withPendingChangesOnly = false
+            enableQueueOptimization = true
+            param("cronExpression_min", "3")
+        }
+    }
+})
+object InitDynamoCoreRuntime : BuildType({
+    name = "InitDynamoCoreRuntime"
+    vcs {
+        root(DslContext.settingsRoot)
+        cleanCheckout = true
+    }
+    steps {
+        exec {
+            path = "build.cmd"
+            arguments = "InitDynamoCoreRuntime --skip"
+            conditions { contains("teamcity.agent.jvm.os.name", "Windows") }
+        }
+        exec {
+            path = "build.sh"
+            arguments = "InitDynamoCoreRuntime --skip"
+            conditions { doesNotContain("teamcity.agent.jvm.os.name", "Windows") }
+        }
+    }
+    params {
+        text(
+            "teamcity.ui.runButton.caption",
+            "Init Dynamo Core Runtime",
+            display = ParameterDisplay.HIDDEN)
+    }
+    triggers {
+        finishBuildTrigger {
+            buildType = "${Clean.id}"
+        }
+    }
+})
+object ModifyIsReadonlyError : BuildType({
+    name = "ModifyIsReadonlyError"
+    vcs {
+        root(DslContext.settingsRoot)
+        cleanCheckout = true
+    }
+    steps {
+        exec {
+            path = "build.cmd"
+            arguments = "ModifyIsReadonlyError --skip"
+            conditions { contains("teamcity.agent.jvm.os.name", "Windows") }
+        }
+        exec {
+            path = "build.sh"
+            arguments = "ModifyIsReadonlyError --skip"
+            conditions { doesNotContain("teamcity.agent.jvm.os.name", "Windows") }
+        }
+    }
+    params {
+        text(
+            "teamcity.ui.runButton.caption",
+            "Modify Is Readonly Error",
+            display = ParameterDisplay.HIDDEN)
+    }
+    triggers {
+        finishBuildTrigger {
+            buildType = "${InitDynamoCoreRuntime.id}"
+        }
+    }
+})
+object CopyRuntime : BuildType({
+    name = "CopyRuntime"
+    vcs {
+        root(DslContext.settingsRoot)
+        cleanCheckout = true
+    }
+    steps {
+        exec {
+            path = "build.cmd"
+            arguments = "CopyRuntime --skip"
+            conditions { contains("teamcity.agent.jvm.os.name", "Windows") }
+        }
+        exec {
+            path = "build.sh"
+            arguments = "CopyRuntime --skip"
+            conditions { doesNotContain("teamcity.agent.jvm.os.name", "Windows") }
+        }
+    }
+    params {
+        text(
+            "teamcity.ui.runButton.caption",
+            "Copy Runtime",
+            display = ParameterDisplay.HIDDEN)
+    }
+    triggers {
+        finishBuildTrigger {
+            buildType = "${ModifyIsReadonlyError.id}"
+        }
+    }
+})
+object Restore : BuildType({
+    name = "Restore"
+    vcs {
+        root(DslContext.settingsRoot)
+        cleanCheckout = true
+    }
+    steps {
+        exec {
+            path = "build.cmd"
+            arguments = "Restore --skip"
+            conditions { contains("teamcity.agent.jvm.os.name", "Windows") }
+        }
+        exec {
+            path = "build.sh"
+            arguments = "Restore --skip"
+            conditions { doesNotContain("teamcity.agent.jvm.os.name", "Windows") }
+        }
+    }
+    params {
+        text(
+            "teamcity.ui.runButton.caption",
+            "Restore",
+            display = ParameterDisplay.HIDDEN)
+    }
+    triggers {
+        finishBuildTrigger {
+            buildType = "${Clean.id}"
+        }
+    }
+})
+object Compile : BuildType({
+    name = "Compile"
+    vcs {
+        root(DslContext.settingsRoot)
+        cleanCheckout = true
+    }
+    steps {
+        exec {
+            path = "build.cmd"
+            arguments = "Compile --skip"
+            conditions { contains("teamcity.agent.jvm.os.name", "Windows") }
+        }
+        exec {
+            path = "build.sh"
+            arguments = "Compile --skip"
+            conditions { doesNotContain("teamcity.agent.jvm.os.name", "Windows") }
+        }
+    }
+    params {
+        text(
+            "teamcity.ui.runButton.caption",
+            "Compile",
+            display = ParameterDisplay.HIDDEN)
+    }
+    triggers {
+        finishBuildTrigger {
+            buildType = "${Restore.id}"
+        }
+    }
+})
+object Pack : BuildType({
+    name = "Pack"
+    vcs {
+        root(DslContext.settingsRoot)
+        cleanCheckout = true
+    }
+    artifactRules = "Installer/output/*.msi => Installer/output"
+    steps {
+        exec {
+            path = "build.cmd"
+            arguments = "Pack --skip"
+            conditions { contains("teamcity.agent.jvm.os.name", "Windows") }
+        }
+        exec {
+            path = "build.sh"
+            arguments = "Pack --skip"
+            conditions { doesNotContain("teamcity.agent.jvm.os.name", "Windows") }
+        }
+    }
+    params {
+        text(
+            "teamcity.ui.runButton.caption",
+            "Pack",
+            display = ParameterDisplay.HIDDEN)
+    }
+    triggers {
+        finishBuildTrigger {
+            buildType = "${Compile.id}"
+        }
+    }
+})
