@@ -11,6 +11,12 @@
 		<DebugType>none</DebugType>
 	</PropertyGroup>
 	<ItemGroup>
+	  <None Remove="Resources\Icons\BackgroundImage.png" />
+	  <None Remove="Resources\Icons\logo_about.png" />
+	  <None Remove="Resources\Icons\ShellIcon.ico" />
+	  <None Remove="Resources\SldWorksDynamoLicense.rtf" />
+	</ItemGroup>
+	<ItemGroup>
 		<PackageReference Include="WixSharp.bin">
 			<Version>1.19.*</Version>
 		</PackageReference>
@@ -19,10 +25,16 @@
 		</PackageReference>
 	</ItemGroup>
 	<ItemGroup>
-	  <None Update="Resources\Icons\logo_about.png">
+	  <Resource Include="Resources\Icons\BackgroundImage.png">
 	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-	  </None>
-	  <None Update="Resources\Icons\ShellIcon.ico">
+	  </Resource>
+	  <Resource Include="Resources\Icons\logo_about.png">
 	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-	  </None>
+	  </Resource>
+	  <Resource Include="Resources\Icons\ShellIcon.ico">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </Resource>
+	  <Resource Include="Resources\SldWorksDynamoLicense.rtf">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </Resource>
 	</ItemGroup></Project>

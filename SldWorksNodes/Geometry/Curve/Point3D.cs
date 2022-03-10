@@ -24,6 +24,13 @@ namespace SldWorksNodes.Geometry
             return new Point3D(x, y, z);
         }
 
+        public static Point3D Orign => new Point3D(0,0,0);
+
+        public override string ToString()
+        {
+            return $"{X},{Y},{Z}";
+        }
+
         internal System.Windows.Media.Media3D.Point3D ToData()
         {
             return  

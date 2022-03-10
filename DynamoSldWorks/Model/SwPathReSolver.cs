@@ -34,7 +34,7 @@ namespace DynamoSldWorks.Model
             preloadLibraryPaths = new List<string>
             {
                 "VMDataBridge.dll",
-                "ProtoGeometry.dll",//if not load will cause a library missing error.
+                //"ProtoGeometry.dll",//if not load will cause a library missing error.
                 "DesignScriptBuiltin.dll",
                 "DSCoreNodes.dll",
                 "DSOffice.dll",

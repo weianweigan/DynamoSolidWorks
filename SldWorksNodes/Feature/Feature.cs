@@ -107,6 +107,9 @@ namespace SldWorksNodes.Feature
 
             var objs = SwObject.GetFaces() as object[];
 
+            if (objs != null)
+                return null;
+
             return objs
                 .Cast<IFace2>()
                 .Select(p => new Brep.Face(p))

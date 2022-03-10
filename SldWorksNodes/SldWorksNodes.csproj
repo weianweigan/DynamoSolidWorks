@@ -227,12 +227,16 @@
     <Compile Include="SwException\SelectionNotFoundException.cs" />
     <Compile Include="SwException\SelectionTypeErrorException.cs" />
     <Compile Include="SwException\SwObjectLostException.cs" />
+    <Compile Include="Transform\Transform.cs" />
     <Compile Include="Util\BodyBuilder.cs" />
     <Compile Include="Util\CurveBuilder.cs" />
     <Compile Include="Util\DispathWrapperUtil.cs" />
     <Compile Include="Util\SwContextUtil.cs" />
     <Compile Include="Util\PIDUtil.cs" />
     <Compile Include="Util\SldContextManager.cs" />
+    <Compile Include="View\SolidWorksInfoWindow.xaml.cs">
+      <DependentUpon>SolidWorksInfoWindow.xaml</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Icons\solidworks.png" />
@@ -254,7 +258,6 @@
   <ItemGroup>
     <Folder Include="Selection\" />
     <Folder Include="Solid\" />
-    <Folder Include="View\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\SldWorksService\SldWorksService.csproj">
@@ -262,6 +265,12 @@
       <Name>SldWorksService</Name>
       <Private>False</Private>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Include="View\SolidWorksInfoWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\Xarial.XCad.SolidWorks.0.7.12\build\Xarial.XCad.SolidWorks.targets" Condition="Exists('..\packages\Xarial.XCad.SolidWorks.0.7.12\build\Xarial.XCad.SolidWorks.targets')" />

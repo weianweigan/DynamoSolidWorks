@@ -70,6 +70,7 @@ namespace DynamoSldWorks.View
                 //StartupUtils.ASMPreloadFailure += ASMPreloadFailureHandler;
 
                 _model = SldDynamoModel.Make(_swApplication);
+                _model.UpdateManager.UpdateInfo = null;//Close Update
 
                 var watch3DModel = HelixWatch3DViewModel.TryCreateHelixWatch3DViewModel
                         (

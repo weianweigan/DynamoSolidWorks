@@ -13,7 +13,7 @@ namespace SldWorksNodes.Util
     [IsVisibleInDynamoLibrary(false)]
     public static class SwContextUtil
     {
-        public static bool UseMM { get; set; } = false;
+        public static bool UseMM { get; set; } = true;
 
         public static IFeature GetFeatureByName(string name, string featTypeName)
         {
