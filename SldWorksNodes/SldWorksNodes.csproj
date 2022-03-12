@@ -193,7 +193,6 @@
     <Compile Include="Extension\IFeatureExtension.cs" />
     <Compile Include="Extension\IModelDoc2Extension.cs" />
     <Compile Include="Extension\ISldWorksExtension.cs" />
-    <Compile Include="FeaturesFunctions.cs" />
     <Compile Include="Feature\Base\SpecFeature.cs" />
     <Compile Include="Feature\ExtrudeFeature.cs" />
     <Compile Include="Feature\Feature.cs" />
@@ -227,7 +226,6 @@
     <Compile Include="Geometry\Base\SwCurveBodyNode.cs" />
     <Compile Include="Geometry\Curve\Vector3D.cs" />
     <Compile Include="Geometry\Cylinder.cs" />
-    <Compile Include="GridFunction.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Sketch\Sketch.cs" />
     <Compile Include="SldViewExtension.cs" />
