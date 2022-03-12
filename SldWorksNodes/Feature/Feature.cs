@@ -14,12 +14,17 @@ namespace SldWorksNodes.Feature
     /// <summary>
     /// Feature in SolidWorks
     /// </summary>
-    public class Feature : SwNodeModel<IFeature>
+    public partial class Feature : SwNodeModel<IFeature>
     {
-        internal Feature(IFeature feature)
+        [IsVisibleInDynamoLibrary(false)]
+        public Feature(IFeature feature)
         {
             SwObject = feature;
         }
+
+        [IsVisibleInDynamoLibrary(false)]
+        public static Feature ByFeature(IFeature feature)
+        { return new Feature(feature); }
 
         /// <summary>
         /// Get a feature from feature name

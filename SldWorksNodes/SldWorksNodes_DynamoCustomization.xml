@@ -34,6 +34,9 @@
 		<namespace name="SldWorksNodes.Geometry">
 			<category>SolidWorks.Geometry</category>
 		</namespace>
+		<namespace name="SldWorksNodes.Transform">
+			<category>SolidWorks.Transform</category>
+		</namespace>
 		<namespace name="SolidWorks.Interop.swconst">
 			<category>SolidWorks.Enum</category>
 		</namespace>

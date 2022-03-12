@@ -36,7 +36,7 @@ namespace SldWorksNodes.Document
             if(activeDocFileName == fileName)
                 return new Document(SldContextManager.Sw.IActiveDoc2);
             else
-                return new Document(SldContextManager.Sw.OpenDocEx(activeDocFileName));
+                return new Document(SldContextManager.Sw.OpenDocEx(fileName));
         }
 
         /// <summary>

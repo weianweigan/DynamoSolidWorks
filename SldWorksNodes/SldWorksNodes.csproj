@@ -38,18 +38,23 @@
   <ItemGroup>
     <Reference Include="DynamoApplications">
       <HintPath>..\DynamoRuntime\DynamoApplications.dll</HintPath>
+      <Private>False</Private>
     </Reference>
     <Reference Include="DynamoCore">
       <HintPath>..\DynamoRuntime\DynamoCore.dll</HintPath>
+      <Private>False</Private>
     </Reference>
     <Reference Include="DynamoCoreWpf">
       <HintPath>..\DynamoRuntime\DynamoCoreWpf.dll</HintPath>
+      <Private>False</Private>
     </Reference>
     <Reference Include="DynamoServices">
       <HintPath>..\DynamoRuntime\DynamoServices.dll</HintPath>
+      <Private>False</Private>
     </Reference>
     <Reference Include="Greg">
       <HintPath>..\DynamoRuntime\Greg.dll</HintPath>
+      <Private>False</Private>
     </Reference>
     <Reference Include="Microsoft.VisualBasic">
       <Private>False</Private>
@@ -66,6 +71,12 @@
     </Reference>
     <Reference Include="ProtoCore">
       <HintPath>..\DynamoRuntime\ProtoCore.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="ProtoGeometry, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\DynamoRuntime\ProtoGeometry.dll</HintPath>
+      <Private>False</Private>
     </Reference>
     <Reference Include="SolidWorks.Interop.sldworks, Version=28.1.0.74, Culture=neutral, PublicKeyToken=7c4797c3e4eeac03, processorArchitecture=MSIL">
       <HintPath>..\packages\Xarial.XCad.SolidWorks.Interops.0.3.0\lib\net40\SolidWorks.Interop.sldworks.dll</HintPath>
@@ -183,6 +194,8 @@
     <Compile Include="Extension\IModelDoc2Extension.cs" />
     <Compile Include="Extension\ISldWorksExtension.cs" />
     <Compile Include="FeaturesFunctions.cs" />
+    <Compile Include="Feature\Base\SpecFeature.cs" />
+    <Compile Include="Feature\ExtrudeFeature.cs" />
     <Compile Include="Feature\Feature.cs" />
     <Compile Include="Feature\RefPlane.cs" />
     <Compile Include="GeometryExtension\Line2D.cs" />
@@ -214,6 +227,7 @@
     <Compile Include="Geometry\Base\SwCurveBodyNode.cs" />
     <Compile Include="Geometry\Curve\Vector3D.cs" />
     <Compile Include="Geometry\Cylinder.cs" />
+    <Compile Include="GridFunction.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Sketch\Sketch.cs" />
     <Compile Include="SldViewExtension.cs" />

@@ -4,6 +4,7 @@ using SolidWorks.Interop.swconst;
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 
 namespace SolidWorks.Interop.sldworks
 {
@@ -87,26 +88,26 @@ namespace SolidWorks.Interop.sldworks
 
         public static IFeature FindFeat(this IModelDoc2 doc, string name)
         {
+            return GetAllFeats(doc).FirstOrDefault(p => p.Name == name);
+        }
+
+        public static IEnumerable<IFeature> GetAllFeats(this IModelDoc2 doc)
+        {
             var topFeats = doc.GetTopFeatures();
 
             foreach (var topFeat in topFeats)
             {
-                if (topFeat.Name == name)
-                {
-                    return topFeat;
-                }
+                yield return topFeat;
 
                 foreach (var subTopFeat in topFeat.GetAllSubFeatures())
                 {
-                    if (subTopFeat.Name == name)
-                    {
-                        return subTopFeat;
-                    }
+                    yield return subTopFeat;
                 }
             }
 
-            return null;
+            yield break;
         }
+
         #endregion
 
         #region Sketch

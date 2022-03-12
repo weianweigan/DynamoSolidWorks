@@ -67,7 +67,7 @@ namespace SldWorksNodes.CustomProperty
         /// <param name="configuation"></param>
         /// <returns></returns>
         /// <exception cref="ArgumentNullException"></exception>
-        public static List<CustomProperty> GetAll(string configuation)
+        public static List<CustomProperty> GetAll(string configuation = "")
         {
             var doc = SwContextUtil.GetActivePartDocContext();
 

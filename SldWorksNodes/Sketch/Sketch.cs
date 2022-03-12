@@ -3,17 +3,17 @@ using SldWorksNodes.Util;
 using SldWorksNodes.SwException;
 using SolidWorks.Interop.sldworks;
 using Autodesk.DesignScript.Runtime;
+using SldWorksNodes.Feature;
 
 namespace SldWorksNodes.Sketch
 {
     /// <summary>
     /// SolidWork Sketch
     /// </summary>
-    public class Sketch:SwNodeModel<ISketch>
+    public class Sketch:SpecFeature<ISketch,string>
     {
-        internal Sketch(ISketch sketch)
+        internal Sketch(IFeature sketch):base(sketch)
         {
-            SwObject = sketch;
         }
 
         /// <summary>
@@ -27,9 +27,10 @@ namespace SldWorksNodes.Sketch
 
             IFeature existFeat = SwContextUtil.GetFeatureByName(name, FeatTypeNameUtil.ProfileFeature);
 
-            var ske = existFeat.GetSpecificFeature2() as ISketch;
+            if(existFeat == null)
+                return null;
 
-            return new Sketch(ske);
+            return new Sketch(existFeat);
         }
 
         public static Sketch ByPID(string pid)
@@ -39,12 +40,13 @@ namespace SldWorksNodes.Sketch
             var feat = PIDUtil.GetObjectFromPID(pid, out var state) as IFeature;
             PIDUtil.AssertState(state);
 
-            var ske = feat?.GetSpecificFeature2() as ISketch;
+            if (feat == null)
+                return null;
 
-            if (ske != null)
-                return new Sketch(ske);
-            else
-                throw new SwObjectLostException(typeof(IDisplayDimension));
+            if (feat.GetTypeName2() != FeatTypeNameUtil.ProfileFeature)
+                throw new FeatureTypeNameErrorException(feat.Name, FeatTypeNameUtil.ProfileFeature);
+
+            return new Sketch(feat);
         }
 
         [IsVisibleInDynamoLibrary(false)]
@@ -78,9 +80,7 @@ namespace SldWorksNodes.Sketch
             if (feature.GetTypeName2() != FeatTypeNameUtil.ProfileFeature)
                 throw new FeatureTypeNameErrorException(feature.Name, FeatTypeNameUtil.ProfileFeature);
 
-            var ske = feature.GetSpecificFeature2() as ISketch;
-
-            return new Sketch(ske);
+            return new Sketch(feature);
         }
 
         /// <summary>
