@@ -1,4 +1,5 @@
 ﻿using Autodesk.DesignScript.Runtime;
+using SldWorksNodes.Util;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -25,6 +26,28 @@ namespace SldWorksNodes.View
         public SolidWorksInfoWindow()
         {
             InitializeComponent();
+
+            _swVersion.Text = SldContextManager.SwApplication.Version.ToString();
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+        }
+
+        private void _swUnitSys_Checked(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void _mm_Checked(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void _meter_Checked(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

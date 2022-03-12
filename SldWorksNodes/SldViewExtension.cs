@@ -34,7 +34,8 @@ namespace SldWorksNodes
             _sampleMenuItem.Click += (sender, args) =>
             {
                 var version = typeof(SldViewExtension).Assembly.GetName().Version;
-                MessageBox.Show(version.ToString());
+                var window = new View.SolidWorksInfoWindow();
+                window.ShowDialog();
             };
 
             viewLoadedParams.AddMenuItem(MenuBarType.View, _sampleMenuItem);

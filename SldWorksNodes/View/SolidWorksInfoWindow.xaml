@@ -5,8 +5,32 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:SldWorksNodes.View"
              mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="400">
+            WindowStartupLocation="CenterOwner"
+            Background="#f7f7f7"
+        Title="SolidWorks Info"
+             d:DesignHeight="160" d:DesignWidth="170">
     <Grid>
-            
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition Height="30"/>
+        </Grid.RowDefinitions>
+        <StackPanel>
+            <GroupBox Header="SolidWorks Version">
+                <TextBlock x:Name="_swVersion"/>
+            </GroupBox>
+            <GroupBox Header="SolidWorks Setting">
+                <StackPanel>
+                    <RadioButton x:Name="_meter" Checked="_meter_Checked">Use Meter</RadioButton>
+                    <RadioButton x:Name="_mm" Checked="_mm_Checked">Use MM</RadioButton>
+                    <RadioButton x:Name="_swUnitSys" Checked="_swUnitSys_Checked">Use Current Unit System</RadioButton>
+                </StackPanel>
+            </GroupBox>
+        </StackPanel>
+        <Button Grid.Row="1" 
+                Width="75" 
+                Height="23"
+                HorizontalAlignment="Right"
+                Margin="10,0"
+                Click="Button_Click">Close</Button>
     </Grid>
 </Window>
