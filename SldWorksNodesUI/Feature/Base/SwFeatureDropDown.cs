@@ -1,13 +1,10 @@
-﻿using Autodesk.DesignScript.Runtime;
-using CoreNodeModels;
+﻿using CoreNodeModels;
 using Dynamo.Graph.Nodes;
 using Dynamo.Utilities;
 using Newtonsoft.Json;
-using ProtoCore.AST.AssociativeAST;
 using SldWorksNodes.Util;
 using SolidWorks.Interop.sldworks;
 using SolidWorks.Interop.swconst;
-using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -35,17 +32,37 @@ namespace SldWorksNodesUI
             var doc = SwContextUtil.GetActivePartDocContext();
 
             var feats = doc
-                .GetAllFeats()
+                .GetAllFeats()                
                 .Where(p => !p.GetUIState((int)swUIStates_e.swIsHiddenInFeatureMgr));
 
             if (!string.IsNullOrWhiteSpace(featTypeName))
                 feats = feats.Where(p => p.GetTypeName2() == featTypeName);
 
             var items = feats
+                .Distinct(IFeatureEqualityComparer.Instance)
                 .Select(p => new DynamoDropDownItem(p.Name, p.Name));
             return items;
         }
 
     
+    }
+
+    internal class IFeatureEqualityComparer : IEqualityComparer<IFeature>
+    {
+        private static IFeatureEqualityComparer _instance;
+
+        public static IFeatureEqualityComparer Instance => 
+            _instance ??
+            (_instance= new IFeatureEqualityComparer());
+
+        public bool Equals(IFeature x, IFeature y)
+        {
+            return x.Name == y.Name;
+        }
+
+        public int GetHashCode(IFeature obj)
+        {
+            return -1;
+        }
     }
 }

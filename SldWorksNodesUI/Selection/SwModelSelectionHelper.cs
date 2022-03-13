@@ -45,7 +45,7 @@ namespace SldWorksNodesUI.Selection
         {
             if (_page == null)
             {
-                var selectType = default(swSelectType_e);
+                var swSelectType = default(swSelectType_e);
                 bool isAllFeat = false;
 
                 switch (typeof(TSelection).Name)
@@ -54,13 +54,13 @@ namespace SldWorksNodesUI.Selection
                         isAllFeat = true;
                         break;
                     case "IEdge":
-                        selectType = swSelectType_e.swSelEDGES;
+                        swSelectType = swSelectType_e.swSelEDGES;
                         break;
                     case "IFace2":
-                        selectType = swSelectType_e.swSelFACES;
+                        swSelectType = swSelectType_e.swSelFACES;
                         break;
                     case "IBody2":
-                        selectType = swSelectType_e.swSelSOLIDBODIES;
+                        swSelectType = swSelectType_e.swSelSOLIDBODIES;
                         break;
                     default:
                         break;
@@ -68,8 +68,9 @@ namespace SldWorksNodesUI.Selection
 
                 _page = new Control.SelectionPage(
                     SldContextManager.Sw, 
-                    selectType,
-                    _swObjectSelction.Name,
+                    swSelectType,
+                    selectionType,
+                    $"Select {_swObjectSelction.Prefix}",
                     _swObjectSelction.Description,
                     isAllFeat);
                 _page.Closed += _page_Closed;

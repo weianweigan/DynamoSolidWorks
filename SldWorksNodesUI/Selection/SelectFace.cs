@@ -31,25 +31,6 @@ namespace SldWorksNodesUI.Selection
                 prefix)
         {
         }
-
-        [JsonConstructor]
-        public SelectFace(
-            SelectionType selectionType,
-            SelectionObjectType selectionObjectType,
-            string message,
-            string prefix,
-            IEnumerable<string> selectionIdentifier,
-            IEnumerable<PortModel> inPorts,
-            IEnumerable<PortModel> outPorts)
-            : base(
-                selectionType,
-                selectionObjectType,
-                message,
-                prefix,
-                selectionIdentifier,
-                inPorts,
-                outPorts)
-        { }
         #endregion
 
         #region Methods

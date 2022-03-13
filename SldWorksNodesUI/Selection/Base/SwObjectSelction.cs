@@ -61,8 +61,7 @@ namespace SldWorksNodesUI.Selection
 
         public override IModelSelectionHelper<TSelection> SelectionHelper => new SwModelSelectionHelper<TSelection,TResult>(this);
         #endregion
-
-        #region Methods
+         #region Methods
         protected abstract Func<string, TResult> GetBuildFuncation();
 
         private void TrySelect()
@@ -110,7 +109,7 @@ namespace SldWorksNodesUI.Selection
                     results.Select(
                         el =>
                             AstFactory.BuildFunctionCall(
-                                new Func<string,SldWorksNodes.Feature.Feature>(SldWorksNodes.Feature.Feature.ByPID),
+                                GetBuildFuncation(),
                                 new List<AssociativeNode>
                                 {
                                     AstFactory.BuildStringNode(el.PID),

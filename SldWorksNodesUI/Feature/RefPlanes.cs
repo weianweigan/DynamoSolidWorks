@@ -54,7 +54,7 @@ namespace SldWorksNodesUI.Feature
         {
             Items.Clear();
 
-            var items = GetNeededFeats(FeatTypeNameUtil.ProfileFeature);
+            var items = GetNeededFeats(FeatTypeNameUtil.RefPlane);
 
             Items.AddRange(items);
 

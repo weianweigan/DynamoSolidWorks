@@ -185,6 +185,7 @@
     <Compile Include="Selection\SelectBody.cs" />
     <Compile Include="Selection\SelectEdge.cs" />
     <Compile Include="Selection\SelectFace.cs" />
+    <Compile Include="Selection\SelectFaces.cs" />
     <Compile Include="Selection\SelectFeature.cs" />
     <Compile Include="Feature\Sketches.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

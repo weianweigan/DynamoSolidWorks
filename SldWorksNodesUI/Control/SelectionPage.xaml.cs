@@ -1,4 +1,5 @@
-﻿using Du.PMPage.Wpf;
+﻿using CoreNodeModels;
+using Du.PMPage.Wpf;
 using Microsoft.Practices.Prism.ViewModel;
 using SolidWorks.Interop.sldworks;
 using SolidWorks.Interop.swconst;
@@ -29,7 +30,9 @@ namespace SldWorksNodesUI.Control
 
         public SelectionPage(
             ISldWorks app, 
-            swSelectType_e selectType,
+            swSelectType_e swSelectType,
+            SelectionType selectionType,
+
             string name, 
             string description,
             bool isAllFeat = false)
@@ -37,9 +40,13 @@ namespace SldWorksNodesUI.Control
         {
             InitializeComponent();
 
-            UpdateIcon(selectType);
+            UpdateIcon(swSelectType);
 
-            VM = new SelectionPageViewModel(selectType, isAllFeat)
+            _selectionBox.SldCaption = description;
+            _selectionBox.SldTip = description;
+            _selectionBox.SingleEntityOnly = selectionType == SelectionType.One;
+            _selectionBox.SldHeight = selectionType == SelectionType.One ? 20 : 40;
+            VM = new SelectionPageViewModel(swSelectType, isAllFeat)
             {
                 NodeName = name,
                 Description = description,

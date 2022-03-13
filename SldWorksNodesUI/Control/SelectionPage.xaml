@@ -8,16 +8,13 @@
              xmlns:page="clr-namespace:Du.PMPage.Wpf;assembly=Du.PMPage.Wpf"
              xmlns:pag="pag" 
              d:DataContext="{d:DesignInstance Type=local:SelectionPageViewModel}"
+             PageTitle="Dynamo Selection"
              d:DesignHeight="450" d:DesignWidth="800">
     <page:SldPMPage.SldControls>
         <page:SldGroupBox Caption="{Binding NodeName}">
             <page:SldGroupBox.Children>
                 <page:SldSelectionBox Name="_selectionBox"
                                       Mark="2"
-                                      SingleEntityOnly="True"
-                                      SldCaption="{Binding Description}"
-                                      SldTip="{Binding Description}"
-                                      SldHeight="20"
                                       SwSelectTypes="{Binding SelectTypes,Mode=TwoWay}"
                                       Selections="{Binding Selections}">
                 </page:SldSelectionBox>
