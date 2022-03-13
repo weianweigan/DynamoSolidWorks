@@ -1,27 +1,26 @@
-﻿using CoreNodeModels;
-using System.Collections.Generic;
-using Dynamo.Graph.Nodes;
-using Newtonsoft.Json;
-using Dynamo.Wpf;
-using Dynamo.Controls;
-using System.Windows.Controls;
-using Microsoft.Practices.Prism.Commands;
-using System;
-using Dynamo.Logging;
-using SolidWorks.Interop.sldworks;
-using SldWorksNodes.Util;
+﻿using System;
 using System.Linq;
-using ProtoCore.AST.AssociativeAST;
+using CoreNodeModels;
+using Newtonsoft.Json;
+using SldWorksNodes.Util;
+using Dynamo.Graph.Nodes;
 using SldWorksNodes.Base;
+using System.Collections.Generic;
+using ProtoCore.AST.AssociativeAST;
+using Microsoft.Practices.Prism.Commands;
 
 namespace SldWorksNodesUI.Selection
 {
-    public abstract class SwObjectSelction<TSelection, TResult> : SelectionBase<TSelection, TResult>
+    public abstract class SwObjectSelction<TSelection, TResult> :
+        SelectionBase<TSelection, TResult>
         where TSelection : class
         where TResult : SwNodeModel<TSelection>
     {
+        #region Fields
         private DelegateCommand _selectCommand;
+        #endregion
 
+        #region Ctor
         protected SwObjectSelction(
             SelectionType selectionType,
             SelectionObjectType selectionObjectType,
@@ -53,15 +52,23 @@ namespace SldWorksNodesUI.Selection
                   inPorts,
                   outPorts)
         { }
+        #endregion
 
+        #region Properties
         public DelegateCommand SelectCommand { get => _selectCommand ?? (_selectCommand = new DelegateCommand(TrySelect,CanBeginSelect));}
+
+        public override bool CanSelect { get; set; } = true;
+
+        public override IModelSelectionHelper<TSelection> SelectionHelper => new SwModelSelectionHelper<TSelection,TResult>(this);
+        #endregion
+
+        #region Methods
+        protected abstract Func<string, TResult> GetBuildFuncation();
 
         private void TrySelect()
         {
             base.Select(null);
         }
-
-        protected abstract TResult BuildFunction(string id, bool flag);
 
         protected override string GetIdentifierFromModelObject(TSelection modelObject)
         {
@@ -79,37 +86,34 @@ namespace SldWorksNodesUI.Selection
             AssociativeNode node;
 
             var results = SelectionResults.ToList();
-            Func<string, bool, TResult> func = BuildFunction;
 
             if (SelectionResults == null || !results.Any())
             {
                 node = AstFactory.BuildNullNode();
             }
-            else if (results.Count == 1)
+            else if (results.Count == 1)//单选
             {
                 var el = results.First();
 
                 // If there is only one object in the list,
                 // return a single item.
                 node = AstFactory.BuildFunctionCall(
-                    func,
+                    GetBuildFuncation(),
                     new List<AssociativeNode>
                     {
-                        AstFactory.BuildStringNode(el.PID),
-                        AstFactory.BuildBooleanNode(true)
+                        AstFactory.BuildStringNode(el.PID)
                     });
             }
-            else
+            else//多选
             {
                 var newInputs =
                     results.Select(
                         el =>
                             AstFactory.BuildFunctionCall(
-                                func,
+                                new Func<string,SldWorksNodes.Feature.Feature>(SldWorksNodes.Feature.Feature.ByPID),
                                 new List<AssociativeNode>
                                 {
                                     AstFactory.BuildStringNode(el.PID),
-                                    AstFactory.BuildBooleanNode(true)
                                 })).ToList();
 
                 node = AstFactory.BuildExprList(newInputs);
@@ -118,8 +122,6 @@ namespace SldWorksNodesUI.Selection
             return new[] { AstFactory.BuildAssignment(GetAstIdentifierForOutputIndex(0), node) };
         }
 
-        public override bool CanSelect { get; set; } = true;
-
-        public override IModelSelectionHelper<TSelection> SelectionHelper => new SwModelSelectionHelper<TSelection>();
+        #endregion
     }
 }

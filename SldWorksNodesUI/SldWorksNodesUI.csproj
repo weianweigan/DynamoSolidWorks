@@ -49,6 +49,9 @@
       <HintPath>..\packages\DynamoVisualProgramming.Core.2.7.0.9206\lib\net48\DSIronPython.dll</HintPath>
       <Private>False</Private>
     </Reference>
+    <Reference Include="Du.PMPage.Wpf">
+      <HintPath>..\references\Du.PMPage.Wpf\Du.PMPage.Wpf.dll</HintPath>
+    </Reference>
     <Reference Include="DynamoApplications, Version=2.7.0.9206, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\DynamoVisualProgramming.Core.2.7.0.9206\lib\net48\DynamoApplications.dll</HintPath>
       <Private>False</Private>
@@ -118,14 +121,17 @@
     <Reference Include="SolidWorks.Interop.sldworks, Version=28.1.0.74, Culture=neutral, PublicKeyToken=7c4797c3e4eeac03, processorArchitecture=MSIL">
       <HintPath>..\packages\Xarial.XCad.SolidWorks.Interops.0.3.0\lib\net40\SolidWorks.Interop.sldworks.dll</HintPath>
       <EmbedInteropTypes>False</EmbedInteropTypes>
+      <Private>False</Private>
     </Reference>
     <Reference Include="SolidWorks.Interop.swconst, Version=28.1.0.74, Culture=neutral, PublicKeyToken=19f43e188e4269d8, processorArchitecture=MSIL">
       <HintPath>..\packages\Xarial.XCad.SolidWorks.Interops.0.3.0\lib\net40\SolidWorks.Interop.swconst.dll</HintPath>
       <EmbedInteropTypes>False</EmbedInteropTypes>
+      <Private>False</Private>
     </Reference>
     <Reference Include="SolidWorks.Interop.swpublished, Version=28.1.0.74, Culture=neutral, PublicKeyToken=89a97bdc5284e6d8, processorArchitecture=MSIL">
       <HintPath>..\packages\Xarial.XCad.SolidWorks.Interops.0.3.0\lib\net40\SolidWorks.Interop.swpublished.dll</HintPath>
       <EmbedInteropTypes>False</EmbedInteropTypes>
+      <Private>False</Private>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Buffers, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
@@ -171,10 +177,14 @@
     <Compile Include="Control\SelectionBox.xaml.cs">
       <DependentUpon>SelectionBox.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Control\SelectionPage.xaml.cs">
+      <DependentUpon>SelectionPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Feature\Features.cs" />
     <Compile Include="Feature\RefPlanes.cs" />
-    <Compile Include="PMPage\SelectionPMPage.cs" />
+    <Compile Include="Selection\SelectBody.cs" />
     <Compile Include="Selection\SelectEdge.cs" />
+    <Compile Include="Selection\SelectFace.cs" />
     <Compile Include="Selection\SelectFeature.cs" />
     <Compile Include="Feature\Sketches.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -201,6 +211,10 @@
   </ItemGroup>
   <ItemGroup>
     <Page Include="Control\SelectionBox.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Control\SelectionPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -1,16 +1,11 @@
-﻿using CoreNodeModels;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using SolidWorks.Interop.sldworks;
-using Dynamo.Graph.Nodes;
-using Newtonsoft.Json;
-using ProtoCore.AST.AssociativeAST;
-using SldWorksNodes.Util;
-using SldWorksNodesUI.Selection;
-using Autodesk.DesignScript.Runtime;
+﻿using System;
 using Dynamo.Wpf;
+using CoreNodeModels;
+using Newtonsoft.Json;
 using Dynamo.Controls;
+using Dynamo.Graph.Nodes;
+using System.Collections.Generic;
+using SolidWorks.Interop.sldworks;
 
 namespace SldWorksNodesUI.Selection
 {
@@ -20,16 +15,17 @@ namespace SldWorksNodesUI.Selection
     [IsDesignScriptCompatible]
     public class SelectFeature : SwObjectSelction<IFeature, SldWorksNodes.Feature.Feature>
     {
+        #region Fields
         private const string message = "Select Feature";
         private const string prefix = "Feature";
+        #endregion
 
+        #region Ctor
         public SelectFeature() : 
             base(SelectionType.One,
                 SelectionObjectType.None, 
                 message, 
-                prefix)
-        {
-        }
+                prefix){}
 
         [JsonConstructor]
         public SelectFeature(
@@ -47,7 +43,11 @@ namespace SldWorksNodesUI.Selection
                 prefix, 
                 selectionIdentifier, 
                 inPorts, 
-                outPorts) { }
+                outPorts) {}
+        #endregion
+
+        #region Methods
+        protected override string GetOutputPortName() => prefix;
 
         protected override IEnumerable<SldWorksNodes.Feature.Feature> ExtractSelectionResults(IFeature selections)
         {
@@ -57,20 +57,10 @@ namespace SldWorksNodesUI.Selection
             return new SldWorksNodes.Feature.Feature[] { new SldWorksNodes.Feature.Feature(selections) };
         }
 
-        protected override SldWorksNodes.Feature.Feature BuildFunction(string id, bool flag)
-        {
+        protected override Func<string, SldWorksNodes.Feature.Feature> GetBuildFuncation() =>
+            new Func<string, SldWorksNodes.Feature.Feature>(SldWorksNodes.Feature.Feature.ByPID);
 
-            if (flag)
-            {
-                return SldWorksNodes.Feature.Feature.ByPID(id);
-            }
-            else
-            {
-                return null;
-            }
-        }
-
-        protected override string GetOutputPortName() => "Feature";
+        #endregion
     }
 
     public class SelectFeatureNodeModelView : INodeViewCustomization<SelectFeature>

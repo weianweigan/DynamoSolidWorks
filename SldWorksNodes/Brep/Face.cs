@@ -17,7 +17,8 @@ namespace SldWorksNodes.Brep
     /// </summary>
     public class Face:BrepNode<IFace2>
     {
-        internal Face(IFace2 face)
+        [IsVisibleInDynamoLibrary(false)]
+        public Face(IFace2 face)
         {
             SwObject = face;
         }

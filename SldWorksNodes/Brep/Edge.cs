@@ -13,7 +13,8 @@ namespace SldWorksNodes.Brep
     /// </summary>
     public class Edge:BrepNode<IEdge>
     {
-        internal Edge(IEdge edge)
+        [IsVisibleInDynamoLibrary(false)]
+        public Edge(IEdge edge)
         {
             SwObject = edge;
         }

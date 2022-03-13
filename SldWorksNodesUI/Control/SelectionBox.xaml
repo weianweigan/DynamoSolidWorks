@@ -4,13 +4,30 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:SldWorksNodesUI.Control"
+             xmlns:converters="clr-namespace:CoreNodeModelsWpf.Converters;assembly=CoreNodeModelsWpf"
              mc:Ignorable="d" 
              Name="_selectionBox"
              d:DesignHeight="70" d:DesignWidth="120">
-    <!--<UserControl.Resources>
-        <ResourceDictionary Source="pack://application:,,,/SldWorksNodesUI;component/Themes/SldGroupBox.xaml"/>
-    </UserControl.Resources>-->
+    <UserControl.Resources>
+        <converters:SelectionButtonContentConverter x:Key="SelectionButtonContentConverter" />
+    </UserControl.Resources>
     <Grid>
-        <Button Command="{Binding DataContext.SelectCommand,ElementName=_selectionBox}" Content="{Binding NickName}"/>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="26"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <Button Command="{Binding DataContext.SelectCommand,ElementName=_selectionBox}" 
+                Content="{Binding DataContext.Selection,ElementName=_selectionBox,Converter={StaticResource SelectionButtonContentConverter}}"
+                ToolTip="{Binding DataContext.SelectionSuggestion,ElementName=_selectionBox}"/>
+        <TextBlock Text="{Binding DataContext.Text,ElementName=_selectionBox}" 
+                   TextTrimming="WordEllipsis" 
+                   TextWrapping="Wrap"
+                   Grid.Row="1" 
+                   Margin="5"
+                   MaxWidth="200" MaxHeight="200">
+            <TextBlock.ToolTip>
+                <TextBlock Text="{Binding Model.Text}" MaxHeight="200" TextTrimming="WordEllipsis"/>
+            </TextBlock.ToolTip>
+        </TextBlock>
     </Grid>
 </UserControl>

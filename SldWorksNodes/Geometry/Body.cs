@@ -1,4 +1,6 @@
-﻿using SldWorksNodes.Util;
+﻿using Autodesk.DesignScript.Runtime;
+using SldWorksNodes.SwException;
+using SldWorksNodes.Util;
 using SolidWorks.Interop.sldworks;
 using SolidWorks.Interop.swconst;
 using System;
@@ -9,7 +11,8 @@ namespace SldWorksNodes.Geometry
 {
     public class Body : SwBodyNode
     {
-        internal Body(IBody2 body,bool display = true)
+        [IsVisibleInDynamoLibrary(false)]
+        public Body(IBody2 body,bool display = true)
         {
             SwObject=body;
 
@@ -29,6 +32,19 @@ namespace SldWorksNodes.Geometry
                 .Cast<IFace2>()
                 .Select(p => new Brep.Face(p))
                 .ToList();
+        }
+
+        public static Body ByPID(string pid)
+        {
+            var doc = SwContextUtil.GetCurrentPartDocContext();
+
+            var obj = PIDUtil.GetObjectFromPID(pid, out var state) as IBody2;
+            PIDUtil.AssertState(state);
+
+            if (obj != null)
+                return new Body(obj);
+            else
+                throw new SwObjectLostException(typeof(IFace2));
         }
 
         /// <summary>

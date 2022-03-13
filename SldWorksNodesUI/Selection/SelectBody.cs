@@ -1,33 +1,30 @@
-﻿using System.Text;
-using SolidWorks.Interop.sldworks;
-using SolidWorks.Interop.swconst;
-using System.Threading.Tasks;
+﻿using System;
 using CoreNodeModels;
 using Newtonsoft.Json;
-using System.Collections.Generic;
 using Dynamo.Graph.Nodes;
-using System;
+using System.Collections.Generic;
+using SolidWorks.Interop.sldworks;
 using Dynamo.Wpf;
 using Dynamo.Controls;
 
 namespace SldWorksNodesUI.Selection
 {
     /// <summary>
-    /// Select a edge from current doc in solidworks
+    /// Select a Body in current doc in solidworks
     /// </summary>
     [NodeName(message)]
     [NodeCategory("SolidWorks.Selection")]
-    [NodeDescription("Select a edge in doc")]
+    [NodeDescription("Select a Body in doc")]
     [IsDesignScriptCompatible]
-    public class SelectEdge:SwObjectSelction<IEdge,SldWorksNodes.Brep.Edge>
+    public class SelectBody : SwObjectSelction<IBody2, SldWorksNodes.Geometry.Body>
     {
         #region Fields
-        private const string message = "Select Edge";
-        private const string prefix = "Edge";
+        private const string message = "Select Body";
+        private const string prefix = "Body";
         #endregion
 
         #region Ctor
-        public SelectEdge() :
+        public SelectBody() :
             base(SelectionType.One,
                 SelectionObjectType.None,
                 message,
@@ -36,7 +33,7 @@ namespace SldWorksNodesUI.Selection
         }
 
         [JsonConstructor]
-        public SelectEdge(
+        public SelectBody(
             SelectionType selectionType,
             SelectionObjectType selectionObjectType,
             string message,
@@ -44,7 +41,7 @@ namespace SldWorksNodesUI.Selection
             IEnumerable<string> selectionIdentifier,
             IEnumerable<PortModel> inPorts,
             IEnumerable<PortModel> outPorts)
-    : base(
+            : base(
                 selectionType,
                 selectionObjectType,
                 message,
@@ -56,26 +53,26 @@ namespace SldWorksNodesUI.Selection
         #endregion
 
         #region Methods
-        protected override string GetOutputPortName() => prefix;
-
-        protected override IEnumerable<SldWorksNodes.Brep.Edge> ExtractSelectionResults(IEdge selections)
+        protected override IEnumerable<SldWorksNodes.Geometry.Body> ExtractSelectionResults(IBody2 selections)
         {
             if (selections == null)
-                return new SldWorksNodes.Brep.Edge[] { };
+                return new SldWorksNodes.Geometry.Body[] { };
 
-            return new SldWorksNodes.Brep.Edge[] { new SldWorksNodes.Brep.Edge(selections) };
+            return new SldWorksNodes.Geometry.Body[] { new SldWorksNodes.Geometry.Body(selections) };
         }
 
-        protected override Func<string, SldWorksNodes.Brep.Edge> GetBuildFuncation()
+        protected override Func<string, SldWorksNodes.Geometry.Body> GetBuildFuncation()
         {
-            return new Func<string, SldWorksNodes.Brep.Edge>(SldWorksNodes.Brep.Edge.ByPID);
+            return new Func<string, SldWorksNodes.Geometry.Body>(SldWorksNodes.Geometry.Body.ByPID);
         }
+
+        protected override string GetOutputPortName() => prefix;
         #endregion
     }
 
-    public class SelectEdgeNodeModelView : INodeViewCustomization<SelectEdge>
+    public class SelectBodyNodeModelView : INodeViewCustomization<SelectBody>
     {
-        public void CustomizeView(SelectEdge model, NodeView nodeView)
+        public void CustomizeView(SelectBody model, NodeView nodeView)
         {
             var control = new Control.SelectionBox();
             nodeView.inputGrid.Children.Add(control);
@@ -86,5 +83,4 @@ namespace SldWorksNodesUI.Selection
         {
         }
     }
-
 }
