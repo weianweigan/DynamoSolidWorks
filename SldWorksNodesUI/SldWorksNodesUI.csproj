@@ -173,6 +173,7 @@
     </Compile>
     <Compile Include="Feature\Features.cs" />
     <Compile Include="Feature\RefPlanes.cs" />
+    <Compile Include="PMPage\SelectionPMPage.cs" />
     <Compile Include="Selection\SelectEdge.cs" />
     <Compile Include="Selection\SelectFeature.cs" />
     <Compile Include="Feature\Sketches.cs" />

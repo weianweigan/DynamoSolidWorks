@@ -9,15 +9,14 @@ using ProtoCore.AST.AssociativeAST;
 using SldWorksNodes.Util;
 using SldWorksNodesUI.Selection;
 using Autodesk.DesignScript.Runtime;
+using Dynamo.Wpf;
+using Dynamo.Controls;
 
 namespace SldWorksNodesUI.Selection
 {
     [NodeName("Select Feature")]
     [NodeCategory("SolidWorks.Selection")]
     [NodeDescription("Select a feature in doc")]
-    //[OutPortNames("Feature")]
-    //[OutPortTypes("SldWorksNodes.SldWorksNodes.Feature.Feature")]
-    //[OutPortDescriptions("Feature")]
     [IsDesignScriptCompatible]
     public class SelectFeature : SwObjectSelction<IFeature, SldWorksNodes.Feature.Feature>
     {
@@ -50,73 +49,17 @@ namespace SldWorksNodesUI.Selection
                 inPorts, 
                 outPorts) { }
 
-        public override IModelSelectionHelper<IFeature> SelectionHelper => new SwModelSelectionHelper<IFeature>();
-
-        public override IEnumerable<AssociativeNode> BuildOutputAst(
-            List<AssociativeNode> inputAstNodes)
-        {
-            AssociativeNode node;
-
-            var results = SelectionResults.ToList();
-            Func<string, bool, SldWorksNodes.Feature.Feature> func = Function;
-
-            if (SelectionResults == null || !results.Any())
-            {
-                node = AstFactory.BuildNullNode();
-            }
-            else if (results.Count == 1)
-            {
-                var el = results.First();
-
-                // If there is only one object in the list,
-                // return a single item.
-                node = AstFactory.BuildFunctionCall(
-                    func,
-                    new List<AssociativeNode>
-                    {
-                        AstFactory.BuildStringNode(el.PID),
-                        AstFactory.BuildBooleanNode(true)
-                    });
-            }
-            else
-            {
-                var newInputs =
-                    results.Select(
-                        el =>
-                            AstFactory.BuildFunctionCall(
-                                func,
-                                new List<AssociativeNode>
-                                {
-                                    AstFactory.BuildStringNode(el.PID),
-                                    AstFactory.BuildBooleanNode(true)
-                                })).ToList();
-
-                node = AstFactory.BuildExprList(newInputs);
-            }
-
-            return new[] { AstFactory.BuildAssignment(GetAstIdentifierForOutputIndex(0), node) };
-        }
-
         protected override IEnumerable<SldWorksNodes.Feature.Feature> ExtractSelectionResults(IFeature selections)
         {
             if (selections == null)
-                return new SldWorksNodes.Feature.Feature[] {};
+                return new SldWorksNodes.Feature.Feature[] { };
 
             return new SldWorksNodes.Feature.Feature[] { new SldWorksNodes.Feature.Feature(selections) };
         }
 
-        protected override string GetIdentifierFromModelObject(IFeature modelObject)
+        protected override SldWorksNodes.Feature.Feature BuildFunction(string id, bool flag)
         {
-            return PIDUtil.GetPID(modelObject);
-        }
 
-        protected override IFeature GetModelObjectFromIdentifer(string id)
-        {
-            return PIDUtil.GetObjectFromPID(SwContextUtil.GetActivePartDocContext(),id,out var state) as IFeature;
-        }
-
-        private SldWorksNodes.Feature.Feature Function(string id,bool flag)
-        {
             if (flag)
             {
                 return SldWorksNodes.Feature.Feature.ByPID(id);
@@ -127,11 +70,20 @@ namespace SldWorksNodesUI.Selection
             }
         }
 
-        protected override string GetOutputPortName()
-        {
-            return "Feature";
-        }
+        protected override string GetOutputPortName() => "Feature";
     }
 
-    
+    public class SelectFeatureNodeModelView : INodeViewCustomization<SelectFeature>
+    {
+        public void CustomizeView(SelectFeature model, NodeView nodeView)
+        {
+            var control = new Control.SelectionBox();
+            nodeView.inputGrid.Children.Add(control);
+            control.DataContext = model;
+        }
+
+        public void Dispose()
+        {
+        }
+    }
 }
