@@ -7,6 +7,7 @@ using SldWorksNodes.Util;
 using SldWorksNodesUI.Control;
 using SolidWorks.Interop.swconst;
 using System.Collections.Generic;
+using SldWorksNodes.Geometry;
 
 namespace SldWorksNodesUI.Selection
 {
@@ -15,14 +16,15 @@ namespace SldWorksNodesUI.Selection
     /// </summary>
     /// <typeparam name="TSelection"></typeparam>
     /// <typeparam name="TResult"></typeparam>
-    public class SwModelSelectionHelper<TSelection,TResult> : 
+    public class SwModelSelectionHelper<TSelection, TResult> :
         IModelSelectionHelper<TSelection>
         where TSelection : class
-        where TResult : SwNodeModel<TSelection>
+        where TResult : class, IPID
     {
         #region Fields
         private SelectionPage _page;
         private SwObjectSelction<TSelection, TResult> _swObjectSelction;
+        private string _typeName;
         #endregion
 
         #region Ctor
@@ -30,6 +32,7 @@ namespace SldWorksNodesUI.Selection
             SwObjectSelction<TSelection, TResult> swObjectSelction)
         {
             _swObjectSelction = swObjectSelction;
+            _typeName = typeof(TSelection).Name;
         }
         #endregion
 
@@ -39,8 +42,8 @@ namespace SldWorksNodesUI.Selection
 
         #region Methods
         public IEnumerable<TSelection> RequestSelectionOfType(
-            string selectionMessage, 
-            SelectionType selectionType, 
+            string selectionMessage,
+            SelectionType selectionType,
             SelectionObjectType objectType)
         {
             if (_page == null)
@@ -48,7 +51,7 @@ namespace SldWorksNodesUI.Selection
                 var swSelectType = default(swSelectType_e);
                 bool isAllFeat = false;
 
-                switch (typeof(TSelection).Name)
+                switch (_typeName)
                 {
                     case "IFeature":
                         isAllFeat = true;
@@ -56,6 +59,7 @@ namespace SldWorksNodesUI.Selection
                     case "IEdge":
                         swSelectType = swSelectType_e.swSelEDGES;
                         break;
+                    case "Point3D":
                     case "IFace2":
                         swSelectType = swSelectType_e.swSelFACES;
                         break;
@@ -67,7 +71,7 @@ namespace SldWorksNodesUI.Selection
                 }
 
                 _page = new Control.SelectionPage(
-                    SldContextManager.Sw, 
+                    SldContextManager.Sw,
                     swSelectType,
                     selectionType,
                     $"Select {_swObjectSelction.Prefix}",
@@ -101,10 +105,20 @@ namespace SldWorksNodesUI.Selection
         {
             if (_page.VM.Selections.Any())
             {
-                _swObjectSelction
+                if (_typeName == "Point3D")
+                {
+                    _swObjectSelction
                     .UpdateSelection(_page.VM.Selections.
-                    Select(p => p.SelectedObject)
-                    .Cast<TSelection>());
+                             Select(p => Point3D.ByCoordinate(p.Point[0],p.Point[1],p.Point[2]))
+                            .Cast<TSelection>());
+                }
+                else
+                {
+                    _swObjectSelction
+                        .UpdateSelection(_page.VM.Selections.
+                        Select(p => p.SelectedObject)
+                        .Cast<TSelection>());
+                }
             }
         }
         #endregion

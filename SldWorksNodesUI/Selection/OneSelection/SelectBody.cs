@@ -28,45 +28,23 @@ namespace SldWorksNodesUI.Selection
             base(SelectionType.One,
                 SelectionObjectType.None,
                 message,
-                prefix)
-        {
-        }
+                prefix){}
 
-        [JsonConstructor]
-        public SelectBody(
-            SelectionType selectionType,
-            SelectionObjectType selectionObjectType,
-            string message,
-            string prefix,
-            IEnumerable<string> selectionIdentifier,
-            IEnumerable<PortModel> inPorts,
-            IEnumerable<PortModel> outPorts)
-            : base(
-                selectionType,
-                selectionObjectType,
-                message,
-                prefix,
-                selectionIdentifier,
-                inPorts,
-                outPorts)
-        { }
         #endregion
 
         #region Methods
         protected override IEnumerable<SldWorksNodes.Geometry.Body> ExtractSelectionResults(IBody2 selections)
         {
             if (selections == null)
-                return new SldWorksNodes.Geometry.Body[] { };
+                yield break;
 
-            return new SldWorksNodes.Geometry.Body[] { new SldWorksNodes.Geometry.Body(selections) };
+            yield return new SldWorksNodes.Geometry.Body(selections);
         }
 
-        protected override Func<string, SldWorksNodes.Geometry.Body> GetBuildFuncation()
-        {
-            return new Func<string, SldWorksNodes.Geometry.Body>(SldWorksNodes.Geometry.Body.ByPID);
-        }
+        protected override Func<string, SldWorksNodes.Geometry.Body> GetBuildFuncation() => 
+            new Func<string, SldWorksNodes.Geometry.Body>(SldWorksNodes.Geometry.Body.ByPID);
 
-        protected override string GetOutputPortName() => prefix;
+        protected override string GetOutputPortName() => "Body";
         #endregion
     }
 

@@ -5,7 +5,7 @@ using Newtonsoft.Json;
 namespace SldWorksNodes.Base
 {
     [IsVisibleInDynamoLibrary(false)]
-    public abstract class SwNode
+    public abstract class SwNode:IPID
     {
         public string PID { get; set; }
     }

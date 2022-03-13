@@ -29,47 +29,25 @@ namespace SldWorksNodesUI.Selection
         #region Ctor
         public SelectEdge() :
             base(SelectionType.One,
-                SelectionObjectType.None,
+                SelectionObjectType.Edge,
                 message,
                 prefix)
         {
         }
-
-        [JsonConstructor]
-        public SelectEdge(
-            SelectionType selectionType,
-            SelectionObjectType selectionObjectType,
-            string message,
-            string prefix,
-            IEnumerable<string> selectionIdentifier,
-            IEnumerable<PortModel> inPorts,
-            IEnumerable<PortModel> outPorts)
-    : base(
-                selectionType,
-                selectionObjectType,
-                message,
-                prefix,
-                selectionIdentifier,
-                inPorts,
-                outPorts)
-        { }
+      
         #endregion
 
-        #region Methods
-        protected override string GetOutputPortName() => prefix;
-
+        #region Methods    
         protected override IEnumerable<SldWorksNodes.Brep.Edge> ExtractSelectionResults(IEdge selections)
         {
             if (selections == null)
-                return new SldWorksNodes.Brep.Edge[] { };
+                yield break;
 
-            return new SldWorksNodes.Brep.Edge[] { new SldWorksNodes.Brep.Edge(selections) };
+            yield return new SldWorksNodes.Brep.Edge(selections);
         }
 
-        protected override Func<string, SldWorksNodes.Brep.Edge> GetBuildFuncation()
-        {
-            return new Func<string, SldWorksNodes.Brep.Edge>(SldWorksNodes.Brep.Edge.ByPID);
-        }
+        protected override Func<string, SldWorksNodes.Brep.Edge> GetBuildFuncation() => 
+            new Func<string, SldWorksNodes.Brep.Edge>(SldWorksNodes.Brep.Edge.ByPID);
         #endregion
     }
 

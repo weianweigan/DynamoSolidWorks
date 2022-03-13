@@ -171,6 +171,7 @@
   <ItemGroup>
     <Compile Include="Assembly\Component.cs" />
     <Compile Include="Base\BrepNode.cs" />
+    <Compile Include="Base\IPID.cs" />
     <Compile Include="Base\SwNode.cs" />
     <Compile Include="Base\SwNodeModel.cs" />
     <Compile Include="Brep\Edge.cs" />

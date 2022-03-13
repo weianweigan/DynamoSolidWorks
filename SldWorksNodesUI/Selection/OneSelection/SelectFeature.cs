@@ -27,34 +27,15 @@ namespace SldWorksNodesUI.Selection
                 message, 
                 prefix){}
 
-        [JsonConstructor]
-        public SelectFeature(
-            SelectionType selectionType,
-            SelectionObjectType selectionObjectType, 
-            string message, 
-            string prefix,
-            IEnumerable<string> selectionIdentifier, 
-            IEnumerable<PortModel> inPorts, 
-            IEnumerable<PortModel> outPorts)
-    :       base(
-                selectionType, 
-                selectionObjectType, 
-                message, 
-                prefix, 
-                selectionIdentifier, 
-                inPorts, 
-                outPorts) {}
         #endregion
 
         #region Methods
-        protected override string GetOutputPortName() => prefix;
-
         protected override IEnumerable<SldWorksNodes.Feature.Feature> ExtractSelectionResults(IFeature selections)
         {
             if (selections == null)
-                return new SldWorksNodes.Feature.Feature[] { };
+                yield break;
 
-            return new SldWorksNodes.Feature.Feature[] { new SldWorksNodes.Feature.Feature(selections) };
+            yield return new SldWorksNodes.Feature.Feature(selections);
         }
 
         protected override Func<string, SldWorksNodes.Feature.Feature> GetBuildFuncation() =>

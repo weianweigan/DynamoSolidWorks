@@ -24,7 +24,7 @@ namespace SldWorksNodesUI.Selection
         [NodeCategory("SolidWorks.Selection")]
         [NodeDescription("Select faces in doc")]
         [IsDesignScriptCompatible]
-        public class SelectFaces : SelectFace
+        public class SelectFaces : SwObjectSelction<IFace2, SldWorksNodes.Brep.Face>
         {
             #region Fields
             private const string message = "Select Faces";
@@ -32,9 +32,30 @@ namespace SldWorksNodesUI.Selection
 
             #endregion
 
+            #region Ctor
+            public SelectFaces() :
+                base(SelectionType.Many,
+                    SelectionObjectType.None,
+                    message,
+                    prefix)
+            {
+            }
+            #endregion
+
+            #region Methods
+            protected override IEnumerable<SldWorksNodes.Brep.Face> ExtractSelectionResults(IFace2 selections)
+            {
+                if (selections == null)
+                    yield break;
+
+                yield return new SldWorksNodes.Brep.Face(selections);
+            }
+
+            protected override Func<string, SldWorksNodes.Brep.Face> GetBuildFuncation() =>
+                new Func<string, SldWorksNodes.Brep.Face>(SldWorksNodes.Brep.Face.ByPID);
 
             protected override string GetOutputPortName() => prefix;
-        
+            #endregion
         }
 
         public class SelectFacesNodeModelView : INodeViewCustomization<SelectFaces>

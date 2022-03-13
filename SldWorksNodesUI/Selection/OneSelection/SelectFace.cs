@@ -26,7 +26,7 @@ namespace SldWorksNodesUI.Selection
         #region Ctor
         public SelectFace() :
             base(SelectionType.One,
-                SelectionObjectType.None,
+                SelectionObjectType.Face,
                 message,
                 prefix)
         {
@@ -37,17 +37,14 @@ namespace SldWorksNodesUI.Selection
         protected override IEnumerable<SldWorksNodes.Brep.Face> ExtractSelectionResults(IFace2 selections)
         {
             if (selections == null)
-                return new SldWorksNodes.Brep.Face[] { };
+                yield break;
 
-            return new SldWorksNodes.Brep.Face[] { new SldWorksNodes.Brep.Face(selections) };
+            yield return new SldWorksNodes.Brep.Face(selections);
         }
 
-        protected override Func<string, SldWorksNodes.Brep.Face> GetBuildFuncation()
-        {
-            return new Func<string, SldWorksNodes.Brep.Face>(SldWorksNodes.Brep.Face.ByPID);
-        }
+        protected override Func<string, SldWorksNodes.Brep.Face> GetBuildFuncation() => 
+            new Func<string, SldWorksNodes.Brep.Face>(SldWorksNodes.Brep.Face.ByPID);
 
-        protected override string GetOutputPortName() => prefix;
         #endregion
     }
 

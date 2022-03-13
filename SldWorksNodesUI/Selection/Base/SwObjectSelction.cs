@@ -14,7 +14,7 @@ namespace SldWorksNodesUI.Selection
     public abstract class SwObjectSelction<TSelection, TResult> :
         SelectionBase<TSelection, TResult>
         where TSelection : class
-        where TResult : SwNodeModel<TSelection>
+        where TResult : class, IPID
     {
         #region Fields
         private DelegateCommand _selectCommand;
@@ -61,7 +61,8 @@ namespace SldWorksNodesUI.Selection
 
         public override IModelSelectionHelper<TSelection> SelectionHelper => new SwModelSelectionHelper<TSelection,TResult>(this);
         #endregion
-         #region Methods
+
+        #region Methods
         protected abstract Func<string, TResult> GetBuildFuncation();
 
         private void TrySelect()
@@ -120,7 +121,6 @@ namespace SldWorksNodesUI.Selection
 
             return new[] { AstFactory.BuildAssignment(GetAstIdentifierForOutputIndex(0), node) };
         }
-
         #endregion
     }
 }
