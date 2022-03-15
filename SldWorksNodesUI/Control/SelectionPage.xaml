@@ -9,13 +9,14 @@
              xmlns:pag="pag" 
              d:DataContext="{d:DesignInstance Type=local:SelectionPageViewModel}"
              PageTitle="Dynamo Selection"
-             d:DesignHeight="450" d:DesignWidth="800">
+             PageCreatedWhenShow="True"
+             PageHeight="150">
     <page:SldPMPage.SldControls>
         <page:SldGroupBox Caption="{Binding NodeName}">
             <page:SldGroupBox.Children>
                 <page:SldSelectionBox Name="_selectionBox"
                                       Mark="2"
-                                      SwSelectTypes="{Binding SelectTypes,Mode=TwoWay}"
+                                      SwSelectTypes="{Binding SelectTypes}"
                                       Selections="{Binding Selections}">
                 </page:SldSelectionBox>
             </page:SldGroupBox.Children>

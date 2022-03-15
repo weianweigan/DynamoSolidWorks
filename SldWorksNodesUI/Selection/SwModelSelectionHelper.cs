@@ -66,6 +66,9 @@ namespace SldWorksNodesUI.Selection
                     case "IBody2":
                         swSelectType = swSelectType_e.swSelSOLIDBODIES;
                         break;
+                    case "IComponent2":
+                        swSelectType = swSelectType_e.swSelCOMPONENTS;
+                        break;
                     default:
                         break;
                 }

@@ -23,7 +23,7 @@ namespace SldWorksNodes.CustomProperty
 
         public string Value()
         {
-            var doc = SwContextUtil.GetActivePartDocContext();
+            var doc = SwContextUtil.GetActivDocContext();
 
             var cusMgr = doc.Extension.CustomPropertyManager[Configuation];
 

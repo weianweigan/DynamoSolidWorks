@@ -27,7 +27,7 @@ namespace SldWorksNodes.EquationMgr
             if(index < 0)
                 return null;
 
-            var doc = SwContextUtil.GetActivePartDocContext();
+            var doc = SwContextUtil.GetActivDocContext();
             var equMgr = doc.GetEquationMgr();
             var count = equMgr.GetCount();
 
@@ -42,7 +42,7 @@ namespace SldWorksNodes.EquationMgr
 
         public static List<Equation> All()
         {
-            var doc = SwContextUtil.GetActivePartDocContext();
+            var doc = SwContextUtil.GetActivDocContext();
             var equMgr = doc.GetEquationMgr();
             var count = equMgr.GetCount();
 
@@ -59,7 +59,7 @@ namespace SldWorksNodes.EquationMgr
 
         public bool SetValue(string equation)
         {
-            var doc = SwContextUtil.GetActivePartDocContext();
+            var doc = SwContextUtil.GetActivDocContext();
             var equMgr = doc.GetEquationMgr();
             var count = equMgr.GetCount();
 

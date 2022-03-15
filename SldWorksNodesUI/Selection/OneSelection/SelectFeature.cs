@@ -41,6 +41,8 @@ namespace SldWorksNodesUI.Selection
         protected override Func<string, SldWorksNodes.Feature.Feature> GetBuildFuncation() =>
             new Func<string, SldWorksNodes.Feature.Feature>(SldWorksNodes.Feature.Feature.ByPID);
 
+        protected override string GetOutputPortName() => prefix;
+
         #endregion
     }
 

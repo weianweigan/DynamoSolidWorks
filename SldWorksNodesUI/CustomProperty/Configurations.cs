@@ -2,24 +2,21 @@
 using Dynamo.Graph.Nodes;
 using Dynamo.Utilities;
 using ProtoCore.AST.AssociativeAST;
-using System;
 using System.Collections.Generic;
 using System.Linq;
 
 namespace SldWorksNodesUI.SwItems
 {
-    [NodeName("CustomProperties")]
-    [NodeDescription("Lists all properties in active doc to select one")]
+    [NodeName(nameof(Configurations))]
+    [NodeDescription("Lists all configuration in active doc to select one")]
     [NodeCategory("SolidWorks.Selection")]
     [InPortNames("Configuation")]
-    [InPortTypes("string")]
-    [InPortDescriptions("Name of Configuation")]
     [IsDesignScriptCompatible]
-    public class Properties : SwDropDownBase
+    public class Configurations:SwDropDownBase
     {
-        public const string outputName = "CustomProperty";
+        public const string outputName = "Cofiguration";
 
-        public Properties():base(outputName)
+        public Configurations() : base(outputName)
         {
 
         }
@@ -28,8 +25,13 @@ namespace SldWorksNodesUI.SwItems
         {
             Items.Clear();
 
-            var config = InputNodes[0]?.Item2?.CachedValue?.StringData ?? "";
-            Items.AddRange(GetProperties(config));
+            var doc = SldWorksNodes.Util.SwContextUtil.GetActivDocContext();
+            var configs = doc.GetConfigurationNames() as string[];
+            if (configs != null)
+            {
+                Items.AddRange(configs
+                    .Select(p => new DynamoDropDownItem(p, p)));
+            }
 
             return SelectionState.Restore;
         }
@@ -50,11 +52,7 @@ namespace SldWorksNodesUI.SwItems
             }
 
             var name = AstFactory.BuildStringNode(Items[SelectedIndex].Name as string);
-            var itemNode = AstFactory.BuildFunctionCall(
-                new Func<string,string, SldWorksNodes.CustomProperty.CustomProperty>(SldWorksNodes.CustomProperty.CustomPropertyManager.Get),
-                new List<AssociativeNode>() { name , inputAstNodes[0]}
-                );
-            var assign = AstFactory.BuildAssignment(GetAstIdentifierForOutputIndex(0), itemNode);
+            var assign = AstFactory.BuildAssignment(GetAstIdentifierForOutputIndex(0), name);
 
             return new List<AssociativeNode> { assign };
         }

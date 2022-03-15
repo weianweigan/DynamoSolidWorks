@@ -29,7 +29,7 @@ namespace SldWorksNodes.CustomProperty
             if (customProperty == null)
                 return "No Property Input";
 
-            var doc = SwContextUtil.GetActivePartDocContext();
+            var doc = SwContextUtil.GetActivDocContext();
 
             var cusMgr = doc.Extension.CustomPropertyManager[configuation];
 
@@ -49,7 +49,7 @@ namespace SldWorksNodes.CustomProperty
             if (string.IsNullOrWhiteSpace(name))
                 return null;
 
-            var doc = SwContextUtil.GetActivePartDocContext();
+            var doc = SwContextUtil.GetActivDocContext();
 
             var cusMgr = doc.Extension.CustomPropertyManager[configuation ?? ""];
 
@@ -69,7 +69,7 @@ namespace SldWorksNodes.CustomProperty
         /// <exception cref="ArgumentNullException"></exception>
         public static List<CustomProperty> GetAll(string configuation = "")
         {
-            var doc = SwContextUtil.GetActivePartDocContext();
+            var doc = SwContextUtil.GetActivDocContext();
 
             var cusMgr = doc.Extension.CustomPropertyManager[configuation];
 

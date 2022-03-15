@@ -1,4 +1,5 @@
-﻿using CoreNodeModels;
+﻿using Autodesk.DesignScript.Runtime;
+using CoreNodeModels;
 using Dynamo.Graph.Nodes;
 using Dynamo.Utilities;
 using Newtonsoft.Json;
@@ -29,7 +30,7 @@ namespace SldWorksNodesUI
 
         protected IEnumerable<DynamoDropDownItem> GetNeededFeats(string featTypeName)
         {
-            var doc = SwContextUtil.GetActivePartDocContext();
+            var doc = SwContextUtil.GetActivDocContext();
 
             var feats = doc
                 .GetAllFeats()                

@@ -1,28 +1,17 @@
-﻿using CoreNodeModels;
+﻿using System.ComponentModel;
+using CoreNodeModels;
 using Du.PMPage.Wpf;
-using Microsoft.Practices.Prism.ViewModel;
 using SolidWorks.Interop.sldworks;
 using SolidWorks.Interop.swconst;
-using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace SldWorksNodesUI.Control
 {
     /// <summary>
     /// SelectionPage.xaml 的交互逻辑
+    /// 
+    /// avoid load Du.PMPage.Wpf in other addin
     /// </summary>
     public partial class SelectionPage : SldPMPage
     {
@@ -40,8 +29,6 @@ namespace SldWorksNodesUI.Control
         {
             InitializeComponent();
 
-            UpdateIcon(swSelectType);
-
             _selectionBox.SldCaption = description;
             _selectionBox.SldTip = description;
             _selectionBox.SingleEntityOnly = selectionType == SelectionType.One;
@@ -51,8 +38,9 @@ namespace SldWorksNodesUI.Control
                 NodeName = name,
                 Description = description,
             };
-
             DataContext = VM;
+
+            //UpdateIcon(swSelectType);
         }
 
         private void UpdateIcon(swSelectType_e selectType)
@@ -65,6 +53,9 @@ namespace SldWorksNodesUI.Control
                 case swSelectType_e.swSelFACES:
                     _selectionBox.StandardPictureLabel = swControlBitmapLabelType_e.swBitmapLabel_SelectFace;
                     break;
+                case swSelectType_e.swSelCOMPONENTS:
+                    _selectionBox.StandardPictureLabel = swControlBitmapLabelType_e.swBitmapLabel_SelectComponent;
+                    break;
                 default:
                     break;
             }
@@ -73,7 +64,7 @@ namespace SldWorksNodesUI.Control
         public SelectionPageViewModel VM { get => _vm; set => _vm = value; }
     }
 
-    public class SelectionPageViewModel:NotificationObject
+    public class SelectionPageViewModel: INotifyPropertyChanged
     {
         private ObservableCollection<swSeleTypeObjectPair> _selections = new ObservableCollection<swSeleTypeObjectPair>();
 
@@ -117,12 +108,14 @@ namespace SldWorksNodesUI.Control
             get => _selections; set
             {
                 _selections=value;
-                RaisePropertyChanged(nameof(Selections));
+                PropertyChanged?.Invoke(this,new PropertyChangedEventArgs(nameof(Selections)));
             }
         }
 
         public string NodeName { get; internal set; }
 
         public string Description { get; internal set; }
+
+        public event PropertyChangedEventHandler PropertyChanged;
     }
 }

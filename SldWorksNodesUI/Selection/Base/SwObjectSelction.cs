@@ -77,7 +77,7 @@ namespace SldWorksNodesUI.Selection
 
         protected override TSelection GetModelObjectFromIdentifer(string id)
         {
-            return PIDUtil.GetObjectFromPID(SwContextUtil.GetActivePartDocContext(),id,out var state) as TSelection;
+            return PIDUtil.GetObjectFromPID(SwContextUtil.GetActivDocContext(),id,out var state) as TSelection;
         }
 
         public override IEnumerable<AssociativeNode> BuildOutputAst(

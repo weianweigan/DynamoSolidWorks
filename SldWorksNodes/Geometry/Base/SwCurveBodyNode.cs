@@ -7,6 +7,7 @@ namespace SldWorksNodes.Geometry
     /// <summary>
     /// A Curve with wire body
     /// </summary>
+    [IsVisibleInDynamoLibrary(false)]
     public abstract class SwCurveBodyNode : SwBodyNode
     {
         private ICurve _swCurve;

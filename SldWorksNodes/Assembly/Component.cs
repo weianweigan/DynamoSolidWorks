@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using Autodesk.DesignScript.Runtime;
 using SldWorksNodes.Base;
 using SldWorksNodes.Geometry;
 using SldWorksNodes.Manager;
@@ -13,13 +14,15 @@ namespace SldWorksNodes.Assembly
 {
     public class Component : SwNodeModel<IComponent2>
     {
-
         #region Ctor
-        internal Component(IComponent2 comp)
+        [IsVisibleInDynamoLibrary(false)]
+        public Component(IComponent2 comp)
         {
             SwObject = comp;
         }
+        #endregion
 
+        #region Creation
         /// <summary>
         /// Get a feature from feature name
         /// </summary>
@@ -44,7 +47,7 @@ namespace SldWorksNodes.Assembly
 
         public static Component ByPID(string pid)
         {
-            var doc = SwContextUtil.GetCurrentPartDocContext();
+            var doc = SwContextUtil.GetActivDocContext();
 
             var obj = PIDUtil.GetObjectFromPID(pid, out var state) as IComponent2;
             PIDUtil.AssertState(state);
@@ -56,7 +59,7 @@ namespace SldWorksNodes.Assembly
         }
         #endregion
 
-        #region Query Properties
+        #region Query
         public int ID => SwObject.GetID();
 
         public bool IsFixed => SwObject.IsFixed();
@@ -76,9 +79,6 @@ namespace SldWorksNodes.Assembly
         public bool IsSmartComponent => SwObject.IsSmartComponent();
 
         public bool IsSuppressed => SwObject.IsSuppressed();
-        #endregion
-
-        #region Query Methods
 
         public Feature.Feature FeatureByName(string name)
         {

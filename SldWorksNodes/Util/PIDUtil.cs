@@ -19,7 +19,7 @@ namespace SldWorksNodes.Util
 
         public static string GetPID(object obj)
         {
-            return GetPID(SwContextUtil.GetCurrentPartDocContext(), obj);
+            return GetPID(SwContextUtil.GetActivDocContext(), obj);
         }
 
         /// <summary>
@@ -61,7 +61,7 @@ namespace SldWorksNodes.Util
 
         public static object GetObjectFromPID(string pid, out swPersistReferencedObjectStates_e state)
         {
-            return GetObjectFromPID(SwContextUtil.GetCurrentPartDocContext(), pid, out state);
+            return GetObjectFromPID(SwContextUtil.GetActivDocContext(), pid, out state);
         }
 
         private static string ByteArrayToString(byte[] byteArray)
