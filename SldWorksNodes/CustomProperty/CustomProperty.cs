@@ -10,7 +10,7 @@ namespace SldWorksNodes.CustomProperty
 {
     public abstract class CustomProperty
     {
-        internal string Name { get; set; }
+        public string Name { get; set; }
 
         internal string Configuation { get; set; }
 

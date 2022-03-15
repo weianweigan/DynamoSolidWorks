@@ -49,6 +49,19 @@ namespace SldWorksNodes.Geometry
         public Vector3D AsVector() =>
             new Vector3D(X, Y, Z);
 
+        [IsVisibleInDynamoLibrary(false)]
+        public static Point3D Prase(string data)
+        {
+            var array = data.Split(',');
+            if (array.Length >= 3)
+                return new Point3D(
+                    double.Parse(array[0]),
+                    double.Parse(array[1]),
+                    double.Parse(array[2]));
+
+            return null;
+        }
+
         /// <summary>
         /// Subtract a vector from a point. 
         /// </summary>

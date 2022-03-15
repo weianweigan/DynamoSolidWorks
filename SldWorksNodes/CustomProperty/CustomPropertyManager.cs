@@ -51,7 +51,7 @@ namespace SldWorksNodes.CustomProperty
 
             var doc = SwContextUtil.GetActivePartDocContext();
 
-            var cusMgr = doc.Extension.CustomPropertyManager[configuation];
+            var cusMgr = doc.Extension.CustomPropertyManager[configuation ?? ""];
 
             if (cusMgr == null)
                 throw new ArgumentNullException($"Missing Configuation:{configuation}");

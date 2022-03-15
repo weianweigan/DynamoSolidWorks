@@ -180,6 +180,7 @@
     <Compile Include="Control\SelectionPage.xaml.cs">
       <DependentUpon>SelectionPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="CustomProperty\Properties.cs" />
     <Compile Include="Feature\Features.cs" />
     <Compile Include="Feature\RefPlanes.cs" />
     <Compile Include="Selection\OneSelection\SelectBody.cs" />

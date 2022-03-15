@@ -12,7 +12,8 @@ namespace SldWorksNodes.Geometry
     public class Body : SwBodyNode
     {
         #region Ctor
-        internal Body(IBody2 body,bool display = true)
+        [IsVisibleInDynamoLibrary(false)]
+        public Body(IBody2 body,bool display = true)
         {
             SwObject=body;
 

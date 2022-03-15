@@ -3,13 +3,15 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Autodesk.DesignScript.Runtime;
 using SldWorksNodes.Geometry.GeometryBuilder;
 
 namespace SldWorksNodes.Geometry
 {
+    [IsVisibleInDynamoLibrary(false)]
     public class CylindricalSurface:SurfaceBody
     {
-        public CylindricalSurface(
+        internal CylindricalSurface(
             SolidWorks.Interop.sldworks.IBody2 body,
             Point3D center, 
             Vector3D direction,
@@ -35,7 +37,7 @@ namespace SldWorksNodes.Geometry
         /// <param name="refDirection">direction of the axis of the cylindrical surface</param>
         /// <param name="radius">Radius at the center</param>
         /// <returns></returns>
-        public SurfaceBody ByCenterPointDirectionsAndRaduis(
+        public static SurfaceBody ByCenterPointDirectionsAndRaduis(
             Point3D center,
             Vector3D direction,
             Vector3D refDirection,
@@ -49,7 +51,7 @@ namespace SldWorksNodes.Geometry
                 direction,
                 refDirection,
                 radius, 
-                _swUnit);
+                new Manager.UnitManager());
 
             if (body == null)
                 return null;

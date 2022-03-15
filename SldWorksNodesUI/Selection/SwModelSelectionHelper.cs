@@ -109,7 +109,7 @@ namespace SldWorksNodesUI.Selection
                 {
                     _swObjectSelction
                     .UpdateSelection(_page.VM.Selections.
-                             Select(p => Point3D.ByCoordinate(p.Point[0],p.Point[1],p.Point[2]))
+                             Select(p => Point3D.ByCoordinates(p.Point[0],p.Point[1],p.Point[2]))
                             .Cast<TSelection>());
                 }
                 else

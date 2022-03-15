@@ -276,7 +276,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Geometry\Sheet\" />
-    <Folder Include="Selection\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\SldWorksService\SldWorksService.csproj">

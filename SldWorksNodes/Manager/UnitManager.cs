@@ -12,6 +12,7 @@ using SolidWorks.Interop.swconst;
 
 namespace SldWorksNodes.Manager
 {
+    [IsVisibleInDynamoLibrary(false)]
     public enum UnitType
     {
         UseMM,
