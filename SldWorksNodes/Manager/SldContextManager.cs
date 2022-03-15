@@ -9,6 +9,7 @@ namespace SldWorksNodes.Util
     public class SldContextManager
     {
         private static IModeler _modeler;
+        private static IMathUtility _mathUtility;
 
         private SldContextManager(ISldWorksContext context)
         {
@@ -32,5 +33,7 @@ namespace SldWorksNodes.Util
         public static ISwApplication SwApplication => SldContextManager.Instance.Context.SwApplication;
 
         public static IModeler Modeler => _modeler ?? (_modeler = Sw.GetModeler() as IModeler);
+
+        public static IMathUtility MathUtility => _mathUtility ?? (_mathUtility = Sw.IGetMathUtility());
     }
 }

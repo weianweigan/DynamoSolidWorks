@@ -8,7 +8,7 @@
             WindowStartupLocation="CenterOwner"
             Background="#f7f7f7"
         Title="SolidWorks Info"
-             d:DesignHeight="160" d:DesignWidth="170">
+             d:Height="160" d:Width="170">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition/>
@@ -20,9 +20,14 @@
             </GroupBox>
             <GroupBox Header="SolidWorks Setting">
                 <StackPanel>
-                    <RadioButton x:Name="_meter" Checked="_meter_Checked">Use Meter</RadioButton>
-                    <RadioButton x:Name="_mm" Checked="_mm_Checked">Use MM</RadioButton>
-                    <RadioButton x:Name="_swUnitSys" Checked="_swUnitSys_Checked">Use Current Unit System</RadioButton>
+                    <RadioButton x:Name="_mm" 
+                                 IsChecked="True"
+                                 Checked="_mm_Checked">Use MM</RadioButton>
+                    <RadioButton x:Name="_meter" 
+                                 Checked="_meter_Checked">Use Meter</RadioButton>
+                    <RadioButton x:Name="_swUnitSys" 
+                                 Checked="_swUnitSys_Checked"
+                                 Visibility="Collapsed">Use Current Unit System</RadioButton>
                 </StackPanel>
             </GroupBox>
         </StackPanel>

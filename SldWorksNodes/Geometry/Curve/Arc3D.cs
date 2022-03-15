@@ -11,6 +11,7 @@ namespace SldWorksNodes.Geometry
 {
     public class Arc3D : SwCurveBodyNode
     {
+        #region Ctor
         internal Arc3D(Point3D center, Vector3D axis, double radius, Point3D startPoint, Point3D endPoint)
         {
             Center = center;
@@ -21,6 +22,7 @@ namespace SldWorksNodes.Geometry
 
             CreateWireArc();
         }
+        #endregion
 
         //public static Arc3D ByCenterAxisRaduisAngle(Point3D center, Vector3D axis, double radius, double startAngle, double endAngle)
         //{
@@ -36,12 +38,72 @@ namespace SldWorksNodes.Geometry
         //    return CreateArc(center, axis, radius, startPoint, endPoint);
         //}
 
-        public static Arc3D CreateArc(Point3D center, Vector3D axis,Point3D startPoint, Point3D endPoint)
+        #region Create
+        public static Arc3D ByCenterPointStartPointEndPoint(
+            Point3D center,
+            Vector3D normal,
+            Point3D startPoint,
+            Point3D endPoint)
         {
             var radius = (center.ToData() - startPoint.ToData()).Length;
-            return new Arc3D(center, axis,Math.Abs(radius), startPoint, endPoint);
+            return new Arc3D(center, normal,Math.Abs(radius), startPoint, endPoint);
         }
 
+        //public static Arc3D ByBestFitThroughPoints(List<Point3D> points)
+        //{
+
+        //}
+
+        //public static Arc3D ByFillet(
+        //    SwCurveBodyNode curve1,
+        //    SwCurveBodyNode curve2)
+        //{
+
+        //}
+
+        ///// <summary>
+        ///// Create an arc by providing it's center point, radius, angle sweep, and normal vector
+        ///// </summary>
+        ///// <returns></returns>
+        //public static Arc3D ByCenterPointRadiusAngle(
+        //    Point3D center,
+        //    double radius,
+        //    double startAngle,
+        //    double endAngle,
+        //    Vector3D normal)
+        //{
+
+
+        //}
+
+        //public Arc3D ByThreePoints(
+        //    Point3D pt1,Point3D pt2,Point3D pt3)
+        //{
+
+        //}
+
+        //public Arc3D ByStartPointEndPointStartTangent(
+        //    Point3D startPoint, 
+        //    Point3D endPoint,
+        //    Vector3D startTangent)
+        //{
+
+        //}
+        #endregion
+
+        #region Query
+        public Point3D Center { get; }
+
+        public Vector3D Axis { get; }
+
+        public double Radius { get; }
+
+        public Point3D StartPoint { get; }
+
+        public Point3D EndPoint { get; }
+        #endregion
+
+        #region Methods
         private void CreateWireArc()
         {
             var doc = SwContextUtil.GetCurrentPartDocContext();
@@ -54,15 +116,6 @@ namespace SldWorksNodes.Geometry
                 DisplayBody(doc, Color);
             }
         }
-
-        public Point3D Center { get; }
-
-        public Vector3D Axis { get; }
-
-        public double Radius { get; }
-
-        public Point3D StartPoint { get; }
-
-        public Point3D EndPoint { get; }
+        #endregion
     }
 }

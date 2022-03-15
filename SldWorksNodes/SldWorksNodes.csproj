@@ -211,14 +211,17 @@
     <Compile Include="GeometryExtension\Vector3DExtenions.cs" />
     <Compile Include="GeometryExtension\Vector4Extension.cs" />
     <Compile Include="GeometryExtension\VectorExtension.cs" />
-    <Compile Include="Geometry\Cone.cs" />
+    <Compile Include="Geometry\Curve\BSpineCurve.cs" />
+    <Compile Include="Geometry\GeometryBuilder\SurfaceBuilder.cs" />
+    <Compile Include="Geometry\Solid\Cone.cs" />
     <Compile Include="Geometry\Curve.cs" />
     <Compile Include="Geometry\Curve\Arc3D.cs" />
     <Compile Include="Geometry\Body.cs" />
     <Compile Include="Geometry\BodyBoolOperation.cs" />
+    <Compile Include="Geometry\Curve\BoundingBox3D.cs" />
     <Compile Include="Geometry\Curve\Circle3D.cs" />
-    <Compile Include="Geometry\Cube.cs" />
-    <Compile Include="Geometry\Curve\Ellipse.cs" />
+    <Compile Include="Geometry\Solid\Cuboid.cs" />
+    <Compile Include="Geometry\Curve\Ellipse3D.cs" />
     <Compile Include="Geometry\Curve\Line3D.cs" />
     <Compile Include="Geometry\Curve\Point3D.cs" />
     <Compile Include="Geometry\Base\SheetBody.cs" />
@@ -226,7 +229,10 @@
     <Compile Include="Geometry\Base\SwBodyNode.cs" />
     <Compile Include="Geometry\Base\SwCurveBodyNode.cs" />
     <Compile Include="Geometry\Curve\Vector3D.cs" />
-    <Compile Include="Geometry\Cylinder.cs" />
+    <Compile Include="Geometry\Solid\Cylinder.cs" />
+    <Compile Include="Geometry\Surface\BSpineSurface.cs" />
+    <Compile Include="Geometry\Surface\CylindricalSurface.cs" />
+    <Compile Include="Manager\UnitManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Sketch\Sketch.cs" />
     <Compile Include="SldViewExtension.cs" />
@@ -240,13 +246,13 @@
     <Compile Include="SwException\SelectionNotFoundException.cs" />
     <Compile Include="SwException\SelectionTypeErrorException.cs" />
     <Compile Include="SwException\SwObjectLostException.cs" />
-    <Compile Include="Transform\Transform.cs" />
+    <Compile Include="Transform\SwCoordiateSystem.cs" />
     <Compile Include="Util\BodyBuilder.cs" />
     <Compile Include="Util\CurveBuilder.cs" />
     <Compile Include="Util\DispathWrapperUtil.cs" />
     <Compile Include="Util\SwContextUtil.cs" />
     <Compile Include="Util\PIDUtil.cs" />
-    <Compile Include="Util\SldContextManager.cs" />
+    <Compile Include="Manager\SldContextManager.cs" />
     <Compile Include="View\SolidWorksInfoWindow.xaml.cs">
       <DependentUpon>SolidWorksInfoWindow.xaml</DependentUpon>
     </Compile>
@@ -269,8 +275,8 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Geometry\Sheet\" />
     <Folder Include="Selection\" />
-    <Folder Include="Solid\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\SldWorksService\SldWorksService.csproj">

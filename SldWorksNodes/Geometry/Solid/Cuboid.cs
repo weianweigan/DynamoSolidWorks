@@ -11,14 +11,14 @@ namespace SldWorksNodes.Geometry
     /// <summary>
     /// Present a cube geometry
     /// </summary>
-    public class Cube : Body
+    public class Cuboid : Body
     {
-        internal Cube(IBody2 body) : base(body)
+        internal Cuboid(IBody2 body) : base(body)
         {
 
         }
 
-        public static Cube ByBox(Point3D LeftDown, Point3D TopRight)
+        public static Cuboid ByBox(Point3D LeftDown, Point3D TopRight)
         {
             var body = BodyBuilder.CreateFromBox(
                 SldContextManager.Modeler,
@@ -27,7 +27,7 @@ namespace SldWorksNodes.Geometry
             if (body == null)
                 throw new NullReferenceException("Create Body Error");
 
-            return new Cube(body);
+            return new Cuboid(body);
         }
 
         /// <summary>
@@ -39,7 +39,7 @@ namespace SldWorksNodes.Geometry
         /// <returns></returns>
         /// <exception cref="ArgumentException"></exception>
         /// <exception cref="NullReferenceException"></exception>
-        public static Cube ByLengthWidthHeight(double length,double width,double height)
+        public static Cuboid ByLengthWidthHeight(double length,double width,double height)
         {
             if (length < 0 || width < 0 || height < 0)
                 throw new ArgumentException("Value cannot < 0");
@@ -51,7 +51,7 @@ namespace SldWorksNodes.Geometry
             if (body == null)
                 throw new NullReferenceException("Create Body Error");
 
-            return new Cube(body);
+            return new Cuboid(body);
         }
     }
 }
