@@ -37,6 +37,7 @@ namespace SldWorksNodes.Geometry
         }
         #endregion
 
+        #region Create
         public static Body ByPID(string pid)
         {
             var doc = SwContextUtil.GetCurrentPartDocContext();
@@ -49,7 +50,9 @@ namespace SldWorksNodes.Geometry
             else
                 throw new SwObjectLostException(typeof(IFace2));
         }
+        #endregion
 
+        #region Methods
         /// <summary>
         /// Save body file to feature
         /// </summary>
