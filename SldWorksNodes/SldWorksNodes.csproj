@@ -215,8 +215,9 @@
     <Compile Include="Geometry\Curve\Arc3D.cs" />
     <Compile Include="Geometry\Body.cs" />
     <Compile Include="Geometry\BodyBoolOperation.cs" />
+    <Compile Include="Geometry\Curve\BoundingBox.cs" />
     <Compile Include="Geometry\Curve\Circle3D.cs" />
-    <Compile Include="Geometry\Cube.cs" />
+    <Compile Include="Geometry\Cuboid.cs" />
     <Compile Include="Geometry\Curve\Ellipse.cs" />
     <Compile Include="Geometry\Curve\Line3D.cs" />
     <Compile Include="Geometry\Curve\Point3D.cs" />

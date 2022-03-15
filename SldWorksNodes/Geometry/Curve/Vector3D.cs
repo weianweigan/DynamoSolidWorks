@@ -128,18 +128,18 @@ namespace SldWorksNodes.Geometry
 
         #region Methods
 
-        internal static double DotProduct(ref Vector3D vector1, ref Vector3D vector2)
-        {
-            return 
-                vector1._x * vector2._x + 
-                vector1._y * vector2._y + 
+        internal static double DotProduct(
+            ref Vector3D vector1,
+            ref Vector3D vector2) =>
+                vector1._x * vector2._x +
+                vector1._y * vector2._y +
                 vector1._z * vector2._z;
-        }
 
-        internal double[] ToArray()
-        {
-            return new[] { X, Y, Z };
-        }
+        internal double[] ToArray() => 
+            new[] { X, Y, Z };
+
+        internal System.Windows.Media.Media3D.Size3D ToSize() =>
+            new System.Windows.Media.Media3D.Size3D(X, Y, Z);
 
         internal System.Windows.Media.Media3D.Vector3D ToData() =>
             new System.Windows.Media.Media3D.Vector3D(X, Y, Z);

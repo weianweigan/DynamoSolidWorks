@@ -9,6 +9,7 @@ namespace SldWorksNodes.Geometry
 {
     public class Body : SwBodyNode
     {
+        #region Ctor
         internal Body(IBody2 body,bool display = true)
         {
             SwObject=body;
@@ -17,7 +18,9 @@ namespace SldWorksNodes.Geometry
             if (SwObject != null)
                 DisplayBody(doc, Color);
         }
+        #endregion
 
+        #region Query
         public List<Brep.Face> Faces()
         {
             if (SwObject == null)
@@ -30,7 +33,9 @@ namespace SldWorksNodes.Geometry
                 .Select(p => new Brep.Face(p))
                 .ToList();
         }
+        #endregion
 
+        #region Action
         /// <summary>
         /// Save body file to feature
         /// </summary>
@@ -59,5 +64,22 @@ namespace SldWorksNodes.Geometry
             feat.Name = featureName;
             return new Feature.Feature(feat);
         }
+
+        public Dictionary<string,Point3D> Box()
+        {
+            if (SwObject == null)
+                return null;
+
+            var box = SwObject.GetBodyBox() as double[];
+            if (box == null)
+                return null;
+
+            return new Dictionary<string, Point3D>()
+            {
+                {"min",new Point3D(box[0],box[1],box[2]) },
+                {"max",new Point3D(box[3],box[4],box[5]) },
+            };
+        }
+        #endregion
     }
 }
