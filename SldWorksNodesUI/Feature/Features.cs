@@ -66,4 +66,37 @@ namespace SldWorksNodesUI.Feature
             return SelectionState.Restore;
         }
     }
+
+    [NodeName(nameof(Features))]
+    [NodeDescription("Lists all features in active doc to select one")]
+    [NodeCategory("SolidWorks.Selection")]
+    [OutPortNames(Features.outputName)]
+    [OutPortTypes("SldWorksNodes.SldWorksNodes.Feature.Feature")]
+    [OutPortDescriptions("Feature")]
+    [InPortNames("FeatureTypeName")]
+    [InPortTypes("string")]
+    [InPortDescriptions("Get features by FeatureTypeName")]
+    [IsDesignScriptCompatible]
+    public class AllFeatureOfTypeName : SwFeatureDropDown
+    {
+        public const string outputName = "Feature";
+
+        public AllFeatureOfTypeName():base(outputName)
+        {
+
+        }
+
+        protected override SelectionState PopulateItemsCore(string currentSelection)
+        {
+            Items.Clear();
+
+            if(InPorts.FirstOrDefault()?.IsConnected == true)
+            {
+
+            }
+
+            return SelectionState.Restore;
+        }
+
+    }
 }
