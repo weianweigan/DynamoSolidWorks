@@ -64,6 +64,8 @@ namespace SldWorksNodes.Geometry
 
         internal System.Windows.Media.Media3D.Point3D ToData() =>
             new System.Windows.Media.Media3D.Point3D(X, Y, Z);
+
+        internal double[] ToArray() => new double[] { _x, _y, _z };
         #endregion
 
         #region Operator

@@ -8,15 +8,16 @@ using SolidWorks.Interop.sldworks;
 namespace SldWorksNodes.Transform
 {
     /// <summary>
+    /// CoordiateSystem for SolidWorks
     ///    |a b c.n |  0 1 2   12 
     ///    |d e f.o |  3 4 5   13
     ///    |g h i.p |  6 7 8   14
     ///    |j k l.m |  9 10 11 15
     /// </summary>
-    public class Transform
+    public class SwCoordiateSystem
     {
         #region Ctor
-        internal Transform(Point3D postion, Vector3D xAxis, Vector3D yAxis, Vector3D zAxis,double scale = 1)
+        internal SwCoordiateSystem(Point3D postion, Vector3D xAxis, Vector3D yAxis, Vector3D zAxis,double scale = 1)
         {
             Postion = postion;
             XAxis = xAxis;
@@ -39,20 +40,20 @@ namespace SldWorksNodes.Transform
         #endregion
 
         #region Create
-        public static Transform ByPostionAndDirection(Point3D postion,Vector3D xAxis,Vector3D yAxis,Vector3D zAxis)
+        public static SwCoordiateSystem ByPostionAndDirection(Point3D postion,Vector3D xAxis,Vector3D yAxis,Vector3D zAxis)
         {
             if(postion == null || xAxis == null || yAxis == null || zAxis == null)
                 return null;
 
-            return new Transform(postion, xAxis, yAxis, zAxis);
+            return new SwCoordiateSystem(postion, xAxis, yAxis, zAxis);
         }
 
-        public static Transform ByOrign(Point3D postion)
+        public static SwCoordiateSystem ByOrign(Point3D postion)
         {
             if (postion == null)
                 return null;
 
-            return new Transform(postion, Vector3D.XAxis, Vector3D.YAxis, Vector3D.ZAxis);
+            return new SwCoordiateSystem(postion, Vector3D.XAxis, Vector3D.YAxis, Vector3D.ZAxis);
         }
 
         /// <summary>
@@ -60,13 +61,13 @@ namespace SldWorksNodes.Transform
         /// </summary>
         /// <param name="arrayData"></param>
         /// <returns></returns>
-        public static Transform ByMatrix(double[] arrayData)
+        public static SwCoordiateSystem ByMatrix(double[] arrayData)
         {
             if (arrayData == null) return null;
             if (arrayData.Length < 16)
                 throw new ArgumentException($"{arrayData.Length} is not 16");
 
-            return new Transform(
+            return new SwCoordiateSystem(
                 new Point3D(arrayData[9], arrayData[10], arrayData[11]),
                 new Vector3D(arrayData[0], arrayData[1], arrayData[2]),
                 new Vector3D(arrayData[3], arrayData[4], arrayData[5]),
@@ -75,9 +76,9 @@ namespace SldWorksNodes.Transform
                 );
         }
 
-        public static Transform Identity()
+        public static SwCoordiateSystem Identity()
         {
-            return new Transform(
+            return new SwCoordiateSystem(
                 Point3D.Orign, 
                 Vector3D.XAxis, 
                 Vector3D.YAxis, 
@@ -91,7 +92,7 @@ namespace SldWorksNodes.Transform
         /// </summary>
         /// <param name="transform">Math transform by which to multiply the calling math transform</param>
         /// <returns></returns>
-        public Transform Mutiply(Transform transform)
+        public SwCoordiateSystem Mutiply(SwCoordiateSystem transform)
         {
             var current = ToSwTransform(null);
             var inTrans = transform.ToSwTransform(null);
@@ -108,7 +109,7 @@ namespace SldWorksNodes.Transform
         /// Creates a new math transform by inverting the values in an already existing math transform. 
         /// </summary>
         /// <returns>Math transform or NULL if the operation fails</returns>
-        public Transform Invert()
+        public SwCoordiateSystem Invert()
         {
             var current = ToSwTransform(null);
 

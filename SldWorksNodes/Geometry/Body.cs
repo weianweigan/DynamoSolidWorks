@@ -15,7 +15,7 @@ namespace SldWorksNodes.Geometry
             SwObject=body;
 
             var doc = SwContextUtil.GetCurrentPartDocContext();
-            if (SwObject != null)
+            if (SwObject != null && display)
                 DisplayBody(doc, Color);
         }
         #endregion

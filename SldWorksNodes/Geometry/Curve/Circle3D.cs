@@ -1,15 +1,11 @@
 ﻿using SldWorksNodes.Util;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace SldWorksNodes.Geometry
 {
     public class Circle3D: SwCurveBodyNode
     {
-       internal Circle3D(Point3D center, double radius, Vector3D axis)
+        #region Ctor
+        internal Circle3D(Point3D center, double radius, Vector3D axis)
         {
             Center = center;
             Radius = radius;
@@ -17,23 +13,43 @@ namespace SldWorksNodes.Geometry
 
             CreateWireCircle();
         }
+        #endregion
 
-        public static Circle3D ByCenterRadiusAixs(Point3D center, double radius, Vector3D axis)
+        #region Create
+        public static Circle3D ByCenterPointRadiusNormal(
+            Point3D center, 
+            double radius, 
+            Vector3D normal)
         {
-            return new Circle3D(center, radius, axis);
+            return new Circle3D(center, radius, normal);
         }
 
-        public static Circle3D ByCenterRadius(Point3D center, double radius)
+        public static Circle3D ByCenterPointRadius(
+            Point3D center, 
+            double radius)
         {
             return new Circle3D(center, radius, new Vector3D(0,0,1));
         }
 
+        //TODO:三点圆弧
+        //public static Circle3D ByThreePoints(
+        //    Point3D p1,
+        //    Point3D p2,
+        //    Point3D p3)
+        //{
+
+        //}
+        #endregion
+
+        #region Query
         public Point3D Center { get; set; }
 
         public double Radius { get; set; }
 
         public Vector3D Axis { get; set; }
+        #endregion
 
+        #region Methods
         private void CreateWireCircle()
         {
             var doc = SwContextUtil.GetCurrentPartDocContext();
@@ -46,5 +62,6 @@ namespace SldWorksNodes.Geometry
                 DisplayBody(doc, Color);
             }
         }
+        #endregion
     }
 }

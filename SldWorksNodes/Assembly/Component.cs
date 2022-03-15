@@ -167,7 +167,7 @@ namespace SldWorksNodes.Assembly
             return true;
         }
 
-        public bool SetTransform(Transform.Transform transform)
+        public bool SetTransform(Transform.SwCoordiateSystem transform)
         {
             var swTrans = transform.ToSwTransform(_swUnit);
             SwObject.Transform2 = swTrans;

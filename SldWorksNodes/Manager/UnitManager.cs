@@ -16,7 +16,7 @@ namespace SldWorksNodes.Manager
     {
         UseMM,
         UseMeter,
-        //TODO
+        //TODO：SolidWorks用户单位
         UseUserValueInSw,
     }
 
