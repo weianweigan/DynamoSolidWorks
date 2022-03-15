@@ -1,4 +1,5 @@
 ﻿using Autodesk.DesignScript.Runtime;
+using SldWorksNodes.Manager;
 using SldWorksNodes.SwException;
 using SldWorksNodes.Util;
 
@@ -8,8 +9,12 @@ namespace SldWorksNodes.Base
     public abstract class SwNodeModel<TSwType> : SwNode
         where TSwType : class
     {
+        #region Fields
         private TSwType _swObject;
+        protected UnitManager _swUnit = new UnitManager();
+        #endregion
 
+        #region Properties
         public TSwType SwObject
         {
             get => _swObject; set
@@ -18,7 +23,9 @@ namespace SldWorksNodes.Base
                 CreatePID();
             }
         }
+        #endregion
 
+        #region Methods
         protected virtual void CreatePID()
         {
             PID = PIDUtil.GetPID(SldContextManager.Sw.IActiveDoc2, SwObject);
@@ -29,5 +36,6 @@ namespace SldWorksNodes.Base
             if (_swObject == null)
                 throw new SwObjectLostException(typeof(TSwType));
         }
+        #endregion
     }
 }

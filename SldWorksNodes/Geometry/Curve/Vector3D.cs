@@ -24,20 +24,11 @@ namespace SldWorksNodes.Geometry
 
         public double Z { get; set; }
 
-        public static Vector3D XAxis()
-        {
-            return new Vector3D(1, 0, 0);
-        }
+        public static Vector3D XAxis => new Vector3D(1, 0, 0);
 
-        public static Vector3D YAxis()
-        {
-            return new Vector3D(0, 1, 0);
-        }
+        public static Vector3D YAxis => new Vector3D(0, 1, 0);
 
-        public static Vector3D ZAxis()
-        {
-            return new Vector3D(0, 0, 1);
-        }
+        public static Vector3D ZAxis => new Vector3D(0, 0, 1);
 
         internal double[] ToArray()
         {

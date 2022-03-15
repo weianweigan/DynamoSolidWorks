@@ -226,6 +226,7 @@
     <Compile Include="Geometry\Base\SwCurveBodyNode.cs" />
     <Compile Include="Geometry\Curve\Vector3D.cs" />
     <Compile Include="Geometry\Cylinder.cs" />
+    <Compile Include="Manager\UnitManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Sketch\Sketch.cs" />
     <Compile Include="SldViewExtension.cs" />
@@ -245,7 +246,7 @@
     <Compile Include="Util\DispathWrapperUtil.cs" />
     <Compile Include="Util\SwContextUtil.cs" />
     <Compile Include="Util\PIDUtil.cs" />
-    <Compile Include="Util\SldContextManager.cs" />
+    <Compile Include="Manager\SldContextManager.cs" />
     <Compile Include="View\SolidWorksInfoWindow.xaml.cs">
       <DependentUpon>SolidWorksInfoWindow.xaml</DependentUpon>
     </Compile>

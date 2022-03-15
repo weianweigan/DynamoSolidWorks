@@ -1,16 +1,19 @@
-﻿using SldWorksNodes.Base;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using SldWorksNodes.Base;
+using SldWorksNodes.Geometry;
+using SldWorksNodes.Manager;
 using SldWorksNodes.SwException;
 using SldWorksNodes.Util;
 using SolidWorks.Interop.sldworks;
 using SolidWorks.Interop.swconst;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 
 namespace SldWorksNodes.Assembly
 {
     public class Component : SwNodeModel<IComponent2>
     {
+
         #region Ctor
         internal Component(IComponent2 comp)
         {
@@ -53,7 +56,7 @@ namespace SldWorksNodes.Assembly
         }
         #endregion
 
-        #region Some Properties about component
+        #region Query Properties
         public int ID => SwObject.GetID();
 
         public bool IsFixed => SwObject.IsFixed();
@@ -75,11 +78,7 @@ namespace SldWorksNodes.Assembly
         public bool IsSuppressed => SwObject.IsSuppressed();
         #endregion
 
-        #region Methods
-        public void SetName(string newName)
-        {
-            SwObject.Name2 = newName;
-        }
+        #region Query Methods
 
         public Feature.Feature FeatureByName(string name)
         {
@@ -89,11 +88,6 @@ namespace SldWorksNodes.Assembly
                 return null;
 
             return new Feature.Feature(feat);
-        }
-
-        public override string ToString()
-        {
-            return SwObject?.Name ?? base.ToString();
         }
 
         public string PathName()
@@ -146,6 +140,46 @@ namespace SldWorksNodes.Assembly
                 .Cast<IBody2>()
                 .Select(p => new Geometry.Body(p))
                 .ToList();
+        }
+        #endregion
+
+        #region Action
+        public void SetName(string newName)
+        {
+            SwObject.Name2 = newName;
+        }
+
+        /// <summary>
+        /// Set component's postion in assembly
+        /// </summary>
+        /// <param name="point">Postion of this component</param>
+        public bool SetPostion(Point3D point)
+        {
+            var data = SwObject.Transform2.ArrayData as double[];
+
+            var newPoint = _swUnit.ConvertPoint(point);
+            data[9] = newPoint.X;
+            data[10] = newPoint.Y;
+            data[11] = newPoint.Z;
+
+            SwObject.Transform2.ArrayData = data;
+
+            return true;
+        }
+
+        public bool SetTransform(Transform.Transform transform)
+        {
+            var swTrans = transform.ToSwTransform(_swUnit);
+            SwObject.Transform2 = swTrans;
+
+            return true;
+        }
+        #endregion
+
+        #region Methods
+        public override string ToString()
+        {
+            return SwObject?.Name ?? base.ToString();
         }
         #endregion
     }
