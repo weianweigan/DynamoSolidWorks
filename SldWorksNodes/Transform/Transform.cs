@@ -38,7 +38,7 @@ namespace SldWorksNodes.Transform
         public double ScaleFactor { get; set; } = 1;
         #endregion
 
-        #region Creat
+        #region Create
         public static Transform ByPostionAndDirection(Point3D postion,Vector3D xAxis,Vector3D yAxis,Vector3D zAxis)
         {
             if(postion == null || xAxis == null || yAxis == null || zAxis == null)
