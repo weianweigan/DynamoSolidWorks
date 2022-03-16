@@ -9,10 +9,10 @@ namespace SldWorksNodes.Transform
 {
     /// <summary>
     /// CoordiateSystem for SolidWorks
-    ///    |a b c.n |  0 1 2   12 
-    ///    |d e f.o |  3 4 5   13
-    ///    |g h i.p |  6 7 8   14
-    ///    |j k l.m |  9 10 11 15
+    ///    |a b c.n |  0 1 2   13 
+    ///    |d e f.o |  3 4 5   14
+    ///    |g h i.p |  6 7 8   15
+    ///    |j k l.m |  9 10 11 12
     /// </summary>
     public class SwCoordiateSystem
     {
@@ -36,7 +36,7 @@ namespace SldWorksNodes.Transform
 
         public Vector3D ZAxis { get; }
 
-        public double ScaleFactor { get; set; } = 1;
+        public double ScaleFactor { get;} = 1;
         #endregion
 
         #region Create
@@ -72,7 +72,7 @@ namespace SldWorksNodes.Transform
                 new Vector3D(arrayData[0], arrayData[1], arrayData[2]),
                 new Vector3D(arrayData[3], arrayData[4], arrayData[5]),
                 new Vector3D(arrayData[6], arrayData[7], arrayData[8]),
-                arrayData[15]
+                arrayData[12]
                 );
         }
 
@@ -134,13 +134,21 @@ namespace SldWorksNodes.Transform
             var newPostion = unitManager == null ? 
                 Postion :
                 unitManager.ConvertPoint(Postion);
-            return SldContextManager.MathUtility.CreateTransform(new double[]
-            {
-                XAxis.X,XAxis.Y,XAxis.Z,0,
-                YAxis.X,YAxis.Y,YAxis.Z,0,
-                ZAxis.X,ZAxis.Y,ZAxis.Z,0,
-                newPostion.X,newPostion.Y,newPostion.Z,1
-            }) as MathTransform;
+            return SldContextManager.MathUtility.ComposeTransform(
+                SldContextManager.MathUtility.CreateVector(XAxis.ToArray()) as MathVector,
+                SldContextManager.MathUtility.CreateVector(YAxis.ToArray()) as MathVector,
+                SldContextManager.MathUtility.CreateVector(ZAxis.ToArray()) as MathVector,
+                SldContextManager.MathUtility.CreateVector(Postion.ToArray()) as MathVector,
+                ScaleFactor);
+
+            //return SldContextManager.MathUtility.CreateTransform(new double[]
+            //{
+            //    XAxis.X,XAxis.Y,XAxis.Z,
+            //    YAxis.X,YAxis.Y,YAxis.Z,
+            //    ZAxis.X,ZAxis.Y,ZAxis.Z,
+            //    newPostion.X,newPostion.Y,newPostion.Z,1,
+            //    0,0,0
+            //}) as MathTransform;
         }
         #endregion
     }

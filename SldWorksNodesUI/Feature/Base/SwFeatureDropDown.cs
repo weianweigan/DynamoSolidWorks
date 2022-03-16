@@ -28,7 +28,7 @@ namespace SldWorksNodesUI
         {
         }
 
-        protected IEnumerable<DynamoDropDownItem> GetNeededFeats(string featTypeName)
+        public static IEnumerable<DynamoDropDownItem> GetNeededFeats(string featTypeName)
         {
             var doc = SwContextUtil.GetActivDocContext();
 

@@ -1,27 +1,38 @@
 ﻿using Autodesk.DesignScript.Runtime;
 using SldWorksNodes.Util;
+using SolidWorks.Interop.sldworks;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Xarial.XCad.SolidWorks.Enums;
 
 namespace SldWorksNodes.EquationMgr
 {
     public class Equation
     {
-        public Equation(int index, string value)
+        #region Fields
+        private readonly IEquationMgr _equationMgr;
+        #endregion
+
+        #region Ctor
+        [IsVisibleInDynamoLibrary(false)]
+        public Equation(int index, string value, IEquationMgr equationMgr)
         {
             Index = index;
             Value = value;
+            _equationMgr = equationMgr;
         }
+        #endregion
 
-        [IsVisibleInDynamoLibrary(false)]
+        #region Query
         public int Index { get; }
 
-        [IsVisibleInDynamoLibrary(false)]
         public string Value { get; private set; }
+        #endregion
 
+        #region Create
         public static Equation ByIndex(int index)
         {
             if(index < 0)
@@ -37,7 +48,7 @@ namespace SldWorksNodes.EquationMgr
             }
             var equation = equMgr.Equation[index];
 
-            return new Equation(index,equation);
+            return new Equation(index,equation,equMgr);
         }
 
         public static List<Equation> All()
@@ -51,26 +62,26 @@ namespace SldWorksNodes.EquationMgr
             {
                 var equation = equMgr.Equation[i];
 
-                equations.Add(new Equation(i, equation));
+                equations.Add(new Equation(i, equation,equMgr));
             }
 
             return equations;
         }
+        #endregion
 
+        #region Action
         public bool SetValue(string equation)
         {
-            var doc = SwContextUtil.GetActivDocContext();
-            var equMgr = doc.GetEquationMgr();
-            var count = equMgr.GetCount();
+            var count = _equationMgr.GetCount();
 
             if (Index >= count)
             {
                 throw new IndexOutOfRangeException($"Equation count:{count},out of range");
             }
 
-            equMgr.Equation[Index] = equation;
+            _equationMgr.Equation[Index] = equation;
 
-            if (equMgr.Equation[Index] == equation)
+            if (_equationMgr.Equation[Index] == equation)
             {
                 Value = equation;
                 return true;
@@ -79,9 +90,21 @@ namespace SldWorksNodes.EquationMgr
                 return false;
         }
 
+        public bool IsGobalVar()
+        {
+            var version = SldContextManager.SwApplication.Version.Major;
+            if ((int)version < (int)SwVersion_e.Sw2017)
+                throw new NotSupportedException($"SolidWorks Version({version}) Not Support");
+
+            return  _equationMgr.GlobalVariable[Index];
+        }
+        #endregion
+
+        #region Methods
         public override string ToString()
         {
             return $"{Index}:{Value}";
         }
+        #endregion
     }
 }

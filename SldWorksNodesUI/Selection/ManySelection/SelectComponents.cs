@@ -17,7 +17,7 @@ namespace SldWorksNodesUI.Selection
     {
         #region Fields
         private const string message = "Select Component";
-        private const string prefix = "Component";
+        private const string prefix = "Components";
         #endregion
 
         #region Ctor

@@ -64,7 +64,7 @@ namespace SldWorksNodes.Assembly
 
         public bool IsFixed => SwObject.IsFixed();
 
-        public bool IdHidden(bool considerSuppressed = false)
+        public bool IsHidden(bool considerSuppressed = false)
         {
 
             return SwObject.IsHidden(false);
@@ -141,6 +141,18 @@ namespace SldWorksNodes.Assembly
                 .Select(p => new Geometry.Body(p))
                 .ToList();
         }
+
+        public Transform.SwCoordiateSystem CompCoordiate()
+        {
+            var data = SwObject.Transform2.ArrayData as double[];
+            return Transform.SwCoordiateSystem.ByMatrix(data);
+        }
+
+        public Transform.SwCoordiateSystem CompPresentationCoordiate()
+        {
+            var data = SwObject.PresentationTransform.ArrayData as double[];
+            return Transform.SwCoordiateSystem.ByMatrix(data);
+        }
         #endregion
 
         #region Action
@@ -162,15 +174,28 @@ namespace SldWorksNodes.Assembly
             data[10] = newPoint.Y;
             data[11] = newPoint.Z;
 
-            SwObject.Transform2.ArrayData = data;
+            var trans = Transform.SwCoordiateSystem.ByMatrix(data);
+            SwObject.Transform2 = trans.ToSwTransform(null);
 
             return true;
         }
 
-        public bool SetTransform(Transform.SwCoordiateSystem transform)
+        public bool SetCoordiateSystem(Transform.SwCoordiateSystem coordiateSystem)
         {
-            var swTrans = transform.ToSwTransform(_swUnit);
+            var swTrans = coordiateSystem.ToSwTransform(_swUnit);
             SwObject.Transform2 = swTrans;
+            
+            SwContextUtil.GetActivDocContext()?.GraphicsRedraw2();
+
+            return true;
+        }
+
+        public bool SetPresentationCoordiate(Transform.SwCoordiateSystem coordiateSystem)
+        {
+            var swTrans = coordiateSystem.ToSwTransform(_swUnit);
+            SwObject.PresentationTransform = swTrans;
+
+            SwContextUtil.GetActivDocContext()?.GraphicsRedraw2();
 
             return true;
         }

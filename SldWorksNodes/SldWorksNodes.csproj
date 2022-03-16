@@ -181,7 +181,6 @@
     <Compile Include="ConfigurationManager\SwConfiguration.cs" />
     <Compile Include="ConfigurationManager\ConfigurationManager.cs" />
     <Compile Include="CustomProperty\CustomProperty.cs" />
-    <Compile Include="CustomProperty\CustomPropertyCreation.cs" />
     <Compile Include="CustomProperty\CustomPropertyManager.cs" />
     <Compile Include="CustomProperty\StringCustomProperty.cs" />
     <Compile Include="Dimension\Dimension.cs" />
