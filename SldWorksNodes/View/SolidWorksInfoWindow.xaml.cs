@@ -16,6 +16,19 @@ namespace SldWorksNodes.View
             InitializeComponent();
 
             _swVersion.Text = SldContextManager.SwApplication.Version.ToString();
+
+            switch (UnitManager.UnitType)
+            {
+                case UnitType.UseMM:
+                    _mm.IsChecked = true;
+                    break;
+                case UnitType.UseMeter:
+                    _meter.IsChecked = true;
+                    break;
+                case UnitType.UseUserValueInSw:
+                    _swUnitSys.IsChecked = true;
+                    break;
+            }
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)

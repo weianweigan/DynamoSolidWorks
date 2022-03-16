@@ -17,6 +17,7 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="80"/>
             <RowDefinition Height="*"/>
+            <RowDefinition Height="12"/>
         </Grid.RowDefinitions>
         <Button BorderThickness="0"
                 Background="{StaticResource SldBackground}"
@@ -73,5 +74,12 @@
                 </Grid>
             </Expander>
         </StackPanel>
+        <Button Grid.Row="2"
+                FontSize="8"
+                Visibility="Collapsed"
+                BorderThickness="0" 
+                Background="{StaticResource SldBackground}"
+                HorizontalContentAlignment="Left"
+                Command="{Binding StartSandBox}">Start Sandbox</Button>
     </Grid>
 </UserControl>

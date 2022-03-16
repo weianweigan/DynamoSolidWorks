@@ -199,6 +199,11 @@ namespace SldWorksNodes.Assembly
 
             return true;
         }
+
+        public CustomProperty.CustomProperty CustomProperty(string name,string configuration = "")
+        {
+            return SldWorksNodes.CustomProperty.CustomPropertyManager.Get(Doc().SwObject,name,configuration);
+        }
         #endregion
 
         #region Methods

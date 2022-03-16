@@ -97,5 +97,10 @@ namespace SldWorksNodes.Brep
                 (double)res[1],
                 (double)res[2]);
         }
+
+        public bool IsPlane()
+        {
+            return (SwObject.GetSurface() as Surface).IsPlane();
+        }
     }
 }

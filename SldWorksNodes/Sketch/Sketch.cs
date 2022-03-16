@@ -4,20 +4,24 @@ using SldWorksNodes.SwException;
 using SolidWorks.Interop.sldworks;
 using Autodesk.DesignScript.Runtime;
 using SldWorksNodes.Feature;
+using System;
 
 namespace SldWorksNodes.Sketch
 {
     /// <summary>
     /// SolidWork Sketch
     /// </summary>
-    public class Sketch:SpecFeature<ISketch,string>
+    public class Sketch : SpecFeature<ISketch, string>
     {
-        internal Sketch(IFeature sketch):base(sketch)
+        #region Ctor
+        internal Sketch(IFeature sketch) : base(sketch)
         {
         }
+        #endregion
 
+        #region Creation
         /// <summary>
-        /// Create a sketch in solidworks.
+        /// get a sketch in solidworks.
         /// </summary>
         /// <param name="name">Sketch's Name</param>
         /// <returns>a sketch object</returns>
@@ -27,7 +31,7 @@ namespace SldWorksNodes.Sketch
 
             IFeature existFeat = SwContextUtil.GetFeatureByName(name, FeatTypeNameUtil.ProfileFeature);
 
-            if(existFeat == null)
+            if (existFeat == null)
                 return null;
 
             return new Sketch(existFeat);
@@ -49,47 +53,106 @@ namespace SldWorksNodes.Sketch
             return new Sketch(feat);
         }
 
-        [IsVisibleInDynamoLibrary(false)]
-        public static Sketch CreateSketch(IFeature feat)
+        public static Sketch ByFeature(Feature.Feature skeFeature)
         {
-            return null;
-        }
+            if (skeFeature == null)
+                return null;
 
-        [IsVisibleInDynamoLibrary(false)]
-        public static Sketch CreateSketch(Brep.Face face)
-        {
-            return null;
-        }
+            if (skeFeature.SwObject.GetTypeName2() != FeatTypeNameUtil.ProfileFeature)
+                throw new FeatureTypeNameErrorException(skeFeature.Name, FeatTypeNameUtil.ProfileFeature);
 
-        #region Properties
+            return new Sketch(skeFeature.SwObject);
+        }
+        #endregion
+
+        #region Query
         /// <summary>
         /// Name of Sketch Feature
         /// </summary>
         public string Name => ((IFeature)SwObject)?.Name;
         #endregion
 
-/// <summary>
-        /// Pre-Select sketch feature,then create this node
-        /// </summary>
-        /// <returns></returns>
-        /// <exception cref="FeatureTypeNameErrorException"></exception>
-        private static Sketch CurrentSelection()
+        #region Action
+        [IsVisibleInDynamoLibrary(false)]
+        public static Sketch CreateSketch(Feature.Feature refPlaneFeat, string name)
         {
-            var feature = SwContextUtil.GetCurrentSelectedFeature();
+            if (refPlaneFeat == null || string.IsNullOrWhiteSpace(name))
+                return null;
 
-            if (feature.GetTypeName2() != FeatTypeNameUtil.ProfileFeature)
-                throw new FeatureTypeNameErrorException(feature.Name, FeatTypeNameUtil.ProfileFeature);
+            if(refPlaneFeat.SwObject.GetTypeName2() != FeatTypeNameUtil.RefPlane)
+                throw new FeatureTypeNameErrorException(refPlaneFeat.Name, FeatTypeNameUtil.RefPlane);
 
-            return new Sketch(feature);
+            var doc = SwContextUtil.GetActivDocContext();
+            if (doc == null)
+                return null;
+
+            if (doc.SketchManager.ActiveSketch != null)
+                doc.EditSketch();
+            var feat = doc.FindFeat(name);
+
+            if (feat != null)
+            {
+                if (feat.GetTypeName2() != FeatTypeNameUtil.ProfileFeature)
+                    throw new InvalidOperationException($"{name} Exist and it's not a sketch");
+
+                return new Sketch(feat);
+            }
+
+            //Create sketch
+            (refPlaneFeat.SwObject).Select2(false, 0);
+            doc.SketchManager.InsertSketch(true);
+            if (doc.SketchManager.ActiveSketch != null)
+            {
+                var skeFeat = (doc.SketchManager.ActiveSketch as IFeature);
+                skeFeat.Name = name;
+                return new Sketch(skeFeat);
+            }
+            else
+            {
+                throw new Exception("Create Sketch failed");
+            }
+
+            return null;
         }
 
-        /// <summary>
-        /// SketchName
-        /// </summary>
-        [IsVisibleInDynamoLibrary(false)]
-        public override string ToString()
+        public static Sketch CreateSketch(Brep.Face face, string name)
         {
-            return Name ?? base.ToString();
+            if (face == null || string.IsNullOrWhiteSpace(name))
+                return null;
+
+            if (!face.IsPlane())
+                throw new Exception("Current face is not a plane");
+
+            var doc = SwContextUtil.GetActivDocContext();
+            if (doc == null)
+                return null;
+
+            if (doc.SketchManager.ActiveSketch != null)
+                doc.EditSketch();
+            var feat = doc.FindFeat(name);
+
+            if (feat != null)
+            {
+                if (feat.GetTypeName2() != FeatTypeNameUtil.ProfileFeature)
+                    throw new InvalidOperationException($"{name} Exist and it's not a sketch");
+
+                return new Sketch(feat);
+            }
+
+            //Create sketch
+            ((Entity)face.SwObject).Select2(false, 0);
+            doc.SketchManager.InsertSketch(true);
+            if(doc.SketchManager.ActiveSketch != null)
+            {
+                var skeFeat =(doc.SketchManager.ActiveSketch as IFeature);
+                skeFeat.Name = name;
+                return new Sketch(skeFeat);
+            }
+            else
+            {
+                throw new Exception("Create Sketch failed");
+            }
+
         }
    
         /// <summary>
@@ -102,5 +165,14 @@ namespace SldWorksNodes.Sketch
             if (feat != null)
                 feat.Name = name;
         }
+
+        #endregion
+
+        #region Methods
+        public override string ToString()
+        {
+            return Name ?? base.ToString();
+        }
+        #endregion
     }
 }

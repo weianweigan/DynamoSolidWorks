@@ -97,5 +97,33 @@ namespace DynamoSldWorks.ViewModel
                 _swAddin.Application.ShowMessageBox(ex.Message);
             }
         }
+
+        private DelegateCommand _startSandBox;
+
+        public ICommand StartSandBox
+        {
+            get
+            {
+                if (_startSandBox == null)
+                {
+                    _startSandBox = new DelegateCommand(PerformStartSandBox);
+                }
+
+                return _startSandBox;
+            }
+        }
+
+        private void PerformStartSandBox()
+        {
+            var sandBox = Path.Combine(SwAddin.DynamoCorePath, "DynamoSandBox.exe");
+            if (File.Exists(sandBox))
+            {
+                Process.Start(sandBox);
+            }
+            else
+            {
+                _swAddin.Application.ShowMessageBox($"")
+            }
+        }
     }
 }

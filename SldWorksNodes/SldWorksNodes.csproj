@@ -233,6 +233,11 @@
     <Compile Include="Geometry\Surface\CylindricalSurface.cs" />
     <Compile Include="Manager\UnitManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\SwSettings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>SwSettings.settings</DependentUpon>
+    </Compile>
     <Compile Include="Sketch\Sketch.cs" />
     <Compile Include="SldViewExtension.cs" />
     <Compile Include="SwException\ActiveDocIsNotPartDocException.cs" />
@@ -258,6 +263,10 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Icons\solidworks.png" />
+    <None Include="Properties\SwSettings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>SwSettings.Designer.cs</LastGenOutput>
+    </None>
     <None Include="Resources\Dimension.png" />
     <None Include="SldWorksNodes.Migrations.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>

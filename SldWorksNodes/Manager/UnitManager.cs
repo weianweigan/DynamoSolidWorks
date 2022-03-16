@@ -15,24 +15,31 @@ namespace SldWorksNodes.Manager
     [IsVisibleInDynamoLibrary(false)]
     public enum UnitType
     {
-        UseMM,
-        UseMeter,
+        UseMM = 0,
+        UseMeter = 1,
         //TODO：SolidWorks用户单位
-        UseUserValueInSw,
+        UseUserValueInSw = 2,
     }
 
     [IsVisibleInDynamoLibrary(false)]
-    public class UnitManager:IDisposable
+    public class UnitManager : IDisposable
     {
         private IUserUnit _lengthUnit;
         private IUserUnit _angleUnit;
 
-        public static UnitType UnitType { get; set; }
+        public static UnitType UnitType
+        {
+            get { return (UnitType)Properties.SwSettings.Default.UnitType; }
+            set
+            {
+                Properties.SwSettings.Default.UnitType = (int)value;
+            }
+        }
 
         #region Ctor
         public UnitManager(IModelDoc2 doc)
         {
-            if(UnitType == UnitType.UseUserValueInSw)
+            if (UnitType == UnitType.UseUserValueInSw)
             {
                 _lengthUnit = doc.GetUserUnit((int)swUserUnitsType_e.swLengthUnit) as IUserUnit;
                 _angleUnit = doc.GetUserUnit((int)swUserUnitsType_e.swAngleUnit) as IUserUnit;
@@ -41,7 +48,7 @@ namespace SldWorksNodes.Manager
 
         public UnitManager()
         {
-            if(UnitType == UnitType.UseUserValueInSw)
+            if (UnitType == UnitType.UseUserValueInSw)
             {
                 throw new ArgumentException("In System UnitType,Please Use UnitManager(IModelDoc2 doc)");
             }
@@ -87,7 +94,7 @@ namespace SldWorksNodes.Manager
             var y = ConvertDouble(point.Y);
             var z = ConvertDouble(point.Z);
 
-            return new Point3D(x,y,z);
+            return new Point3D(x, y, z);
         }
 
         public void Dispose()

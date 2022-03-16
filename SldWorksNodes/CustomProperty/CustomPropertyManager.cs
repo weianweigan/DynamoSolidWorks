@@ -51,7 +51,15 @@ namespace SldWorksNodes.CustomProperty
                 return null;
 
             var doc = SwContextUtil.GetActivDocContext();
+            return Get(doc,name, configuation);
+        }
 
+        internal static CustomProperty Get(
+            SolidWorks.Interop.sldworks.IModelDoc2 doc,
+            string name, 
+            string configuation
+            )
+        {
             var cusMgr = doc.Extension.CustomPropertyManager[configuation ?? ""];
 
             if (cusMgr == null)
@@ -59,7 +67,7 @@ namespace SldWorksNodes.CustomProperty
 
             cusMgr.Get2(name, out var value, out var resolvedValue);
 
-            return new StringCustomProperty(name,resolvedValue, configuation);
+            return new StringCustomProperty(name, resolvedValue, configuation);
         }
     }
 }

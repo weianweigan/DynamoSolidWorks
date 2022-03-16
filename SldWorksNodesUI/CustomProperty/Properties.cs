@@ -36,7 +36,7 @@ namespace SldWorksNodesUI.SwItems
 
         protected IEnumerable<DynamoDropDownItem> GetProperties(string config = "")
         {
-            var propeties = SldWorksNodes.CustomProperty.CustomPropertyManager.All(config);
+            var propeties = SldWorksNodes.CustomProperty.CustomProperty.All(config);
 
             return propeties.Select(p => new DynamoDropDownItem(p.Name, p.Value()));
         }
