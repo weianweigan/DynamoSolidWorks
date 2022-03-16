@@ -36,6 +36,8 @@ namespace SolidWorks.Interop.sldworks
         /// </summary>
         public const string ProfileFeature = nameof(ProfileFeature);
 
+        public const string ThreeDProfileFeature = "3DProfileFeature";
+
         /// <summary>
         /// 凸台拉伸特征
         /// </summary>

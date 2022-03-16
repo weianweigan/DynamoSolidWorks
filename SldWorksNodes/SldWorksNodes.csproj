@@ -238,7 +238,9 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
       <DependentUpon>SwSettings.settings</DependentUpon>
     </Compile>
+    <Compile Include="Sketch\SwSketch.cs" />
     <Compile Include="Sketch\Sketch.cs" />
+    <Compile Include="Sketch\Sketch3D.cs" />
     <Compile Include="SldViewExtension.cs" />
     <Compile Include="SwException\ActiveDocIsNotPartDocException.cs" />
     <Compile Include="SwException\ActiveDocNotFoundException.cs" />

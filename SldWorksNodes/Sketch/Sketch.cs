@@ -11,7 +11,7 @@ namespace SldWorksNodes.Sketch
     /// <summary>
     /// SolidWork Sketch
     /// </summary>
-    public class Sketch : SpecFeature<ISketch, string>
+    public class Sketch : SwSketch
     {
         #region Ctor
         internal Sketch(IFeature sketch) : base(sketch)
@@ -111,8 +111,6 @@ namespace SldWorksNodes.Sketch
             {
                 throw new Exception("Create Sketch failed");
             }
-
-            return null;
         }
 
         public static Sketch CreateSketch(Brep.Face face, string name)
