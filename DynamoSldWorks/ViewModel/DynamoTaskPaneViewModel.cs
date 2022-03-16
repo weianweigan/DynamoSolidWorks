@@ -122,7 +122,7 @@ namespace DynamoSldWorks.ViewModel
             }
             else
             {
-                _swAddin.Application.ShowMessageBox($"")
+                _swAddin.Application.ShowMessageBox($"");
             }
         }
     }
