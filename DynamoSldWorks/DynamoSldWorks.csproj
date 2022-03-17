@@ -1,13 +1,13 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
 	<PropertyGroup>
-		<TargetFramework>net48</TargetFramework>
+		<TargetFramework>net472</TargetFramework>
 		<UseWPF>true</UseWPF>
 		<EnableComHosting>true</EnableComHosting>
 		<BaseOutputPath>..\bin</BaseOutputPath>
 		<AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
 		<!--<AppendRuntimeIdentifierToOutputPath>false</AppendRuntimeIdentifierToOutputPath>-->
 		<AppendConfigurationToOutputPath>false</AppendConfigurationToOutputPath>
-		<Version>0.0.5.5</Version>
+		<Version>0.0.6.6</Version>
 	</PropertyGroup>
 	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
 	  <DefineConstants>$(DefineConstants)TRACE;V1_2_0;</DefineConstants>

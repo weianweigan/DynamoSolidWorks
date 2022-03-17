@@ -28,7 +28,7 @@
             <Expander IsExpanded="True"
                       MaxHeight="300">
                 <Expander.Header>
-                    <TextBlock FontWeight="Light">Example</TextBlock>
+                    <TextBlock FontWeight="Light">Samples</TextBlock>
                 </Expander.Header>
                 <ListBox ItemsSource="{Binding SampleFiles}"
                          Margin="10" 
