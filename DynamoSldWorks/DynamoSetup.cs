@@ -71,6 +71,7 @@ namespace DynamoSldWorks.View
 
                 _model = SldDynamoModel.Make(_swApplication);
                 _model.UpdateManager.UpdateInfo = null;//Close Update
+                _model.UpdateManager.ForceUpdate = false;
 
                 var watch3DModel = HelixWatch3DViewModel.TryCreateHelixWatch3DViewModel
                         (

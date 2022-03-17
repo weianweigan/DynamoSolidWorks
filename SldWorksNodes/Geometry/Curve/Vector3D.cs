@@ -108,6 +108,16 @@ namespace SldWorksNodes.Geometry
                 vector2.ToData());
         }
 
+        /// <summary>
+        /// 是否平行
+        /// </summary>
+        public static bool IsPara(Vector3D vec, Vector3D another)
+        {
+            double eplison = 0.00001;
+            var angle = Vector3D.AngleBetween(vec, another);
+            return Math.Abs(angle) < eplison || Math.Abs(angle - 180) < eplison;
+        }
+
         public static Vector3D Normalized(Vector3D vector)
         {
             var vec = new System.Windows.Media.Media3D.Vector3D(

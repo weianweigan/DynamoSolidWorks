@@ -28,7 +28,11 @@ namespace SldWorksNodesUI.SwItems
         {
             Items.Clear();
 
-            var config = InputNodes[0]?.Item2?.CachedValue?.StringData ?? "";
+            string config = "";
+            if (InputNodes.Count > 0)
+            {
+                config = InputNodes.First().Value.Item2?.CachedValue?.StringData ?? "";
+            }
             Items.AddRange(GetProperties(config));
 
             return SelectionState.Restore;

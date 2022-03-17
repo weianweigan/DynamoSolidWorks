@@ -232,15 +232,21 @@
     <Compile Include="Geometry\Surface\BSpineSurface.cs" />
     <Compile Include="Geometry\Surface\CylindricalSurface.cs" />
     <Compile Include="Manager\UnitManager.cs" />
+    <Compile Include="MaterialProperty.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\SwSettings.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
       <DependentUpon>SwSettings.settings</DependentUpon>
     </Compile>
-    <Compile Include="Sketch\SwSketch.cs" />
+    <Compile Include="Sketch\Base\SketchElement.cs" />
+    <Compile Include="Sketch\Base\SketchSegment.cs" />
+    <Compile Include="Sketch\Base\SwSketch.cs" />
     <Compile Include="Sketch\Sketch.cs" />
     <Compile Include="Sketch\Sketch3D.cs" />
+    <Compile Include="Sketch\SketchArc.cs" />
+    <Compile Include="Sketch\SketchLine.cs" />
+    <Compile Include="Sketch\SketchPoint.cs" />
     <Compile Include="SldViewExtension.cs" />
     <Compile Include="SwException\ActiveDocIsNotPartDocException.cs" />
     <Compile Include="SwException\ActiveDocNotFoundException.cs" />

@@ -4,6 +4,9 @@
 		<name>SldWorksNodes</name>
 	</assembly>
 	<namespaces>
+		<namespace name="SldWorksNodes">
+			<category>SolidWorks</category>
+		</namespace>
 		<namespace name="SldWorksNodes.Sketch">
 			<category>SolidWorks.Sketch</category>
 		</namespace>

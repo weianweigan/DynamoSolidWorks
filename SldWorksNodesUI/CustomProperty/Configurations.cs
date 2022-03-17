@@ -10,7 +10,6 @@ namespace SldWorksNodesUI.SwItems
     [NodeName(nameof(Configurations))]
     [NodeDescription("Lists all configuration in active doc to select one")]
     [NodeCategory("SolidWorks.Selection")]
-    [InPortNames("Configuation")]
     [IsDesignScriptCompatible]
     public class Configurations:SwDropDownBase
     {
@@ -38,7 +37,7 @@ namespace SldWorksNodesUI.SwItems
 
         protected IEnumerable<DynamoDropDownItem> GetProperties(string config = "")
         {
-            var propeties = SldWorksNodes.CustomProperty.CustomPropertyManager.All(config);
+            var propeties = SldWorksNodes.CustomProperty.CustomProperty.All(config);
 
             return propeties.Select(p => new DynamoDropDownItem(p.Name, p.Value()));
         }

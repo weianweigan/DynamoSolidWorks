@@ -9,6 +9,7 @@ namespace SldWorksNodes.View
     /// SolidWorksInfoWindow.xaml 的交互逻辑
     /// </summary>
     [IsVisibleInDynamoLibrary(false)]
+    [SupressImportIntoVM()]
     public partial class SolidWorksInfoWindow : Window
     {
         public SolidWorksInfoWindow()

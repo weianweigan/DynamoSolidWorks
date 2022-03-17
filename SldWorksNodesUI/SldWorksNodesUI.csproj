@@ -201,9 +201,6 @@
     <Compile Include="Selection\SelectPointOnFace.cs" />
     <Compile Include="Selection\SwModelSelectionHelper.cs" />
     <Compile Include="Selection\Base\SwObjectSelction.cs" />
-    <Compile Include="Sketch\Base\SketchElementNode.cs" />
-    <Compile Include="Sketch\Base\SketchSegmentNode.cs" />
-    <Compile Include="Sketch\SketchLine.cs" />
     <Compile Include="SwDropDownBase.cs" />
     <Compile Include="Feature\Base\SwFeatureDropDown.cs" />
   </ItemGroup>
