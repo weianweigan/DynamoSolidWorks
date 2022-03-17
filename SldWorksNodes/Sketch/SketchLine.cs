@@ -44,7 +44,7 @@ namespace SldWorksNodes.Sketch
 
             if (SwObject != null)
             {
-                return Update();
+                return Update(startPoint,endPoint);
             }
             else
             {
@@ -54,12 +54,12 @@ namespace SldWorksNodes.Sketch
             return SwObject != null;
         }
 
-        private bool Update()
+        private bool Update(Point3D startPoint, Point3D endPoint)
         {
             //var skeMgr = GetSkeContext();
 
-            return StartPoint.Postion(_sPt) ||
-                EndPoint.Postion(_ePt);
+            return StartPoint.Postion(startPoint) ||
+                EndPoint.Postion(endPoint);
         }
         #endregion
 
