@@ -5,22 +5,27 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Media;
 using Autodesk.DesignScript.Runtime;
+using ProtoCore;
 
 namespace SldWorksNodes
 {
-    [IsVisibleInDynamoLibrary(false)]
     public class MaterialProperty
     {
+        #region Ctor
         public MaterialProperty(
-            Color color, 
-            double ambient, 
-            double diffuse, 
-            double specular, 
-            double shininess, 
-            double transparency, 
-            double emission)
+            double r,
+            double g,
+            double b,
+            double ambient = 1, 
+            double diffuse = 1, 
+            double specular = 0.8, 
+            double shininess= 0.1, 
+            double transparency = 0, 
+            double emission = 0)
         {
-            Color = color;
+            R = r;
+            G = g;
+            B = b;
             Ambient = ambient;
             Diffuse = diffuse;
             Specular = specular;
@@ -28,9 +33,29 @@ namespace SldWorksNodes
             Transparency = transparency;
             Emission = emission;
         }
+        #endregion
+
+        #region Create
+
+        internal static MaterialProperty ByArrary(double[] array)
+        {
+            if (array == null || array.Length < 9)
+                return null;
+
+            return new MaterialProperty(
+                    array[0]*255,array[1]*255,array[2]*255,
+                    array[3], array[4], array[5], array[6],array[7],
+                    array[8]
+                );
+        }
+        #endregion
 
         #region Query
-        public Color Color { get; set; }
+        public double R { get; set; }
+
+        public double G { get; set; }
+
+        public double B { get; set; }
 
         public double Ambient { get; set; }
 
@@ -40,6 +65,7 @@ namespace SldWorksNodes
 
         public double Shininess { get; set; }
 
+        //使用ARGB 不使用透明度
         public double Transparency { get; set;}
 
         public double Emission { get; set; }
@@ -51,9 +77,9 @@ namespace SldWorksNodes
         {
             return new double[]
             {
-                Color.R/255,
-                Color.G/255,
-                Color.B/255,
+                R/255,
+                G/255,
+                B/255,
                 Ambient,
                 Diffuse,
                 Specular,
@@ -61,6 +87,11 @@ namespace SldWorksNodes
                 Transparency,
                 Emission,
             };
+        }
+
+        public override string ToString()
+        {
+            return $"Color:{R}-{G}-{B},{nameof(Ambient)}:{Ambient},{nameof(Diffuse)}:{Diffuse},{nameof(Specular)}:{Specular},{nameof(Shininess)}:{Shininess},{nameof(Emission)}:{Emission}";
         }
         #endregion
     }

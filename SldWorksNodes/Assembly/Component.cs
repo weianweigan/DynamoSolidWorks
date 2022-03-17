@@ -12,7 +12,7 @@ using SolidWorks.Interop.swconst;
 
 namespace SldWorksNodes.Assembly
 {
-    public class Component : SwNodeModel<IComponent2>
+    public class Component : SwNodeModel<IComponent2>,ISwMaterialProperty
     {
         #region Ctor
         [IsVisibleInDynamoLibrary(false)]
@@ -210,6 +210,17 @@ namespace SldWorksNodes.Assembly
         public override string ToString()
         {
             return SwObject?.Name ?? base.ToString();
+        }
+
+        public MaterialProperty MaterialProperty()
+        {
+            var data = SwObject.MaterialPropertyValues as double[];
+            return SldWorksNodes.MaterialProperty.ByArrary(data);
+        }
+
+        public void SetMaterialProperty(MaterialProperty materialProperty)
+        {
+            SwObject.MaterialPropertyValues = materialProperty.ToArray();
         }
         #endregion
     }
