@@ -5,11 +5,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{40F80962-6428-46A3-809F-95972BD734E3}</ProjectGuid>
+    <ProjectGuid>{B1C40535-C488-4D02-B52B-5D4C2E2A4EE0}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>SldWorksNodesTests</RootNamespace>
-    <AssemblyName>SldWorksNodesTests</AssemblyName>
+    <RootNamespace>SldWorksNodesUITests</RootNamespace>
+    <AssemblyName>SldWorksNodesUITests</AssemblyName>
     <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{3AC096D0-A1C2-E12C-1390-A8335801FDAB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
@@ -88,8 +88,6 @@
     <Otherwise />
   </Choose>
   <ItemGroup>
-    <Compile Include="Base\SwObjectTest.cs" />
-    <Compile Include="Document\DocumentTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -99,14 +97,17 @@
     <Analyzer Include="..\packages\xunit.analyzers.0.10.0\analyzers\dotnet\cs\xunit.analyzers.dll" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\SldWorksNodes\SldWorksNodes.csproj">
-      <Project>{4CA70DA0-75B9-4345-8D3E-2945F54577F0}</Project>
-      <Name>SldWorksNodes</Name>
+    <ProjectReference Include="..\SldWorksNodesUI\SldWorksNodesUI.csproj">
+      <Project>{766E4647-4FF5-499C-9560-2E25961E6BC3}</Project>
+      <Name>SldWorksNodesUI</Name>
     </ProjectReference>
     <ProjectReference Include="..\SldWorksService\SldWorksService.csproj">
       <Project>{f6fb5acd-b3c3-4186-acfa-8a6502e1f26d}</Project>
       <Name>SldWorksService</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Selection\" />
   </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">

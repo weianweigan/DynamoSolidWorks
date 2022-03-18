@@ -5,75 +5,23 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Moq;
+using SolidWorks.Interop.sldworks;
+using SldWorksNodesTests;
 
 namespace SldWorksNodes.Document.Tests
 {
-    public class DocumentTests
+    public class DocumentTests:SwObjectTest<IModelDoc2>
     {
-        [Fact()]
-        public void CurrentTest()
-        {
-            Assert.True(false, "This test needs an implementation");
-        }
-
-        [Fact()]
-        public void OpenTest()
-        {
-            Assert.True(false, "This test needs an implementation");
-        }
-
-        [Fact()]
-        public void DocumentsTest()
-        {
-            Assert.True(false, "This test needs an implementation");
-        }
-
-        [Fact()]
-        public void ReNameTest()
-        {
-            Assert.True(false, "This test needs an implementation");
-        }
-
-        [Fact()]
-        public void ConfigsTest()
-        {
-            Assert.True(false, "This test needs an implementation");
-        }
-
-        [Fact()]
-        public void AsPartDocumentTest()
-        {
-            Assert.True(false, "This test needs an implementation");
-        }
-
-        [Fact()]
-        public void AsAssemblyDocumentTest()
-        {
-            Assert.True(false, "This test needs an implementation");
-        }
-
-        [Fact()]
-        public void AsDrawingDocumentTest()
-        {
-            Assert.True(false, "This test needs an implementation");
-        }
-
-        [Fact()]
-        public void ActiveConfigurationTest()
-        {
-            Assert.True(false, "This test needs an implementation");
-        }
-
-        [Fact()]
-        public void ConfigurationManagerTest()
-        {
-            Assert.True(false, "This test needs an implementation");
-        }
-
         [Fact()]
         public void ToStringTest()
         {
-            Assert.True(false, "This test needs an implementation");
+            SwMock.Setup(p => p.GetTitle())
+                .Returns(() => "Sw.sldprt");
+
+            var doc = new Document(SwMock.Object);
+
+            Assert.True(doc.ToString() == "Sw.sldprt");
         }
     }
 }

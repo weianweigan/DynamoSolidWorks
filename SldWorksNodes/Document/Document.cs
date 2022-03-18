@@ -1,4 +1,5 @@
-﻿using SldWorksNodes.Base;
+﻿using Autodesk.DesignScript.Runtime;
+using SldWorksNodes.Base;
 using SldWorksNodes.ConfigurationManager;
 using SldWorksNodes.Util;
 using SolidWorks.Interop.sldworks;
@@ -12,7 +13,8 @@ namespace SldWorksNodes.Document
 {
     public class Document:SwNodeModel<IModelDoc2>
     {
-        internal Document(IModelDoc2 doc)
+        [IsVisibleInDynamoLibrary(false)]
+        public Document(IModelDoc2 doc)
         {
             SwObject = doc;
         }
