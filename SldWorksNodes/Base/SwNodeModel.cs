@@ -20,7 +20,7 @@ namespace SldWorksNodes.Base
             get => _swObject; set
             {
                 _swObject = value;
-                //CreatePID();//暂时不需要创建PID
+                CreatePID();//暂时不需要创建PID
             }
         }
         #endregion
