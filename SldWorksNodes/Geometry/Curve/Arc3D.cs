@@ -106,14 +106,13 @@ namespace SldWorksNodes.Geometry
         #region Methods
         private void CreateWireArc()
         {
-            var doc = SwContextUtil.GetCurrentPartDocContext();
-            SwCurve = Util.CurveBuilder.CreatedTrimmedArc(SldContextManager.Modeler, Center.ToData(), Axis.ToData(), Radius, StartPoint.ToData(), EndPoint.ToData());
+           SwCurve = Util.CurveBuilder.CreatedTrimmedArc(SldContextManager.Modeler, Center.ToData(), Axis.ToData(), Radius, StartPoint.ToData(), EndPoint.ToData());
 
             SwObject = SwCurve.CreateWireBody();
 
             if (SwObject != null)
             {
-                DisplayBody(doc, Color);
+                DisplayBody();
             }
         }
         #endregion

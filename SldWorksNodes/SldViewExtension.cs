@@ -1,9 +1,14 @@
 ﻿using Autodesk.DesignScript.Runtime;
+using Dynamo.Graph.Nodes;
 using Dynamo.Graph.Workspaces;
+using Dynamo.Models;
 using Dynamo.ViewModels;
 using Dynamo.Wpf.Extensions;
 using SldWorksNodes.Util;
 using SldWorksService;
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
@@ -27,12 +32,12 @@ namespace SldWorksNodes
 
         public void Loaded(ViewLoadedParams viewLoadedParams)
         {
+            _loadedParams= viewLoadedParams;
+
             //Init Context
             var vm = viewLoadedParams.DynamoWindow.DataContext as DynamoViewModel;
             var sldContext = vm.Model as ISldWorksContext;
             SldContextManager.Init(sldContext);
-
-            viewLoadedParams.CurrentWorkspaceChanged += ViewLoadedParams_CurrentWorkspaceChanged;
 
             _sampleMenuItem = new MenuItem { Header = "SolidWorks Info" };
 
@@ -46,18 +51,11 @@ namespace SldWorksNodes
             viewLoadedParams.AddMenuItem(MenuBarType.View, _sampleMenuItem);
         }
 
-        private void ViewLoadedParams_CurrentWorkspaceChanged(IWorkspaceModel obj)
-        {
-            
-        }
-
         public void Shutdown()
-        {
-            _loadedParams.CurrentWorkspaceChanged -= ViewLoadedParams_CurrentWorkspaceChanged;
-        }
+        {}
 
         public void Startup(ViewStartupParams viewStartupParams)
-        {
-        }
+        {}
     }
+
 }

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using DynamoServices;
 using SldWorksNodes.Base;
 using SldWorksNodes.Geometry;
 using SldWorksNodes.Util;
@@ -12,18 +13,30 @@ namespace SldWorksNodes.Sketch
 {
     public class SketchLine : SketchSegment<ISketchLine>
     {
+        #region Fields
         private Point3D _sPt;
         private Point3D _ePt;
+        #endregion
 
-        internal SketchLine(SwSketch sketch)
-            : base(sketch) { }
+        #region Ctor
+        internal SketchLine(Point3D startPoint,Point3D endPoint, SwSketch sketch) 
+        {
+            _sPt = _swUnit.ConvertPoint(startPoint);
+            _ePt = _swUnit.ConvertPoint(endPoint);
+
+            CreateSegment(_sPt, _ePt);            
+        }
+        #endregion
 
         #region Create
-        public static SketchLine BySketch(SwSketch sketch)
+        public static SketchLine ByStartPointAndEndPoint(Point3D startPoint, Point3D endPoint)
         {
-            if(sketch == null) return null;
-            return new SketchLine(sketch);
+            if (startPoint == null || endPoint == null)
+                return null;
+
+            return new SketchLine(startPoint, endPoint, null);
         }
+
         #endregion
 
         #region Query
@@ -34,33 +47,7 @@ namespace SldWorksNodes.Sketch
         #endregion
 
         #region Action
-        public bool StartPointAndEndPoint(Point3D startPoint,Point3D endPoint)
-        {
-            if (startPoint == null || endPoint == null)
-                return false;
 
-            _sPt = _swUnit.ConvertPoint(startPoint);
-            _ePt = _swUnit.ConvertPoint(endPoint);
-
-            if (SwObject != null)
-            {
-                return Update(startPoint,endPoint);
-            }
-            else
-            {
-                CreateSegment(_sPt, _ePt);
-            }
-
-            return SwObject != null;
-        }
-
-        private bool Update(Point3D startPoint, Point3D endPoint)
-        {
-            //var skeMgr = GetSkeContext();
-
-            return StartPoint.Postion(startPoint) ||
-                EndPoint.Postion(endPoint);
-        }
         #endregion
 
         #region Methods
@@ -68,11 +55,17 @@ namespace SldWorksNodes.Sketch
         {
             var skeMgr = GetSkeContext();
 
-            SwObject = skeMgr.CreateLine(
-                newSpt.X, newSpt.Y, newSpt.Z,
-                newEpt.X, newEpt.Y, newEpt.Z);
+            skeMgr.WithDbState(() =>
+            {
+                SwObject = skeMgr.CreateLine(
+                    newSpt.X, newSpt.Y, newSpt.Z,
+                    newEpt.X, newEpt.Y, newEpt.Z);
+            });
 
             SkeSegment = (ISketchLine)SwObject;
+
+            if (SkeSegment == null)
+                throw new Exception($"{newSpt}-{newEpt} Failed");
 
             StartPoint = new SketchPoint(
                 _sketch, 
@@ -86,7 +79,7 @@ namespace SldWorksNodes.Sketch
         public override string ToString()
         {
             if (SwObject == null)
-                return $"Use {nameof(StartPointAndEndPoint)} Action To CreatePoint";
+                return $"Failed {_sPt}-{_ePt}";
             else
                 return $"{_sPt}-{_ePt}";
         }

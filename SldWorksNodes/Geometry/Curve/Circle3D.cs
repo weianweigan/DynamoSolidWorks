@@ -1,4 +1,5 @@
-﻿using SldWorksNodes.Util;
+﻿using Autodesk.DesignScript.Interfaces;
+using SldWorksNodes.Util;
 
 namespace SldWorksNodes.Geometry
 {
@@ -52,14 +53,13 @@ namespace SldWorksNodes.Geometry
         #region Methods
         private void CreateWireCircle()
         {
-            var doc = SwContextUtil.GetCurrentPartDocContext();
             SwCurve = Util.CurveBuilder.CreateCircle(SldContextManager.Modeler, Center.ToData(), Axis.ToData(), Radius);
 
             SwObject = SwCurve.CreateWireBody();
 
             if (SwObject != null)
             {
-                DisplayBody(doc, Color);
+                DisplayBody();
             }
         }
         #endregion

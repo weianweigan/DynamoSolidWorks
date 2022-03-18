@@ -5,7 +5,6 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
         xmlns:local="clr-namespace:SldWorksNodes.View"
         mc:Ignorable="d" 
-        WindowStartupLocation="CenterOwner"
         ResizeMode="NoResize"
         Background="#f7f7f7"
         Title="SolidWorks Info"

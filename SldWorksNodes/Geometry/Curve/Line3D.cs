@@ -27,14 +27,13 @@ namespace SldWorksNodes.Geometry
 
         private void CreateWireBody(Point3D startPoint, Point3D endPoint)
         {
-            var doc = SwContextUtil.GetCurrentPartDocContext();
             SwCurve = Util.CurveBuilder.CreatedTrimmedLine(SldContextManager.Modeler, startPoint.ToData(), endPoint.ToData());
 
             SwObject = SwCurve.CreateWireBody();
 
             if (SwObject != null)
             {
-                DisplayBody(doc, Color);
+                DisplayBody();
             }
         }
     }

@@ -1,36 +1,19 @@
-﻿using SldWorksNodes.Geometry;
+﻿using DynamoServices;
+using SldWorksNodes.Geometry;
 using SolidWorks.Interop.sldworks;
 
 namespace SldWorksNodes.Sketch
 {
     public class SketchPoint:SketchElement<ISketchPoint>
     {
+        #region Fields
         private Point3D _point;
-
-        internal SketchPoint(SwSketch sketch) : base(sketch) { }
-
-        internal SketchPoint(
-            SwSketch sketch,
-            ISketchPoint sketchPoint) 
-            : base(sketch)
-        { 
-            SwObject = sketchPoint;
-        }
-
-        #region Create
-        public static SketchLine BySketch(SwSketch sketch)
-        {
-            if(sketch == null)  return null;
-            return new SketchLine(sketch);
-        }
         #endregion
 
-        #region Action
-        public bool Postion(Point3D point)
+        #region Ctor
+        internal SketchPoint(
+            Point3D point):base(null)
         {
-            if (point == null)
-                return false;
-
             _point = _swUnit.ConvertPoint(point);
 
             if (SwObject == null)
@@ -39,24 +22,44 @@ namespace SldWorksNodes.Sketch
             }
             else
             {
-                return UpdatePoint(_point);
+                UpdatePoint(_point);
             }
+        }
 
-            return SwObject != null;
+        internal SketchPoint(SwSketch sketch, ISketchPoint sketchPoint) : base(sketch)
+        {
+            SwObject = sketchPoint;
+        }
+        #endregion
+
+        #region Create
+        public static SketchPoint ByPostion(Point3D point)
+        {
+            if (point == null)
+                return null;
+
+            return new SketchPoint(point);
+        }
+        #endregion
+
+        #region Action
+
+        public bool UpdatePoint(Point3D point)
+        {
+            return SwObject.SetCoords(point.X,point.Y,point.Z);
         }
         #endregion
 
         #region Methods
-        private bool UpdatePoint(Point3D point)
-        {
-            return SwObject.SetCoords(point.X,point.Y,point.Z);
-        }
 
         private void CreatePoint(Point3D point)
         {
             var skeMgr = GetSkeContext();
 
-            SwObject = skeMgr.CreatePoint(point.X,point.Y,point.Z);
+            skeMgr.WithDbState(() =>
+            {
+                SwObject = skeMgr.CreatePoint(point.X, point.Y, point.Z);
+            });
         }
 
         public override string ToString()
@@ -67,7 +70,5 @@ namespace SldWorksNodes.Sketch
                 return _point.ToString();
         }
         #endregion
-
-
     }
 }

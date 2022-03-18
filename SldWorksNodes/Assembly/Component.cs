@@ -220,6 +220,8 @@ namespace SldWorksNodes.Assembly
 
         public void SetMaterialProperty(MaterialProperty materialProperty)
         {
+            if (materialProperty == null) return;
+
             SwObject.MaterialPropertyValues = materialProperty.ToArray();
         }
         #endregion

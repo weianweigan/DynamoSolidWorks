@@ -18,7 +18,7 @@ namespace SldWorksNodes.Geometry
         }
 
         #region Create
-        public static Vector3D ByCoordinates(double x, double y, double z)
+        public static Vector3D ByCoordinates(double x = 0, double y = 0, double z = 0)
         {
             return new Vector3D(x, y, z);
         }

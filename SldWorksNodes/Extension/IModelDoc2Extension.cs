@@ -176,11 +176,10 @@ namespace SolidWorks.Interop.sldworks
             try
             {
                 swView = doc.ActiveView as IModelView;
-                swView.SuppressWaitCursorDuringRedraw = true;
+                //swView.SuppressWaitCursorDuringRedraw = true;
                 swView.EnableGraphicsUpdate = false;
-                doc.FeatureManager.EnableFeatureTreeWindow = false;
-                doc.FeatureManager.EnableFeatureTree = false;
-
+                //doc.FeatureManager.EnableFeatureTreeWindow = false;
+                //doc.FeatureManager.EnableFeatureTree = false;
 
                 action?.Invoke();
             }
@@ -192,11 +191,11 @@ namespace SolidWorks.Interop.sldworks
             finally
             {
 
-                doc.FeatureManager.EnableFeatureTreeWindow = true;
-                doc.FeatureManager.EnableFeatureTree = true;
-
+                //doc.FeatureManager.EnableFeatureTreeWindow = true;
+                //doc.FeatureManager.EnableFeatureTree = true;
+                
                 swView.EnableGraphicsUpdate = true;
-                swView.SuppressWaitCursorDuringRedraw = false;
+                //swView.SuppressWaitCursorDuringRedraw = false;
             }
         }
 

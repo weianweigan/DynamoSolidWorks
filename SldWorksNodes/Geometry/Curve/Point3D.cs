@@ -31,7 +31,7 @@ namespace SldWorksNodes.Geometry
         #endregion
 
         #region Create
-        public static Point3D ByCoordinates(double x, double y, double z)
+        public static Point3D ByCoordinates(double x = 0, double y = 0, double z = 0)
         {
             return new Point3D(x, y, z);
         }

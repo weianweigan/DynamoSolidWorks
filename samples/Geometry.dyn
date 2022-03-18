@@ -1,4 +1,4 @@
-<Workspace Version="1.2.2.373" X="24.6810766250438" Y="344.660929250529" zoom="0.894168083312076" Name="Home" Description="" RunType="Automatic" RunPeriod="1000" HasRunWithoutCrash="True">
+<Workspace Version="1.2.2.373" X="24.6810766250438" Y="344.660929250529" zoom="0.894168083312076" Name="Home" Description="" RunType="Manual" RunPeriod="1000" HasRunWithoutCrash="True">
   <NamespaceResolutionMap />
   <Elements>
     <Dynamo.Graph.Nodes.CodeBlockNodeModel guid="c4183a8e-6b7d-438b-8197-3bda27c3a79c" type="Dynamo.Graph.Nodes.CodeBlockNodeModel" nickname="Code Block" x="40.2879460103722" y="-51.6832958688852" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="False" IsFrozen="false" isPinned="false" CodeText="2;&#xA;10;&#xA;5;" ShouldFocus="false" />
@@ -21,7 +21,7 @@
     </Dynamo.Graph.Nodes.ZeroTouch.DSFunction>
     <Dynamo.Graph.Nodes.CodeBlockNodeModel guid="f38a7512-32a3-4353-9019-23abdbec53e6" type="Dynamo.Graph.Nodes.CodeBlockNodeModel" nickname="Code Block" x="40.2238949900747" y="-143.412043928538" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="False" IsFrozen="false" isPinned="false" CodeText="0;" ShouldFocus="false" />
     <CoreNodeModels.Input.DoubleSlider guid="cf08cddb-e5d8-4c39-b46f-4d4b19106ddb" type="CoreNodeModels.Input.DoubleSlider" nickname="Number Slider" x="27.3337341540461" y="87.4751858234248" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="True" IsFrozen="false" isPinned="false">
-      <System.Double>25</System.Double>
+      <System.Double>20</System.Double>
       <Range min="0" max="100" step="5" />
     </CoreNodeModels.Input.DoubleSlider>
   </Elements>
@@ -40,5 +40,7 @@
   <Notes />
   <Annotations />
   <Presets />
-  <Cameras />
+  <Cameras>
+    <Camera Name="背景预览" eyeX="-17" eyeY="24" eyeZ="50" lookX="12" lookY="-13" lookZ="-58" upX="0" upY="1" upZ="0" />
+  </Cameras>
 </Workspace>

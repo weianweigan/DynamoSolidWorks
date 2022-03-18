@@ -56,6 +56,9 @@
       <HintPath>..\DynamoRuntime\Greg.dll</HintPath>
       <Private>False</Private>
     </Reference>
+    <Reference Include="Microsoft.Practices.Prism">
+      <HintPath>..\DynamoRuntime\Microsoft.Practices.Prism.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.VisualBasic">
       <Private>False</Private>
     </Reference>
@@ -173,6 +176,8 @@
     <Compile Include="Base\BrepNode.cs" />
     <Compile Include="Base\IPID.cs" />
     <Compile Include="Base\ISwMaterialProperty.cs" />
+    <Compile Include="Base\ISwSelect.cs" />
+    <Compile Include="Base\ITempBody.cs" />
     <Compile Include="Base\SwNode.cs" />
     <Compile Include="Base\SwNodeModel.cs" />
     <Compile Include="Brep\Edge.cs" />
@@ -241,13 +246,20 @@
       <DependentUpon>SwSettings.settings</DependentUpon>
     </Compile>
     <Compile Include="Sketch\Base\SketchElement.cs" />
+    <Compile Include="Sketch\Base\SketchMgrExtension.cs" />
     <Compile Include="Sketch\Base\SketchSegment.cs" />
     <Compile Include="Sketch\Base\SwSketch.cs" />
     <Compile Include="Sketch\Sketch.cs" />
     <Compile Include="Sketch\Sketch3D.cs" />
     <Compile Include="Sketch\SketchArc.cs" />
+    <Compile Include="Sketch\SketchEllipse.cs" />
+    <Compile Include="Sketch\SketchEllipticalArc.cs" />
     <Compile Include="Sketch\SketchLine.cs" />
     <Compile Include="Sketch\SketchPoint.cs" />
+    <Compile Include="Sketch\SketchPolygon.cs" />
+    <Compile Include="Sketch\SketchRectangle.cs" />
+    <Compile Include="Sketch\SketchSolt.cs" />
+    <Compile Include="Sketch\SketchSpline.cs" />
     <Compile Include="SldViewExtension.cs" />
     <Compile Include="SwException\ActiveDocIsNotPartDocException.cs" />
     <Compile Include="SwException\ActiveDocNotFoundException.cs" />
