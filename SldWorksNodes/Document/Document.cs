@@ -8,17 +8,21 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Text.RegularExpressions;
 
 namespace SldWorksNodes.Document
 {
     public class Document:SwNodeModel<IModelDoc2>
     {
+        #region Ctor
         [IsVisibleInDynamoLibrary(false)]
         public Document(IModelDoc2 doc)
         {
             SwObject = doc;
         }
+        #endregion
 
+        #region Create
         public static Document Current()
         {
             var doc = SldContextManager.Sw.IActiveDoc2;
@@ -57,7 +61,9 @@ namespace SldWorksNodes.Document
                 .Select(doc => new Document(doc))
                 .ToList();
         }
+        #endregion
 
+        #region Action
         public bool ReName(string newName)
         {
             if (string.IsNullOrWhiteSpace(newName))
@@ -75,6 +81,26 @@ namespace SldWorksNodes.Document
             return true;
         }
 
+        public bool SaveAs(string newPathName)
+        {
+            return SwObject.SaveAs(newPathName);
+        }
+        #endregion
+
+        #region Query
+        public string Title()
+        {
+            var title = SwObject.GetTitle();
+            if (Regex.IsMatch(
+                title,
+                @"\.sld[a-z]{3}",
+                RegexOptions.IgnoreCase))
+            {
+                return title.Substring(0,title.Length - 7);
+            }
+            return title;
+        }
+        
         public List<string> Configs()
         {
             var configs = SldContextManager.Sw
@@ -138,10 +164,13 @@ namespace SldWorksNodes.Document
 
             return new ConfigurationManager.ConfigurationManager(SwObject.ConfigurationManager);
         }
+        #endregion
 
+        #region Methods
         public override string ToString()
         {
             return SwObject?.GetTitle() ?? base.ToString();
         }
+        #endregion
     }
 }

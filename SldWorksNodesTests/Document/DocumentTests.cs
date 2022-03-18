@@ -11,7 +11,7 @@ using SldWorksNodesTests;
 
 namespace SldWorksNodes.Document.Tests
 {
-    public class DocumentTests:SwObjectTest<IModelDoc2>
+    public class DocumentTests : SwObjectTest<IModelDoc2>
     {
         [Fact()]
         public void ToStringTest()
@@ -22,6 +22,23 @@ namespace SldWorksNodes.Document.Tests
             var doc = new Document(SwMock.Object);
 
             Assert.True(doc.ToString() == "Sw.sldprt");
+        }
+
+        [Theory()]
+        [InlineData("Sw.sldprt","Sw")]
+        [InlineData("Sw.SLDPRT", "Sw")]
+        [InlineData("Sw.sldasm", "Sw")]
+        [InlineData("Sw.SLDASM", "Sw")]
+        [InlineData("Sw.slddrw", "Sw")]
+        [InlineData("Sw.SLDDRW", "Sw")]
+        public void TitleTest(string title,string result)
+        {
+            SwMock.Setup(p => p.GetTitle())
+                .Returns(() => title);
+
+            var doc = new Document(SwMock.Object);
+
+            Assert.True(doc.Title() == result);
         }
     }
 }
