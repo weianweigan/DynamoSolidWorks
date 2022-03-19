@@ -1,55 +1,392 @@
-<Workspace Version="1.2.2.373" X="169.779308041866" Y="101.337684920185" zoom="0.619952718741735" Name="Home" Description="" RunType="Automatic" RunPeriod="1000" HasRunWithoutCrash="True">
-  <NamespaceResolutionMap>
-    <ClassMap partialName="Point3D" resolvedName="SldWorksNodes.Geometry.Point3D" assemblyName="SldWorksNodes.dll" />
-  </NamespaceResolutionMap>
-  <Elements>
-    <SldWorksNodesUI.Selection.SelectFeature guid="fa7c9c46-aa32-4e7b-bfba-4823e1182d1e" type="SldWorksNodesUI.Selection.SelectFeature" nickname="Select Feature" x="-202.26942881182" y="-52.4217944483722" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="True" IsFrozen="false" isPinned="false">
-      <instance id="+CoAAAEAAAD//v8AAAAAAEYAAAA=" />
-    </SldWorksNodesUI.Selection.SelectFeature>
-    <Dynamo.Graph.Nodes.ZeroTouch.DSFunction guid="01a0c3aa-e40f-49fa-9eab-5edaeb1aa513" type="Dynamo.Graph.Nodes.ZeroTouch.DSFunction" nickname="SketchLine.BySketch" x="370.761891247938" y="-38.8789544232062" isVisible="true" isUpstreamVisible="true" lacing="Shortest" isSelectedInput="False" IsFrozen="false" isPinned="false" assembly="SldWorksNodes.dll" function="SldWorksNodes.Sketch.SketchLine.BySketch@SldWorksNodes.Sketch.SwSketch">
-      <PortInfo index="0" default="False" />
-    </Dynamo.Graph.Nodes.ZeroTouch.DSFunction>
-    <Dynamo.Graph.Nodes.ZeroTouch.DSFunction guid="796ac0f1-f27f-4777-bf2d-f86d52fbd52f" type="Dynamo.Graph.Nodes.ZeroTouch.DSFunction" nickname="Sketch.ByFeature" x="47.5265004954047" y="-57.1211086419721" isVisible="true" isUpstreamVisible="true" lacing="Shortest" isSelectedInput="False" IsFrozen="false" isPinned="false" assembly="SldWorksNodes.dll" function="SldWorksNodes.Sketch.Sketch.ByFeature@SldWorksNodes.Feature.Feature">
-      <PortInfo index="0" default="False" />
-    </Dynamo.Graph.Nodes.ZeroTouch.DSFunction>
-    <Dynamo.Graph.Nodes.ZeroTouch.DSFunction guid="a219fe86-ad41-46aa-8a16-857866e2efdd" type="Dynamo.Graph.Nodes.ZeroTouch.DSFunction" nickname="SketchLine.StartPointAndEndPoint" x="643.303435338518" y="17.270693213817" isVisible="true" isUpstreamVisible="true" lacing="Shortest" isSelectedInput="False" IsFrozen="false" isPinned="true" assembly="SldWorksNodes.dll" function="SldWorksNodes.Sketch.SketchLine.StartPointAndEndPoint@SldWorksNodes.Geometry.Point3D,SldWorksNodes.Geometry.Point3D">
-      <PortInfo index="0" default="False" />
-      <PortInfo index="1" default="False" />
-      <PortInfo index="2" default="False" />
-    </Dynamo.Graph.Nodes.ZeroTouch.DSFunction>
-    <Dynamo.Graph.Nodes.CodeBlockNodeModel guid="67392670-cb1f-4ded-83c1-2cc130507023" type="Dynamo.Graph.Nodes.CodeBlockNodeModel" nickname="Code Block" x="-28.4136089171969" y="77.47751343871" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="False" IsFrozen="false" isPinned="false" CodeText="0;&#xA;10;" ShouldFocus="false" />
-    <Dynamo.Graph.Nodes.ZeroTouch.DSFunction guid="2bb0c704-76ff-404d-8d28-98ecfc396d9c" type="Dynamo.Graph.Nodes.ZeroTouch.DSFunction" nickname="Point3D.ByCoordinates" x="88.6542365130229" y="45.817916291866" isVisible="true" isUpstreamVisible="true" lacing="Shortest" isSelectedInput="False" IsFrozen="false" isPinned="false" assembly="SldWorksNodes.dll" function="SldWorksNodes.Geometry.Point3D.ByCoordinates@double,double,double">
-      <PortInfo index="0" default="False" />
-      <PortInfo index="1" default="False" />
-      <PortInfo index="2" default="False" />
-    </Dynamo.Graph.Nodes.ZeroTouch.DSFunction>
-    <Dynamo.Graph.Nodes.ZeroTouch.DSFunction guid="34145bed-78fb-4d6e-8244-ba7830656049" type="Dynamo.Graph.Nodes.ZeroTouch.DSFunction" nickname="Point3D.ByCoordinates" x="94.7008984379502" y="215.563541489509" isVisible="true" isUpstreamVisible="true" lacing="Shortest" isSelectedInput="False" IsFrozen="false" isPinned="false" assembly="SldWorksNodes.dll" function="SldWorksNodes.Geometry.Point3D.ByCoordinates@double,double,double">
-      <PortInfo index="0" default="False" />
-      <PortInfo index="1" default="False" />
-      <PortInfo index="2" default="False" />
-    </Dynamo.Graph.Nodes.ZeroTouch.DSFunction>
-    <CoreNodeModels.Input.DoubleSlider guid="1f3993fa-378d-458d-8752-66ab99d9b476" type="CoreNodeModels.Input.DoubleSlider" nickname="Number Slider" x="-251.392708963645" y="256.280950368159" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="True" IsFrozen="false" isPinned="false">
-      <System.Double>370</System.Double>
-      <Range min="0" max="1000" step="10" />
-    </CoreNodeModels.Input.DoubleSlider>
-  </Elements>
-  <Connectors>
-    <Dynamo.Graph.Connectors.ConnectorModel start="fa7c9c46-aa32-4e7b-bfba-4823e1182d1e" start_index="0" end="796ac0f1-f27f-4777-bf2d-f86d52fbd52f" end_index="0" portType="0" />
-    <Dynamo.Graph.Connectors.ConnectorModel start="01a0c3aa-e40f-49fa-9eab-5edaeb1aa513" start_index="0" end="a219fe86-ad41-46aa-8a16-857866e2efdd" end_index="0" portType="0" />
-    <Dynamo.Graph.Connectors.ConnectorModel start="796ac0f1-f27f-4777-bf2d-f86d52fbd52f" start_index="0" end="01a0c3aa-e40f-49fa-9eab-5edaeb1aa513" end_index="0" portType="0" />
-    <Dynamo.Graph.Connectors.ConnectorModel start="67392670-cb1f-4ded-83c1-2cc130507023" start_index="0" end="2bb0c704-76ff-404d-8d28-98ecfc396d9c" end_index="0" portType="0" />
-    <Dynamo.Graph.Connectors.ConnectorModel start="67392670-cb1f-4ded-83c1-2cc130507023" start_index="0" end="2bb0c704-76ff-404d-8d28-98ecfc396d9c" end_index="1" portType="0" />
-    <Dynamo.Graph.Connectors.ConnectorModel start="67392670-cb1f-4ded-83c1-2cc130507023" start_index="0" end="2bb0c704-76ff-404d-8d28-98ecfc396d9c" end_index="2" portType="0" />
-    <Dynamo.Graph.Connectors.ConnectorModel start="67392670-cb1f-4ded-83c1-2cc130507023" start_index="1" end="34145bed-78fb-4d6e-8244-ba7830656049" end_index="2" portType="0" />
-    <Dynamo.Graph.Connectors.ConnectorModel start="2bb0c704-76ff-404d-8d28-98ecfc396d9c" start_index="0" end="a219fe86-ad41-46aa-8a16-857866e2efdd" end_index="1" portType="0" />
-    <Dynamo.Graph.Connectors.ConnectorModel start="34145bed-78fb-4d6e-8244-ba7830656049" start_index="0" end="a219fe86-ad41-46aa-8a16-857866e2efdd" end_index="2" portType="0" />
-    <Dynamo.Graph.Connectors.ConnectorModel start="1f3993fa-378d-458d-8752-66ab99d9b476" start_index="0" end="34145bed-78fb-4d6e-8244-ba7830656049" end_index="0" portType="0" />
-    <Dynamo.Graph.Connectors.ConnectorModel start="1f3993fa-378d-458d-8752-66ab99d9b476" start_index="0" end="34145bed-78fb-4d6e-8244-ba7830656049" end_index="1" portType="0" />
-  </Connectors>
-  <Notes />
-  <Annotations />
-  <Presets />
-  <Cameras>
-    <Camera Name="背景预览" eyeX="-17" eyeY="24" eyeZ="50" lookX="12" lookY="-13" lookZ="-58" upX="0" upY="1" upZ="0" />
-  </Cameras>
-</Workspace>
+{
+  "Uuid": "3c9d0464-8643-5ffe-96e5-ab1769818209",
+  "IsCustomNode": false,
+  "Description": "",
+  "Name": "SketchLine",
+  "ElementResolver": {
+    "ResolutionMap": {
+      "Point3D": {
+        "Key": "SldWorksNodes.Geometry.Point3D",
+        "Value": "SldWorksNodes.dll"
+      }
+    }
+  },
+  "Inputs": [
+    {
+      "Id": "fa7c9c46aa324e7bbfba4823e1182d1e",
+      "Name": "Select Feature",
+      "Type": "hostSelection",
+      "Value": "+CoAAAEAAAD//v8AAAAAAEYAAAA=",
+      "Description": "Select a feature in doc",
+      "SelectedIndex": 0
+    },
+    {
+      "Id": "1f3993fa378d458d875266ab99d9b476",
+      "Name": "Number Slider",
+      "Type": "number",
+      "Value": "370",
+      "MaximumValue": 1000.0,
+      "MinimumValue": 0.0,
+      "StepValue": 10.0,
+      "NumberType": "Double",
+      "Description": "用于生成数字值的滑块。",
+      "SelectedIndex": 0
+    }
+  ],
+  "Outputs": [],
+  "Nodes": [
+    {
+      "ConcreteType": "SldWorksNodesUI.Selection.SelectFeature, SldWorksNodesUI",
+      "NodeType": "ExtensionNode",
+      "InstanceId": [
+        "+CoAAAEAAAD//v8AAAAAAEYAAAA="
+      ],
+      "Id": "fa7c9c46aa324e7bbfba4823e1182d1e",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "6d43412f44b144edb9fb15ce7fd07dcb",
+          "Name": "Feature",
+          "Description": "选定的元素。",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "SldWorksNodes.Sketch.Sketch.ByFeature@SldWorksNodes.Feature.Feature",
+      "Id": "796ac0f1f27f4777bf2df86d52fbd52f",
+      "Inputs": [
+        {
+          "Id": "2a7c3e96cf4e4018986618b746237345",
+          "Name": "skeFeature",
+          "Description": "Feature",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "b37d615c99a84ed19f709fe4f5d7231b",
+          "Name": "Sketch",
+          "Description": "Sketch",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "Sketch.ByFeature (skeFeature: Feature): Sketch"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.CodeBlockNodeModel, DynamoCore",
+      "NodeType": "CodeBlockNode",
+      "Code": "0;\n10;",
+      "Id": "67392670cb1f4ded83c12cc130507023",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "6aaad93a074545258e6516aa2d70c610",
+          "Name": "",
+          "Description": "行 1 中的表达式值",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "b280d125f82949129e07602fe5c658de",
+          "Name": "",
+          "Description": "行 2 中的表达式值",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "允许直接编写 DesignScript 代码"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "SldWorksNodes.Geometry.Point3D.ByCoordinates@double,double,double",
+      "Id": "2bb0c70476ff404d8d2898ecfc396d9c",
+      "Inputs": [
+        {
+          "Id": "a0c55f3f9b364e899a633300575c17b7",
+          "Name": "x",
+          "Description": "double\n默认值 : 0 (禁用)",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "5b4fc63b42a34b39b252b73a9f187d45",
+          "Name": "y",
+          "Description": "double\n默认值 : 0 (禁用)",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "d9f07b3ebfdb4bc2bf8e05b18bc2f68f",
+          "Name": "z",
+          "Description": "double\n默认值 : 0 (禁用)",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "62e1ff04f9dd4f2f90cf146ede70b294",
+          "Name": "Point3D",
+          "Description": "Point3D",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "Point3D.ByCoordinates (x: double = 0, y: double = 0, z: double = 0): Point3D"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "SldWorksNodes.Geometry.Point3D.ByCoordinates@double,double,double",
+      "Id": "34145bed78fb4d6e8244ba7830656049",
+      "Inputs": [
+        {
+          "Id": "8c05bdbd99604cb7ac5fe1864a4cdfde",
+          "Name": "x",
+          "Description": "double\n默认值 : 0 (禁用)",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "e80cb79325844cadad842aa4816f036a",
+          "Name": "y",
+          "Description": "double\n默认值 : 0 (禁用)",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "ca2089a3884a4eb69c8a72a7f825515c",
+          "Name": "z",
+          "Description": "double\n默认值 : 0 (禁用)",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "4a3d3d0d309f4cebb743f889ece7b779",
+          "Name": "Point3D",
+          "Description": "Point3D",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "Point3D.ByCoordinates (x: double = 0, y: double = 0, z: double = 0): Point3D"
+    },
+    {
+      "ConcreteType": "CoreNodeModels.Input.DoubleSlider, CoreNodeModels",
+      "NodeType": "NumberInputNode",
+      "NumberType": "Double",
+      "MaximumValue": 1000.0,
+      "MinimumValue": 0.0,
+      "StepValue": 10.0,
+      "InputValue": 370.0,
+      "Id": "1f3993fa378d458d875266ab99d9b476",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "046510f46f8f45efa1bbd3d5bb30f83a",
+          "Name": "",
+          "Description": "Double",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "用于生成数字值的滑块。"
+    }
+  ],
+  "Connectors": [
+    {
+      "Start": "6d43412f44b144edb9fb15ce7fd07dcb",
+      "End": "2a7c3e96cf4e4018986618b746237345",
+      "Id": "6c9c580fcf11495b9fe89d90fdf07b84",
+      "IsHidden": "False"
+    },
+    {
+      "Start": "6aaad93a074545258e6516aa2d70c610",
+      "End": "a0c55f3f9b364e899a633300575c17b7",
+      "Id": "c9d33523c89e4c299a3d1579a33d2511",
+      "IsHidden": "False"
+    },
+    {
+      "Start": "6aaad93a074545258e6516aa2d70c610",
+      "End": "5b4fc63b42a34b39b252b73a9f187d45",
+      "Id": "8213a72e192a44c6b06105126d3f79f5",
+      "IsHidden": "False"
+    },
+    {
+      "Start": "6aaad93a074545258e6516aa2d70c610",
+      "End": "d9f07b3ebfdb4bc2bf8e05b18bc2f68f",
+      "Id": "e8ab9d287d044999a22e881a6a4bb13f",
+      "IsHidden": "False"
+    },
+    {
+      "Start": "b280d125f82949129e07602fe5c658de",
+      "End": "ca2089a3884a4eb69c8a72a7f825515c",
+      "Id": "dd490aa6d63042859f75bc736207e097",
+      "IsHidden": "False"
+    },
+    {
+      "Start": "046510f46f8f45efa1bbd3d5bb30f83a",
+      "End": "8c05bdbd99604cb7ac5fe1864a4cdfde",
+      "Id": "99426af96d734fda943aeebdc491ccdf",
+      "IsHidden": "False"
+    },
+    {
+      "Start": "046510f46f8f45efa1bbd3d5bb30f83a",
+      "End": "e80cb79325844cadad842aa4816f036a",
+      "Id": "7e939e16d62b42d29837a4f9d4e8770f",
+      "IsHidden": "False"
+    }
+  ],
+  "Dependencies": [],
+  "NodeLibraryDependencies": [],
+  "Thumbnail": null,
+  "GraphDocumentationURL": null,
+  "ExtensionWorkspaceData": [
+    {
+      "ExtensionGuid": "28992e1d-abb9-417f-8b1b-05e053bee670",
+      "Name": "Properties",
+      "Version": "2.13",
+      "Data": {}
+    }
+  ],
+  "Author": "None provided",
+  "Linting": {
+    "activeLinter": "无",
+    "activeLinterId": "7b75fb44-43fd-4631-a878-29f4d5d8399a",
+    "warningCount": 0,
+    "errorCount": 0
+  },
+  "Bindings": [],
+  "View": {
+    "Dynamo": {
+      "ScaleFactor": 1.0,
+      "HasRunWithoutCrash": true,
+      "IsVisibleInDynamoLibrary": true,
+      "Version": "2.13.1.3887",
+      "RunType": "Automatic",
+      "RunPeriod": "1000"
+    },
+    "Camera": {
+      "Name": "背景预览",
+      "EyeX": -17.0,
+      "EyeY": 24.0,
+      "EyeZ": 50.0,
+      "LookX": 12.0,
+      "LookY": -13.0,
+      "LookZ": -58.0,
+      "UpX": 0.0,
+      "UpY": 1.0,
+      "UpZ": 0.0
+    },
+    "ConnectorPins": [],
+    "NodeViews": [
+      {
+        "Name": "Select Feature",
+        "ShowGeometry": true,
+        "Id": "fa7c9c46aa324e7bbfba4823e1182d1e",
+        "IsSetAsInput": true,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": -311.31729503295912,
+        "Y": -77.373424854904016
+      },
+      {
+        "Name": "Sketch.ByFeature",
+        "ShowGeometry": true,
+        "Id": "796ac0f1f27f4777bf2df86d52fbd52f",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 7.7887187368538946,
+        "Y": -88.541680265012175
+      },
+      {
+        "Name": "Code Block",
+        "ShowGeometry": true,
+        "Id": "67392670cb1f4ded83c12cc130507023",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": -280.70231636101875,
+        "Y": 87.642992493222962
+      },
+      {
+        "Name": "Point3D.ByCoordinates",
+        "ShowGeometry": true,
+        "Id": "2bb0c70476ff404d8d2898ecfc396d9c",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 318.76371692881645,
+        "Y": 152.09337913450165
+      },
+      {
+        "Name": "Point3D.ByCoordinates",
+        "ShowGeometry": true,
+        "Id": "34145bed78fb4d6e8244ba7830656049",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 248.10721871514582,
+        "Y": 428.11446717478
+      },
+      {
+        "Name": "Number Slider",
+        "ShowGeometry": true,
+        "Id": "1f3993fa378d458d875266ab99d9b476",
+        "IsSetAsInput": true,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": -345.65442383276525,
+        "Y": 482.69389294594788
+      }
+    ],
+    "Annotations": [],
+    "X": 299.11264137519936,
+    "Y": 203.33768492018498,
+    "Zoom": 0.72139574475614088
+  }
+}

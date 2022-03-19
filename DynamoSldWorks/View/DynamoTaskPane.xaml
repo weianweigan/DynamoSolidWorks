@@ -75,8 +75,8 @@
             </Expander>
         </StackPanel>
         <Button Grid.Row="2"
+                x:Name="_startSandBoxBtn"
                 FontSize="8"
-                Visibility="Collapsed"
                 BorderThickness="0" 
                 Background="{StaticResource SldBackground}"
                 HorizontalContentAlignment="Left"

@@ -13,7 +13,7 @@ namespace DynamoSldWorks.Model
     {
         public SldStartConfiguation()
         {
-            ProcessMode = TaskProcessMode.Asynchronous;
+            ProcessMode = TaskProcessMode.Synchronous;
             DynamoCorePath = SwAddin.DynamoCorePath;
             DynamoHostPath = SwAddin.DynamoCorePath;
         }

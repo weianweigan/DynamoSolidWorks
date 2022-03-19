@@ -1,30 +1,295 @@
-<Workspace Version="1.2.2.373" X="68.7927295265454" Y="397.639708117958" zoom="0.8131456821731" Name="Home" Description="" RunType="Automatic" RunPeriod="1000" HasRunWithoutCrash="True">
-  <NamespaceResolutionMap />
-  <Elements>
-    <Dynamo.Graph.Nodes.ZeroTouch.DSFunction guid="25a74c41-1f60-4760-bb18-3d7a3f597e01" type="Dynamo.Graph.Nodes.ZeroTouch.DSFunction" nickname="Face.Area" x="371.942317791971" y="117.118393521006" isVisible="true" isUpstreamVisible="true" lacing="Shortest" isSelectedInput="False" IsFrozen="false" isPinned="false" assembly="SldWorksNodes.dll" function="SldWorksNodes.Brep.Face.Area">
-      <PortInfo index="0" default="False" />
-    </Dynamo.Graph.Nodes.ZeroTouch.DSFunction>
-    <Dynamo.Graph.Nodes.CodeBlockNodeModel guid="67ab78dd-07a3-47c9-904c-29e21794d541" type="Dynamo.Graph.Nodes.CodeBlockNodeModel" nickname="Code Block" x="203.339096637298" y="17.5242018663213" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="False" IsFrozen="false" isPinned="false" CodeText="&quot;面积&quot;;" ShouldFocus="false" />
-    <CoreNodeModels.FromObject guid="a963e663-4155-4630-9b2a-58e347aaefae" type="CoreNodeModels.FromObject" nickname="String from Object" x="589.094871000698" y="89.8303183313321" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="False" IsFrozen="false" isPinned="false">
-      <PortInfo index="0" default="False" />
-    </CoreNodeModels.FromObject>
-    <SldWorksNodesUI.Selection.SelectFace guid="62b6fc22-0b6c-48c6-8c65-e13957559314" type="SldWorksNodesUI.Selection.SelectFace" nickname="Select Face" x="74.193737199291" y="116.180151362807" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="True" IsFrozen="false" isPinned="false">
-      <instance id="+CoAAAMAAAD//v8AAAAAAP//AQALAG1vRmFjZVJlZl9jAQAAAAAAAAAGAAAAAAIAAAAAAAB9w5QlrUmyVH3DlCWtSbJUAAD//wEAFABtb0VuZEZhY2VTdXJmSWRSZXBfYwAA//8BAAYAbW9GUl9j//8BAA0AbW9FeHRPYmplY3RfY///AQARAG1vQ1N0cmluZ0hhbmRsZV9j//7/AAmA//7/A/aW9k4xAAIAAGnsMmL//v8A//7/AAA1AGYAAAAAAAAAAAADAAAA//7/AtiepIsAAAAAAAAAAGYAZQBMAAAAeOwyYgEAAAAAAAAA//8BABcAbW9Gcm9tU2t0RW50U3VyZklkUmVwX2MAAAWACABMAAAAeOwyYgQAAAAMgAAABYAIAEwAAAB47DJiAwAAAAyAAAAFgAgATAAAAHjsMmICAAAADIAAAAWACABMAAAAeOwyYgEAAAAAAAAAAAAAAAAAAAAAAA==" />
-    </SldWorksNodesUI.Selection.SelectFace>
-    <Dynamo.Graph.Nodes.ZeroTouch.DSFunction guid="8acf5921-7201-4376-b437-f4b00a9ed344" type="Dynamo.Graph.Nodes.ZeroTouch.DSFunction" nickname="CustomProperty.ByNameText" x="755.203475088648" y="15.7363777695469" isVisible="true" isUpstreamVisible="true" lacing="Shortest" isSelectedInput="False" IsFrozen="false" isPinned="false" assembly="SldWorksNodes.dll" function="SldWorksNodes.CustomProperty.CustomProperty.ByNameText@string,string,string">
-      <PortInfo index="0" default="False" />
-      <PortInfo index="1" default="False" />
-      <PortInfo index="2" default="True" />
-    </Dynamo.Graph.Nodes.ZeroTouch.DSFunction>
-  </Elements>
-  <Connectors>
-    <Dynamo.Graph.Connectors.ConnectorModel start="25a74c41-1f60-4760-bb18-3d7a3f597e01" start_index="0" end="a963e663-4155-4630-9b2a-58e347aaefae" end_index="0" portType="0" />
-    <Dynamo.Graph.Connectors.ConnectorModel start="67ab78dd-07a3-47c9-904c-29e21794d541" start_index="0" end="8acf5921-7201-4376-b437-f4b00a9ed344" end_index="0" portType="0" />
-    <Dynamo.Graph.Connectors.ConnectorModel start="a963e663-4155-4630-9b2a-58e347aaefae" start_index="0" end="8acf5921-7201-4376-b437-f4b00a9ed344" end_index="1" portType="0" />
-    <Dynamo.Graph.Connectors.ConnectorModel start="62b6fc22-0b6c-48c6-8c65-e13957559314" start_index="0" end="25a74c41-1f60-4760-bb18-3d7a3f597e01" end_index="0" portType="0" />
-  </Connectors>
-  <Notes />
-  <Annotations />
-  <Presets />
-  <Cameras />
-</Workspace>
+{
+  "Uuid": "3c9d0464-8643-5ffe-96e5-ab1769818209",
+  "IsCustomNode": false,
+  "Description": "",
+  "Name": "FaceAreaToCustomProperty",
+  "ElementResolver": {
+    "ResolutionMap": {}
+  },
+  "Inputs": [
+    {
+      "Id": "62b6fc220b6c48c68c65e13957559314",
+      "Name": "Select Face",
+      "Type": "hostSelection",
+      "Value": "+CoAAAMAAAD//v8AAAAAAP//AQALAG1vRmFjZVJlZl9jAQAAAAAAAAAGAAAAAAIAAAAAAAB9w5QlrUmyVH3DlCWtSbJUAAD//wEAFwBtb0Zyb21Ta3RFbnRTdXJmSWRSZXBfYwAA//8BAAYAbW9GUl9j//8BAA0AbW9FeHRPYmplY3RfY///AQARAG1vQ1N0cmluZ0hhbmRsZV9j//7/AAmA//7/A/aW9k4xAAIAAHtaNWL//v8A//7/AAABAAAAAAAAAAAAAAADAAAA//7/AtiepIsAAAAAAAAAAAAAAABOAAAAClw1YgIAAAD//wEAFABtb0VuZEZhY2VTdXJmSWRSZXBfYwAABYAIAE4AAAAKXDViAAAAAAAAAAADgAAABYAIAE4AAAAKXDViAwAAAAyAAAAFgAgATgAAAApcNWIBAAAAAAAAAAOAAAAFgAgATgAAAApcNWIBAAAAAAAAAAAAAAAAAAAAAAA=",
+      "Description": "Select a face in doc",
+      "SelectedIndex": 0
+    }
+  ],
+  "Outputs": [],
+  "Nodes": [
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "SldWorksNodes.Brep.Face.Area",
+      "Id": "25a74c411f604760bb183d7a3f597e01",
+      "Inputs": [
+        {
+          "Id": "54770abc41584dcfa8b6ecc9b7343fc4",
+          "Name": "face",
+          "Description": "SldWorksNodes.Brep.Face",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "08c50ad5a4fc4a3299f2c2a4cd35e0b1",
+          "Name": "double",
+          "Description": "double",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "Face.Area: double"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.CodeBlockNodeModel, DynamoCore",
+      "NodeType": "CodeBlockNode",
+      "Code": "\"面积\";",
+      "Id": "67ab78dd07a347c9904c29e21794d541",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "d504d0ff20984a2798c192f4b1f3dc02",
+          "Name": "",
+          "Description": "行 1 中的表达式值",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "允许直接编写 DesignScript 代码"
+    },
+    {
+      "ConcreteType": "CoreNodeModels.FromObject, CoreNodeModels",
+      "NodeType": "ExtensionNode",
+      "Id": "a963e663415546309b2a58e347aaefae",
+      "Inputs": [
+        {
+          "Id": "fbdfec0dc7dc419392c05e5c790033dc",
+          "Name": "object",
+          "Description": "要系列化的对象",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "214ce77bac004b8bade7b9996709c52e",
+          "Name": "string",
+          "Description": "对象的字符串表示",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "将对象转换为字符串表示。"
+    },
+    {
+      "ConcreteType": "SldWorksNodesUI.Selection.SelectFace, SldWorksNodesUI",
+      "NodeType": "ExtensionNode",
+      "InstanceId": [
+        "+CoAAAMAAAD//v8AAAAAAP//AQALAG1vRmFjZVJlZl9jAQAAAAAAAAAGAAAAAAIAAAAAAAB9w5QlrUmyVH3DlCWtSbJUAAD//wEAFwBtb0Zyb21Ta3RFbnRTdXJmSWRSZXBfYwAA//8BAAYAbW9GUl9j//8BAA0AbW9FeHRPYmplY3RfY///AQARAG1vQ1N0cmluZ0hhbmRsZV9j//7/AAmA//7/A/aW9k4xAAIAAHtaNWL//v8A//7/AAABAAAAAAAAAAAAAAADAAAA//7/AtiepIsAAAAAAAAAAAAAAABOAAAAClw1YgIAAAD//wEAFABtb0VuZEZhY2VTdXJmSWRSZXBfYwAABYAIAE4AAAAKXDViAAAAAAAAAAADgAAABYAIAE4AAAAKXDViAwAAAAyAAAAFgAgATgAAAApcNWIBAAAAAAAAAAOAAAAFgAgATgAAAApcNWIBAAAAAAAAAAAAAAAAAAAAAAA="
+      ],
+      "Id": "62b6fc220b6c48c68c65e13957559314",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "58ccc67e66204a8789a2eb281d647cdf",
+          "Name": "曲面",
+          "Description": "选定的元素。",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "SldWorksNodes.CustomProperty.CustomProperty.ByNameText@string,string,string",
+      "Id": "8acf592172014376b437f4b00a9ed344",
+      "Inputs": [
+        {
+          "Id": "ebec20ef4983461a89ccb30cd8e11b49",
+          "Name": "name",
+          "Description": "string",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "b54d05927ffe47138d626fb7cec38412",
+          "Name": "value",
+          "Description": "string",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "181ba3bdf3c844689b983b94da19abb8",
+          "Name": "configuation",
+          "Description": "string\n默认值 : \"\"",
+          "UsingDefaultValue": true,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "c074f38fb6a044fea5106cabd8c46260",
+          "Name": "CustomProperty",
+          "Description": "CustomProperty",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "Init a text customproperty by name and value\n\nCustomProperty.ByNameText (name: string, value: string, configuation: string = \"\"): CustomProperty"
+    }
+  ],
+  "Connectors": [
+    {
+      "Start": "08c50ad5a4fc4a3299f2c2a4cd35e0b1",
+      "End": "fbdfec0dc7dc419392c05e5c790033dc",
+      "Id": "23ed601f691d4179859639347c40b44e",
+      "IsHidden": "False"
+    },
+    {
+      "Start": "d504d0ff20984a2798c192f4b1f3dc02",
+      "End": "ebec20ef4983461a89ccb30cd8e11b49",
+      "Id": "68d46aa367df4b04b6861b27f7ec3d7c",
+      "IsHidden": "False"
+    },
+    {
+      "Start": "214ce77bac004b8bade7b9996709c52e",
+      "End": "b54d05927ffe47138d626fb7cec38412",
+      "Id": "e6377c40fdc149f7bf8da0a3c2207fea",
+      "IsHidden": "False"
+    },
+    {
+      "Start": "58ccc67e66204a8789a2eb281d647cdf",
+      "End": "54770abc41584dcfa8b6ecc9b7343fc4",
+      "Id": "af4405ffa7b34e7ca6761a500526e5ff",
+      "IsHidden": "False"
+    }
+  ],
+  "Dependencies": [],
+  "NodeLibraryDependencies": [],
+  "Thumbnail": null,
+  "GraphDocumentationURL": null,
+  "ExtensionWorkspaceData": [
+    {
+      "ExtensionGuid": "28992e1d-abb9-417f-8b1b-05e053bee670",
+      "Name": "Properties",
+      "Version": "2.13",
+      "Data": {}
+    }
+  ],
+  "Author": "None provided",
+  "Linting": {
+    "activeLinter": "无",
+    "activeLinterId": "7b75fb44-43fd-4631-a878-29f4d5d8399a",
+    "warningCount": 0,
+    "errorCount": 0
+  },
+  "Bindings": [],
+  "View": {
+    "Dynamo": {
+      "ScaleFactor": 1.0,
+      "HasRunWithoutCrash": true,
+      "IsVisibleInDynamoLibrary": true,
+      "Version": "2.13.1.3887",
+      "RunType": "Automatic",
+      "RunPeriod": "1000"
+    },
+    "Camera": {
+      "Name": "背景预览",
+      "EyeX": -17.0,
+      "EyeY": 24.0,
+      "EyeZ": 50.0,
+      "LookX": 12.0,
+      "LookY": -13.0,
+      "LookZ": -58.0,
+      "UpX": 0.0,
+      "UpY": 1.0,
+      "UpZ": 0.0
+    },
+    "ConnectorPins": [],
+    "NodeViews": [
+      {
+        "Name": "Face.Area",
+        "ShowGeometry": true,
+        "Id": "25a74c411f604760bb183d7a3f597e01",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 282.5774373532434,
+        "Y": 31.852819524422046
+      },
+      {
+        "Name": "Code Block",
+        "ShowGeometry": true,
+        "Id": "67ab78dd07a347c9904c29e21794d541",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 263.18897069259265,
+        "Y": -142.34874937727383
+      },
+      {
+        "Name": "String from Object",
+        "ShowGeometry": true,
+        "Id": "a963e663415546309b2a58e347aaefae",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 544.0025001371198,
+        "Y": 39.818779737181629
+      },
+      {
+        "Name": "Select Face",
+        "ShowGeometry": true,
+        "Id": "62b6fc220b6c48c68c65e13957559314",
+        "IsSetAsInput": true,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": -23.369756123723676,
+        "Y": 31.734438654651612
+      },
+      {
+        "Name": "CustomProperty.ByNameText",
+        "ShowGeometry": true,
+        "Id": "8acf592172014376b437f4b00a9ed344",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 836.36974264308856,
+        "Y": -124.45990255175968
+      }
+    ],
+    "Annotations": [],
+    "X": 68.7927295265454,
+    "Y": 397.639708117958,
+    "Zoom": 0.8131456821731
+  }
+}

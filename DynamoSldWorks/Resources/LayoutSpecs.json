@@ -14,6 +14,26 @@
           "include": [],
           "childElements": [
             {
+              "text": "Selection",
+              "iconUrl": "",
+              "elementType": "group",
+              "include": [
+                {
+                  "path": "SldWorksNodesUI.SldWorksNodesUI.Feature",
+                  "inclusive": false
+                },
+                {
+                  "path": "SldWorksNodesUI.SldWorksNodesUI.SwItems",
+                  "inclusive": false
+                },
+                {
+                  "path": "SldWorksNodesUI.SldWorksNodesUI.Selection",
+                  "inclusive": false
+                }
+              ]
+
+            },
+            {
               "text": "Document",
               "iconUrl": "",
               "elementType": "group",
@@ -21,7 +41,6 @@
                 {
                   "path": "SldWorksNodes.SldWorksNodes.Document",
                   "inclusive": false
-
                 }
               ]
 
@@ -32,9 +51,8 @@
               "elementType": "group",
               "include": [
                 {
-                  "path": "SldWorksNodes.SldWorksNodes.Sketch.Sketch",
+                  "path": "SldWorksNodes.SldWorksNodes.Sketch",
                   "inclusive": false
-
                 }
               ]
 

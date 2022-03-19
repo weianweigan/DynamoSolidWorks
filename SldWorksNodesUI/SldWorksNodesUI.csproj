@@ -183,26 +183,26 @@
     <Compile Include="CustomProperty\Configurations.cs" />
     <Compile Include="CustomProperty\Properties.cs" />
     <Compile Include="Feature\AllFeatureOfTypeName.cs" />
+    <Compile Include="Feature\Base\SwFeatureDropDown.cs" />
     <Compile Include="Feature\Features.cs" />
     <Compile Include="Feature\FeatureTypeNames.cs" />
     <Compile Include="Feature\RefPlanes.cs" />
-    <Compile Include="Selection\ManySelection\SelectComponents.cs" />
-    <Compile Include="Selection\OneSelection\SelectBody.cs" />
-    <Compile Include="Selection\ManySelection\SelectBodies.cs" />
-    <Compile Include="Selection\OneSelection\SelectEdge.cs" />
-    <Compile Include="Selection\ManySelection\SelectEdges.cs" />
-    <Compile Include="Selection\OneSelection\SelectFace.cs" />
-    <Compile Include="Selection\ManySelection\SelectFaces.cs" />
-    <Compile Include="Selection\OneSelection\SelectComponent.cs" />
-    <Compile Include="Selection\OneSelection\SelectFeature.cs" />
     <Compile Include="Feature\Sketches.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Selection\Base\SwObjectSelction.cs" />
+    <Compile Include="Selection\ManySelection\SelectBodies.cs" />
+    <Compile Include="Selection\ManySelection\SelectComponents.cs" />
+    <Compile Include="Selection\ManySelection\SelectEdges.cs" />
+    <Compile Include="Selection\ManySelection\SelectFaces.cs" />
     <Compile Include="Selection\ManySelection\SelectFeatures.cs" />
+    <Compile Include="Selection\OneSelection\SelectBody.cs" />
+    <Compile Include="Selection\OneSelection\SelectComponent.cs" />
+    <Compile Include="Selection\OneSelection\SelectEdge.cs" />
+    <Compile Include="Selection\OneSelection\SelectFace.cs" />
+    <Compile Include="Selection\OneSelection\SelectFeature.cs" />
     <Compile Include="Selection\SelectPointOnFace.cs" />
     <Compile Include="Selection\SwModelSelectionHelper.cs" />
-    <Compile Include="Selection\Base\SwObjectSelction.cs" />
     <Compile Include="SwDropDownBase.cs" />
-    <Compile Include="Feature\Base\SwFeatureDropDown.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
@@ -223,13 +223,12 @@
   <ItemGroup>
     <Page Include="Control\SelectionBox.xaml">
       <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
+      <Generator>XamlIntelliSenseFileGenerator</Generator>
     </Page>
     <Page Include="Control\SelectionPage.xaml">
       <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
+      <Generator>XamlIntelliSenseFileGenerator</Generator>
     </Page>
   </ItemGroup>
-  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
