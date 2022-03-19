@@ -10,7 +10,7 @@ namespace SldWorksNodesUI.SwItems
 {
     [NodeName(nameof(Configurations))]
     [NodeDescription("Lists all configuration in active doc to select one")]
-    [NodeCategory("SolidWorks.Selection")]
+    [NodeCategory(SwNodesCategory.SelectionCategory)]
     [IsDesignScriptCompatible]
     public class Configurations:SwDropDownBase
     {

@@ -10,7 +10,7 @@ using SolidWorks.Interop.sldworks;
 namespace SldWorksNodesUI.Selection
 {
     [NodeName("Select Feature")]
-    [NodeCategory("SolidWorks.Selection")]
+    [NodeCategory(SwNodesCategory.SelectionCategory)]
     [NodeDescription("Select a feature in doc")]
     [IsDesignScriptCompatible]
     public class SelectFeature : SwObjectSelction<IFeature, SldWorksNodes.Feature.Feature>

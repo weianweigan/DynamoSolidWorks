@@ -15,7 +15,7 @@ namespace SldWorksNodesUI.Feature
 {
     [NodeName(nameof(Features))]
     [NodeDescription("Lists all features in active doc to select one")]
-    [NodeCategory("SolidWorks.Selection")]
+    [NodeCategory(SwNodesCategory.SelectionCategory)]
     [OutPortNames(Features.outputName)]
     [OutPortTypes("SldWorksNodes.SldWorksNodes.Feature.Feature")]
     [OutPortDescriptions("Feature")]

@@ -10,7 +10,7 @@ namespace SldWorksNodesUI.SwItems
 {
     [NodeName("CustomProperties")]
     [NodeDescription("Lists all properties in active doc to select one")]
-    [NodeCategory("SolidWorks.Selection")]
+    [NodeCategory(SwNodesCategory.SelectionCategory)]
     [InPortNames("Configuation")]
     [InPortTypes("string")]
     [InPortDescriptions("Name of Configuation")]

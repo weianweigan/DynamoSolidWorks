@@ -67,5 +67,10 @@ namespace SldWorksNodes.Brep
                 (double)res[1],
                 (double)res[2]);
         }
+
+        public override string ToString()
+        {
+            return SwObject?.GetID().ToString() ?? base.ToString();
+        }
     }
 }

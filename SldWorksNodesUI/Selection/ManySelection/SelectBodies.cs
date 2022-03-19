@@ -13,7 +13,7 @@ namespace SldWorksNodesUI.Selection
     /// Select a Body in current doc in solidworks
     /// </summary>
     [NodeName(message)]
-    [NodeCategory("SolidWorks.Selection")]
+    [NodeCategory(SwNodesCategory.SelectionCategory)]
     [NodeDescription("Select Bodies in doc")]
     [IsDesignScriptCompatible]
     public class SelectBodies : SwObjectSelction<IBody2, SldWorksNodes.Geometry.Body>

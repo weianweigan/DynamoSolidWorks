@@ -13,7 +13,7 @@ namespace SldWorksNodesUI.Selection
     /// Select a face in current doc in solidworks
     /// </summary>
     [NodeName(message)]
-    [NodeCategory("SolidWorks.Selection")]
+    [NodeCategory(SwNodesCategory.SelectionCategory)]
     [NodeDescription("Select a face in doc")]
     [IsDesignScriptCompatible]
     public class SelectFace : SwObjectSelction<IFace2, SldWorksNodes.Brep.Face>

@@ -19,19 +19,10 @@
               "elementType": "group",
               "include": [
                 {
-                  "path": "SldWorksNodesUI.SldWorksNodesUI.Feature",
-                  "inclusive": false
-                },
-                {
-                  "path": "SldWorksNodesUI.SldWorksNodesUI.SwItems",
-                  "inclusive": false
-                },
-                {
-                  "path": "SldWorksNodesUI.SldWorksNodesUI.Selection",
+                  "path": "SldWorksNodes.SldWorksNodes.Selection",
                   "inclusive": false
                 }
               ]
-
             },
             {
               "text": "Document",
@@ -63,7 +54,7 @@
               "elementType": "group",
               "include": [
                 {
-                  "path": "SldWorksNodes.SldWorksNodes.Feature.Feature",
+                  "path": "SldWorksNodes.SldWorksNodes.Feature",
                   "inclusive": false
                 }
               ]
@@ -74,7 +65,7 @@
               "elementType": "group",
               "include": [
                 {
-                  "path": "SldWorksNodes.SldWorksNodes.Dimension.Dimension",
+                  "path": "SldWorksNodes.SldWorksNodes.Dimension",
                   "inclusive": false
                 }
               ]
@@ -85,7 +76,7 @@
               "elementType": "group",
               "include": [
                 {
-                  "path": "SldWorksNodes.SldWorksNodes.EquationMgr.Equation",
+                  "path": "SldWorksNodes.SldWorksNodes.EquationMgr",
                   "inclusive": false
                 }
               ]
@@ -96,15 +87,7 @@
               "elementType": "group",
               "include": [
                 {
-                  "path": "SldWorksNodes.SldWorksNodes.CustomProperty.CustomPropertyCreation",
-                  "inclusive": false
-                },
-                {
-                  "path": "SldWorksNodes.SldWorksNodes.CustomProperty.CustomPropertyManager",
-                  "inclusive": false
-                },
-                {
-                  "path": "SldWorksNodes.SldWorksNodes.CustomProperty.CustomProperty",
+                  "path": "SldWorksNodes.SldWorksNodes.CustomProperty",
                   "inclusive": false
                 }
               ]
@@ -113,117 +96,10 @@
               "text": "Geometry",
               "iconUrl": "",
               "elementType": "group",
-              "include": [],
-              "childElements": [
+              "include": [
                 {
-                  "text": "Line3D",
-                  "iconUrl": "",
-                  "elementType": "group",
-                  "include": [
-                    {
-                      "path": "SldWorksNodes.SldWorksNodes.Geometry.Line3D",
-                      "inclusive": false
-                    }
-                  ]
-                },
-                {
-                  "text": "Point3D",
-                  "iconUrl": "",
-                  "elementType": "group",
-                  "include": [
-                    {
-                      "path": "SldWorksNodes.SldWorksNodes.Geometry.Point3D",
-                      "inclusive": false
-                    }
-                  ]
-                },
-                {
-                  "text": "Vector3D",
-                  "iconUrl": "",
-                  "elementType": "group",
-                  "include": [
-                    {
-                      "path": "SldWorksNodes.SldWorksNodes.Geometry.Vector3D",
-                      "inclusive": false
-                    }
-                  ]
-                },
-                {
-                  "text": "Arc3D",
-                  "iconUrl": "",
-                  "elementType": "group",
-                  "include": [
-                    {
-                      "path": "SldWorksNodes.SldWorksNodes.Geometry.Arc3D",
-                      "inclusive": false
-                    }
-                  ]
-                },
-                {
-                  "text": "Circle3D",
-                  "iconUrl": "",
-                  "elementType": "group",
-                  "include": [
-                    {
-                      "path": "SldWorksNodes.SldWorksNodes.Geometry.Circle3D",
-                      "inclusive": false
-                    }
-                  ]
-                },
-                {
-                  "text": "Body",
-                  "iconUrl": "",
-                  "elementType": "group",
-                  "include": [
-                    {
-                      "path": "SldWorksNodes.SldWorksNodes.Geometry.Body",
-                      "inclusive": false
-                    }
-                  ]
-                },
-                {
-                  "text": "Cube",
-                  "iconUrl": "",
-                  "elementType": "group",
-                  "include": [
-                    {
-                      "path": "SldWorksNodes.SldWorksNodes.Geometry.Cube",
-                      "inclusive": false
-                    }
-                  ]
-                },
-                {
-                  "text": "Cone",
-                  "iconUrl": "",
-                  "elementType": "group",
-                  "include": [
-                    {
-                      "path": "SldWorksNodes.SldWorksNodes.Geometry.Cone",
-                      "inclusive": false
-                    }
-                  ]
-                },
-                {
-                  "text": "Cylinder",
-                  "iconUrl": "",
-                  "elementType": "group",
-                  "include": [
-                    {
-                      "path": "SldWorksNodes.SldWorksNodes.Geometry.Cylinder",
-                      "inclusive": false
-                    }
-                  ]
-                },
-                {
-                  "text": "BodyBoolOperation",
-                  "iconUrl": "",
-                  "elementType": "group",
-                  "include": [
-                    {
-                      "path": "SldWorksNodes.SldWorksNodes.Geometry.BodyBoolOperation",
-                      "inclusive": false
-                    }
-                  ]
+                  "path": "SldWorksNodes.SldWorksNodes.Geometry",
+                  "inclusive": false
                 }
               ]
             },
@@ -231,51 +107,10 @@
               "text": "Brep",
               "iconUrl": "",
               "elementType": "group",
-              "include": [],
-              "childElements": [
+              "include": [
                 {
-                  "text": "Face",
-                  "iconUrl": "",
-                  "elementType": "group",
-                  "include": [
-                    {
-                      "path": "SldWorksNodes.SldWorksNodes.Brep.Face",
-                      "inclusive": false
-                    }
-                  ]
-                },
-                {
-                  "text": "Edge",
-                  "iconUrl": "",
-                  "elementType": "group",
-                  "include": [
-                    {
-                      "path": "SldWorksNodes.SldWorksNodes.Brep.Edge",
-                      "inclusive": false
-                    }
-                  ]
-                },
-                {
-                  "text": "Loop",
-                  "iconUrl": "",
-                  "elementType": "group",
-                  "include": [
-                    {
-                      "path": "SldWorksNodes.SldWorksNodes.Brep.Loop",
-                      "inclusive": false
-                    }
-                  ]
-                },
-                {
-                  "text": "Vertex",
-                  "iconUrl": "",
-                  "elementType": "group",
-                  "include": [
-                    {
-                      "path": "SldWorksNodes.SldWorksNodes.Brep.Vertex",
-                      "inclusive": false
-                    }
-                  ]
+                  "path": "SldWorksNodes.SldWorksNodes.Brep",
+                  "inclusive": false
                 }
               ]
             },
@@ -283,18 +118,32 @@
               "text": "Assembly",
               "iconUrl": "",
               "elementType": "group",
-              "include": [],
-              "childElements": [
+              "include": [
                 {
-                  "text": "Component",
-                  "iconUrl": "",
-                  "elementType": "group",
-                  "include": [
-                    {
-                      "path": "SldWorksNodes.SldWorksNodes.Assembly.Component",
-                      "inclusive": false
-                    }
-                  ]
+                  "path": "SldWorksNodes.SldWorksNodes.Assembly",
+                  "inclusive": false
+                }
+              ]
+            },
+            {
+              "text": "Configuration",
+              "iconUrl": "",
+              "elementType": "group",
+              "include": [
+                {
+                  "path": "SldWorksNodes.SldWorksNodes.ConfigurationManager",
+                  "inclusive": false
+                }
+              ]
+            },
+            {
+              "text": "Transform",
+              "iconUrl": "",
+              "elementType": "group",
+              "include": [
+                {
+                  "path": "SldWorksNodes.SldWorksNodes.Transform",
+                  "inclusive": false
                 }
               ]
             }

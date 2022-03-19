@@ -11,7 +11,7 @@ namespace SldWorksNodesUI.Feature
 {
     [NodeName(nameof(RefPlanes))]
     [NodeDescription("Lists all refplanes in active doc to select one")]
-    [NodeCategory("SolidWorks.Selection")]
+    [NodeCategory(SwNodesCategory.SelectionCategory)]
     [OutPortNames(Features.outputName)]
     [OutPortTypes("SldWorksNodes.SldWorksNodes.Feature.RefPlane")]
     [OutPortDescriptions("RefPlane")]

@@ -16,7 +16,7 @@ namespace SldWorksNodesUI.Selection
     /// Select a edge from current doc in solidworks
     /// </summary>
     [NodeName(message)]
-    [NodeCategory("SolidWorks.Selection")]
+    [NodeCategory(SwNodesCategory.SelectionCategory)]
     [NodeDescription("Select a edge in doc")]
     [IsDesignScriptCompatible]
     public class SelectEdge:SwObjectSelction<IEdge,SldWorksNodes.Brep.Edge>
