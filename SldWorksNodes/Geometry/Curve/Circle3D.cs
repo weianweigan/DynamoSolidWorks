@@ -3,7 +3,7 @@ using SldWorksNodes.Util;
 
 namespace SldWorksNodes.Geometry
 {
-    public class Circle3D: SwCurveBodyNode
+    public class Circle3D: Curve
     {
         #region Ctor
         internal Circle3D(Point3D center, double radius, Vector3D axis)

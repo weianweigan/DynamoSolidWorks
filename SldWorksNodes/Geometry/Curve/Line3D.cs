@@ -6,7 +6,7 @@ namespace SldWorksNodes.Geometry
     /// <summary>
     /// A line in SoildWorks
     /// </summary> 
-    public class Line3D : SwCurveBodyNode
+    public class Line3D : Curve
     {
         internal Line3D(Point3D startPoint, Point3D endPoint)
         {

@@ -31,6 +31,17 @@ namespace SldWorksNodes.Sketch
         }
         #endregion
 
+        #region Query
+        public List<SketchSegment> Segments()
+        {
+            return ExtractSegments(
+                SkeSegment
+                .Cast<ISketchSegment>()
+                .ToList());
+        }
+
+        #endregion
+
         #region Methods
         public override bool AsConstructionGeometry()
         {
@@ -38,7 +49,7 @@ namespace SldWorksNodes.Sketch
 
             foreach (var seg in SkeSegment)
             {
-                ((SketchSegment)seg).ConstructionGeometry = true;
+                ((ISketchSegment)seg).ConstructionGeometry = true;
             }
 
             return true;
@@ -75,6 +86,7 @@ namespace SldWorksNodes.Sketch
             });
 
         }
+
         #endregion
     }
 }

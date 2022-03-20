@@ -26,6 +26,14 @@ namespace SldWorksNodes.Sketch
 
             CreateSegment(_sPt, _ePt);            
         }
+
+        internal SketchLine(ISketchLine skeSeg)
+        {
+            SkeSegment = skeSeg;
+            SwObject = skeSeg as ISketchSegment;
+
+            SolvePoints();
+        }
         #endregion
 
         #region Create
@@ -67,12 +75,17 @@ namespace SldWorksNodes.Sketch
             if (SkeSegment == null)
                 throw new Exception($"{newSpt}-{newEpt} Failed");
 
+            SolvePoints();
+        }
+
+        private void SolvePoints()
+        {
             StartPoint = new SketchPoint(
-                _sketch, 
+                _sketch,
                 SkeSegment.GetStartPoint2() as ISketchPoint);
-            
+
             EndPoint = new SketchPoint(
-                _sketch, 
+                _sketch,
                 SkeSegment.GetEndPoint2() as ISketchPoint);
         }
 

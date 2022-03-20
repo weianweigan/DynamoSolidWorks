@@ -17,6 +17,12 @@ namespace SldWorksNodes.Sketch
             CreateSpline(nPts);
         }
 
+        internal SketchSpline(ISketchSpline skeSeg)
+        {
+            SkeSegment = skeSeg;
+            SwObject = skeSeg as ISketchSegment;
+        }
+
         internal SketchSpline(List<Point3D> points, List<Vector3D> directions, bool simulateNaturalEnds) : this(points)
         {
 

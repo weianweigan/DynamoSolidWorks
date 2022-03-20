@@ -4,7 +4,7 @@ using SolidWorks.Interop.sldworks;
 
 namespace SldWorksNodes.Sketch
 {
-    public class SketchEllipse: SketchSegment<ISketchEllipse>
+    public class SketchEllipse: SketchEllipticalArc
     {
         #region Ctor
         internal SketchEllipse(Point3D center, Point3D major, Point3D minor)

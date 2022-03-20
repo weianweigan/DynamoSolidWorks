@@ -278,7 +278,6 @@
     <Compile Include="Geometry\Curve\BSpineCurve.cs" />
     <Compile Include="Geometry\GeometryBuilder\SurfaceBuilder.cs" />
     <Compile Include="Geometry\Solid\Cone.cs" />
-    <Compile Include="Geometry\Curve.cs" />
     <Compile Include="Geometry\Curve\Arc3D.cs" />
     <Compile Include="Geometry\Body.cs" />
     <Compile Include="Geometry\BodyBoolOperation.cs" />
@@ -291,7 +290,7 @@
     <Compile Include="Geometry\Base\SheetBody.cs" />
     <Compile Include="Geometry\Base\SurfaceBody.cs" />
     <Compile Include="Geometry\Base\SwBodyNode.cs" />
-    <Compile Include="Geometry\Base\SwCurveBodyNode.cs" />
+    <Compile Include="Geometry\Base\Curve.cs" />
     <Compile Include="Geometry\Curve\Vector3D.cs" />
     <Compile Include="Geometry\Solid\Cylinder.cs" />
     <Compile Include="Geometry\Surface\BSpineSurface.cs" />
@@ -312,13 +311,14 @@
     <Compile Include="Sketch\Sketch.cs" />
     <Compile Include="Sketch\Sketch3D.cs" />
     <Compile Include="Sketch\SketchArc.cs" />
+    <Compile Include="Sketch\SketchCircle.cs" />
     <Compile Include="Sketch\SketchEllipse.cs" />
     <Compile Include="Sketch\SketchEllipticalArc.cs" />
     <Compile Include="Sketch\SketchLine.cs" />
     <Compile Include="Sketch\SketchPoint.cs" />
     <Compile Include="Sketch\SketchPolygon.cs" />
     <Compile Include="Sketch\SketchRectangle.cs" />
-    <Compile Include="Sketch\SketchSolt.cs" />
+    <Compile Include="Sketch\SketchSlot.cs" />
     <Compile Include="Sketch\SketchSpline.cs" />
     <Compile Include="SldViewExtension.cs" />
     <Compile Include="SwException\ActiveDocIsNotPartDocException.cs" />

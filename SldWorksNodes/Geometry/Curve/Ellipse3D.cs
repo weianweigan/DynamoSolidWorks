@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace SldWorksNodes.Geometry
 {
-    public class Ellipse3D:SwCurveBodyNode
+    public class Ellipse3D:Curve
     {
 
         public static Ellipse3D ByCenter2Raduis2Axis()

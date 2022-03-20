@@ -17,7 +17,7 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="80"/>
             <RowDefinition Height="*"/>
-            <RowDefinition Height="12"/>
+            <RowDefinition Height="20"/>
         </Grid.RowDefinitions>
         <Button BorderThickness="0"
                 Background="{StaticResource SldBackground}"
@@ -76,10 +76,19 @@
         </StackPanel>
         <Button Grid.Row="2"
                 x:Name="_startSandBoxBtn"
-                FontSize="8"
                 BorderThickness="0" 
                 Background="{StaticResource SldBackground}"
                 HorizontalContentAlignment="Left"
-                Command="{Binding StartSandBox}">Start Sandbox</Button>
+                Command="{Binding StartSandBox}">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="20"/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <Image 
+                       Source="../Resources/logo_square_32x32.png"/>
+                <TextBlock Grid.Column="1"> Start Sandbox</TextBlock>
+            </Grid>
+        </Button>
     </Grid>
 </UserControl>

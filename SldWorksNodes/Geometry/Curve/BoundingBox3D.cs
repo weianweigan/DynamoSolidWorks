@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace SldWorksNodes.Geometry
 {
-    public class BoundingBox3D:SwCurveBodyNode
+    public class BoundingBox3D:Curve
     {
         public BoundingBox3D(Point3D min, Point3D max)
         {

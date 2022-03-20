@@ -7,12 +7,17 @@ namespace SldWorksNodes.Geometry
     /// <summary>
     /// A Curve with wire body
     /// </summary>
-    [IsVisibleInDynamoLibrary(false)]
-    public abstract class SwCurveBodyNode : SwBodyNode
+    public class Curve : SwBodyNode
     {
         private ICurve _swCurve;
 
-        public SwCurveBodyNode()
+        [IsVisibleInDynamoLibrary(false)]
+        public Curve(ICurve curve)
+        {
+            SwCurve = curve;
+        }
+
+        internal Curve()
         {
             _color = Colors.Black;
         }
@@ -22,11 +27,7 @@ namespace SldWorksNodes.Geometry
             get => _swCurve; set
             {
                 _swCurve = value;
-                if(value != null)
-                    Curve = new Curve(value);
             }
         }
-
-        public Curve Curve { get;protected set; }
     }
 }
