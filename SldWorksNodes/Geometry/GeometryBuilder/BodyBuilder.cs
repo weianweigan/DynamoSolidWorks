@@ -74,7 +74,12 @@ namespace SldWorksNodes.Util
             return result;
         }
 
-        internal static IBody2 CreateConeBody(Point3D center, Vector3D axis, double bottomRaduis, double topRadius, double height)
+        public static IBody2 CreateConeBody(
+            Point3D center,
+            Vector3D axis, 
+            double bottomRaduis, 
+            double topRadius,
+            double height)
         {
             var data =
                 SwContextUtil.UseMM ?
@@ -96,6 +101,22 @@ namespace SldWorksNodes.Util
             };
 
             return SldContextManager.Modeler.CreateBodyFromCone(data) as IBody2;
+        }
+
+        public static IBody2 CreateSphere(
+            Point3D point,
+            double raduis
+            )
+        {
+            var surface = SldContextManager.Modeler.CreateSphericalSurface2(
+                point.ToArray(),
+                new double[] { 0,0,1},
+                new double[] { 1, 0, 1 },
+                raduis) as ISurface;
+
+            var body = surface.CreateTrimmedSheet4(null,true) as IBody2;            
+
+            return body;
         }
     }
 }

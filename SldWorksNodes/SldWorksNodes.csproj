@@ -279,7 +279,7 @@
     <Compile Include="Geometry\GeometryBuilder\SurfaceBuilder.cs" />
     <Compile Include="Geometry\Solid\Cone.cs" />
     <Compile Include="Geometry\Curve\Arc3D.cs" />
-    <Compile Include="Geometry\Body.cs" />
+    <Compile Include="Geometry\Solid\Body.cs" />
     <Compile Include="Geometry\BodyBoolOperation.cs" />
     <Compile Include="Geometry\Curve\BoundingBox3D.cs" />
     <Compile Include="Geometry\Curve\Circle3D.cs" />
@@ -293,6 +293,7 @@
     <Compile Include="Geometry\Base\Curve.cs" />
     <Compile Include="Geometry\Curve\Vector3D.cs" />
     <Compile Include="Geometry\Solid\Cylinder.cs" />
+    <Compile Include="Geometry\Solid\Sphere.cs" />
     <Compile Include="Geometry\Surface\BSpineSurface.cs" />
     <Compile Include="Geometry\Surface\CylindricalSurface.cs" />
     <Compile Include="Manager\UnitManager.cs" />
@@ -332,8 +333,8 @@
     <Compile Include="SwException\SelectionTypeErrorException.cs" />
     <Compile Include="SwException\SwObjectLostException.cs" />
     <Compile Include="Transform\SwCoordiateSystem.cs" />
-    <Compile Include="Util\BodyBuilder.cs" />
-    <Compile Include="Util\CurveBuilder.cs" />
+    <Compile Include="Geometry\GeometryBuilder\BodyBuilder.cs" />
+    <Compile Include="Geometry\GeometryBuilder\CurveBuilder.cs" />
     <Compile Include="Util\DispathWrapperUtil.cs" />
     <Compile Include="Util\SwContextUtil.cs" />
     <Compile Include="Util\PIDUtil.cs" />

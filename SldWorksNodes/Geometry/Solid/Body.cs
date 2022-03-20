@@ -11,13 +11,16 @@ namespace SldWorksNodes.Geometry
 {
     public class Body : SwBodyNode
     {
+        protected readonly bool _display;
+
         #region Ctor
         [IsVisibleInDynamoLibrary(false)]
         public Body(IBody2 body,bool display = true)
         {
             SwObject=body;
+            _display = display;
 
-            if (SwObject != null && display)
+            if (display)
                 DisplayBody();
         }
         #endregion
@@ -50,6 +53,8 @@ namespace SldWorksNodes.Geometry
             else
                 throw new SwObjectLostException(typeof(IFace2));
         }
+
+        //TODO:实体的拉伸 扫描 放样 旋转
         #endregion
 
         #region Methods
