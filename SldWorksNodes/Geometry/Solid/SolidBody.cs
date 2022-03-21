@@ -1,4 +1,5 @@
 ﻿using Autodesk.DesignScript.Runtime;
+using SldWorksNodes.Manager;
 using SldWorksNodes.SwException;
 using SldWorksNodes.Util;
 using SolidWorks.Interop.sldworks;
@@ -58,6 +59,33 @@ namespace SldWorksNodes.Geometry
                 return new SolidBody(obj);
             else
                 throw new SwObjectLostException(typeof(IFace2));
+        }
+
+        #endregion
+
+        #region Action
+
+        public static SolidBody ByExtrued(
+            List<Curve> curves,
+            Vector3D direction,
+            double length)
+        {
+            if (curves?.Any() != true || direction == null || length <= 0)
+                return null;
+
+            var swUnit = new UnitManager();
+
+            var nLength = swUnit.ConvertDouble(length);
+
+            var vector = SldContextManager.MathUtility.CreateVector(direction.ToArray()) as MathVector;
+            var body = BodyBuilder.Extrued(
+                SldContextManager.Modeler,
+                curves, vector, length);
+
+            if (body == null)
+                throw new Exception("Creation Failed");
+
+            return new SolidBody(body);
         }
 
         #endregion

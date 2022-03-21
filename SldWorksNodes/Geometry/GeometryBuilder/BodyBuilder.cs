@@ -2,6 +2,7 @@
 using SldWorksNodes.Geometry;
 using SolidWorks.Interop.sldworks;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -91,6 +92,52 @@ namespace SldWorksNodes.Util
 
             return result;
         }
+
+        public static IBody2 Extrued(
+            IModeler modeler,
+            List<Geometry.Curve> curves, 
+            MathVector direction, 
+            double length)
+        {
+            //取三点
+            List<Point3D> points = new List<Point3D>();
+            foreach (var curve in curves)
+            {
+                points.AddRange(curve.GetParamPoints());
+                if (points.Count >= 3)
+                    break;
+            }
+
+            //三点确定平面
+            var xAxis = points[1] - points[0];
+            var yAxis = points[2] - points[0];
+            var zAxis = Vector3D.CrossProduct(xAxis, yAxis);
+
+            var surface = modeler.CreatePlanarSurface2(
+                points[0].ToArray(),
+                zAxis.ToArray(),
+                xAxis.ToArray()) as ISurface;
+
+            if (surface == null)
+                return null;
+
+            var swCurves = curves.Select(p => p.SwCurve).ToArray();
+
+            var sheetBody = surface.CreateTrimmedSheet4(
+                swCurves, 
+                false) as Body2;
+            if (sheetBody == null)
+                return null;
+
+            var body = modeler.CreateExtrudedBody(
+                sheetBody,
+                direction,
+                length) as IBody2;
+
+            return body;
+        }
+
+        //TODO 放样 旋转 扫描
         #endregion
     }
 }

@@ -11,7 +11,7 @@ namespace SldWorksNodes.Geometry
 {
     public class SwBodyNode : SwNodeModel<IBody2>, IDisposable,ITempBody
     {
-        private static Color _color = Colors.Yellow;
+        protected Color _color = Colors.Yellow;
         #region Action
 
         public void SetMaterialProperty(MaterialProperty materialProperty)
