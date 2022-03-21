@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace DynamoSldWorks.Properties {
+namespace SldWorksNodesUI.Properties {
     using System;
     
     
@@ -39,7 +39,7 @@ namespace DynamoSldWorks.Properties {
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("DynamoSldWorks.Properties.Resources", typeof(Resources).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("SldWorksNodesUI.Properties.Resources", typeof(Resources).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -57,62 +57,6 @@ namespace DynamoSldWorks.Properties {
             }
             set {
                 resourceCulture = value;
-            }
-        }
-        
-        /// <summary>
-        ///   查找类似 Close 的本地化字符串。
-        /// </summary>
-        internal static string Close {
-            get {
-                return ResourceManager.GetString("Close", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
-        /// </summary>
-        internal static System.Drawing.Bitmap id {
-            get {
-                object obj = ResourceManager.GetObject("id", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
-        /// </summary>
-        internal static System.Drawing.Bitmap logo_square_32x32 {
-            get {
-                object obj = ResourceManager.GetObject("logo_square_32x32", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   查找类似 Open Dynamo 的本地化字符串。
-        /// </summary>
-        internal static string OpenDynamo {
-            get {
-                return ResourceManager.GetString("OpenDynamo", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   查找类似 Samples 的本地化字符串。
-        /// </summary>
-        internal static string Samples {
-            get {
-                return ResourceManager.GetString("Samples", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   查找类似 Start SandBox 的本地化字符串。
-        /// </summary>
-        internal static string StartSandBox {
-            get {
-                return ResourceManager.GetString("StartSandBox", resourceCulture);
             }
         }
     }
