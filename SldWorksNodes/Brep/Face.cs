@@ -81,12 +81,12 @@ namespace SldWorksNodes.Brep
                 .ToList();
         }
 
-        public Geometry.Body ParentBody()
+        public Geometry.SolidBody ParentBody()
         {
             var body = SwObject?.GetBody() as IBody2;
             
             return body != null ?
-                new Geometry.Body(body,false) :
+                new Geometry.SolidBody(body,false) :
                 null;
         }
 

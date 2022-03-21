@@ -7,6 +7,12 @@ namespace SldWorksNodes.Geometry
     [IsVisibleInDynamoLibrary(false)]
     public abstract class SurfaceBody : SwBodyNode
     {
+        #region Ctor
+        public SurfaceBody()
+        {
+
+        }
+
         public SurfaceBody(IBody2 body, bool display = true)
         {
             SwObject = body;
@@ -14,5 +20,6 @@ namespace SldWorksNodes.Geometry
             if (SwObject != null && display)
                 DisplayBody();
         }
+        #endregion
     }
 }

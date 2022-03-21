@@ -1,8 +1,10 @@
-﻿using SldWorksNodes.Util;
+﻿using Autodesk.DesignScript.Runtime;
+using SldWorksNodes.Util;
 
 namespace SldWorksNodes.Geometry
 {
-    public class Sphere : Body
+    [IsVisibleInDynamoLibrary(false)]
+    public class Sphere : SolidBody
     {
         public Sphere(
             Point3D center, 
@@ -30,9 +32,12 @@ namespace SldWorksNodes.Geometry
         #region Methods
         private void CreateSphere(Point3D center, double raduis)
         {
-            SwObject = BodyBuilder.CreateSphere(center.ToData(), raduis);
-            if (_display)
-                DisplayBody();
+            //SwObject = BodyBuilder.CreateSphere(
+            //    SldContextManager.Modeler,
+            //    center,
+            //    raduis);
+            //if (_display)
+            //    DisplayBody();
         }
         #endregion
     }

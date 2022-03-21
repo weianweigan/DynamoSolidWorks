@@ -1,16 +1,12 @@
 ﻿using Autodesk.DesignScript.Runtime;
+using SldWorksNodes.Geometry;
 using SolidWorks.Interop.sldworks;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Media.Media3D;
 
 namespace SldWorksNodes.Util
 {
     [IsVisibleInDynamoLibrary(false)]
-    internal static class CurveBuilder
+    public static class CurveBuilder
     {
         /// <summary>
         /// 创建剪裁后的直线
@@ -21,12 +17,6 @@ namespace SldWorksNodes.Util
         /// <returns>创建完成的Curve对象</returns>
         public static ICurve CreatedTrimmedLine(this IModeler modeler, Point3D startPoint, Point3D endPoint)
         {
-            if (SwContextUtil.UseMM)
-            {
-                startPoint = startPoint.ToMeter();
-                endPoint = endPoint.ToMeter();
-            }
-
             if (startPoint.Equals(endPoint))
                 throw new ArgumentException($"{startPoint} == {endPoint}");
 
@@ -49,14 +39,6 @@ namespace SldWorksNodes.Util
         /// <returns>创建完成的Curve对象</returns>
         public static ICurve CreatedTrimmedArc(this IModeler modeler, Point3D center, Vector3D axis, double radius, Point3D startPoint, Point3D endPoint)
         {
-            if (SwContextUtil.UseMM)
-            {
-                center = center.ToMeter();
-                startPoint = startPoint.ToMeter();
-                endPoint = endPoint.ToMeter();
-                radius = radius / 1000;
-            }
-
             var arc = (ICurve)modeler.CreateArc(center.ToArray(), axis.ToArray(), radius, startPoint.ToArray(), endPoint.ToArray());
 
             arc = arc.CreateTrimmedCurve2(startPoint.X, startPoint.Y, startPoint.Z,
@@ -67,16 +49,10 @@ namespace SldWorksNodes.Util
 
         public static ICurve CreateCircle(this IModeler modeler, Point3D center, Vector3D axis, double radius)
         {
-            if (SwContextUtil.UseMM)
-            {
-                center = center.ToMeter();
-                radius = radius / 1000;
-            }
-
-            var planeAxis = axis;
+            var planeAxis =Vector3D.ByCoordinates(axis.X,axis.Y,axis.Z);
             planeAxis.X += 0.1; planeAxis.Y += 0.1; planeAxis.Z += 0.1;
-            var direction = Vector3D.CrossProduct(axis, planeAxis);
-            direction.Normalize();
+            var direction =  Vector3D.CrossProduct(axis, planeAxis);
+            direction = Vector3D.Normalized(direction);
             var startPoint = center + Vector3D.Multiply(direction, radius);
 
             return CreatedTrimmedArc(modeler, center, axis, radius, startPoint, startPoint);
@@ -84,13 +60,6 @@ namespace SldWorksNodes.Util
 
         public static ICurve CreateTrimmedEllipse(this IModeler modeler,Point3D center,double majorRaduis,double minorRadius,Vector3D majorAxis,Vector3D minorAxis)
         {
-            if (SwContextUtil.UseMM)
-            {
-                center = center.ToMeter();
-                majorAxis = majorAxis / 1000;
-                minorAxis = minorAxis / 1000;
-            }
-
             var ellipse = modeler.CreateEllipse(center.ToArray(), majorRaduis, minorRadius, majorAxis.ToArray(), minorAxis.ToArray()) as ICurve;
 
             //ellipse.
@@ -98,37 +67,37 @@ namespace SldWorksNodes.Util
             return ellipse;
         }
 
-        public static IEnumerable<ICurve> CreateBox(this IModeler modeler, Rect3D box)
-        {
+        //public static IEnumerable<ICurve> CreateBox(this IModeler modeler, Rect3D box)
+        //{
 
-            var location = box.Location;
-            var line1 = new Line3D(location, location + new Vector3D(box.SizeX, 0, 0));
-            var line2 = new Line3D(location, location + new Vector3D(0, box.SizeY, 0));
-            var line3 = new Line3D(location, location + new Vector3D(0, 0, box.SizeZ));
+        //    var location = box.Location;
+        //    var line1 = new Line3D(location, location + new Vector3D(box.SizeX, 0, 0));
+        //    var line2 = new Line3D(location, location + new Vector3D(0, box.SizeY, 0));
+        //    var line3 = new Line3D(location, location + new Vector3D(0, 0, box.SizeZ));
 
 
-            var maxPoint = box.Location + new Vector3D(box.SizeX, box.SizeY, box.SizeZ);
-            var line4 = new Line3D(maxPoint, maxPoint + new Vector3D(-box.SizeX, 0, 0));
-            var line5 = new Line3D(maxPoint, maxPoint + new Vector3D(0, -box.SizeY, 0));
-            var line6 = new Line3D(maxPoint, maxPoint + new Vector3D(0, 0, -box.SizeZ));
+        //    var maxPoint = box.Location + new Vector3D(box.SizeX, box.SizeY, box.SizeZ);
+        //    var line4 = new Line3D(maxPoint, maxPoint + new Vector3D(-box.SizeX, 0, 0));
+        //    var line5 = new Line3D(maxPoint, maxPoint + new Vector3D(0, -box.SizeY, 0));
+        //    var line6 = new Line3D(maxPoint, maxPoint + new Vector3D(0, 0, -box.SizeZ));
 
-            var line7 = new Line3D(line1.EndPoint, line5.EndPoint);
-            var line8 = new Line3D(line1.EndPoint, line6.EndPoint);
+        //    var line7 = new Line3D(line1.EndPoint, line5.EndPoint);
+        //    var line8 = new Line3D(line1.EndPoint, line6.EndPoint);
 
-            var line9 = new Line3D(line2.EndPoint, line4.EndPoint);
-            var line10 = new Line3D(line2.EndPoint, line6.EndPoint);
+        //    var line9 = new Line3D(line2.EndPoint, line4.EndPoint);
+        //    var line10 = new Line3D(line2.EndPoint, line6.EndPoint);
 
-            var line11 = new Line3D(line3.EndPoint, line4.EndPoint);
-            var line12 = new Line3D(line3.EndPoint, line5.EndPoint);
+        //    var line11 = new Line3D(line3.EndPoint, line4.EndPoint);
+        //    var line12 = new Line3D(line3.EndPoint, line5.EndPoint);
 
-            var array = new Line3D[] { line1, line2, line3, line4, line5, line6, line7, line8, line9, line10, line11, line12 };
+        //    var array = new Line3D[] { line1, line2, line3, line4, line5, line6, line7, line8, line9, line10, line11, line12 };
 
-            foreach (var line in array)
-            {
-                var curve = modeler.CreatedTrimmedLine(line.StartPoint, line.EndPoint);
-                yield return curve;
-            }
-        }
+        //    foreach (var line in array)
+        //    {
+        //        var curve = modeler.CreatedTrimmedLine(line.StartPoint, line.EndPoint);
+        //        yield return curve;
+        //    }
+        //}
     }
 
 }

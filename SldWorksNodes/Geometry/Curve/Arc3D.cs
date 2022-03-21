@@ -12,13 +12,18 @@ namespace SldWorksNodes.Geometry
     public class Arc3D : Curve
     {
         #region Ctor
-        internal Arc3D(Point3D center, Vector3D axis, double radius, Point3D startPoint, Point3D endPoint)
+        internal Arc3D(
+            Point3D center,
+            Vector3D axis, 
+            double radius, 
+            Point3D startPoint,
+            Point3D endPoint)
         {
-            Center = center;
+            Center = _swUnit.ConvertPoint(center);
             Axis = axis;
-            Radius = radius;
-            StartPoint = startPoint;
-            EndPoint = endPoint;
+            Radius = _swUnit.ConvertDouble(radius);
+            StartPoint = _swUnit.ConvertPoint(startPoint);
+            EndPoint = _swUnit.ConvertPoint(endPoint);
 
             CreateWireArc();
         }
@@ -106,7 +111,14 @@ namespace SldWorksNodes.Geometry
         #region Methods
         private void CreateWireArc()
         {
-           SwCurve = Util.CurveBuilder.CreatedTrimmedArc(SldContextManager.Modeler, Center.ToData(), Axis.ToData(), Radius, StartPoint.ToData(), EndPoint.ToData());
+
+           SwCurve = Util.CurveBuilder.CreatedTrimmedArc(
+               SldContextManager.Modeler,
+               Center, 
+               Axis, 
+               Radius, 
+               StartPoint,
+               EndPoint);
 
             SwObject = SwCurve.CreateWireBody();
 

@@ -79,7 +79,7 @@ namespace SldWorksNodes.Transform
         public static SwCoordiateSystem Identity()
         {
             return new SwCoordiateSystem(
-                Point3D.Orign, 
+                Point3D.Orign(), 
                 Vector3D.XAxis, 
                 Vector3D.YAxis, 
                 Vector3D.ZAxis);

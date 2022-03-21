@@ -1,67 +1,81 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Autodesk.DesignScript.Runtime;
 using SldWorksNodes.Geometry.GeometryBuilder;
+using SldWorksNodes.Util;
 
 namespace SldWorksNodes.Geometry
 {
-    [IsVisibleInDynamoLibrary(false)]
     public class CylindricalSurface:SurfaceBody
     {
         internal CylindricalSurface(
-            SolidWorks.Interop.sldworks.IBody2 body,
             Point3D center, 
             Vector3D direction,
             Vector3D refDirection,
-            double radius):base(body)
+            double radius,
+            double height)
         {
-            Center = center;
-            Direction = direction;
-            RefDirection = refDirection;
-            Radius = radius;
+            var nCenter = _swUnit.ConvertPoint(center);
+            var nDirection = direction;
+            var nRefDirection = refDirection;
+            var nRadius = _swUnit.ConvertDouble(radius);
+            var nHeight = _swUnit.ConvertDouble(height);
+
+            CreateCylinderSurface(nCenter,nDirection,nRefDirection,nRadius,nHeight);
         }
 
-        public Point3D Center { get; }
-        public Vector3D Direction { get; }
-        public Vector3D RefDirection { get; }
-        public double Radius { get; }
-        #region Create
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="center">location of  the center of the bottom</param>
-        /// <param name="direction">direction of the axis of the cylindrical surface</param>
-        /// <param name="refDirection">direction of the axis of the cylindrical surface</param>
-        /// <param name="radius">Radius at the center</param>
-        /// <returns></returns>
-        public static SurfaceBody ByCenterPointDirectionsAndRaduis(
-            Point3D center,
-            Vector3D direction,
-            Vector3D refDirection,
-            double radius)
+        private void CreateCylinderSurface(
+            Point3D center, 
+            Vector3D direction, 
+            Vector3D refDirection, 
+            double radius,
+            double height)
         {
-            if (radius <= 0)
-                return null;
 
-            var body = SurfaceBuilder.CreateTrimmedCylindricalSurface(
+            SwObject  = SurfaceBuilder.CreateTrimmedCylindricalSheet(
+                SldContextManager.Modeler,
                 center,
                 direction,
                 refDirection,
-                radius, 
-                new Manager.UnitManager());
+                radius,
+                height);
 
-            if (body == null)
+            if (SwObject == null)
+                throw new Exception("Create Failded");
+
+            DisplayBody();
+        }
+
+        #region Create
+        /// <summary>
+        /// Create a cylinder surface by center direction and raduis
+        /// </summary>
+        /// <param name="center">location of  the center of the bottom</param>
+        /// <param name="direction">direction of the axis of the cylindrical surface</param>
+        /// <param name="radius">Radius at the center</param>
+        /// <param name="height">Height</param>
+        /// <returns></returns>
+        public static SurfaceBody ByCenterDirectionsRaduis(
+            Point3D center,
+            Vector3D direction,
+            double radius,
+            double height)
+        {
+            if(center == null || direction == null)
                 return null;
 
+            if (radius <= 0)
+                return null;
+
+            var temDirection = Vector3D.ByCoordinates(direction.X + 0.1,
+                direction.Y + 0.1, direction.Z + 0.1);
+
+            var refDirection = Vector3D.CrossProduct(direction, temDirection);
+
             return new CylindricalSurface(
-                body, 
                 center, 
                 direction,
                 refDirection,
-                radius);
+                radius,
+                height);
         }
         #endregion
     }

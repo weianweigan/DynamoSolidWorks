@@ -16,7 +16,7 @@ namespace SldWorksNodesUI.Selection
     [NodeCategory(SwNodesCategory.SelectionCategory)]
     [NodeDescription("Select a Body in doc")]
     [IsDesignScriptCompatible]
-    public class SelectBody : SwObjectSelction<IBody2, SldWorksNodes.Geometry.Body>
+    public class SelectBody : SwObjectSelction<IBody2, SldWorksNodes.Geometry.SolidBody>
     {
         #region Fields
         private const string message = "Select Body";
@@ -33,16 +33,16 @@ namespace SldWorksNodesUI.Selection
         #endregion
 
         #region Methods
-        protected override IEnumerable<SldWorksNodes.Geometry.Body> ExtractSelectionResults(IBody2 selections)
+        protected override IEnumerable<SldWorksNodes.Geometry.SolidBody> ExtractSelectionResults(IBody2 selections)
         {
             if (selections == null)
                 yield break;
 
-            yield return new SldWorksNodes.Geometry.Body(selections);
+            yield return new SldWorksNodes.Geometry.SolidBody(selections);
         }
 
-        protected override Func<string, SldWorksNodes.Geometry.Body> GetBuildFuncation() => 
-            new Func<string, SldWorksNodes.Geometry.Body>(SldWorksNodes.Geometry.Body.ByPID);
+        protected override Func<string, SldWorksNodes.Geometry.SolidBody> GetBuildFuncation() => 
+            new Func<string, SldWorksNodes.Geometry.SolidBody>(SldWorksNodes.Geometry.SolidBody.ByPID);
 
         protected override string GetOutputPortName() => "Body";
         #endregion

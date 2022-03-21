@@ -27,7 +27,10 @@ namespace SldWorksNodes.Geometry
 
         private void CreateWireBody(Point3D startPoint, Point3D endPoint)
         {
-            SwCurve = Util.CurveBuilder.CreatedTrimmedLine(SldContextManager.Modeler, startPoint.ToData(), endPoint.ToData());
+            SwCurve = Util.CurveBuilder.CreatedTrimmedLine(
+                SldContextManager.Modeler, 
+                startPoint, 
+                endPoint);
 
             SwObject = SwCurve.CreateWireBody();
 

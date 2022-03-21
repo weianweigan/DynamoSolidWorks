@@ -53,7 +53,9 @@ namespace SldWorksNodes.Geometry
         #region Methods
         private void CreateWireCircle()
         {
-            SwCurve = Util.CurveBuilder.CreateCircle(SldContextManager.Modeler, Center.ToData(), Axis.ToData(), Radius);
+            SwCurve = Util.CurveBuilder.CreateCircle(
+                SldContextManager.Modeler, 
+                Center, Axis, Radius);
 
             SwObject = SwCurve.CreateWireBody();
 

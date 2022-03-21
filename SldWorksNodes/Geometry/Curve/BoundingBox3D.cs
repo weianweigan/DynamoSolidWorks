@@ -20,7 +20,7 @@ namespace SldWorksNodes.Geometry
             return new BoundingBox3D(min, max);
         }
 
-        public static BoundingBox3D ByGeometry(Body body)
+        public static BoundingBox3D ByGeometry(SolidBody body)
         {
             var box = body.Box();
 

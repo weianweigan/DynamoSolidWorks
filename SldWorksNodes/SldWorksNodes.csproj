@@ -279,7 +279,7 @@
     <Compile Include="Geometry\GeometryBuilder\SurfaceBuilder.cs" />
     <Compile Include="Geometry\Solid\Cone.cs" />
     <Compile Include="Geometry\Curve\Arc3D.cs" />
-    <Compile Include="Geometry\Solid\Body.cs" />
+    <Compile Include="Geometry\Solid\SolidBody.cs" />
     <Compile Include="Geometry\BodyBoolOperation.cs" />
     <Compile Include="Geometry\Curve\BoundingBox3D.cs" />
     <Compile Include="Geometry\Curve\Circle3D.cs" />
@@ -288,7 +288,7 @@
     <Compile Include="Geometry\Curve\Line3D.cs" />
     <Compile Include="Geometry\Curve\Point3D.cs" />
     <Compile Include="Geometry\Base\SheetBody.cs" />
-    <Compile Include="Geometry\Base\SurfaceBody.cs" />
+    <Compile Include="Geometry\Surface\SurfaceBody.cs" />
     <Compile Include="Geometry\Base\SwBodyNode.cs" />
     <Compile Include="Geometry\Base\Curve.cs" />
     <Compile Include="Geometry\Curve\Vector3D.cs" />
@@ -296,6 +296,7 @@
     <Compile Include="Geometry\Solid\Sphere.cs" />
     <Compile Include="Geometry\Surface\BSpineSurface.cs" />
     <Compile Include="Geometry\Surface\CylindricalSurface.cs" />
+    <Compile Include="Geometry\Surface\SphereSurface.cs" />
     <Compile Include="Manager\UnitManager.cs" />
     <Compile Include="MaterialProperty.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

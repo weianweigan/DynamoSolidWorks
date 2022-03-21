@@ -4,64 +4,38 @@ using System;
 
 namespace SldWorksNodes.Geometry
 {
-    public class Cone : Body
+    public class Cone : SolidBody
     {
         #region Ctor
         internal Cone(
-            IBody2 body,
             Point3D center, 
             Vector3D axis, 
             double bottomRaduis, 
             double topRadius, 
-            double height):base(body)
+            double height)
         {
-            Center = center;
-            Axis = axis;
-            BottomRaduis = bottomRaduis;
-            TopRadius = topRadius;
-            Height = height;
+            var nCenter = _swUnit.ConvertPoint(center);
+            var nBottomRaduis =_swUnit.ConvertDouble(bottomRaduis);
+            var nTopRadius = _swUnit.ConvertDouble(topRadius);
+            var nHeight = _swUnit.ConvertDouble(height);
+
+            CreateCone(nCenter, axis, nBottomRaduis, nTopRadius, nHeight);
         }
         #endregion
 
         #region Query
-        public Point3D Center { get; }
-
-        public Vector3D Axis { get; }
-
-        public double BottomRaduis { get; }
-
-        public double TopRadius { get; }
-
-        public double Height { get; }
         #endregion
 
         #region Create
-        public static Body ByCenterAxis2RaduisHeight(
+        public static SolidBody ByCenterAxis2RaduisHeight(
             Point3D center, 
             Vector3D axis,
             double height, 
             double bottomRaduis, 
             double topRadius=0 )
         {
-            if (bottomRaduis < 0)
-                return null;
-            if (topRadius < 0)
-                return null; 
-            if (height < 0)
-                return null;
-
-            var body = BodyBuilder.CreateConeBody(
-               center.ToData(),
-               axis.ToData(),
-               bottomRaduis,
-               topRadius,
-               height);
-
-            if (body == null)
-                throw new NullReferenceException("Create Body Error");
-
+           
             var cone = new Cone(
-                body,
                 center,
                 axis,
                 bottomRaduis,
@@ -71,13 +45,35 @@ namespace SldWorksNodes.Geometry
             return cone;
         }
 
-        public static Body ByCenter2RaduisHeight(
+        public static SolidBody ByCenter2RaduisHeight(
             Point3D center,
             double height, 
             double bottomRaduis,
             double topRadius =0)
         { 
-            return ByCenterAxis2RaduisHeight((Point3D)center, Vector3D.ByCoordinates(0,0,1),bottomRaduis,topRadius,height);
+            return ByCenterAxis2RaduisHeight(
+                (Point3D)center,
+                Vector3D.ByCoordinates(0,0,1),
+                bottomRaduis,
+                topRadius,
+                height);
+        }
+        #endregion
+
+        #region Methods
+        private void CreateCone(Point3D nCenter, Vector3D axis, double nBottomRaduis, double nTopRadius, double nHeight)
+        {
+            SwObject = BodyBuilder.CreateConeBody(
+              nCenter,
+              axis,
+              nBottomRaduis,
+              nTopRadius,
+              nHeight);
+
+            if (SwObject == null)
+                throw new NullReferenceException("Create Body Error");
+
+            DisplayBody();
         }
         #endregion
     }
