@@ -162,6 +162,12 @@ namespace SldWorksNodes.Geometry
 
         internal System.Windows.Media.Media3D.Vector3D ToData() =>
             new System.Windows.Media.Media3D.Vector3D(X, Y, Z);
+
+        internal bool IsZ(double eplision = 0.00001)
+        {
+            return Math.Abs(X) < eplision && Math.Abs(Y) < eplision;
+        }
+
         #endregion
 
         #region Operator

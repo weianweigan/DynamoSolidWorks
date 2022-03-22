@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace SldWorksNodes.Geometry
 {
-    public class BSpineCurve
+    public class BSpine
     {
     }
 }

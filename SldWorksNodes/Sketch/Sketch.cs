@@ -63,23 +63,15 @@ namespace SldWorksNodes.Sketch
 
             return new Sketch(skeFeature.SwObject);
         }
-        #endregion
 
-        #region Query
-        /// <summary>
-        /// Name of Sketch Feature
-        /// </summary>
-        public string Name => ((IFeature)SwObject)?.Name;
-        #endregion
-
-        #region Action
-        [IsVisibleInDynamoLibrary(false)]
-        public static Sketch CreateSketch(Feature.Feature refPlaneFeat, string name)
+        public static Sketch ByRefPlaneFeat(
+            Feature.Feature refPlaneFeat,
+            string name)
         {
             if (refPlaneFeat == null || string.IsNullOrWhiteSpace(name))
                 return null;
 
-            if(refPlaneFeat.SwObject.GetTypeName2() != FeatTypeNameUtil.RefPlane)
+            if (refPlaneFeat.SwObject.GetTypeName2() != FeatTypeNameUtil.RefPlane)
                 throw new FeatureTypeNameErrorException(refPlaneFeat.Name, FeatTypeNameUtil.RefPlane);
 
             var doc = SwContextUtil.GetActivDocContext();
@@ -98,8 +90,8 @@ namespace SldWorksNodes.Sketch
                 return new Sketch(feat);
             }
 
-            //Create sketch
-            (refPlaneFeat.SwObject).Select2(false, 0);
+         //Create sketch
+         (refPlaneFeat.SwObject).Select2(false, 0);
             doc.SketchManager.InsertSketch(true);
             if (doc.SketchManager.ActiveSketch != null)
             {
@@ -113,7 +105,9 @@ namespace SldWorksNodes.Sketch
             }
         }
 
-        public static Sketch CreateSketch(Brep.Face face, string name)
+        public static Sketch ByFace(
+            Brep.Face face,
+            string name)
         {
             if (face == null || string.IsNullOrWhiteSpace(name))
                 return null;
@@ -140,9 +134,9 @@ namespace SldWorksNodes.Sketch
             //Create sketch
             ((Entity)face.SwObject).Select2(false, 0);
             doc.SketchManager.InsertSketch(true);
-            if(doc.SketchManager.ActiveSketch != null)
+            if (doc.SketchManager.ActiveSketch != null)
             {
-                var skeFeat =(doc.SketchManager.ActiveSketch as IFeature);
+                var skeFeat = (doc.SketchManager.ActiveSketch as IFeature);
                 skeFeat.Name = name;
                 return new Sketch(skeFeat);
             }
@@ -150,9 +144,18 @@ namespace SldWorksNodes.Sketch
             {
                 throw new Exception("Create Sketch failed");
             }
-
         }
-   
+
+        #endregion
+
+        #region Query
+        /// <summary>
+        /// Name of Sketch Feature
+        /// </summary>
+        public string Name => ((IFeature)SwObject)?.Name;
+        #endregion
+
+        #region Action     
         /// <summary>
         /// Set Sketch Name
         /// </summary>

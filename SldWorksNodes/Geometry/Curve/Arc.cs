@@ -1,11 +1,5 @@
 ﻿using SldWorksNodes.Util;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Media;
-using System.Windows.Media.Media3D;
 
 namespace SldWorksNodes.Geometry
 {
@@ -29,22 +23,38 @@ namespace SldWorksNodes.Geometry
         }
         #endregion
 
-        //public static Arc3D ByCenterAxisRaduisAngle(Point3D center, Vector3D axis, double radius, double startAngle, double endAngle)
-        //{
-        //    if (radius <= 0)
-        //        return null;
-
-        //    var hor = new System.Windows.Media.Media3D.Vector3D(1, 0, 0);
-        //    if (!axis.ToData().IsZ())
-        //    {
-        //        hor = System.Windows.Media.Media3D.Vector3D.CrossProduct(new System.Windows.Media.Media3D.Vector3D(0, 0, 1), axis.ToData());
-        //    }
-
-        //    return CreateArc(center, axis, radius, startPoint, endPoint);
-        //}
-
         #region Create
-        public static Arc ByCenterPointStartPointEndPoint(
+        public static Arc ByCenterNormalRaduisAngle(
+            Point3D center,
+            Vector3D normal, 
+            double radius,
+            double startAngle,
+            double endAngle)
+        {
+            if (radius <= 0 || startAngle == endAngle)
+                return null;
+            if (center == null || normal == null)
+                return null;
+
+            var xAxis = new Vector3D(1, 0, 0);
+            if (!normal.IsZ())
+            {
+                xAxis = Vector3D.CrossProduct(
+                    new Vector3D(normal.X + 0.1, normal.Y + 0.1, normal.Z + 0.1),
+                    normal);
+            }
+            var yAxis = Vector3D.CrossProduct(xAxis, normal);
+            var unitNorml = Vector3D.Normalized(normal);
+
+            var orignSpt = center + unitNorml * radius;
+
+            var startPoint = ApplyRotate(normal, startAngle, orignSpt);
+            var endPoint = ApplyRotate(normal, endAngle, orignSpt);
+
+            return new Arc(center, normal, radius, startPoint, endPoint);
+        }
+
+        public static Arc ByCenterNormalStartPointEndPoint(
             Point3D center,
             Vector3D normal,
             Point3D startPoint,
@@ -66,20 +76,18 @@ namespace SldWorksNodes.Geometry
 
         //}
 
-        ///// <summary>
-        ///// Create an arc by providing it's center point, radius, angle sweep, and normal vector
-        ///// </summary>
-        ///// <returns></returns>
-        //public static Arc3D ByCenterPointRadiusAngle(
-        //    Point3D center,
-        //    double radius,
-        //    double startAngle,
-        //    double endAngle,
-        //    Vector3D normal)
-        //{
-
-
-        //}
+        /// <summary>
+        /// Create an arc by providing it's center point, radius, angle sweep
+        /// </summary>
+        /// <returns></returns>
+        public static Arc ByCenterPointRadiusAngle(
+            Point3D center,
+            double radius,
+            double startAngle,
+            double endAngle)
+        {
+            return ByCenterNormalRaduisAngle(center,Vector3D.ZAxis,radius,startAngle,endAngle); 
+        }
 
         //public Arc3D ByThreePoints(
         //    Point3D pt1,Point3D pt2,Point3D pt3)
@@ -126,6 +134,16 @@ namespace SldWorksNodes.Geometry
             {
                 DisplayBody();
             }
+        }
+
+        private static Point3D ApplyRotate(Vector3D normal, double startAngle, Point3D startPt)
+        {
+            var rotate = new System.Windows.Media.Media3D.AxisAngleRotation3D(normal.ToData(), startAngle);
+            var trans = new System.Windows.Media.Media3D.RotateTransform3D(rotate);
+
+            var startPointData = trans.Transform(startPt.ToData());
+            var startPoint = Point3D.ByCoordinates(startPointData.X, startPointData.Y, startPointData.Z);
+            return startPoint;
         }
         #endregion
     }

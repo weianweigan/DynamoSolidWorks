@@ -12,6 +12,7 @@ namespace SldWorksNodes.Util
     [IsVisibleInDynamoLibrary(false)]
     public static class BodyBuilder
     {
+        #region Base Geometry
         public static IBody2 CreateFromBox(
             IModeler modeler,
             Point3D downLeft,
@@ -61,7 +62,59 @@ namespace SldWorksNodes.Util
 
             return SldContextManager.Modeler.CreateBodyFromCone(data) as IBody2;
         }
-      
+        #endregion
+
+        #region ByModeler
+        public static IBody2 Extrued(
+                IModeler modeler,
+                List<Geometry.Curve> curves,
+                MathVector direction,
+                double length)
+        {
+            //取三点
+            List<Point3D> points = new List<Point3D>();
+            foreach (var curve in curves)
+            {
+                points.AddRange(curve.GetParamPoints());
+                if (points.Count >= 3)
+                    break;
+            }
+
+            //三点确定平面
+            var xAxis = points[1] - points[0];
+            var yAxis = points[2] - points[0];
+            var zAxis = Vector3D.CrossProduct(xAxis, yAxis);
+
+            var surface = modeler.CreatePlanarSurface2(
+                points[0].ToArray(),
+                zAxis.ToArray(),
+                xAxis.ToArray()) as ISurface;
+
+            if (surface == null)
+                return null;
+
+            var swCurves = curves.Select(p => p.SwCurve).ToArray();
+
+            var sheetBody = surface.CreateTrimmedSheet4(
+                swCurves,
+                false) as Body2;
+            if (sheetBody == null)
+                return null;
+
+            var body = modeler.CreateExtrudedBody(
+                sheetBody,
+                direction,
+                length) as IBody2;
+
+            return body;
+        }
+        
+        //TODO 放样 旋转 扫描
+
+
+        #endregion
+
+
         #region Private Methods
         private static double[] ToBodyBox(double[] box)
         {
@@ -92,52 +145,6 @@ namespace SldWorksNodes.Util
 
             return result;
         }
-
-        public static IBody2 Extrued(
-            IModeler modeler,
-            List<Geometry.Curve> curves, 
-            MathVector direction, 
-            double length)
-        {
-            //取三点
-            List<Point3D> points = new List<Point3D>();
-            foreach (var curve in curves)
-            {
-                points.AddRange(curve.GetParamPoints());
-                if (points.Count >= 3)
-                    break;
-            }
-
-            //三点确定平面
-            var xAxis = points[1] - points[0];
-            var yAxis = points[2] - points[0];
-            var zAxis = Vector3D.CrossProduct(xAxis, yAxis);
-
-            var surface = modeler.CreatePlanarSurface2(
-                points[0].ToArray(),
-                zAxis.ToArray(),
-                xAxis.ToArray()) as ISurface;
-
-            if (surface == null)
-                return null;
-
-            var swCurves = curves.Select(p => p.SwCurve).ToArray();
-
-            var sheetBody = surface.CreateTrimmedSheet4(
-                swCurves, 
-                false) as Body2;
-            if (sheetBody == null)
-                return null;
-
-            var body = modeler.CreateExtrudedBody(
-                sheetBody,
-                direction,
-                length) as IBody2;
-
-            return body;
-        }
-
-        //TODO 放样 旋转 扫描
         #endregion
     }
 }
