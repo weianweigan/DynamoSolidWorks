@@ -3,10 +3,10 @@ using SldWorksNodes.Util;
 
 namespace SldWorksNodes.Geometry
 {
-    public class Circle3D: Curve
+    public class Circle: Curve
     {
         #region Ctor
-        internal Circle3D(Point3D center, double radius, Vector3D axis)
+        internal Circle(Point3D center, double radius, Vector3D axis)
         {
             Center = center;
             Radius = radius;
@@ -17,19 +17,19 @@ namespace SldWorksNodes.Geometry
         #endregion
 
         #region Create
-        public static Circle3D ByCenterPointRadiusNormal(
+        public static Circle ByCenterPointRadiusNormal(
             Point3D center, 
             double radius, 
             Vector3D normal)
         {
-            return new Circle3D(center, radius, normal);
+            return new Circle(center, radius, normal);
         }
 
-        public static Circle3D ByCenterPointRadius(
+        public static Circle ByCenterPointRadius(
             Point3D center, 
             double radius)
         {
-            return new Circle3D(center, radius, new Vector3D(0,0,1));
+            return new Circle(center, radius, new Vector3D(0,0,1));
         }
 
         //TODO:三点圆弧

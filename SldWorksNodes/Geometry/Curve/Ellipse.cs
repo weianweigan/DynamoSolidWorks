@@ -6,13 +6,13 @@ using System.Threading.Tasks;
 
 namespace SldWorksNodes.Geometry
 {
-    public class Ellipse3D:Curve
+    public class Ellipse:Curve
     {
 
-        public static Ellipse3D ByCenter2Raduis2Axis()
+        public static Ellipse ByCenter2Raduis2Axis()
         {
 
-            return new Ellipse3D();
+            return new Ellipse();
         }
     }
 }

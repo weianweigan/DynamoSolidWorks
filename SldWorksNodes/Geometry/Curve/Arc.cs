@@ -9,10 +9,10 @@ using System.Windows.Media.Media3D;
 
 namespace SldWorksNodes.Geometry
 {
-    public class Arc3D : Curve
+    public class Arc : Curve
     {
         #region Ctor
-        internal Arc3D(
+        internal Arc(
             Point3D center,
             Vector3D axis, 
             double radius, 
@@ -44,14 +44,14 @@ namespace SldWorksNodes.Geometry
         //}
 
         #region Create
-        public static Arc3D ByCenterPointStartPointEndPoint(
+        public static Arc ByCenterPointStartPointEndPoint(
             Point3D center,
             Vector3D normal,
             Point3D startPoint,
             Point3D endPoint)
         {
             var radius = (center.ToData() - startPoint.ToData()).Length;
-            return new Arc3D(center, normal,Math.Abs(radius), startPoint, endPoint);
+            return new Arc(center, normal,Math.Abs(radius), startPoint, endPoint);
         }
 
         //public static Arc3D ByBestFitThroughPoints(List<Point3D> points)
