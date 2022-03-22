@@ -109,4 +109,7 @@
   <data name="StartSandBox" xml:space="preserve">
     <value>启动 SandBox</value>
   </data>
+  <data name="StartNewVersionNeedReplaceDll" xml:space="preserve">
+    <value>启动新版Dynamo需要更新SolidWorks中的一个程序集。SolidWorks将被关闭，你想要继续吗？</value>
+  </data>
 </root>

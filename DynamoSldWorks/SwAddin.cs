@@ -79,6 +79,7 @@ namespace DynamoSldWorks
             _cmdTaskPane.Control.Init(this);
 
             CommandManager.AddCommandGroup<Commands>().CommandClick += SwAddin_CommandClick;
+        
         }
 
         private void SwAddin_CommandClick(Commands spec)

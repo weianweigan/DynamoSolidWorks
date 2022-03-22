@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace DynamoSldWorks.Properties {
+namespace SldWorksDllUpdateTask.Properties {
     using System;
     
     
@@ -39,7 +39,7 @@ namespace DynamoSldWorks.Properties {
         public static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("DynamoSldWorks.Properties.Resources", typeof(Resources).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("SldWorksDllUpdateTask.Properties.Resources", typeof(Resources).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -61,67 +61,38 @@ namespace DynamoSldWorks.Properties {
         }
         
         /// <summary>
-        ///   查找类似 Close 的本地化字符串。
+        ///   查找类似 Start new version dynamo need to replace older dll in solidworks. 的本地化字符串。
         /// </summary>
-        public static string Close {
+        public static string Msg {
             get {
-                return ResourceManager.GetString("Close", resourceCulture);
+                return ResourceManager.GetString("Msg", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+        ///   查找类似 No 的本地化字符串。
         /// </summary>
-        public static System.Drawing.Bitmap id {
+        public static string No {
             get {
-                object obj = ResourceManager.GetObject("id", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return ResourceManager.GetString("No", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+        ///   查找类似 Update SolidWorks&apos;dll 的本地化字符串。
         /// </summary>
-        public static System.Drawing.Bitmap logo_square_32x32 {
+        public static string UpdateSolidWorksDll {
             get {
-                object obj = ResourceManager.GetObject("logo_square_32x32", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return ResourceManager.GetString("UpdateSolidWorksDll", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   查找类似 Open Dynamo 的本地化字符串。
+        ///   查找类似 Yes 的本地化字符串。
         /// </summary>
-        public static string OpenDynamo {
+        public static string Yes {
             get {
-                return ResourceManager.GetString("OpenDynamo", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   查找类似 Samples 的本地化字符串。
-        /// </summary>
-        public static string Samples {
-            get {
-                return ResourceManager.GetString("Samples", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   查找类似 Start new version dynamo need update a dll in solidworks, before update. SolidWorks will be closed.Do you want to continue? 的本地化字符串。
-        /// </summary>
-        public static string StartNewVersionNeedReplaceDll {
-            get {
-                return ResourceManager.GetString("StartNewVersionNeedReplaceDll", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   查找类似 Start SandBox 的本地化字符串。
-        /// </summary>
-        public static string StartSandBox {
-            get {
-                return ResourceManager.GetString("StartSandBox", resourceCulture);
+                return ResourceManager.GetString("Yes", resourceCulture);
             }
         }
     }

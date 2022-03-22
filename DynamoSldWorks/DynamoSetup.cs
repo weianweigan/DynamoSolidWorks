@@ -61,6 +61,11 @@ namespace DynamoSldWorks.View
         {
             try
             {
+                if (!CheckInteractivity())
+                {
+                    return;
+                }
+
                 if (View != null)
                 {
                     View.Activate();
@@ -117,6 +122,52 @@ namespace DynamoSldWorks.View
             {
                 _swApplication.ShowMessageBox(ex.Message, Xarial.XCad.Base.Enums.MessageBoxIcon_e.Error);
             }   
+        }
+
+        private const string _interactivityName = "System.Windows.Interactivity.dll";
+        private bool CheckInteractivity()
+        {
+            var swLocation = AppDomain.CurrentDomain.BaseDirectory;
+            var olderFile = Path.Combine(swLocation, _interactivityName);
+
+            var fileInfo = new FileInfo(olderFile);
+
+            if (!fileInfo.Exists)
+            {
+                throw new FileNotFoundException(olderFile);
+            }
+
+            FileVersionInfo version = FileVersionInfo.GetVersionInfo(olderFile);
+            if(version.FileMajorPart < 3)
+            {
+                //提醒用户更新版本
+                //replace older version dll in solidworks
+                //find solidworks install dir
+                var newFile = Path.Combine(SwAddin.DynamoCorePath, _interactivityName);
+
+                var tools = Path.Combine(SwAddin.DynamoCorePath, $"{nameof(SldWorksDllUpdateTask)}.exe");
+
+                var res = _swApplication.ShowMessageBox(
+                     Properties.Resources.StartNewVersionNeedReplaceDll, 
+                     Xarial.XCad.Base.Enums.MessageBoxIcon_e.Question, 
+                     Xarial.XCad.Base.Enums.MessageBoxButtons_e.YesNo);
+
+                if (res == Xarial.XCad.Base.Enums.MessageBoxResult_e.Yes)
+                {
+                    AppDomain.CurrentDomain.ProcessExit += (sender,e) =>
+                    {
+                        Process.Start(newFile,$"{olderFile} {newFile}");
+                    };
+
+                    Environment.Exit(0);
+                }
+
+                return false;
+            }
+            else
+            {
+                return true;
+            }
         }
 
         public void OpenDoc(string pathName,IntPtr parent)

@@ -30,6 +30,7 @@
 	  <PackageReference Include="Xarial.XCad.SolidWorks" Version="0.7.12" />
 	</ItemGroup>
 	<ItemGroup>
+	  <ProjectReference Include="..\SldWorksDllUpdateTask\SldWorksDllUpdateTask.csproj" />
 	  <ProjectReference Include="..\SldWorksService\SldWorksService.csproj" />
 	</ItemGroup>
 	<ItemGroup>
