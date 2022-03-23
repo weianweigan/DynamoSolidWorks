@@ -109,7 +109,7 @@ namespace DynamoSldWorks.View
                     windowHelper.Owner = windowHandle;
                 }
 
-                var app = Application.Current ?? new Application();
+                //var app = Application.Current ?? new Application();
 
                 if (Application.Current == null)
                     View.Show();

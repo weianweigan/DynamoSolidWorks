@@ -10,15 +10,11 @@ namespace SldWorksNodes.Geometry
     {
         internal Line(Point3D startPoint, Point3D endPoint)
         {
-            StartPoint = startPoint;
-            EndPoint = endPoint;
+            var nStartPoint = _swUnit.ConvertPoint(startPoint);
+            var nEndPoint = _swUnit.ConvertPoint(endPoint);
 
-            CreateWireBody(startPoint, endPoint);
+            CreateWireBody(nStartPoint, nEndPoint);
         }
-
-        public Point3D StartPoint { get; }
-
-        public Point3D EndPoint { get; }
 
         public static Line ByStartAndEnd(Point3D startPoint,Point3D endPoint)
         {

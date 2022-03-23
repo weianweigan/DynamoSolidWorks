@@ -59,5 +59,41 @@ namespace SldWorksNodes.Properties {
                 resourceCulture = value;
             }
         }
+        
+        /// <summary>
+        ///   查找类似 File :{0} Not Found 的本地化字符串。
+        /// </summary>
+        internal static string FileNotFound {
+            get {
+                return ResourceManager.GetString("FileNotFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 InsertPicture Failed 的本地化字符串。
+        /// </summary>
+        internal static string InsertPictureFailed {
+            get {
+                return ResourceManager.GetString("InsertPictureFailed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 Not GobalVar 的本地化字符串。
+        /// </summary>
+        internal static string NotGobalVar {
+            get {
+                return ResourceManager.GetString("NotGobalVar", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 SolidWorks Version({0}) Not Support 的本地化字符串。
+        /// </summary>
+        internal static string SwVersionNotSupport {
+            get {
+                return ResourceManager.GetString("SwVersionNotSupport", resourceCulture);
+            }
+        }
     }
 }

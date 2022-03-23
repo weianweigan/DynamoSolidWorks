@@ -338,6 +338,7 @@
     <Compile Include="SwException\PIDErrorException.cs" />
     <Compile Include="SwException\SelectionNotFoundException.cs" />
     <Compile Include="SwException\SelectionTypeErrorException.cs" />
+    <Compile Include="SwException\SwApiException.cs" />
     <Compile Include="SwException\SwObjectLostException.cs" />
     <Compile Include="Transform\SwCoordiateSystem.cs" />
     <Compile Include="Geometry\GeometryBuilder\BodyBuilder.cs" />

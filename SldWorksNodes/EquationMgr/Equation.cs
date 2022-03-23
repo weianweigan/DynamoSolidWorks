@@ -90,11 +90,37 @@ namespace SldWorksNodes.EquationMgr
                 return false;
         }
 
+        public bool SetGobalValue(double value)
+        {
+            if (!IsGobalVar())
+            {
+                throw new Exception(Properties.Resources.NotGobalVar);
+            }
+
+            var data = Value.Split('=');
+            if (data.Length >= 2)
+            {
+                data[1] = value.ToString();
+            }
+            else
+            {
+                return false;
+            }
+
+            var result = data[0]+"= " +data[1];
+            for (int i = 2; i < data.Length; i++)
+            {
+                result += data[i];
+            }
+
+            return SetValue(result);
+        }
+
         public bool IsGobalVar()
         {
             var version = SldContextManager.SwApplication.Version.Major;
             if ((int)version < (int)SwVersion_e.Sw2017)
-                throw new NotSupportedException($"SolidWorks Version({version}) Not Support");
+                throw new NotSupportedException(String.Format(Properties.Resources.SwVersionNotSupport, version));
 
             return  _equationMgr.GlobalVariable[Index];
         }
