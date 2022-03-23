@@ -37,12 +37,12 @@
     {
       "ConcreteType": "Dynamo.Graph.Nodes.CodeBlockNodeModel, DynamoCore",
       "NodeType": "CodeBlockNode",
-      "Code": "15;\nVector3D.ByCoordinates(0,1,1);",
+      "Code": "15;\nVector3D.ByCoordinates(0,0,1);",
       "Id": "a7f6d6810a144554a263203415d10045",
       "Inputs": [],
       "Outputs": [
         {
-          "Id": "5c39ec3d363a4cb3ac0c96b20d21471c",
+          "Id": "130f72448e814cbb83a2084f69b79f44",
           "Name": "",
           "Description": "行 1 中的表达式值",
           "UsingDefaultValue": false,
@@ -51,7 +51,7 @@
           "KeepListStructure": false
         },
         {
-          "Id": "d71585016fb44075a686716aa9d1a711",
+          "Id": "305e4c680e5c40dfb3cc78b849cba5c5",
           "Name": "",
           "Description": "行 2 中的表达式值",
           "UsingDefaultValue": false,
@@ -199,6 +199,30 @@
       ],
       "Replication": "Disabled",
       "Description": "允许直接编写 DesignScript 代码"
+    },
+    {
+      "ConcreteType": "CoreNodeModels.Input.DoubleSlider, CoreNodeModels",
+      "NodeType": "NumberInputNode",
+      "NumberType": "Double",
+      "MaximumValue": 100.0,
+      "MinimumValue": 0.0,
+      "StepValue": 0.1,
+      "InputValue": 67.7,
+      "Id": "bec5ab5fd5bd4e4c80c850e28b38d485",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "b4d60692cf4341c4b7afdffa4cafd3f0",
+          "Name": "",
+          "Description": "Double",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "用于生成数字值的滑块。"
     }
   ],
   "Connectors": [
@@ -209,15 +233,9 @@
       "IsHidden": "False"
     },
     {
-      "Start": "5c39ec3d363a4cb3ac0c96b20d21471c",
-      "End": "7ca8dad50515406daf56abaf56ab59be",
-      "Id": "78bd8fd25acf43a3a7b5aa90ad16df7d",
-      "IsHidden": "False"
-    },
-    {
-      "Start": "d71585016fb44075a686716aa9d1a711",
+      "Start": "305e4c680e5c40dfb3cc78b849cba5c5",
       "End": "1fa1add54ea146ee836c923cd2a35f97",
-      "Id": "a2842ea797044120bd5a9fbb5a49d706",
+      "Id": "86d4a2044fc947ccbb8f038418a4787a",
       "IsHidden": "False"
     },
     {
@@ -236,6 +254,12 @@
       "Start": "e08f4fc67e0b4ae3b064d0a8d2eee076",
       "End": "84fd444f151e4d168a93db5389e94c9b",
       "Id": "c837bb3a50504ac78db6f301db434997",
+      "IsHidden": "False"
+    },
+    {
+      "Start": "b4d60692cf4341c4b7afdffa4cafd3f0",
+      "End": "7ca8dad50515406daf56abaf56ab59be",
+      "Id": "53aac88085f545d480376f4dfe619285",
       "IsHidden": "False"
     }
   ],
@@ -299,8 +323,8 @@
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": 111.55804553462798,
-        "Y": 543.90575532002708
+        "X": 45.609367595554147,
+        "Y": 442.9842936253832
       },
       {
         "Name": "SolidBody.ByExtrued",
@@ -309,8 +333,8 @@
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": 802.01140029013891,
-        "Y": 345.21235337512644
+        "X": 786.74564285011354,
+        "Y": 177.35578825785092
       },
       {
         "Name": "List Create",
@@ -319,8 +343,8 @@
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": 455.82394494845659,
-        "Y": 374.39303701499773
+        "X": 568.16583403999812,
+        "Y": 154.13732540121316
       },
       {
         "Name": "Circle.ByCenterPointRadius",
@@ -329,8 +353,8 @@
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": 360.6972411066472,
-        "Y": 115.62189712264137
+        "X": 254.77966744692219,
+        "Y": 158.58846002234111
       },
       {
         "Name": "Code Block",
@@ -339,13 +363,23 @@
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": 109.0,
-        "Y": 394.0
+        "X": 49.14286687577453,
+        "Y": 306.4844928610201
+      },
+      {
+        "Name": "Number Slider",
+        "ShowGeometry": true,
+        "Id": "bec5ab5fd5bd4e4c80c850e28b38d485",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 47.477245617239362,
+        "Y": 605.34737010101981
       }
     ],
     "Annotations": [],
-    "X": 14.148356754101755,
-    "Y": 92.467561262421839,
-    "Zoom": 0.63920154224848036
+    "X": -29.227444454540887,
+    "Y": -68.213717427999427,
+    "Zoom": 0.85834267271709486
   }
 }

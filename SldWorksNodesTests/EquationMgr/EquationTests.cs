@@ -15,8 +15,8 @@ namespace SldWorksNodes.EquationMgr.Tests
         [Fact()]
         public void SetGobalValueTest()
         {
-            SwMock.SetupGet(p => p.Equation[0])
-                .Returns("");
+            //SwMock.SetupGet(p => p.Equation[0])
+              //  .Returns("");
 
             var equation = new Equation(0, "\"B\" = 5", SwMock.Object);
 
