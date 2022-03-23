@@ -1,0 +1,321 @@
+{
+  "Uuid": "fdc000fe-3378-4b96-947e-f0f51cf5904e",
+  "IsCustomNode": false,
+  "Description": "",
+  "Name": "extrued",
+  "ElementResolver": {
+    "ResolutionMap": {
+      "Vector3D": {
+        "Key": "SldWorksNodes.Geometry.Vector3D",
+        "Value": "SldWorksNodes.dll"
+      }
+    }
+  },
+  "Inputs": [],
+  "Outputs": [],
+  "Nodes": [
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "SldWorksNodes.Geometry.Circle3D.ByCenterPointRadius@SldWorksNodes.Geometry.Point3D,double",
+      "Id": "3bb83444cf2e4877bd5e79dd30291436",
+      "Inputs": [
+        {
+          "Id": "a8f34f7e81804093943209a6eafb151f",
+          "Name": "center",
+          "Description": "Point3D",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "a0cbf5e0bfa24748aca1202ad5b62cf5",
+          "Name": "radius",
+          "Description": "double",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "688195797f174c3b8a0ced7c5c86317f",
+          "Name": "Circle3D",
+          "Description": "Circle3D",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "Circle3D.ByCenterPointRadius (center: Point3D, radius: double): Circle3D"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "SldWorksNodes.Geometry.Point3D.Orign",
+      "Id": "f834739b2af14dc792f7add4cfd7701a",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "479638158c9d482496a2a5e428fff2b2",
+          "Name": "Point3D",
+          "Description": "Point3D",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "Point3D.Orign ( ): Point3D"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.CodeBlockNodeModel, DynamoCore",
+      "NodeType": "CodeBlockNode",
+      "Code": "15;\nVector3D.ByCoordinates(0,1,1);",
+      "Id": "a7f6d6810a144554a263203415d10045",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "5c39ec3d363a4cb3ac0c96b20d21471c",
+          "Name": "",
+          "Description": "Value of expression at line 1",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "d71585016fb44075a686716aa9d1a711",
+          "Name": "",
+          "Description": "Value of expression at line 2",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Allows for DesignScript code to be authored directly"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "SldWorksNodes.Geometry.SolidBody.ByExtrued@SldWorksNodes.Geometry.Curve[],SldWorksNodes.Geometry.Vector3D,double",
+      "Id": "0b6158a254cd49b98f4b8ac281684842",
+      "Inputs": [
+        {
+          "Id": "e4323dd07e564500ace15d36767a0e5f",
+          "Name": "curves",
+          "Description": "Curve[]",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "1fa1add54ea146ee836c923cd2a35f97",
+          "Name": "direction",
+          "Description": "Vector3D",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "7ca8dad50515406daf56abaf56ab59be",
+          "Name": "length",
+          "Description": "double",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "c3a1403c8cba4fb781b536f2158a7c43",
+          "Name": "SolidBody",
+          "Description": "SolidBody",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "SolidBody.ByExtrued (curves: Curve[], direction: Vector3D, length: double): SolidBody"
+    },
+    {
+      "ConcreteType": "CoreNodeModels.CreateList, CoreNodeModels",
+      "VariableInputPorts": true,
+      "NodeType": "ExtensionNode",
+      "Id": "18fd5b49c3014f798046d6a5ac70dd54",
+      "Inputs": [
+        {
+          "Id": "238ff14c439d4ce3ad06d50d5f4a86d3",
+          "Name": "item0",
+          "Description": "Item Index #0",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "7287433ed56d41539af7927f3959b913",
+          "Name": "list",
+          "Description": "A list (type: var[]..[])",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Makes a new list out of the given inputs"
+    }
+  ],
+  "Connectors": [
+    {
+      "Start": "688195797f174c3b8a0ced7c5c86317f",
+      "End": "238ff14c439d4ce3ad06d50d5f4a86d3",
+      "Id": "6e82eeca3c6c46cbac65bce36a481c98",
+      "IsHidden": "False"
+    },
+    {
+      "Start": "479638158c9d482496a2a5e428fff2b2",
+      "End": "a8f34f7e81804093943209a6eafb151f",
+      "Id": "e7cf0e6da8104c1cb5d37b1ac3b48a25",
+      "IsHidden": "False"
+    },
+    {
+      "Start": "5c39ec3d363a4cb3ac0c96b20d21471c",
+      "End": "a0cbf5e0bfa24748aca1202ad5b62cf5",
+      "Id": "9349f9ab1aff4b44af121a5ad2d4e320",
+      "IsHidden": "False"
+    },
+    {
+      "Start": "5c39ec3d363a4cb3ac0c96b20d21471c",
+      "End": "7ca8dad50515406daf56abaf56ab59be",
+      "Id": "78bd8fd25acf43a3a7b5aa90ad16df7d",
+      "IsHidden": "False"
+    },
+    {
+      "Start": "d71585016fb44075a686716aa9d1a711",
+      "End": "1fa1add54ea146ee836c923cd2a35f97",
+      "Id": "a2842ea797044120bd5a9fbb5a49d706",
+      "IsHidden": "False"
+    },
+    {
+      "Start": "7287433ed56d41539af7927f3959b913",
+      "End": "e4323dd07e564500ace15d36767a0e5f",
+      "Id": "09f866b7a10a4defa35e956f8fe05d6b",
+      "IsHidden": "False"
+    }
+  ],
+  "Dependencies": [],
+  "NodeLibraryDependencies": [],
+  "Thumbnail": "",
+  "GraphDocumentationURL": null,
+  "ExtensionWorkspaceData": [
+    {
+      "ExtensionGuid": "28992e1d-abb9-417f-8b1b-05e053bee670",
+      "Name": "Properties",
+      "Version": "2.13",
+      "Data": {}
+    }
+  ],
+  "Author": "",
+  "Linting": {
+    "activeLinter": "None",
+    "activeLinterId": "7b75fb44-43fd-4631-a878-29f4d5d8399a",
+    "warningCount": 0,
+    "errorCount": 0
+  },
+  "Bindings": [],
+  "View": {
+    "Dynamo": {
+      "ScaleFactor": 1.0,
+      "HasRunWithoutCrash": true,
+      "IsVisibleInDynamoLibrary": true,
+      "Version": "2.13.1.3887",
+      "RunType": "Automatic",
+      "RunPeriod": "1000"
+    },
+    "Camera": {
+      "Name": "Background Preview",
+      "EyeX": -17.0,
+      "EyeY": 24.0,
+      "EyeZ": 50.0,
+      "LookX": 12.0,
+      "LookY": -13.0,
+      "LookZ": -58.0,
+      "UpX": 0.0,
+      "UpY": 1.0,
+      "UpZ": 0.0
+    },
+    "ConnectorPins": [],
+    "NodeViews": [
+      {
+        "Name": "Circle3D.ByCenterPointRadius",
+        "ShowGeometry": true,
+        "Id": "3bb83444cf2e4877bd5e79dd30291436",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 321.66666666666657,
+        "Y": 171.66666666666671
+      },
+      {
+        "Name": "Point3D.Orign",
+        "ShowGeometry": true,
+        "Id": "f834739b2af14dc792f7add4cfd7701a",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 45.333333333333371,
+        "Y": 159.33333333333329
+      },
+      {
+        "Name": "Code Block",
+        "ShowGeometry": true,
+        "Id": "a7f6d6810a144554a263203415d10045",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 111.55804553462798,
+        "Y": 543.90575532002708
+      },
+      {
+        "Name": "SolidBody.ByExtrued",
+        "ShowGeometry": true,
+        "Id": "0b6158a254cd49b98f4b8ac281684842",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 780.10907516314842,
+        "Y": 294.10692807881526
+      },
+      {
+        "Name": "List Create",
+        "ShowGeometry": true,
+        "Id": "18fd5b49c3014f798046d6a5ac70dd54",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 455.82394494845659,
+        "Y": 374.39303701499773
+      }
+    ],
+    "Annotations": [],
+    "X": 14.148356754101755,
+    "Y": 92.467561262421839,
+    "Zoom": 0.63920154224848036
+  }
+}

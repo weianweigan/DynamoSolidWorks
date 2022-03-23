@@ -1,0 +1,279 @@
+{
+  "Uuid": "cf173d59-7fd0-4589-9558-3a1cbdf3b885",
+  "IsCustomNode": false,
+  "Description": "",
+  "Name": "surface",
+  "ElementResolver": {
+    "ResolutionMap": {}
+  },
+  "Inputs": [],
+  "Outputs": [],
+  "Nodes": [
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "SldWorksNodes.Geometry.CylindricalSurface.ByCenterPointDirectionsAndRaduis@SldWorksNodes.Geometry.Point3D,SldWorksNodes.Geometry.Vector3D,double,double",
+      "Id": "ce471aa0db8c4da5b7e1530e3972d23e",
+      "Inputs": [
+        {
+          "Id": "738dcdb31e20402a9c6cdfa78511391e",
+          "Name": "center",
+          "Description": "location of the center of the bottom\n\nPoint3D",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "2ba1fabd5202438aa803e28021075c8b",
+          "Name": "direction",
+          "Description": "direction of the axis of the cylindrical surface\n\nVector3D",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "80a7bccf13c9486087c3d2da3544d0c4",
+          "Name": "radius",
+          "Description": "Radius at the center\n\ndouble",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "d76b528a9f7b4ded98c70b683490efe8",
+          "Name": "height",
+          "Description": "Height\n\ndouble",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "689fff2cf4394458aeea264731d84a94",
+          "Name": "SurfaceBody",
+          "Description": "SurfaceBody",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "CylindricalSurface.ByCenterPointDirectionsAndRaduis (center: Point3D, direction: Vector3D, radius: double, height: double): SurfaceBody"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "SldWorksNodes.Geometry.Point3D.Orign",
+      "Id": "75fb6f418e21424391ea63af9762c58d",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "72d51fefeb7e46a59e64de1560d716f8",
+          "Name": "Point3D",
+          "Description": "Point3D",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "Point3D.Orign ( ): Point3D"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "SldWorksNodes.Geometry.Vector3D.ZAxis",
+      "Id": "ed49803cdd9741819174234ef52f37f8",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "1f0c3a66c44c4b4ab7cd96d4f0a5e196",
+          "Name": "Vector3D",
+          "Description": "Vector3D",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "Vector3D.ZAxis: Vector3D"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.CodeBlockNodeModel, DynamoCore",
+      "NodeType": "CodeBlockNode",
+      "Code": "20;",
+      "Id": "41072a9da4a14d5c946a4a25d8868602",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "54b6722195b84807997a7b1eae2deaa3",
+          "Name": "",
+          "Description": "Value of expression at line 1",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Allows for DesignScript code to be authored directly"
+    },
+    {
+      "ConcreteType": "CoreNodeModels.Input.DoubleSlider, CoreNodeModels",
+      "NodeType": "NumberInputNode",
+      "NumberType": "Double",
+      "MaximumValue": 100.0,
+      "MinimumValue": 0.0,
+      "StepValue": 0.1,
+      "InputValue": 80.2,
+      "Id": "d88d3b4b870940c7a5ca919c5985bd51",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "45b6fbb5d7d64f739bab481d03579513",
+          "Name": "",
+          "Description": "Double",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "A slider that produces numeric values."
+    }
+  ],
+  "Connectors": [
+    {
+      "Start": "72d51fefeb7e46a59e64de1560d716f8",
+      "End": "738dcdb31e20402a9c6cdfa78511391e",
+      "Id": "34fe03b4222a418f969e1903ad255220",
+      "IsHidden": "False"
+    },
+    {
+      "Start": "1f0c3a66c44c4b4ab7cd96d4f0a5e196",
+      "End": "2ba1fabd5202438aa803e28021075c8b",
+      "Id": "84fd3f0147e94826883435e95f862157",
+      "IsHidden": "False"
+    },
+    {
+      "Start": "54b6722195b84807997a7b1eae2deaa3",
+      "End": "80a7bccf13c9486087c3d2da3544d0c4",
+      "Id": "94eb30930ca9477882b91fcd9761b44d",
+      "IsHidden": "False"
+    },
+    {
+      "Start": "45b6fbb5d7d64f739bab481d03579513",
+      "End": "d76b528a9f7b4ded98c70b683490efe8",
+      "Id": "785d24c1536c4528aa05d9befea4903f",
+      "IsHidden": "False"
+    }
+  ],
+  "Dependencies": [],
+  "NodeLibraryDependencies": [],
+  "Thumbnail": "",
+  "GraphDocumentationURL": null,
+  "ExtensionWorkspaceData": [
+    {
+      "ExtensionGuid": "28992e1d-abb9-417f-8b1b-05e053bee670",
+      "Name": "Properties",
+      "Version": "2.13",
+      "Data": {}
+    }
+  ],
+  "Author": "",
+  "Linting": {
+    "activeLinter": "None",
+    "activeLinterId": "7b75fb44-43fd-4631-a878-29f4d5d8399a",
+    "warningCount": 0,
+    "errorCount": 0
+  },
+  "Bindings": [],
+  "View": {
+    "Dynamo": {
+      "ScaleFactor": 1.0,
+      "HasRunWithoutCrash": true,
+      "IsVisibleInDynamoLibrary": true,
+      "Version": "2.13.1.3887",
+      "RunType": "Automatic",
+      "RunPeriod": "1000"
+    },
+    "Camera": {
+      "Name": "Background Preview",
+      "EyeX": -17.0,
+      "EyeY": 24.0,
+      "EyeZ": 50.0,
+      "LookX": 12.0,
+      "LookY": -13.0,
+      "LookZ": -58.0,
+      "UpX": 0.0,
+      "UpY": 1.0,
+      "UpZ": 0.0
+    },
+    "ConnectorPins": [],
+    "NodeViews": [
+      {
+        "Name": "CylindricalSurface.ByCenterPointDirectionsAndRaduis",
+        "ShowGeometry": true,
+        "Id": "ce471aa0db8c4da5b7e1530e3972d23e",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 314.99999999999994,
+        "Y": 178.3333333333334
+      },
+      {
+        "Name": "Point3D.Orign",
+        "ShowGeometry": true,
+        "Id": "75fb6f418e21424391ea63af9762c58d",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 29.999999999999943,
+        "Y": 27.333333333333314
+      },
+      {
+        "Name": "Vector3D.ZAxis",
+        "ShowGeometry": true,
+        "Id": "ed49803cdd9741819174234ef52f37f8",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": -27.333333333333371,
+        "Y": 193.33333333333334
+      },
+      {
+        "Name": "Code Block",
+        "ShowGeometry": true,
+        "Id": "41072a9da4a14d5c946a4a25d8868602",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": -10.451053240025885,
+        "Y": 444.28882691917369
+      },
+      {
+        "Name": "Number Slider",
+        "ShowGeometry": true,
+        "Id": "d88d3b4b870940c7a5ca919c5985bd51",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 4.2371071858174219,
+        "Y": 686.4721035420298
+      }
+    ],
+    "Annotations": [],
+    "X": 24.329026207892753,
+    "Y": -9.1761522812996645,
+    "Zoom": 0.67933048377426952
+  }
+}

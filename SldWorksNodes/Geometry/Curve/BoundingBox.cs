@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Autodesk.DesignScript.Runtime;
 
 namespace SldWorksNodes.Geometry
 {
@@ -74,8 +75,10 @@ namespace SldWorksNodes.Geometry
         #endregion
 
         #region Query
+        [IsVisibleInDynamoLibrary(false)]
         public Point3D Min { get; }
 
+        [IsVisibleInDynamoLibrary(false)]
         public Point3D Max { get; }
         #endregion
 

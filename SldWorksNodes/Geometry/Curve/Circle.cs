@@ -8,11 +8,10 @@ namespace SldWorksNodes.Geometry
         #region Ctor
         internal Circle(Point3D center, double radius, Vector3D axis)
         {
-            Center = center;
-            Radius = radius;
-            Axis = axis;
+            var nCenter = _swUnit.ConvertPoint(center);
+            var nRadius = _swUnit.ConvertDouble(radius);
 
-            CreateWireCircle();
+            CreateWireCircle(nCenter,nRadius,axis);
         }
         #endregion
 
@@ -43,19 +42,14 @@ namespace SldWorksNodes.Geometry
         #endregion
 
         #region Query
-        public Point3D Center { get; set; }
-
-        public double Radius { get; set; }
-
-        public Vector3D Axis { get; set; }
         #endregion
 
         #region Methods
-        private void CreateWireCircle()
+        private void CreateWireCircle(Point3D center, double radius, Vector3D axis)
         {
             SwCurve = Util.CurveBuilder.CreateCircle(
                 SldContextManager.Modeler, 
-                Center, Axis, Radius);
+                center, axis, radius);
 
             SwObject = SwCurve.CreateWireBody();
 

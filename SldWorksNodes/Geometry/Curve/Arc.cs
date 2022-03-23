@@ -13,13 +13,12 @@ namespace SldWorksNodes.Geometry
             Point3D startPoint,
             Point3D endPoint)
         {
-            Center = _swUnit.ConvertPoint(center);
-            Axis = axis;
-            Radius = _swUnit.ConvertDouble(radius);
-            StartPoint = _swUnit.ConvertPoint(startPoint);
-            EndPoint = _swUnit.ConvertPoint(endPoint);
+            var Center = _swUnit.ConvertPoint(center);
+            var Radius = _swUnit.ConvertDouble(radius);
+            var StartPoint = _swUnit.ConvertPoint(startPoint);
+            var EndPoint = _swUnit.ConvertPoint(endPoint);
 
-            CreateWireArc();
+            CreateWireArc(center, axis, radius, startPoint, endPoint);
         }
         #endregion
 
@@ -105,28 +104,25 @@ namespace SldWorksNodes.Geometry
         #endregion
 
         #region Query
-        public Point3D Center { get; }
-
-        public Vector3D Axis { get; }
-
-        public double Radius { get; }
-
-        public Point3D StartPoint { get; }
-
-        public Point3D EndPoint { get; }
+    
         #endregion
 
         #region Methods
-        private void CreateWireArc()
+        private void CreateWireArc(
+            Point3D center,
+            Vector3D axis,
+            double radius, 
+            Point3D startPoint,
+            Point3D endPoint)
         {
 
            SwCurve = Util.CurveBuilder.CreatedTrimmedArc(
                SldContextManager.Modeler,
-               Center, 
-               Axis, 
-               Radius, 
-               StartPoint,
-               EndPoint);
+               center, 
+               axis,
+               radius, 
+               startPoint,
+               endPoint);
 
             SwObject = SwCurve.CreateWireBody();
 
