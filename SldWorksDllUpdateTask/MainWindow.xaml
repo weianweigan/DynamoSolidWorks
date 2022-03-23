@@ -1,0 +1,38 @@
+﻿<Window x:Class="SldWorksDllUpdateTask.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:p="clr-namespace:SldWorksDllUpdateTask.Properties"
+        xmlns:local="clr-namespace:SldWorksDllUpdateTask"
+        WindowStartupLocation="CenterScreen"
+        Topmost="True"
+        mc:Ignorable="d"
+        Title="{x:Static p:Resources.UpdateSolidWorksDll}" Height="150" Width="400">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="50"/>
+        </Grid.RowDefinitions>
+        <GroupBox Header="{x:Static p:Resources.Msg}">
+            <TextBox Name="_olderFile" 
+                       TextWrapping="Wrap"                       
+                     IsEnabled="False"
+                       VerticalAlignment="Center"/>
+        </GroupBox>
+        <Grid Grid.Row="1">
+            <Button Width="75"
+                    Height="23"
+                    HorizontalAlignment="Right"
+                    Margin="0,0,15,0"
+                    Click="Button_Click_1"
+                    Content="{x:Static p:Resources.No}"/>
+            <Button Width="75" 
+                    Height="23"
+                    HorizontalAlignment="Right"
+                    Margin="0,0,105,0"
+                    Click="Button_Click"
+                    Content="{x:Static p:Resources.Yes}"/>
+        </Grid>
+    </Grid>
+</Window>

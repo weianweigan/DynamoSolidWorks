@@ -1,19 +1,19 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
 	<PropertyGroup>
-		<TargetFramework>net472</TargetFramework>
+		<TargetFramework>net48</TargetFramework>
 		<UseWPF>true</UseWPF>
 		<EnableComHosting>true</EnableComHosting>
 		<BaseOutputPath>..\bin</BaseOutputPath>
 		<AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
 		<!--<AppendRuntimeIdentifierToOutputPath>false</AppendRuntimeIdentifierToOutputPath>-->
 		<AppendConfigurationToOutputPath>false</AppendConfigurationToOutputPath>
-		<Version>0.0.6.6</Version>
+		<Version>0.0.7.7</Version>
 	</PropertyGroup>
 	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
-	  <DefineConstants>$(DefineConstants)TRACE;V1_2_0;</DefineConstants>
+	  <DefineConstants>$(DefineConstants)TRACE;</DefineConstants>
 	</PropertyGroup>
 	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
-	  <DefineConstants>$(DefineConstants)TRACE;V1_2_0;</DefineConstants>
+	  <DefineConstants>$(DefineConstants)TRACE;</DefineConstants>
 	</PropertyGroup>
 	<ItemGroup>
 	  <None Remove="app.config" />
@@ -30,6 +30,7 @@
 	  <PackageReference Include="Xarial.XCad.SolidWorks" Version="0.7.12" />
 	</ItemGroup>
 	<ItemGroup>
+	  <ProjectReference Include="..\SldWorksDllUpdateTask\SldWorksDllUpdateTask.csproj" />
 	  <ProjectReference Include="..\SldWorksService\SldWorksService.csproj" />
 	</ItemGroup>
 	<ItemGroup>
@@ -50,6 +51,7 @@
 	  </Reference>
 	  <Reference Include="Microsoft.Practices.Prism">
 	    <HintPath>..\DynamoRuntime\Microsoft.Practices.Prism.dll</HintPath>
+	    <CopyLocal>False</CopyLocal>
 	  </Reference>
 	  <Reference Include="RestSharp">
 	    <HintPath>..\DynamoRuntime\RestSharp.dll</HintPath>
@@ -69,7 +71,7 @@
 	</ItemGroup>
 	<ItemGroup>
 	  <EmbeddedResource Update="Properties\Resources.resx">
-	    <Generator>ResXFileCodeGenerator</Generator>
+	    <Generator>PublicResXFileCodeGenerator</Generator>
 	    <LastGenOutput>Resources.Designer.cs</LastGenOutput>
 	  </EmbeddedResource>
 	</ItemGroup>

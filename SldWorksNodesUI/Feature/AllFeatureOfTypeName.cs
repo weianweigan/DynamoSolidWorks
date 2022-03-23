@@ -10,7 +10,7 @@ namespace SldWorksNodesUI.Feature
 {
     [NodeName("All Feat Of TypeName")]
     [NodeDescription("Lists all features in active doc to select one")]
-    [NodeCategory("SolidWorks.Selection")]
+    [NodeCategory(SwNodesCategory.SelectionCategory)]
     [InPortNames("FeatureTypeName")]
     [InPortTypes("string")]
     [InPortDescriptions("Get features by FeatureTypeName")]

@@ -1,21 +1,23 @@
-﻿using Autodesk.DesignScript.Runtime;
-using SldWorksNodes.Base;
-using SldWorksNodes.SwException;
-using SldWorksNodes.Util;
-using SolidWorks.Interop.sldworks;
-using System;
-using System.Collections.Generic;
+﻿using System;
 using System.Linq;
+using System.Collections.Generic;
+using SldWorksNodes.Base;
+using SldWorksNodes.Util;
+using SldWorksNodes.SwException;
+using SolidWorks.Interop.sldworks;
 
 namespace SldWorksNodes.Brep
 {
     public class Loop:BrepNode<ILoop2>
     {
+        #region Ctor
         internal Loop(ILoop2 loop)
         {
             SwObject = loop;
         }
+        #endregion
 
+        #region Create
         public static Loop ByPID(string pid)
         {
             var doc = SwContextUtil.GetCurrentPartDocContext();
@@ -28,6 +30,12 @@ namespace SldWorksNodes.Brep
             else
                 throw new SwObjectLostException(typeof(ILoop2));
         }
+        #endregion
+
+        #region Query
+        public bool IsOuter() => SwObject.IsOuter();
+
+        public bool IsSingular() => SwObject.IsSingular();
 
         public List<Edge> Edges()
         {
@@ -44,5 +52,13 @@ namespace SldWorksNodes.Brep
                 .Select(e => new Edge(e))
                 .ToList();
         }
+        #endregion
+
+        #region Methods
+        public override string ToString()
+        {
+            return "Loop";
+        }
+        #endregion
     }
 }

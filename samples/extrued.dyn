@@ -1,0 +1,385 @@
+{
+  "Uuid": "fdc000fe-3378-4b96-947e-f0f51cf5904e",
+  "IsCustomNode": false,
+  "Description": "",
+  "Name": "extrued",
+  "ElementResolver": {
+    "ResolutionMap": {
+      "Vector3D": {
+        "Key": "SldWorksNodes.Geometry.Vector3D",
+        "Value": "SldWorksNodes.dll"
+      }
+    }
+  },
+  "Inputs": [],
+  "Outputs": [],
+  "Nodes": [
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "SldWorksNodes.Geometry.Point3D.Orign",
+      "Id": "f834739b2af14dc792f7add4cfd7701a",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "479638158c9d482496a2a5e428fff2b2",
+          "Name": "Point3D",
+          "Description": "Point3D",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "Point3D.Orign ( ): Point3D"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.CodeBlockNodeModel, DynamoCore",
+      "NodeType": "CodeBlockNode",
+      "Code": "15;\nVector3D.ByCoordinates(0,0,1);",
+      "Id": "a7f6d6810a144554a263203415d10045",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "130f72448e814cbb83a2084f69b79f44",
+          "Name": "",
+          "Description": "行 1 中的表达式值",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "305e4c680e5c40dfb3cc78b849cba5c5",
+          "Name": "",
+          "Description": "行 2 中的表达式值",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "允许直接编写 DesignScript 代码"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "SldWorksNodes.Geometry.SolidBody.ByExtrued@SldWorksNodes.Geometry.Curve[],SldWorksNodes.Geometry.Vector3D,double",
+      "Id": "0b6158a254cd49b98f4b8ac281684842",
+      "Inputs": [
+        {
+          "Id": "e4323dd07e564500ace15d36767a0e5f",
+          "Name": "curves",
+          "Description": "Curve[]",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "1fa1add54ea146ee836c923cd2a35f97",
+          "Name": "direction",
+          "Description": "Vector3D",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "7ca8dad50515406daf56abaf56ab59be",
+          "Name": "length",
+          "Description": "double",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "c3a1403c8cba4fb781b536f2158a7c43",
+          "Name": "SolidBody",
+          "Description": "SolidBody",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "SolidBody.ByExtrued (curves: Curve[], direction: Vector3D, length: double): SolidBody"
+    },
+    {
+      "ConcreteType": "CoreNodeModels.CreateList, CoreNodeModels",
+      "VariableInputPorts": true,
+      "NodeType": "ExtensionNode",
+      "Id": "18fd5b49c3014f798046d6a5ac70dd54",
+      "Inputs": [
+        {
+          "Id": "238ff14c439d4ce3ad06d50d5f4a86d3",
+          "Name": "item0",
+          "Description": "Item Index #0",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "7287433ed56d41539af7927f3959b913",
+          "Name": "list",
+          "Description": "A list (type: var[]..[])",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "使新列表超出给定输入内容"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "SldWorksNodes.Geometry.Circle.ByCenterPointRadius@SldWorksNodes.Geometry.Point3D,double",
+      "Id": "69eee6c4e6ea4d078dd403574d0498ef",
+      "Inputs": [
+        {
+          "Id": "f0be86828ce247bfb6c403858e8a443d",
+          "Name": "center",
+          "Description": "Point3D",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "84fd444f151e4d168a93db5389e94c9b",
+          "Name": "radius",
+          "Description": "double",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "d7833514042641c29b05d3710317a9db",
+          "Name": "Circle",
+          "Description": "Circle",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "Circle.ByCenterPointRadius (center: Point3D, radius: double): Circle"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.CodeBlockNodeModel, DynamoCore",
+      "NodeType": "CodeBlockNode",
+      "Code": "10;",
+      "Id": "869785dfb1914772aab54d18eac347e7",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "e08f4fc67e0b4ae3b064d0a8d2eee076",
+          "Name": "",
+          "Description": "行 1 中的表达式值",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "允许直接编写 DesignScript 代码"
+    },
+    {
+      "ConcreteType": "CoreNodeModels.Input.DoubleSlider, CoreNodeModels",
+      "NodeType": "NumberInputNode",
+      "NumberType": "Double",
+      "MaximumValue": 100.0,
+      "MinimumValue": 0.0,
+      "StepValue": 0.1,
+      "InputValue": 67.7,
+      "Id": "bec5ab5fd5bd4e4c80c850e28b38d485",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "b4d60692cf4341c4b7afdffa4cafd3f0",
+          "Name": "",
+          "Description": "Double",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "用于生成数字值的滑块。"
+    }
+  ],
+  "Connectors": [
+    {
+      "Start": "479638158c9d482496a2a5e428fff2b2",
+      "End": "f0be86828ce247bfb6c403858e8a443d",
+      "Id": "2012c7279e8a47738e72fbbd6b047e27",
+      "IsHidden": "False"
+    },
+    {
+      "Start": "305e4c680e5c40dfb3cc78b849cba5c5",
+      "End": "1fa1add54ea146ee836c923cd2a35f97",
+      "Id": "86d4a2044fc947ccbb8f038418a4787a",
+      "IsHidden": "False"
+    },
+    {
+      "Start": "7287433ed56d41539af7927f3959b913",
+      "End": "e4323dd07e564500ace15d36767a0e5f",
+      "Id": "09f866b7a10a4defa35e956f8fe05d6b",
+      "IsHidden": "False"
+    },
+    {
+      "Start": "d7833514042641c29b05d3710317a9db",
+      "End": "238ff14c439d4ce3ad06d50d5f4a86d3",
+      "Id": "4c5b9f478aab48a38c913ef1bb47acf8",
+      "IsHidden": "False"
+    },
+    {
+      "Start": "e08f4fc67e0b4ae3b064d0a8d2eee076",
+      "End": "84fd444f151e4d168a93db5389e94c9b",
+      "Id": "c837bb3a50504ac78db6f301db434997",
+      "IsHidden": "False"
+    },
+    {
+      "Start": "b4d60692cf4341c4b7afdffa4cafd3f0",
+      "End": "7ca8dad50515406daf56abaf56ab59be",
+      "Id": "53aac88085f545d480376f4dfe619285",
+      "IsHidden": "False"
+    }
+  ],
+  "Dependencies": [],
+  "NodeLibraryDependencies": [],
+  "Thumbnail": "",
+  "GraphDocumentationURL": null,
+  "ExtensionWorkspaceData": [
+    {
+      "ExtensionGuid": "28992e1d-abb9-417f-8b1b-05e053bee670",
+      "Name": "Properties",
+      "Version": "2.13",
+      "Data": {}
+    }
+  ],
+  "Author": "",
+  "Linting": {
+    "activeLinter": "无",
+    "activeLinterId": "7b75fb44-43fd-4631-a878-29f4d5d8399a",
+    "warningCount": 0,
+    "errorCount": 0
+  },
+  "Bindings": [],
+  "View": {
+    "Dynamo": {
+      "ScaleFactor": 1.0,
+      "HasRunWithoutCrash": true,
+      "IsVisibleInDynamoLibrary": true,
+      "Version": "2.13.1.3887",
+      "RunType": "Automatic",
+      "RunPeriod": "1000"
+    },
+    "Camera": {
+      "Name": "背景预览",
+      "EyeX": -17.0,
+      "EyeY": 24.0,
+      "EyeZ": 50.0,
+      "LookX": 12.0,
+      "LookY": -13.0,
+      "LookZ": -58.0,
+      "UpX": 0.0,
+      "UpY": 1.0,
+      "UpZ": 0.0
+    },
+    "ConnectorPins": [],
+    "NodeViews": [
+      {
+        "Name": "Point3D.Orign",
+        "ShowGeometry": true,
+        "Id": "f834739b2af14dc792f7add4cfd7701a",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 45.333333333333371,
+        "Y": 159.33333333333329
+      },
+      {
+        "Name": "Code Block",
+        "ShowGeometry": true,
+        "Id": "a7f6d6810a144554a263203415d10045",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 45.609367595554147,
+        "Y": 442.9842936253832
+      },
+      {
+        "Name": "SolidBody.ByExtrued",
+        "ShowGeometry": true,
+        "Id": "0b6158a254cd49b98f4b8ac281684842",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 786.74564285011354,
+        "Y": 177.35578825785092
+      },
+      {
+        "Name": "List Create",
+        "ShowGeometry": true,
+        "Id": "18fd5b49c3014f798046d6a5ac70dd54",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 568.16583403999812,
+        "Y": 154.13732540121316
+      },
+      {
+        "Name": "Circle.ByCenterPointRadius",
+        "ShowGeometry": true,
+        "Id": "69eee6c4e6ea4d078dd403574d0498ef",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 254.77966744692219,
+        "Y": 158.58846002234111
+      },
+      {
+        "Name": "Code Block",
+        "ShowGeometry": true,
+        "Id": "869785dfb1914772aab54d18eac347e7",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 49.14286687577453,
+        "Y": 306.4844928610201
+      },
+      {
+        "Name": "Number Slider",
+        "ShowGeometry": true,
+        "Id": "bec5ab5fd5bd4e4c80c850e28b38d485",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 47.477245617239362,
+        "Y": 605.34737010101981
+      }
+    ],
+    "Annotations": [],
+    "X": -29.227444454540887,
+    "Y": -68.213717427999427,
+    "Zoom": 0.85834267271709486
+  }
+}

@@ -3,33 +3,32 @@ using SldWorksNodes.Util;
 
 namespace SldWorksNodes.Geometry
 {
-    public class Circle3D: SwCurveBodyNode
+    public class Circle: Curve
     {
         #region Ctor
-        internal Circle3D(Point3D center, double radius, Vector3D axis)
+        internal Circle(Point3D center, double radius, Vector3D axis)
         {
-            Center = center;
-            Radius = radius;
-            Axis = axis;
+            var nCenter = _swUnit.ConvertPoint(center);
+            var nRadius = _swUnit.ConvertDouble(radius);
 
-            CreateWireCircle();
+            CreateWireCircle(nCenter,nRadius,axis);
         }
         #endregion
 
         #region Create
-        public static Circle3D ByCenterPointRadiusNormal(
+        public static Circle ByCenterPointRadiusNormal(
             Point3D center, 
             double radius, 
             Vector3D normal)
         {
-            return new Circle3D(center, radius, normal);
+            return new Circle(center, radius, normal);
         }
 
-        public static Circle3D ByCenterPointRadius(
+        public static Circle ByCenterPointRadius(
             Point3D center, 
             double radius)
         {
-            return new Circle3D(center, radius, new Vector3D(0,0,1));
+            return new Circle(center, radius, new Vector3D(0,0,1));
         }
 
         //TODO:三点圆弧
@@ -43,17 +42,14 @@ namespace SldWorksNodes.Geometry
         #endregion
 
         #region Query
-        public Point3D Center { get; set; }
-
-        public double Radius { get; set; }
-
-        public Vector3D Axis { get; set; }
         #endregion
 
         #region Methods
-        private void CreateWireCircle()
+        private void CreateWireCircle(Point3D center, double radius, Vector3D axis)
         {
-            SwCurve = Util.CurveBuilder.CreateCircle(SldContextManager.Modeler, Center.ToData(), Axis.ToData(), Radius);
+            SwCurve = Util.CurveBuilder.CreateCircle(
+                SldContextManager.Modeler, 
+                center, axis, radius);
 
             SwObject = SwCurve.CreateWireBody();
 

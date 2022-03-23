@@ -1,6 +1,7 @@
 ﻿using Autodesk.DesignScript.Runtime;
 using SldWorksNodes.Base;
 using SldWorksNodes.ConfigurationManager;
+using SldWorksNodes.Geometry;
 using SldWorksNodes.Util;
 using SolidWorks.Interop.sldworks;
 using SolidWorks.Interop.swconst;
@@ -81,9 +82,30 @@ namespace SldWorksNodes.Document
             return true;
         }
 
+        public void ClearSelection(bool all =true)
+        {
+            SwObject.ClearSelection2(all);
+        }
+
         public bool SaveAs(string newPathName)
         {
             return SwObject.SaveAs(newPathName);
+        }
+
+        public bool ByRaySelectFace(
+            Point3D postion,
+            Vector3D direction,
+            double radius)
+        {
+            var nPos = _swUnit.ConvertPoint(postion);
+            var nRadius = _swUnit.ConvertDouble(radius);
+
+            return SwObject.SelectByRay(new double[]
+            {
+                nPos.X,nPos.Y,nPos.Z,
+                direction.X,direction.Y,direction.Z,
+                nRadius
+            },(int)swSelectType_e.swSelFACES);
         }
         #endregion
 

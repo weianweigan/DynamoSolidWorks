@@ -28,6 +28,7 @@ var project = new ManagedProject
     OutFileName = fileName.ToString(),
     InstallScope = InstallScope.perMachine,
     InstallPrivileges = InstallPrivileges.elevated,
+    //SourceBaseDir = Environment.CurrentDirectory,
     MajorUpgrade = MajorUpgrade.Default,
     GUID = new Guid("62E8D571-F797-428D-A8A5-BDEAE1EADDF9"),
     BackgroundImage = $@"{IconDir}\Installer\Resources\Icons\BackgroundImage.png",

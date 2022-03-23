@@ -28,6 +28,17 @@ namespace SldWorksNodes.Sketch
 
             CreateArc(nCenter, nSPt, nEPt,direction);
         }
+
+        internal SketchArc(ISketchArc skeSeg)
+        {
+            SwObject = skeSeg as ISketchSegment;
+            SkeSegment = skeSeg;
+
+            SolvePoints();
+        }
+
+        internal SketchArc()
+        { }
         #endregion
 
         #region Create
@@ -119,9 +130,12 @@ namespace SldWorksNodes.Sketch
                 nSPt.X, nSPt.Y, nSPt.Z,
                 nEPt.X, nEPt.Y, nEPt.Z,
                 (short)(direction ? 1 : -1)));
+
+            SkeSegment = SwObject as ISketchArc;
+            SolvePoints();
         }
 
-        private void SolvePoints()
+        protected void SolvePoints()
         {
             if (SkeSegment == null)
             {
@@ -135,18 +149,5 @@ namespace SldWorksNodes.Sketch
             Radius = SkeSegment.GetRadius();
         }
         #endregion
-    }
-
-    public class SketchCircle
-    {
-        public static SketchArc ByCenterAndPointInCircle(
-            Point3D point,
-            Point3D pointInCircle)
-        {
-
-            //TODO
-
-            return null;
-        }
     }
 }

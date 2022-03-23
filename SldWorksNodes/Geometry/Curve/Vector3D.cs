@@ -83,6 +83,15 @@ namespace SldWorksNodes.Geometry
                 vector._z - point.Z);
         }
 
+        public static Vector3D CrossProduct(Vector3D vector1, Vector3D vector2)
+        {
+            var result = new Vector3D(0,0,0);
+            result._x = vector1._y * vector2._z - vector1._z * vector2._y;
+            result._y = vector1._z * vector2._x - vector1._x * vector2._z;
+            result._z = vector1._x * vector2._y - vector1._y * vector2._x;
+            return result;
+        }
+
         public static Vector3D Multiply(Vector3D vector, double scalar)
         {
             return new Vector3D(
@@ -153,6 +162,12 @@ namespace SldWorksNodes.Geometry
 
         internal System.Windows.Media.Media3D.Vector3D ToData() =>
             new System.Windows.Media.Media3D.Vector3D(X, Y, Z);
+
+        internal bool IsZ(double eplision = 0.00001)
+        {
+            return Math.Abs(X) < eplision && Math.Abs(Y) < eplision;
+        }
+
         #endregion
 
         #region Operator
@@ -167,25 +182,9 @@ namespace SldWorksNodes.Geometry
             return new Vector3D(vector._x * scalar, vector._y * scalar, vector._z * scalar);
         }
 
-
         public static Vector3D operator *(double scalar, Vector3D vector)
         {
             return new Vector3D(vector._x * scalar, vector._y * scalar, vector._z * scalar);
-        }
-
-        public static bool operator ==(Vector3D vector1, Vector3D vector2)
-        {
-            if (vector1.X == vector2.X && vector1.Y == vector2.Y)
-            {
-                return vector1.Z == vector2.Z;
-            }
-
-            return false;
-        }
-
-        public static bool operator !=(Vector3D vector1, Vector3D vector2)
-        {
-            return !(vector1 == vector2);
         }
 
         [IsVisibleInDynamoLibrary(false)]

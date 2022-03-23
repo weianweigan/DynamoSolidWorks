@@ -4,9 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SldWorksNodes.Sketch
+namespace SldWorksTests
 {
-    internal class SketchSolt
+    public class CurveBuilderTests
     {
+
     }
 }

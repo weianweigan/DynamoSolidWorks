@@ -3,16 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Autodesk.DesignScript.Runtime;
 
 namespace SldWorksNodes.Geometry
 {
-    public class Ellipse3D:SwCurveBodyNode
+    [IsVisibleInDynamoLibrary(false)] 
+    public class BSpine
     {
-
-        public static Ellipse3D ByCenter2Raduis2Axis()
-        {
-
-            return new Ellipse3D();
-        }
     }
 }

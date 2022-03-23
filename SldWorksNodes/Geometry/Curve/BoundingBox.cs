@@ -3,31 +3,32 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Autodesk.DesignScript.Runtime;
 
 namespace SldWorksNodes.Geometry
 {
-    public class BoundingBox3D:SwCurveBodyNode
+    public class BoundingBox:Curve
     {
-        public BoundingBox3D(Point3D min, Point3D max)
+        public BoundingBox(Point3D min, Point3D max)
         {
             Min = min;
             Max = max;
         }
 
         #region Create
-        public static BoundingBox3D ByCorner(Point3D min,Point3D max)
+        public static BoundingBox ByCorner(Point3D min,Point3D max)
         {
-            return new BoundingBox3D(min, max);
+            return new BoundingBox(min, max);
         }
 
-        public static BoundingBox3D ByGeometry(Body body)
+        public static BoundingBox ByGeometry(SolidBody body)
         {
             var box = body.Box();
 
             if (box == null)
                 return null;
 
-            return new BoundingBox3D(box["min"], box["max"]);
+            return new BoundingBox(box["min"], box["max"]);
         }
         #endregion
 
@@ -40,7 +41,7 @@ namespace SldWorksNodes.Geometry
                 (point.Z > Min.Z && point.Z < Max.Z);
         }
 
-        public BoundingBox3D Intersection(BoundingBox3D other)
+        public BoundingBox Intersection(BoundingBox other)
         {
             var currentBox = ToRect3D();
             var otherBox = other.ToRect3D();
@@ -48,7 +49,7 @@ namespace SldWorksNodes.Geometry
             var intersec = System.Windows.Media.Media3D.
                 Rect3D.Intersect(currentBox, otherBox);
 
-            return new BoundingBox3D(new Point3D(
+            return new BoundingBox(new Point3D(
                 intersec.Location.X,
                 intersec.Location.Y,
                 intersec.Location.Z),
@@ -74,8 +75,10 @@ namespace SldWorksNodes.Geometry
         #endregion
 
         #region Query
+        [IsVisibleInDynamoLibrary(false)]
         public Point3D Min { get; }
 
+        [IsVisibleInDynamoLibrary(false)]
         public Point3D Max { get; }
         #endregion
 

@@ -9,20 +9,51 @@ using System.Windows.Media;
 
 namespace SldWorksNodes.Geometry
 {
-    [IsVisibleInDynamoLibrary(false)]
-    public abstract class SwBodyNode : SwNodeModel<IBody2>, IDisposable,ITempBody
+    public class SwBodyNode : SwNodeModel<IBody2>, IDisposable,ITempBody
     {
         protected Color _color = Colors.Yellow;
+        #region Action
 
-        public Color Color
+        public void SetMaterialProperty(MaterialProperty materialProperty)
         {
-             get => _color; set
-            {
-                _color = value;
-                UpdateColor();
-            }
+            if (materialProperty == null)
+                return;
+
+            SwObject.MaterialPropertyValues = materialProperty.ToArray();
         }
 
+        /// <summary>
+        /// Save body file to feature
+        /// </summary>
+        /// <returns></returns>
+        /// <exception cref="ArgumentException"></exception>
+        /// <exception cref="NullReferenceException"></exception>
+        public Feature.Feature SaveToFeature(string featureName)
+        {
+            if (SwObject == null)
+                throw new ArgumentException("No body to save");
+
+            var doc = SwContextUtil.GetCurrentPartDocContext();
+
+            var oldFeat = doc.FindFeat(featureName);
+            if (oldFeat != null)
+            {
+                oldFeat.Select2(false, 0);
+                doc.DeleteSelection(false);
+            }
+
+            var feat = ((IPartDoc)doc).CreateFeatureFromBody3(SwObject, false, (int)swCreateFeatureBodyOpts_e.swCreateFeatureBodySimplify) as IFeature;
+
+            if (feat == null)
+                throw new NullReferenceException("Save Fail");
+
+            feat.Name = featureName;
+            return new Feature.Feature(feat);
+        }
+
+        #endregion
+
+        #region Methods
         private void UpdateColor()
         {
             if (SwObject == null)
@@ -30,6 +61,15 @@ namespace SldWorksNodes.Geometry
 
         }
 
+        /// <summary>
+        /// Clear Body
+        /// </summary>
+        public void Dispose()
+        {
+            ClearBody();
+        }
+
+        [IsVisibleInDynamoLibrary(false)]
         public void DisplayBody()
         {
             var doc = SwContextUtil.GetCurrentPartDocContext();
@@ -43,13 +83,14 @@ namespace SldWorksNodes.Geometry
             doc.WithNoRefresh(() =>
             {
                 SwObject.Display3(
-                    doc, 
-                    Information.RGB(_color.R, _color.G, _color.B), 
+                    doc,
+                    Information.RGB(_color.R, _color.G, _color.B),
                     (int)swTempBodySelectOptions_e.swTempBodySelectable);
                 SetTransparency(0.9);
             });
         }
 
+        [IsVisibleInDynamoLibrary(false)]
         public void ClearBody()
         {
             try
@@ -72,18 +113,11 @@ namespace SldWorksNodes.Geometry
         }
 
         /// <summary>
-        /// Clear Body
-        /// </summary>
-        public void Dispose()
-        {
-            ClearBody();
-        }
-
-        /// <summary>
         /// 设置透明度
         /// </summary>
         /// <param name="body">实体</param>
         /// <param name="value">透明度的值 在 0-1 之间</param>
+        [IsVisibleInDynamoLibrary(false)]        
         public void SetTransparency(double value)
         {
             if (SwObject is null)
@@ -105,16 +139,6 @@ namespace SldWorksNodes.Geometry
                 matValue[7] = value;
             }
             SwObject.MaterialPropertyValues2 = matValue;
-        }
-
-        #region Action
-
-        public void SetMaterialProperty(MaterialProperty materialProperty)
-        {
-            if (materialProperty == null)
-                return;
-
-            SwObject.MaterialPropertyValues = materialProperty.ToArray();
         }
 
         #endregion

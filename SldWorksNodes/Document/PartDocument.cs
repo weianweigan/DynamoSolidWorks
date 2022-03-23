@@ -26,7 +26,7 @@ namespace SldWorksNodes.Document
         /// <param name="visibleOnly">only get visible bodies</param>
         /// <returns></returns>
         /// <exception cref="SwException.ActiveDocIsNotPartDocException"></exception>
-        public List<Geometry.Body> Bodies(bool visibleOnly = true)
+        public List<Geometry.SolidBody> Bodies(bool visibleOnly = true)
         {
             if (SwObject == null)
                 return null;
@@ -37,7 +37,7 @@ namespace SldWorksNodes.Document
 
             return bodies
                 .Cast<IBody2>()
-                .Select(p => new Geometry.Body(p))
+                .Select(p => new Geometry.SolidBody(p))
                 .ToList();
 
         }

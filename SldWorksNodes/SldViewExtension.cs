@@ -38,14 +38,15 @@ namespace SldWorksNodes
             var vm = viewLoadedParams.DynamoWindow.DataContext as DynamoViewModel;
             var sldContext = vm.Model as ISldWorksContext;
             SldContextManager.Init(sldContext);
+            SwContext.Init(sldContext);
 
             _sampleMenuItem = new MenuItem { Header = "SolidWorks Info" };
 
             _sampleMenuItem.Click += (sender, args) =>
             {
-                var version = typeof(SldViewExtension).Assembly.GetName().Version;
                 var window = new View.SolidWorksInfoWindow();
-                window.ShowDialog();
+                window.Topmost = true;
+                window.Show();
             };
 
             viewLoadedParams.AddMenuItem(MenuBarType.View, _sampleMenuItem);

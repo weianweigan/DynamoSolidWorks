@@ -36,6 +36,11 @@ namespace SldWorksNodes.Base
             if (_swObject == null)
                 throw new SwObjectLostException(typeof(TSwType));
         }
+
+        public override string ToString()
+        {
+            return typeof(TSwType).ToString();
+        }
         #endregion
     }
 }

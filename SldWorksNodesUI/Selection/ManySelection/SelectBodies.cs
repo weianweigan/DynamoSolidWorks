@@ -13,10 +13,10 @@ namespace SldWorksNodesUI.Selection
     /// Select a Body in current doc in solidworks
     /// </summary>
     [NodeName(message)]
-    [NodeCategory("SolidWorks.Selection")]
+    [NodeCategory(SwNodesCategory.SelectionCategory)]
     [NodeDescription("Select Bodies in doc")]
     [IsDesignScriptCompatible]
-    public class SelectBodies : SwObjectSelction<IBody2, SldWorksNodes.Geometry.Body>
+    public class SelectBodies : SwObjectSelction<IBody2, SldWorksNodes.Geometry.SolidBody>
     {
         #region Fields
         private const string message = "Select Bodies";
@@ -35,16 +35,16 @@ namespace SldWorksNodesUI.Selection
         #endregion
 
         #region Methods
-        protected override IEnumerable<SldWorksNodes.Geometry.Body> ExtractSelectionResults(IBody2 selections)
+        protected override IEnumerable<SldWorksNodes.Geometry.SolidBody> ExtractSelectionResults(IBody2 selections)
         {
             if (selections == null)
                 yield break;
 
-            yield return new SldWorksNodes.Geometry.Body(selections);
+            yield return new SldWorksNodes.Geometry.SolidBody(selections);
         }
 
-        protected override Func<string, SldWorksNodes.Geometry.Body> GetBuildFuncation() => 
-            new Func<string, SldWorksNodes.Geometry.Body>(SldWorksNodes.Geometry.Body.ByPID);
+        protected override Func<string, SldWorksNodes.Geometry.SolidBody> GetBuildFuncation() => 
+            new Func<string, SldWorksNodes.Geometry.SolidBody>(SldWorksNodes.Geometry.SolidBody.ByPID);
 
         protected override string GetOutputPortName() => prefix;
         #endregion

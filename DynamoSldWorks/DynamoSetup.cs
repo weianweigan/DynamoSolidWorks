@@ -61,6 +61,11 @@ namespace DynamoSldWorks.View
         {
             try
             {
+                if (!CheckInteractivity())
+                {
+                    return;
+                }
+
                 if (View != null)
                 {
                     View.Activate();
@@ -77,7 +82,7 @@ namespace DynamoSldWorks.View
                         (
 #if V1_2_0
 #else
-                            //null,
+                            null,
 #endif
                             new Watch3DViewModelStartupParams(_model),
                             _model.Logger
@@ -92,7 +97,7 @@ namespace DynamoSldWorks.View
                         ShowLogin = true,
                     });
 
-                ViewModel.BackgroundPreviewViewModel.IsGridVisible = false;
+                //ViewModel.BackgroundPreviewViewModel.IsGridVisible = false;
 
                 View = new DynamoView(ViewModel);
                 View.Loaded += OnDynamoViewLoaded;
@@ -117,6 +122,52 @@ namespace DynamoSldWorks.View
             {
                 _swApplication.ShowMessageBox(ex.Message, Xarial.XCad.Base.Enums.MessageBoxIcon_e.Error);
             }   
+        }
+
+        private const string _interactivityName = "System.Windows.Interactivity.dll";
+        private bool CheckInteractivity()
+        {
+            var swLocation = AppDomain.CurrentDomain.BaseDirectory;
+            var olderFile = Path.Combine(swLocation, _interactivityName);
+
+            var fileInfo = new FileInfo(olderFile);
+
+            if (!fileInfo.Exists)
+            {
+                throw new FileNotFoundException(olderFile);
+            }
+
+            FileVersionInfo version = FileVersionInfo.GetVersionInfo(olderFile);
+            if(version.FileMajorPart < 3)
+            {
+                //提醒用户更新版本
+                //replace older version dll in solidworks
+                //find solidworks install dir
+                var newFile = Path.Combine(SwAddin.DynamoCorePath, _interactivityName);
+
+                var tools = Path.Combine(SwAddin.DynamoCorePath, $"{nameof(SldWorksDllUpdateTask)}.exe");
+
+                var res = _swApplication.ShowMessageBox(
+                     Properties.Resources.StartNewVersionNeedReplaceDll, 
+                     Xarial.XCad.Base.Enums.MessageBoxIcon_e.Question, 
+                     Xarial.XCad.Base.Enums.MessageBoxButtons_e.YesNo);
+
+                if (res == Xarial.XCad.Base.Enums.MessageBoxResult_e.Yes)
+                {
+                    AppDomain.CurrentDomain.ProcessExit += (sender,e) =>
+                    {
+                        Process.Start(newFile,$"{olderFile} {newFile}");
+                    };
+
+                    Environment.Exit(0);
+                }
+
+                return false;
+            }
+            else
+            {
+                return true;
+            }
         }
 
         public void OpenDoc(string pathName,IntPtr parent)
@@ -157,25 +208,29 @@ namespace DynamoSldWorks.View
             View.Loaded -= OnDynamoViewLoaded;
         }
 
+
         private  void UpdateLibraryLayoutSpec()
         {
-            // var customization = _model.ExtensionManager.Service<ILibraryViewCustomization>();
-            //if (customization == null) return;
+#if V1_2_0
 
-            ////Register the icon resource
-            ////using (var fs = new FileStream(SwAddin.DynamoCorePath + @"\Resources\Category.SolidWorks.png", FileMode.Open))
-            ////{
-            ////    customization.RegisterResourceStream("/icons/Category.SolidWorks.png",fs);
-            ////}            
+#else
+            var customization = _model.ExtensionManager.Service<ILibraryViewCustomization>();
+            if (customization == null) return;
 
-            //LayoutSpecification sldworksSpecs;
-            //var str = File.ReadAllText(SwAddin.DynamoCorePath + @"\Resources\LayoutSpecs.json");
-            //sldworksSpecs = LayoutSpecification.FromJSONString(str);
-
-            ////The steelSpec should have only one section, add all its child elements to the customization
-            //var elements = sldworksSpecs.sections.First().childElements;
-            //customization.AddElements(elements); //add all the elements to default section
+            //Register the icon resource
+            //using (var fs = new FileStream(SwAddin.DynamoCorePath + @"\Resources\Category.SolidWorks.png", FileMode.Open))
+            //{
+            //    customization.RegisterResourceStream("/icons/Category.SolidWorks.png",fs);
+            //}            
             
+            LayoutSpecification sldworksSpecs;
+            var str = File.ReadAllText(SwAddin.DynamoCorePath + @"\Resources\LayoutSpecs.json");
+            sldworksSpecs = LayoutSpecification.FromJSONString(str);
+
+            //The steelSpec should have only one section, add all its child elements to the customization
+            var elements = sldworksSpecs.sections.First().childElements;
+            customization.AddElements(elements); //add all the elements to default section
+#endif
         }
 #endregion
     }

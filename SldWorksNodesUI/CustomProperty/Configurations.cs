@@ -1,6 +1,7 @@
 ﻿using CoreNodeModels;
 using Dynamo.Graph.Nodes;
 using Dynamo.Utilities;
+using Newtonsoft.Json;
 using ProtoCore.AST.AssociativeAST;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,7 +10,7 @@ namespace SldWorksNodesUI.SwItems
 {
     [NodeName(nameof(Configurations))]
     [NodeDescription("Lists all configuration in active doc to select one")]
-    [NodeCategory("SolidWorks.Selection")]
+    [NodeCategory(SwNodesCategory.SelectionCategory)]
     [IsDesignScriptCompatible]
     public class Configurations:SwDropDownBase
     {
@@ -33,6 +34,14 @@ namespace SldWorksNodesUI.SwItems
             }
 
             return SelectionState.Restore;
+        }
+
+        [JsonConstructor]
+        public Configurations(string value,
+            IEnumerable<PortModel> inPorts,
+            IEnumerable<PortModel> outPorts) 
+            : base(value, inPorts, outPorts)
+        {
         }
 
         protected IEnumerable<DynamoDropDownItem> GetProperties(string config = "")

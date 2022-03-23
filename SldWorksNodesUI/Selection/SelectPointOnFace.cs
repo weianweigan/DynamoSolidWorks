@@ -13,7 +13,7 @@ using Dynamo.Controls;
 namespace SldWorksNodesUI.Selection
 {
     [NodeName(message)]
-    [NodeCategory("SolidWorks.Selection")]
+    [NodeCategory(SwNodesCategory.SelectionCategory)]
     [NodeDescription("Select Point On Face")]
     [IsDesignScriptCompatible]
     public class SelectPointOnFace : SwObjectSelction<Point3D,Point3D>

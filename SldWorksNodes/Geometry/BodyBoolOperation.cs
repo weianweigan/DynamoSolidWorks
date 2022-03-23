@@ -7,22 +7,22 @@ namespace SldWorksNodes.Geometry
 {
     public static class BodyBoolOperation
     {
-        public static Body Add(Body body1,Body body2)
+        public static SolidBody Add(SolidBody body1,SolidBody body2)
         {
             return BoolOperation(body1, body2,swBodyOperationType_e.SWBODYADD);
         }
 
-        public static Body Cut(Body body1, Body body2)
+        public static SolidBody Cut(SolidBody body1, SolidBody body2)
         {
             return BoolOperation(body1, body2, swBodyOperationType_e.SWBODYCUT);
         }
 
-        public static Body Intersect(Body body1, Body body2)
+        public static SolidBody Intersect(SolidBody body1, SolidBody body2)
         {
             return BoolOperation(body1, body2, swBodyOperationType_e.SWBODYINTERSECT);
         }
 
-        private static Body BoolOperation(Body body1, Body body2, swBodyOperationType_e operationType)
+        private static SolidBody BoolOperation(SolidBody body1, SolidBody body2, swBodyOperationType_e operationType)
         {
             var bodies = body1.SwObject.Operations2((int)operationType, body2.SwObject, out var errorCode) as object[];
 
@@ -35,7 +35,7 @@ namespace SldWorksNodes.Geometry
             body1.ClearBody();
             body2.ClearBody();
 
-            return new Body(body);
+            return new SolidBody(body);
         }
 
     }

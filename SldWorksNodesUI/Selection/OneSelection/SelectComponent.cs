@@ -10,7 +10,7 @@ using SolidWorks.Interop.sldworks;
 namespace SldWorksNodesUI.Selection
 {
     [NodeName("Select Component")]
-    [NodeCategory("SolidWorks.Selection")]
+    [NodeCategory(SwNodesCategory.SelectionCategory)]
     [NodeDescription("Select a Component in doc")]
     [IsDesignScriptCompatible]
     public class SelectComponent : SwObjectSelction<IComponent2, SldWorksNodes.Assembly.Component>

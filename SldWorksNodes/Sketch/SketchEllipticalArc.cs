@@ -1,16 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using SldWorksNodes.Geometry;
+﻿using SldWorksNodes.Geometry;
 using SolidWorks.Interop.sldworks;
 
 namespace SldWorksNodes.Sketch
 {
-    public class SketchEllipticalArc:SketchSegment<ISketchEllipse>
+    public class SketchEllipticalArc : SketchSegment<ISketchEllipse>
     {
         #region Ctor
+        internal SketchEllipticalArc() {}
+
         internal SketchEllipticalArc(
             Point3D center, 
             Point3D major, 
@@ -26,6 +23,60 @@ namespace SldWorksNodes.Sketch
             var nePt = _swUnit.ConvertPoint(endPt);
 
             CreateEllipse(nCenter, nMajor, nMinor,startPt,endPt,clockWiseDirection);
+        }
+
+        public SketchEllipticalArc(ISketchEllipse skeSeg)
+        {
+            SkeSegment = skeSeg;
+            SwObject = skeSeg as ISketchSegment;
+        }
+        #endregion
+
+        #region Query
+        /// <summary>
+        /// Rotation direction (counterclockwise = true, clockwise = false)
+        /// </summary>
+        /// <remarks>
+        /// This method determines the direction (counterclockwise or clockwise) that the sketch entity proceeds around the ellipse, beginning at its start point and ending at its ending point if the sketch entity is not a complete ellipse.
+        /// </remarks>
+        public bool RotationDirection()
+        {
+            return SkeSegment.GetRotationDir() > 0 ? true : false;
+        }
+
+        public SketchPoint CenterPoint()
+        {
+            var cPt = SkeSegment.GetCenterPoint2() as ISketchPoint;
+
+            return cPt == null ? null : new SketchPoint(null,cPt);
+        }
+
+        public SketchPoint StartPoint()
+        {
+            var sPt = SkeSegment.GetStartPoint2() as ISketchPoint;
+
+            return sPt == null ? null : new SketchPoint(null, sPt);
+        }
+
+        public SketchPoint EndPoint()
+        {
+            var ePt = SkeSegment.GetEndPoint2() as ISketchPoint;
+
+            return ePt == null ? null : new SketchPoint(null, ePt);
+        }
+
+        public SketchPoint MajorPoint()
+        {
+            var mPt = SkeSegment.GetMajorPoint2() as ISketchPoint;
+
+            return mPt == null ? null : new SketchPoint(null, mPt);
+        }
+
+        public SketchPoint MinPoint()
+        {
+            var mPt = SkeSegment.GetMinorPoint2() as ISketchPoint;
+
+            return mPt == null ? null : new SketchPoint(null, mPt);
         }
         #endregion
 

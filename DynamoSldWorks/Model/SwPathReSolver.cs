@@ -26,7 +26,7 @@ namespace DynamoSldWorks.Model
             var sldWorksNodesDirectory = Path.Combine(SwAddin.DynamoCorePath,"SolidWorks");
 
             additionalNodeDirectories = new List<string> { nodesDirectory, sldWorksNodesDirectory };
-            additionalResolutionPaths = new List<string> {sldWorksNodesDirectory };
+            additionalResolutionPaths = new List<string> { sldWorksNodesDirectory };
 
             var sldWorksNodesDll = Path.Combine(sldWorksNodesDirectory, "SldWorksNodes.dll");
             var sldWorksNodesUIDll = Path.Combine(sldWorksNodesDirectory, "SldWorksNodesUI.dll");
@@ -47,7 +47,8 @@ namespace DynamoSldWorks.Model
                 "Tessellation.dll",
                 "Analysis.dll",
                 "GeometryColor.dll",
-                 sldWorksNodesDll,
+                //"SldWorksNodes.dll" 
+                sldWorksNodesDll,
                  //sldWorksNodesUIDll
             };
         }

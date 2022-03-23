@@ -36,7 +36,7 @@ namespace SldWorksNodes.Geometry
             return new Point3D(x, y, z);
         }
 
-        public static Point3D Orign => new Point3D(0, 0, 0);
+        public static Point3D Orign() => new Point3D(0, 0, 0);
         #endregion
 
         #region Action

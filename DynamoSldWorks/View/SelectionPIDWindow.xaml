@@ -11,7 +11,10 @@
             <RowDefinition Height="71*"/>
             <RowDefinition Height="50"/>
         </Grid.RowDefinitions>
-        <ListBox SelectedItem="{Binding SelectedPIDItem}" MouseDoubleClick="ListBox_MouseDoubleClick"  ItemsSource="{Binding SelectionPIDs}" ScrollViewer.HorizontalScrollBarVisibility="Disabled">
+        <ListBox SelectedItem="{Binding SelectedPIDItem}"
+                 MouseDoubleClick="ListBox_MouseDoubleClick"  
+                 ItemsSource="{Binding SelectionPIDs}"
+                 ScrollViewer.HorizontalScrollBarVisibility="Disabled">
             <ListBox.ItemTemplate>
                 <DataTemplate>
                     <Grid Height="90" >
@@ -21,10 +24,16 @@
                                     <RowDefinition Height="*"/>
                                 </Grid.RowDefinitions>
                                 <StackPanel Orientation="Horizontal">
-                                    <TextBlock FontWeight="Black" VerticalAlignment="Center">Type:</TextBlock>
-                                    <TextBlock FontWeight="Black" VerticalAlignment="Center" Text="{Binding SelectType}"/>
-                                    <TextBlock Margin="5,0,0,0" FontWeight="Black" VerticalAlignment="Center">Mark:</TextBlock>
-                                    <TextBlock FontWeight="Black" VerticalAlignment="Center" Text="{Binding Mark}"/>
+                                    <TextBlock FontWeight="Black" 
+                                               VerticalAlignment="Center">Type:</TextBlock>
+                                    <TextBlock FontWeight="Black" 
+                                               VerticalAlignment="Center" Text="{Binding SelectType}"/>
+                                    <TextBlock Margin="5,0,0,0" 
+                                               FontWeight="Black"
+                                               VerticalAlignment="Center">Mark:</TextBlock>
+                                    <TextBlock FontWeight="Black"
+                                               VerticalAlignment="Center" 
+                                               Text="{Binding Mark}"/>
                                 </StackPanel>
                                 <TextBox Grid.Row="1" Margin="0,5" TextWrapping="WrapWithOverflow" Text="{Binding PID,Mode=OneWay}"/>
                             </Grid>
@@ -32,6 +41,10 @@
                 </DataTemplate>
             </ListBox.ItemTemplate>
         </ListBox>
-        <Button x:Name="_closeButton" Grid.Row="1" Width="75" Height="25" HorizontalAlignment="Right" Margin="15,0">Close</Button>
+        <Button x:Name="_closeButton"
+                Grid.Row="1" Width="75"
+                Height="25" 
+                HorizontalAlignment="Right"
+                Margin="15,0">Close</Button>
     </Grid>
 </Window>

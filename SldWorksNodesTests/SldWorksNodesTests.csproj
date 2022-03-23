@@ -90,9 +90,11 @@
   <ItemGroup>
     <Compile Include="Base\SwObjectTest.cs" />
     <Compile Include="Document\DocumentTests.cs" />
+    <Compile Include="EquationMgr\EquationTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="app.config" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>

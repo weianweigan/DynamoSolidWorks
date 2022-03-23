@@ -4,9 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SldWorksNodes.Geometry
+namespace SldWorksNodes
 {
-    public class BSpineCurve
+    public class Selection
     {
+        internal Selection() { }
     }
 }

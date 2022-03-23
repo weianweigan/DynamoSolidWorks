@@ -6,19 +6,27 @@
         xmlns:local="clr-namespace:SldWorksNodes.View"
         mc:Ignorable="d" 
         ResizeMode="NoResize"
-        Background="#f7f7f7"
+        Background="#363636"
         Title="SolidWorks Info"
-        d:Height="160" d:Width="170">
+        WindowStartupLocation="CenterOwner" 
+        Height="160" Width="170">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition/>
             <RowDefinition Height="30"/>
         </Grid.RowDefinitions>
         <StackPanel>
-            <GroupBox Header="SolidWorks Version">
+            <TextBlock Text="SolidWorks Version"
+                       Foreground="#888888"/>
+            <Border BorderThickness="1"
+                    BorderBrush="Gray">
                 <TextBlock x:Name="_swVersion"/>
-            </GroupBox>
-            <GroupBox Header="SolidWorks Setting">
+            </Border>
+
+            <TextBlock Text="SolidWorks Setting"
+                       Foreground="#888888"/>
+            <Border BorderThickness="1"
+                    BorderBrush="Gray">
                 <StackPanel>
                     <RadioButton x:Name="_mm" 
                                  IsChecked="True"
@@ -29,7 +37,7 @@
                                  Checked="_swUnitSys_Checked"
                                  Visibility="Collapsed">Use Current Unit System</RadioButton>
                 </StackPanel>
-            </GroupBox>
+            </Border>
         </StackPanel>
         <Button Grid.Row="1" 
                 Width="75" 

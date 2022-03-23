@@ -9,6 +9,9 @@
  *  
  *  --------------------------------------------------------------------
  *  I found dynamo set xaml resourcedictonary is not a resource,so you can modify the file dynamomodern.xaml in ui/theme/ and didn't need to build it self.
+ *  
+ *  -----------------------------------------------------------------------
+ *  To use Dynamo 2.13.1, you need replace system.windows.interactivity.dll in solidworks directory because sw use a lower version
  */
 
 using System;
@@ -32,12 +35,14 @@ using SolidWorks.Interop.swconst;
 using Xarial.XCad.Base.Enums;
 using Xarial.XCad.SolidWorks.UI;
 using System.Linq;
+using DynamoSldWorks.Properties;
 
 namespace DynamoSldWorks
 {
     [ComVisible(true)]
     [Title("DynamoSolidWorks"),Description(" Graphical Programming for Design in SolidWorks")]
     [Guid("62E8D571-F797-428D-A8A5-BDEAE1EADDF9")]
+    [Icon(typeof(Resources), nameof(Resources.logo_square_32x32))]
     public class SwAddin:SwAddInEx
     {
         #region Field
@@ -74,6 +79,7 @@ namespace DynamoSldWorks
             _cmdTaskPane.Control.Init(this);
 
             CommandManager.AddCommandGroup<Commands>().CommandClick += SwAddin_CommandClick;
+        
         }
 
         private void SwAddin_CommandClick(Commands spec)

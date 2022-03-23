@@ -43,5 +43,10 @@ namespace SldWorksNodes.Brep
                 (double)postion[2]
                 );
         }
+
+        public override string ToString()
+        {
+            return "Vertex" ?? base.ToString();
+        }
     }
 }

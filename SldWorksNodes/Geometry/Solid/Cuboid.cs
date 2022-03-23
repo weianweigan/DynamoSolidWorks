@@ -11,23 +11,53 @@ namespace SldWorksNodes.Geometry
     /// <summary>
     /// Present a cube geometry
     /// </summary>
-    public class Cuboid : Body
+    public class Cuboid : SolidBody
     {
-        internal Cuboid(IBody2 body) : base(body)
+        #region Ctor
+        internal Cuboid(Point3D leftDown, Point3D topRight)
+        {
+            var nL = _swUnit.ConvertPoint(leftDown);
+            var nR = _swUnit.ConvertPoint(topRight);
+
+            SwObject = BodyBuilder.CreateFromBox(
+                SldContextManager.Modeler,
+                nL,
+                nR);
+            if (SwObject == null)
+                throw new NullReferenceException("Create Body Error");
+            DisplayBody();
+        }
+
+        internal Cuboid(IBody2 body)
         {
 
         }
 
-        public static Cuboid ByBox(Point3D LeftDown, Point3D TopRight)
+        internal Cuboid(double length, double width, double height)
         {
-            var body = BodyBuilder.CreateFromBox(
-                SldContextManager.Modeler,
-                LeftDown.ToData(),
-                TopRight.ToData());
-            if (body == null)
+            var nL = _swUnit.ConvertDouble(length);
+            var nW = _swUnit.ConvertDouble(width);
+            var nH = _swUnit.ConvertDouble(height);
+
+            SwObject = BodyBuilder.CreateFromBox(
+                       SldContextManager.Modeler,
+                       new Point3D(0, 0, 0),
+                       new Point3D(nL, nW, nH));
+            if (SwObject == null)
                 throw new NullReferenceException("Create Body Error");
 
-            return new Cuboid(body);
+            DisplayBody();
+        }
+        #endregion
+
+        #region Create
+        public static Cuboid ByBox(Point3D LeftDown, Point3D TopRight)
+        {
+            if(LeftDown == null || TopRight == null)
+                return null;
+
+            return new Cuboid(LeftDown, TopRight);
+            
         }
 
         /// <summary>
@@ -39,19 +69,17 @@ namespace SldWorksNodes.Geometry
         /// <returns></returns>
         /// <exception cref="ArgumentException"></exception>
         /// <exception cref="NullReferenceException"></exception>
-        public static Cuboid ByLengthWidthHeight(double length,double width,double height)
+        public static Cuboid ByLengthWidthHeight(
+            double length,
+            double width,
+            double height)
         {
             if (length < 0 || width < 0 || height < 0)
                 throw new ArgumentException("Value cannot < 0");
 
-            var body = BodyBuilder.CreateFromBox(
-                        SldContextManager.Modeler,
-                        new System.Windows.Media.Media3D.Point3D(0,0,0),
-                        new System.Windows.Media.Media3D.Point3D(length,width,height));
-            if (body == null)
-                throw new NullReferenceException("Create Body Error");
-
-            return new Cuboid(body);
+            return new Cuboid(length, width, height);
+           
         }
+        #endregion
     }
 }

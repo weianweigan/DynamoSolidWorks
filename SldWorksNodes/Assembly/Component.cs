@@ -129,7 +129,7 @@ namespace SldWorksNodes.Assembly
 
         public string ReferencedConfiguration => SwObject?.ReferencedConfiguration;
 
-        public List<Geometry.Body> Bodies()
+        public List<Geometry.SolidBody> Bodies()
         {
             var bodies = SwObject.GetBodies2((int)swBodyType_e.swAllBodies) as object[];
 
@@ -138,7 +138,7 @@ namespace SldWorksNodes.Assembly
 
             return bodies
                 .Cast<IBody2>()
-                .Select(p => new Geometry.Body(p))
+                .Select(p => new Geometry.SolidBody(p))
                 .ToList();
         }
 

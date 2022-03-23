@@ -1,13 +1,18 @@
-﻿using Dynamo.Logging;
+﻿using System;
+using Dynamo.Logging;
 using Dynamo.Updates;
 
 namespace DynamoSldWorks.Model
 {
     public class SwUpdateManager : IUpdateManager
     {
-        public BinaryVersion ProductVersion => BinaryVersion.FromString("");
+#if V1_2_0
 
-        public BinaryVersion AvailableVersion => BinaryVersion.FromString("");
+#else
+        public BinaryVersion ProductVersion => BinaryVersion.FromString("2.13.1");
+
+        public BinaryVersion AvailableVersion => BinaryVersion.FromString("2.13.1");
+#endif
 
         public IAppVersionInfo UpdateInfo { get; set; }
 
@@ -18,6 +23,9 @@ namespace DynamoSldWorks.Model
         public bool ForceUpdate { get; set; } = false;
 
         public IUpdateManagerConfiguration Configuration => null;
+
+        public Version HostVersion { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+        public string HostName { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
 
         public event UpdateDownloadedEventHandler UpdateDownloaded;
         public event ShutdownRequestedEventHandler ShutdownRequested;

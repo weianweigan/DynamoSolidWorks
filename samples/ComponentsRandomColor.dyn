@@ -1,0 +1,912 @@
+{
+  "Uuid": "3c9d0464-8643-5ffe-96e5-ab1769818209",
+  "IsCustomNode": false,
+  "Description": "",
+  "Name": "随机着色",
+  "ElementResolver": {
+    "ResolutionMap": {}
+  },
+  "Inputs": [
+    {
+      "Id": "7ea5c4a8bbe049799a24e02c26d7b904",
+      "Name": "顶级/全部",
+      "Type": "boolean",
+      "Value": "true",
+      "Description": "在“True”和“False”之间选择。",
+      "SelectedIndex": 0
+    }
+  ],
+  "Outputs": [],
+  "Nodes": [
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "SldWorksNodes.MaterialProperty.MaterialProperty@double,double,double,double,double,double,double,double,double",
+      "Id": "c2b58ee0a7f24c2691798fd40fe5c00b",
+      "Inputs": [
+        {
+          "Id": "e00f79f7c61647b99ee29e69621c3b23",
+          "Name": "r",
+          "Description": "double",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "f0b7a2127bf049a59142fc0ef9c03b3b",
+          "Name": "g",
+          "Description": "double",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "4c619b475b2b4de4b0744aa19a7ab533",
+          "Name": "b",
+          "Description": "double",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "888ed5294186430f89d0d3d651a48f12",
+          "Name": "ambient",
+          "Description": "double\n默认值 : 1",
+          "UsingDefaultValue": true,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "bab0c62934d64bc3a6422d57a47a282f",
+          "Name": "diffuse",
+          "Description": "double\n默认值 : 1",
+          "UsingDefaultValue": true,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "fd2f869b16ad4e639649db5f238aa963",
+          "Name": "specular",
+          "Description": "double\n默认值 : 0.8",
+          "UsingDefaultValue": true,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "42dfa2663b6b4bdc9a0e6a867768c5da",
+          "Name": "shininess",
+          "Description": "double\n默认值 : 0.1",
+          "UsingDefaultValue": true,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "2169e1177ac646d096e4bbfceeb9f93f",
+          "Name": "transparency",
+          "Description": "double\n默认值 : 0",
+          "UsingDefaultValue": true,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "61c3902fcd8e4ae5b2ef6649536e774d",
+          "Name": "emission",
+          "Description": "double\n默认值 : 0",
+          "UsingDefaultValue": true,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "23ba384ddd904c93bd6bcd35e75bd255",
+          "Name": "MaterialProperty",
+          "Description": "MaterialProperty",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "MaterialProperty.MaterialProperty (r: double, g: double, b: double, ambient: double = 1, diffuse: double = 1, specular: double = 0.8, shininess: double = 0.1, transparency: double = 0, emission: double = 0): MaterialProperty"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "SldWorksNodes.Assembly.Component.SetMaterialProperty@SldWorksNodes.MaterialProperty",
+      "Id": "1fc95b6a9e5d4dd38f8bb01e8fa48637",
+      "Inputs": [
+        {
+          "Id": "f296cb7d20304e8a8684322fa8faaae2",
+          "Name": "component",
+          "Description": "SldWorksNodes.Assembly.Component",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "356395e3ea4b4614a6cb9720a3e4b15d",
+          "Name": "materialProperty",
+          "Description": "MaterialProperty",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "f8581e458f69431aa12689653e022ce5",
+          "Name": "void",
+          "Description": "void",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "Component.SetMaterialProperty (materialProperty: MaterialProperty): void"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "SldWorksNodes.Document.Document.Current",
+      "Id": "03be8f68340844d5801b6c06a5b0ec03",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "252d277dfb8d451d8b21732e476705a7",
+          "Name": "Document",
+          "Description": "Document",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "Document.Current ( ): Document"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "SldWorksNodes.Document.Document.AsAssemblyDocument",
+      "Id": "d5e34968c6b54d839e06d9e7b97c145b",
+      "Inputs": [
+        {
+          "Id": "fe2d32615c574468b925657406036d43",
+          "Name": "document",
+          "Description": "SldWorksNodes.Document.Document",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "6bbbac7e7e9148af81c6bcc321f9a084",
+          "Name": "AssemblyDocument",
+          "Description": "AssemblyDocument",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "Document.AsAssemblyDocument ( ): AssemblyDocument"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "SldWorksNodes.Document.AssemblyDocument.Components@bool",
+      "Id": "a2ff05d5725e4f3594a03dc7a35d28b0",
+      "Inputs": [
+        {
+          "Id": "3ec0418b60bd435fa8277257b5b24036",
+          "Name": "assemblyDocument",
+          "Description": "SldWorksNodes.Document.AssemblyDocument",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "be2fac93e7cb4dc0bc330b1e0c05ade0",
+          "Name": "toplevelOnly",
+          "Description": "bool\n默认值 : false",
+          "UsingDefaultValue": true,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "537efcd074a341a5bd30dc63222b4f8c",
+          "Name": "Component[]",
+          "Description": "Component[]",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "Get all Components in assembly\n\nAssemblyDocument.Components (toplevelOnly: bool = false): Component[]"
+    },
+    {
+      "ConcreteType": "CoreNodeModels.Input.BoolSelector, CoreNodeModels",
+      "NodeType": "BooleanInputNode",
+      "InputValue": true,
+      "Id": "7ea5c4a8bbe049799a24e02c26d7b904",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "974672a6528e43f4aa9f4603d04f7965",
+          "Name": "",
+          "Description": "Boolean",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "在“True”和“False”之间选择。"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.CodeBlockNodeModel, DynamoCore",
+      "NodeType": "CodeBlockNode",
+      "Code": "0;\n255;",
+      "Id": "c16ba4ce7ca04517987bdfb4e746a93b",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "884b3eb5a1ca481daff1ca684a622b19",
+          "Name": "",
+          "Description": "行 1 中的表达式值",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "d54ef1dee6da406da43b26788c5a3471",
+          "Name": "",
+          "Description": "行 2 中的表达式值",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "允许直接编写 DesignScript 代码"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "DSCore.Math.RandomList@int",
+      "Id": "8c379cadfe6a4cce91d647ba0e5febfc",
+      "Inputs": [
+        {
+          "Id": "f6d5534888c04d4d8b88f5d3f06ecffc",
+          "Name": "amount",
+          "Description": "结果列表将包含的随机数的数量。\n\nint",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "6cc99793ca004c7ca4091dad86426805",
+          "Name": "number",
+          "Description": "介于 0 和 1 之间的随机数的列表。",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "生成包含给定数量的范围 [0, 1) 内随机双精度数 的列表。\n\nMath.RandomList (amount: int): var[]..[]"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "DSCore.List.Count@var[]..[]",
+      "Id": "977223410f7b4645a74bdd90a5a3750c",
+      "Inputs": [
+        {
+          "Id": "685731cc932440a7b3d2ba1e30857523",
+          "Name": "list",
+          "Description": "要用于获取项数的列表。\n\nvar[]..[]",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "5fba566be9ed4d4b96905cb571da89ea",
+          "Name": "int",
+          "Description": "列表长度。",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "返回存储于给定列表中的项数。\n\nList.Count (list: var[]..[]): int"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "*@var[]..[],var[]..[]",
+      "Id": "0f513ee35ff44ce4a4bd986a89751e76",
+      "Inputs": [
+        {
+          "Id": "7461d363db2d43b59673dc58f631d04c",
+          "Name": "x",
+          "Description": "整数或双精度值\n\nvar[]..[]",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "2624d7c928ee49a296a76a1d5f569d83",
+          "Name": "y",
+          "Description": "整数或双精度值\n\nvar[]..[]",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "db37daf6090b48f8832a06fac75688c6",
+          "Name": "number",
+          "Description": "两个输入数字的乘积",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "返回 x 乘 y 的积\n\n* (x: var[]..[], y: var[]..[]): var[]..[]"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "DSCore.Math.RandomList@int",
+      "Id": "6540fce36c5f4dfab69a1ebe6e915ef1",
+      "Inputs": [
+        {
+          "Id": "d20643ab4dc34dfcaf9e63f7375209f4",
+          "Name": "amount",
+          "Description": "结果列表将包含的随机数的数量。\n\nint",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "8facece5a9584f3c842ae8f78ca7c038",
+          "Name": "number",
+          "Description": "介于 0 和 1 之间的随机数的列表。",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "生成包含给定数量的范围 [0, 1) 内随机双精度数 的列表。\n\nMath.RandomList (amount: int): var[]..[]"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "DSCore.Math.RandomList@int",
+      "Id": "949890887f48470c98b66f84351581d4",
+      "Inputs": [
+        {
+          "Id": "95c77e0192a247f1b143507c43829f09",
+          "Name": "amount",
+          "Description": "结果列表将包含的随机数的数量。\n\nint",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "08f2a706f44645df80b11ab65fb04cf0",
+          "Name": "number",
+          "Description": "介于 0 和 1 之间的随机数的列表。",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "生成包含给定数量的范围 [0, 1) 内随机双精度数 的列表。\n\nMath.RandomList (amount: int): var[]..[]"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "*@var[]..[],var[]..[]",
+      "Id": "cc9a08446c7f4447ac09e78c635ef27d",
+      "Inputs": [
+        {
+          "Id": "bd73a646a9e74ea080fed39118adc43f",
+          "Name": "x",
+          "Description": "整数或双精度值\n\nvar[]..[]",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "d91d696c4e23428f8ddff37d64c96a92",
+          "Name": "y",
+          "Description": "整数或双精度值\n\nvar[]..[]",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "7b7df87ff6f94cfb9d3469a2dbbe72ce",
+          "Name": "number",
+          "Description": "两个输入数字的乘积",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "返回 x 乘 y 的积\n\n* (x: var[]..[], y: var[]..[]): var[]..[]"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "*@var[]..[],var[]..[]",
+      "Id": "6903849da01c4207ac5bd1a6cf8e7827",
+      "Inputs": [
+        {
+          "Id": "de24706ef5624d9a95de65e60800a375",
+          "Name": "x",
+          "Description": "整数或双精度值\n\nvar[]..[]",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "2f36b806e6b04f78b4794abadc6af0d8",
+          "Name": "y",
+          "Description": "整数或双精度值\n\nvar[]..[]",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "119f30e2236248028b17ea4cfc9d7037",
+          "Name": "number",
+          "Description": "两个输入数字的乘积",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "返回 x 乘 y 的积\n\n* (x: var[]..[], y: var[]..[]): var[]..[]"
+    }
+  ],
+  "Connectors": [
+    {
+      "Start": "23ba384ddd904c93bd6bcd35e75bd255",
+      "End": "356395e3ea4b4614a6cb9720a3e4b15d",
+      "Id": "c99889d28ff348429cfa3ad61f838cd8",
+      "IsHidden": "False"
+    },
+    {
+      "Start": "252d277dfb8d451d8b21732e476705a7",
+      "End": "fe2d32615c574468b925657406036d43",
+      "Id": "bdb851efbc0b4fe2a24adf267a72b4d7",
+      "IsHidden": "False"
+    },
+    {
+      "Start": "6bbbac7e7e9148af81c6bcc321f9a084",
+      "End": "3ec0418b60bd435fa8277257b5b24036",
+      "Id": "24295aa73c074e63913edbe3f6af032f",
+      "IsHidden": "False"
+    },
+    {
+      "Start": "537efcd074a341a5bd30dc63222b4f8c",
+      "End": "685731cc932440a7b3d2ba1e30857523",
+      "Id": "3f9c6e51c8b147ee9a658681453c443f",
+      "IsHidden": "False"
+    },
+    {
+      "Start": "537efcd074a341a5bd30dc63222b4f8c",
+      "End": "f296cb7d20304e8a8684322fa8faaae2",
+      "Id": "fac80da339f74d04a7c3dc49e7f06a3e",
+      "IsHidden": "False"
+    },
+    {
+      "Start": "974672a6528e43f4aa9f4603d04f7965",
+      "End": "be2fac93e7cb4dc0bc330b1e0c05ade0",
+      "Id": "20b6870bef1d4d5097ddbd09a54fb4a1",
+      "IsHidden": "False"
+    },
+    {
+      "Start": "d54ef1dee6da406da43b26788c5a3471",
+      "End": "2624d7c928ee49a296a76a1d5f569d83",
+      "Id": "dacd6a92c6ea476b85c4b92a714eb631",
+      "IsHidden": "False"
+    },
+    {
+      "Start": "d54ef1dee6da406da43b26788c5a3471",
+      "End": "d91d696c4e23428f8ddff37d64c96a92",
+      "Id": "0c7463ad692d478c9288455140675779",
+      "IsHidden": "False"
+    },
+    {
+      "Start": "d54ef1dee6da406da43b26788c5a3471",
+      "End": "2f36b806e6b04f78b4794abadc6af0d8",
+      "Id": "fcf8d70d7c1248f58cb797b64c021447",
+      "IsHidden": "False"
+    },
+    {
+      "Start": "6cc99793ca004c7ca4091dad86426805",
+      "End": "7461d363db2d43b59673dc58f631d04c",
+      "Id": "a3d9bdc06cf54cd0899b1abd8c1b5d05",
+      "IsHidden": "False"
+    },
+    {
+      "Start": "5fba566be9ed4d4b96905cb571da89ea",
+      "End": "f6d5534888c04d4d8b88f5d3f06ecffc",
+      "Id": "488c7a53364e42d78f9a340e081d93c2",
+      "IsHidden": "False"
+    },
+    {
+      "Start": "5fba566be9ed4d4b96905cb571da89ea",
+      "End": "d20643ab4dc34dfcaf9e63f7375209f4",
+      "Id": "fd6d90dab3b942339ae00e04ad851ae4",
+      "IsHidden": "False"
+    },
+    {
+      "Start": "5fba566be9ed4d4b96905cb571da89ea",
+      "End": "95c77e0192a247f1b143507c43829f09",
+      "Id": "c5ca0b66ceba42e2bd9d2e87c4ec684f",
+      "IsHidden": "False"
+    },
+    {
+      "Start": "db37daf6090b48f8832a06fac75688c6",
+      "End": "e00f79f7c61647b99ee29e69621c3b23",
+      "Id": "f0e5ab63dd85461f96855a94678675df",
+      "IsHidden": "False"
+    },
+    {
+      "Start": "8facece5a9584f3c842ae8f78ca7c038",
+      "End": "bd73a646a9e74ea080fed39118adc43f",
+      "Id": "eb1b0fa6b2b24aaca6a75c3e3d9eeeb9",
+      "IsHidden": "False"
+    },
+    {
+      "Start": "08f2a706f44645df80b11ab65fb04cf0",
+      "End": "de24706ef5624d9a95de65e60800a375",
+      "Id": "c8d5a5cd6f524d26831332d9b6a81bfc",
+      "IsHidden": "False"
+    },
+    {
+      "Start": "7b7df87ff6f94cfb9d3469a2dbbe72ce",
+      "End": "f0b7a2127bf049a59142fc0ef9c03b3b",
+      "Id": "5e662aeb9cb64ea0bd17a66ee7a70d21",
+      "IsHidden": "False"
+    },
+    {
+      "Start": "119f30e2236248028b17ea4cfc9d7037",
+      "End": "4c619b475b2b4de4b0744aa19a7ab533",
+      "Id": "9dbefd7e0d934b8cba01578c1701a704",
+      "IsHidden": "False"
+    }
+  ],
+  "Dependencies": [],
+  "NodeLibraryDependencies": [],
+  "Thumbnail": "",
+  "GraphDocumentationURL": null,
+  "ExtensionWorkspaceData": [
+    {
+      "ExtensionGuid": "28992e1d-abb9-417f-8b1b-05e053bee670",
+      "Name": "Properties",
+      "Version": "2.13",
+      "Data": {}
+    }
+  ],
+  "Author": "None provided",
+  "Linting": {
+    "activeLinter": "无",
+    "activeLinterId": "7b75fb44-43fd-4631-a878-29f4d5d8399a",
+    "warningCount": 0,
+    "errorCount": 0
+  },
+  "Bindings": [],
+  "View": {
+    "Dynamo": {
+      "ScaleFactor": 1.0,
+      "HasRunWithoutCrash": true,
+      "IsVisibleInDynamoLibrary": true,
+      "Version": "2.13.1.3887",
+      "RunType": "Automatic",
+      "RunPeriod": "1000"
+    },
+    "Camera": {
+      "Name": "背景预览",
+      "EyeX": -17.0,
+      "EyeY": 24.0,
+      "EyeZ": 50.0,
+      "LookX": 12.0,
+      "LookY": -13.0,
+      "LookZ": -58.0,
+      "UpX": 0.0,
+      "UpY": 1.0,
+      "UpZ": 0.0
+    },
+    "ConnectorPins": [],
+    "NodeViews": [
+      {
+        "Name": "MaterialProperty.MaterialProperty",
+        "ShowGeometry": true,
+        "Id": "c2b58ee0a7f24c2691798fd40fe5c00b",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 1102.8697489738181,
+        "Y": 358.78198381786763
+      },
+      {
+        "Name": "Component.SetMaterialProperty",
+        "ShowGeometry": true,
+        "Id": "1fc95b6a9e5d4dd38f8bb01e8fa48637",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 1458.7901178515581,
+        "Y": 242.75854383656264
+      },
+      {
+        "Name": "Document.Current",
+        "ShowGeometry": true,
+        "Id": "03be8f68340844d5801b6c06a5b0ec03",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 264.84681862924811,
+        "Y": -109.98158565598092
+      },
+      {
+        "Name": "Document.AsAssemblyDocument",
+        "ShowGeometry": true,
+        "Id": "d5e34968c6b54d839e06d9e7b97c145b",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 514.1204896368838,
+        "Y": -103.41805843009018
+      },
+      {
+        "Name": "AssemblyDocument.Components",
+        "ShowGeometry": true,
+        "Id": "a2ff05d5725e4f3594a03dc7a35d28b0",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 897.832778246918,
+        "Y": -100.59746931137227
+      },
+      {
+        "Name": "顶级/全部",
+        "ShowGeometry": true,
+        "Id": "7ea5c4a8bbe049799a24e02c26d7b904",
+        "IsSetAsInput": true,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 273.28363034879351,
+        "Y": 32.639939544942308
+      },
+      {
+        "Name": "Code Block",
+        "ShowGeometry": true,
+        "Id": "c16ba4ce7ca04517987bdfb4e746a93b",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 274.29982714426751,
+        "Y": 541.54848461646884
+      },
+      {
+        "Name": "Math.RandomList",
+        "ShowGeometry": true,
+        "Id": "8c379cadfe6a4cce91d647ba0e5febfc",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 571.43164253975715,
+        "Y": 285.53497948839134
+      },
+      {
+        "Name": "List.Count",
+        "ShowGeometry": true,
+        "Id": "977223410f7b4645a74bdd90a5a3750c",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 261.88675185453587,
+        "Y": 368.130216029174
+      },
+      {
+        "Name": "*",
+        "ShowGeometry": true,
+        "Id": "0f513ee35ff44ce4a4bd986a89751e76",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 833.68964339189915,
+        "Y": 268.92051038357033
+      },
+      {
+        "Name": "Math.RandomList",
+        "ShowGeometry": true,
+        "Id": "6540fce36c5f4dfab69a1ebe6e915ef1",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 570.62905602283274,
+        "Y": 428.74456089742915
+      },
+      {
+        "Name": "Math.RandomList",
+        "ShowGeometry": true,
+        "Id": "949890887f48470c98b66f84351581d4",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 577.34547627273582,
+        "Y": 589.18926044507555
+      },
+      {
+        "Name": "*",
+        "ShowGeometry": true,
+        "Id": "cc9a08446c7f4447ac09e78c635ef27d",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 852.795643075708,
+        "Y": 422.40937312753169
+      },
+      {
+        "Name": "*",
+        "ShowGeometry": true,
+        "Id": "6903849da01c4207ac5bd1a6cf8e7827",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 858.96451634957589,
+        "Y": 586.72306068727244
+      }
+    ],
+    "Annotations": [
+      {
+        "Id": "f30cc606b9064890ac86b4f1a43a4b37",
+        "Title": "获取所有零件",
+        "DescriptionText": "<双击此处编辑组说明>",
+        "IsExpanded": true,
+        "WidthAdjustment": 0.0,
+        "HeightAdjustment": 0.0,
+        "Nodes": [
+          "03be8f68340844d5801b6c06a5b0ec03",
+          "d5e34968c6b54d839e06d9e7b97c145b",
+          "a2ff05d5725e4f3594a03dc7a35d28b0",
+          "7ea5c4a8bbe049799a24e02c26d7b904"
+        ],
+        "HasNestedGroups": false,
+        "Left": 254.84681862924811,
+        "Top": -159.98158565598092,
+        "Width": 972.31929295100315,
+        "Height": 324.28819186758994,
+        "FontSize": 14.0,
+        "InitialTop": -109.98158565598092,
+        "InitialHeight": 273.9129465804524,
+        "TextblockHeight": 40.0,
+        "Background": "#FFC1D676"
+      },
+      {
+        "Id": "b5cc61fb1c6e4f759b90da0abe8e75a1",
+        "Title": "生成随机颜色",
+        "DescriptionText": "<双击此处编辑组说明>",
+        "IsExpanded": true,
+        "WidthAdjustment": 0.0,
+        "HeightAdjustment": 0.0,
+        "Nodes": [
+          "c16ba4ce7ca04517987bdfb4e746a93b",
+          "8c379cadfe6a4cce91d647ba0e5febfc",
+          "977223410f7b4645a74bdd90a5a3750c",
+          "0f513ee35ff44ce4a4bd986a89751e76",
+          "6540fce36c5f4dfab69a1ebe6e915ef1",
+          "949890887f48470c98b66f84351581d4",
+          "cc9a08446c7f4447ac09e78c635ef27d",
+          "6903849da01c4207ac5bd1a6cf8e7827"
+        ],
+        "HasNestedGroups": false,
+        "Left": 251.88675185453587,
+        "Top": 218.92051038357033,
+        "Width": 795.74443116170676,
+        "Height": 528.80255030370211,
+        "FontSize": 14.0,
+        "InitialTop": 268.92051038357033,
+        "InitialHeight": 465.26875006150522,
+        "TextblockHeight": 40.0,
+        "Background": "#FFC1D676"
+      },
+      {
+        "Id": "d1495f2d835f4b42a75b84061ad77f67",
+        "Title": "设置颜色",
+        "DescriptionText": "<双击此处编辑组说明>",
+        "IsExpanded": true,
+        "WidthAdjustment": 0.0,
+        "HeightAdjustment": 0.0,
+        "Nodes": [
+          "c2b58ee0a7f24c2691798fd40fe5c00b",
+          "1fc95b6a9e5d4dd38f8bb01e8fa48637"
+        ],
+        "HasNestedGroups": false,
+        "Left": 1092.8697489738181,
+        "Top": 192.75854383656264,
+        "Width": 690.58703554440672,
+        "Height": 569.69010664797156,
+        "FontSize": 14.0,
+        "InitialTop": 242.75854383656264,
+        "InitialHeight": 261.023439981305,
+        "TextblockHeight": 40.0,
+        "Background": "#FFC1D676"
+      }
+    ],
+    "X": -73.764264045943435,
+    "Y": 147.07520299352578,
+    "Zoom": 0.58357618404388645
+  }
+}

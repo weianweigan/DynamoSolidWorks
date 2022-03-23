@@ -1,4 +1,5 @@
-﻿using DynamoSldWorks.Properties;
+﻿using System.Windows;
+using DynamoSldWorks.Properties;
 using DynamoSldWorks.ViewModel;
 using System.Windows.Controls;
 using Xarial.XCad.Base.Attributes;
@@ -17,6 +18,12 @@ namespace DynamoSldWorks.View
         public DynamoTaskPane()
         {
             InitializeComponent();
+
+#if V1_2_0
+            _startSandBoxBtn.Visibility = Visibility.Collapsed;
+#else
+            _startSandBoxBtn.Visibility = Visibility.Visible;
+#endif
         }
 
         public void Init(SwAddin addin)

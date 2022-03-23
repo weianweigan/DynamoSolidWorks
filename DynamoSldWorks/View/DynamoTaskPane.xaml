@@ -3,6 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:p="clr-namespace:DynamoSldWorks.Properties"
         mc:Ignorable="d" 
         xmlns:local="clr-namespace:DynamoSldWorks.View" 
         xmlns:viewmodel="clr-namespace:DynamoSldWorks.ViewModel"
@@ -17,10 +18,11 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="80"/>
             <RowDefinition Height="*"/>
-            <RowDefinition Height="12"/>
+            <RowDefinition Height="20"/>
         </Grid.RowDefinitions>
         <Button BorderThickness="0"
                 Background="{StaticResource SldBackground}"
+                ToolTip="{x:Static p:Resources.OpenDynamo}"
                 Command="{Binding OpenDynamoCommand}">
             <Image Source="../Resources/logo_about.png"/>
         </Button>
@@ -28,7 +30,8 @@
             <Expander IsExpanded="True"
                       MaxHeight="300">
                 <Expander.Header>
-                    <TextBlock FontWeight="Light">Samples</TextBlock>
+                    <TextBlock FontWeight="Light"
+                               Text="{x:Static p:Resources.Samples}"/>
                 </Expander.Header>
                 <ListBox ItemsSource="{Binding SampleFiles}"
                          Margin="10" 
@@ -75,11 +78,21 @@
             </Expander>
         </StackPanel>
         <Button Grid.Row="2"
-                FontSize="8"
-                Visibility="Collapsed"
+                x:Name="_startSandBoxBtn"
                 BorderThickness="0" 
                 Background="{StaticResource SldBackground}"
                 HorizontalContentAlignment="Left"
-                Command="{Binding StartSandBox}">Start Sandbox</Button>
+                Command="{Binding StartSandBox}">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="20"/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <Image 
+                       Source="../Resources/logo_square_32x32.png"/>
+                <TextBlock Grid.Column="1"
+                           Text="{x:Static p:Resources.StartSandBox}"></TextBlock>
+            </Grid>
+        </Button>
     </Grid>
 </UserControl>
