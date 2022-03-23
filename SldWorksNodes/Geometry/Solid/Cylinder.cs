@@ -27,14 +27,14 @@ namespace SldWorksNodes.Geometry
             double radius, 
             double height)
         {
-            var body = BodyBuilder.CreateCylinderBody(
+            SwObject = BodyBuilder.CreateCylinderBody(
                 SldContextManager.Modeler,
                 center,
                 axis,
                 radius,
                 height);
 
-            if (body == null)
+            if (SwObject == null)
                 throw new NullReferenceException("Create Body Error");
 
             DisplayBody();

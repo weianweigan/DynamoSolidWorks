@@ -2,7 +2,7 @@
   "Uuid": "d6b199b9-07b8-4abc-abbe-eae36dcd03c9",
   "IsCustomNode": false,
   "Description": "",
-  "Name": "twoer",
+  "Name": "tower",
   "ElementResolver": {
     "ResolutionMap": {}
   },
@@ -97,7 +97,7 @@
         {
           "Id": "8e7129575a7744df8d13a2e92b28b8a8",
           "Name": "",
-          "Description": "Value of expression at line 1",
+          "Description": "行 1 中的表达式值",
           "UsingDefaultValue": false,
           "Level": 2,
           "UseLevels": false,
@@ -106,7 +106,7 @@
         {
           "Id": "e1985a77178e4aca9b1fca35da64c91d",
           "Name": "",
-          "Description": "Value of expression at line 2",
+          "Description": "行 2 中的表达式值",
           "UsingDefaultValue": false,
           "Level": 2,
           "UseLevels": false,
@@ -114,7 +114,7 @@
         }
       ],
       "Replication": "Disabled",
-      "Description": "Allows for DesignScript code to be authored directly"
+      "Description": "允许直接编写 DesignScript 代码"
     },
     {
       "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
@@ -125,7 +125,7 @@
         {
           "Id": "2ef7f64ea380489da5c886c0d837f84a",
           "Name": "list",
-          "Description": "List to be shifted.\n\nvar[]..[]",
+          "Description": "要移动的列表。\n\nvar[]..[]",
           "UsingDefaultValue": false,
           "Level": 2,
           "UseLevels": false,
@@ -134,7 +134,7 @@
         {
           "Id": "58ef439999914e97836f6b23168d112e",
           "Name": "amount",
-          "Description": "Amount to shift indices by. If negative, indices will be shifted to the left.\n\nint",
+          "Description": "索引移动的数量。如果为负值，则索引将左移。\n\nint",
           "UsingDefaultValue": false,
           "Level": 2,
           "UseLevels": false,
@@ -145,7 +145,7 @@
         {
           "Id": "363644b84d3147f3a8739c557b2fa8ed",
           "Name": "list",
-          "Description": "Shifted list.",
+          "Description": "索引移动后的列表。",
           "UsingDefaultValue": false,
           "Level": 2,
           "UseLevels": false,
@@ -153,7 +153,7 @@
         }
       ],
       "Replication": "Auto",
-      "Description": "Shifts indices in the list to the right by the given amount.\n\nList.ShiftIndices (list: var[]..[], amount: int): var[]..[]"
+      "Description": "将列表中的索引右移给定数量。\n\nList.ShiftIndices (list: var[]..[], amount: int): var[]..[]"
     },
     {
       "ConcreteType": "Dynamo.Graph.Nodes.CodeBlockNodeModel, DynamoCore",
@@ -165,7 +165,7 @@
         {
           "Id": "76434b1c74c94d4aa7cf2ff41bfb902e",
           "Name": "",
-          "Description": "Value of expression at line 1",
+          "Description": "行 1 中的表达式值",
           "UsingDefaultValue": false,
           "Level": 2,
           "UseLevels": false,
@@ -174,7 +174,7 @@
         {
           "Id": "10607d0a84ae42379b379ab1a70c0cc4",
           "Name": "",
-          "Description": "Value of expression at line 2",
+          "Description": "行 2 中的表达式值",
           "UsingDefaultValue": false,
           "Level": 2,
           "UseLevels": false,
@@ -183,7 +183,7 @@
         {
           "Id": "80a84434842e49c1b48586ff957e80a5",
           "Name": "",
-          "Description": "Value of expression at line 3",
+          "Description": "行 3 中的表达式值",
           "UsingDefaultValue": false,
           "Level": 2,
           "UseLevels": false,
@@ -191,7 +191,7 @@
         }
       ],
       "Replication": "Disabled",
-      "Description": "Allows for DesignScript code to be authored directly"
+      "Description": "允许直接编写 DesignScript 代码"
     },
     {
       "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
@@ -202,7 +202,7 @@
         {
           "Id": "91cf95de0b244957b3f31f87f5fde54c",
           "Name": "list",
-          "Description": "List to take a slice of.\n\nvar[]..[]",
+          "Description": "要切分的列表。\n\nvar[]..[]",
           "UsingDefaultValue": false,
           "Level": 2,
           "UseLevels": false,
@@ -211,7 +211,7 @@
         {
           "Id": "07912a498724474481915ba0dbbb05c8",
           "Name": "start",
-          "Description": "Index to start the slice from.\n\nint",
+          "Description": "切分起点的索引。\n\nint",
           "UsingDefaultValue": false,
           "Level": 2,
           "UseLevels": false,
@@ -220,7 +220,7 @@
         {
           "Id": "8d2d47cc8399424cab5e399fab883227",
           "Name": "end",
-          "Description": "Index to end the slice at.\n\nint",
+          "Description": "切分终点的索引。\n\nint",
           "UsingDefaultValue": false,
           "Level": 2,
           "UseLevels": false,
@@ -229,7 +229,7 @@
         {
           "Id": "2d4e563418d04a69b1f4ce92efd033ba",
           "Name": "step",
-          "Description": "Amount the indices of the items are separate by in the original list.\n\nint\nDefault value : 1",
+          "Description": "原始列表中用于切分项的索引的数量。\n\nint\n默认值 : 1",
           "UsingDefaultValue": true,
           "Level": 2,
           "UseLevels": false,
@@ -240,7 +240,7 @@
         {
           "Id": "1e3d301f85e440c89a49ea19598f6e23",
           "Name": "items",
-          "Description": "Items in the slice of the given list.",
+          "Description": "给定列表的切分中的项。",
           "UsingDefaultValue": false,
           "Level": 2,
           "UseLevels": false,
@@ -248,7 +248,7 @@
         }
       ],
       "Replication": "Auto",
-      "Description": "Returns a single sub-list from the given list, based on starting index, ending index, and a step amount.\n\nList.Slice (list: var[]..[], start: int, end: int, step: int = 1): var[]..[]"
+      "Description": "根据开始索引、结束索引和步长， 从给定列表返回单个子列表。\n\nList.Slice (list: var[]..[], start: int, end: int, step: int = 1): var[]..[]"
     },
     {
       "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
@@ -259,7 +259,7 @@
         {
           "Id": "37aca41d5c33437bbebe02f300a3fc70",
           "Name": "list",
-          "Description": "List to take a slice of.\n\nvar[]..[]",
+          "Description": "要切分的列表。\n\nvar[]..[]",
           "UsingDefaultValue": false,
           "Level": 2,
           "UseLevels": false,
@@ -268,7 +268,7 @@
         {
           "Id": "967f203d2a4b420d94079cd776b8bdc7",
           "Name": "start",
-          "Description": "Index to start the slice from.\n\nint",
+          "Description": "切分起点的索引。\n\nint",
           "UsingDefaultValue": false,
           "Level": 2,
           "UseLevels": false,
@@ -277,7 +277,7 @@
         {
           "Id": "1f76c0f27f454a82bf9b966d6b22cc8d",
           "Name": "end",
-          "Description": "Index to end the slice at.\n\nint",
+          "Description": "切分终点的索引。\n\nint",
           "UsingDefaultValue": false,
           "Level": 2,
           "UseLevels": false,
@@ -286,7 +286,7 @@
         {
           "Id": "93d45af6829542deb68b19a582ee0fee",
           "Name": "step",
-          "Description": "Amount the indices of the items are separate by in the original list.\n\nint\nDefault value : 1",
+          "Description": "原始列表中用于切分项的索引的数量。\n\nint\n默认值 : 1",
           "UsingDefaultValue": true,
           "Level": 2,
           "UseLevels": false,
@@ -297,7 +297,7 @@
         {
           "Id": "7a500758103a49bc9e34618c8fda0c18",
           "Name": "items",
-          "Description": "Items in the slice of the given list.",
+          "Description": "给定列表的切分中的项。",
           "UsingDefaultValue": false,
           "Level": 2,
           "UseLevels": false,
@@ -305,7 +305,7 @@
         }
       ],
       "Replication": "Auto",
-      "Description": "Returns a single sub-list from the given list, based on starting index, ending index, and a step amount.\n\nList.Slice (list: var[]..[], start: int, end: int, step: int = 1): var[]..[]"
+      "Description": "根据开始索引、结束索引和步长， 从给定列表返回单个子列表。\n\nList.Slice (list: var[]..[], start: int, end: int, step: int = 1): var[]..[]"
     },
     {
       "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
@@ -316,7 +316,7 @@
         {
           "Id": "5087503153324689afe1a9bc0bdd3a76",
           "Name": "x",
-          "Description": "Integer or double value\n\nvar[]..[]",
+          "Description": "整数或双精度值\n\nvar[]..[]",
           "UsingDefaultValue": false,
           "Level": 2,
           "UseLevels": false,
@@ -325,7 +325,7 @@
         {
           "Id": "def37db0c10b4a2eb76aae8620ed77d4",
           "Name": "y",
-          "Description": "Integer or double value\n\nvar[]..[]",
+          "Description": "整数或双精度值\n\nvar[]..[]",
           "UsingDefaultValue": false,
           "Level": 2,
           "UseLevels": false,
@@ -336,7 +336,7 @@
         {
           "Id": "19d07268662744dbab692c5f83b3a866",
           "Name": "number",
-          "Description": "Result of the y input subtracted from the x input",
+          "Description": "从 x 输入中减去 y 输入的结果",
           "UsingDefaultValue": false,
           "Level": 2,
           "UseLevels": false,
@@ -344,7 +344,7 @@
         }
       ],
       "Replication": "Auto",
-      "Description": "Returns subtraction of x minus y\n\n- (x: var[]..[], y: var[]..[]): var[]..[]"
+      "Description": "返回 x 减 y 的差\n\n- (x: var[]..[], y: var[]..[]): var[]..[]"
     },
     {
       "ConcreteType": "CoreNodeModels.Input.DoubleSlider, CoreNodeModels",
@@ -353,7 +353,7 @@
       "MaximumValue": 100.0,
       "MinimumValue": 0.0,
       "StepValue": 1.0,
-      "InputValue": 50.0,
+      "InputValue": 60.0,
       "Id": "efded030c71845e3bc55162ec27ece9b",
       "Inputs": [],
       "Outputs": [
@@ -368,16 +368,16 @@
         }
       ],
       "Replication": "Disabled",
-      "Description": "A slider that produces numeric values."
+      "Description": "用于生成数字值的滑块。"
     },
     {
       "ConcreteType": "CoreNodeModels.Input.DoubleSlider, CoreNodeModels",
       "NodeType": "NumberInputNode",
       "NumberType": "Double",
-      "MaximumValue": 100.0,
+      "MaximumValue": 1000.0,
       "MinimumValue": 0.0,
       "StepValue": 0.1,
-      "InputValue": 60.0,
+      "InputValue": 200.0,
       "Id": "42c787983d9f4ee2a8bee3a0d2af7e3f",
       "Inputs": [],
       "Outputs": [
@@ -392,7 +392,7 @@
         }
       ],
       "Replication": "Disabled",
-      "Description": "A slider that produces numeric values."
+      "Description": "用于生成数字值的滑块。"
     },
     {
       "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
@@ -403,7 +403,7 @@
         {
           "Id": "0d0a674d28d94878b19c13f17f517d65",
           "Name": "x",
-          "Description": "double\nDefault value : 0",
+          "Description": "double\n默认值 : 0",
           "UsingDefaultValue": true,
           "Level": 2,
           "UseLevels": false,
@@ -412,7 +412,7 @@
         {
           "Id": "ad834d0834dd4d3890edf16f5cf1c967",
           "Name": "y",
-          "Description": "double\nDefault value : 0",
+          "Description": "double\n默认值 : 0",
           "UsingDefaultValue": true,
           "Level": 2,
           "UseLevels": false,
@@ -421,7 +421,7 @@
         {
           "Id": "947d4352390344b083cc9ddc82511b08",
           "Name": "z",
-          "Description": "double\nDefault value : 0",
+          "Description": "double\n默认值 : 0",
           "UsingDefaultValue": true,
           "Level": 2,
           "UseLevels": false,
@@ -445,32 +445,23 @@
     {
       "ConcreteType": "Dynamo.Graph.Nodes.CodeBlockNodeModel, DynamoCore",
       "NodeType": "CodeBlockNode",
-      "Code": "10;\n0;\n100;",
+      "Code": "10;\n0;",
       "Id": "056f49865c9c4dc3a502ec2fe503b195",
       "Inputs": [],
       "Outputs": [
         {
-          "Id": "8f9c166b39c74184978d17ed0c7947ca",
+          "Id": "7b6f442c1cbc4280b87c227bdf70213d",
           "Name": "",
-          "Description": "Value of expression at line 1",
+          "Description": "行 1 中的表达式值",
           "UsingDefaultValue": false,
           "Level": 2,
           "UseLevels": false,
           "KeepListStructure": false
         },
         {
-          "Id": "bbebbf9792c64b64a2427010352c521e",
+          "Id": "1834d747fba049f1af25c1a683f78da1",
           "Name": "",
-          "Description": "Value of expression at line 2",
-          "UsingDefaultValue": false,
-          "Level": 2,
-          "UseLevels": false,
-          "KeepListStructure": false
-        },
-        {
-          "Id": "50d49291967a4fefa67ca3ae424ec100",
-          "Name": "",
-          "Description": "Value of expression at line 3",
+          "Description": "行 2 中的表达式值",
           "UsingDefaultValue": false,
           "Level": 2,
           "UseLevels": false,
@@ -478,19 +469,19 @@
         }
       ],
       "Replication": "Disabled",
-      "Description": "Allows for DesignScript code to be authored directly"
+      "Description": "允许直接编写 DesignScript 代码"
     },
     {
       "ConcreteType": "Dynamo.Graph.Nodes.CodeBlockNodeModel, DynamoCore",
       "NodeType": "CodeBlockNode",
-      "Code": "20;",
+      "Code": "150;",
       "Id": "303d457a4bf44268b0756e6de1b81f8c",
       "Inputs": [],
       "Outputs": [
         {
-          "Id": "9b97845b320b4f469cfbc2759de8cf79",
+          "Id": "7b05864cffa34ee4be8f926324a63535",
           "Name": "",
-          "Description": "Value of expression at line 1",
+          "Description": "行 1 中的表达式值",
           "UsingDefaultValue": false,
           "Level": 2,
           "UseLevels": false,
@@ -498,7 +489,7 @@
         }
       ],
       "Replication": "Disabled",
-      "Description": "Allows for DesignScript code to be authored directly"
+      "Description": "允许直接编写 DesignScript 代码"
     },
     {
       "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
@@ -636,6 +627,30 @@
       ],
       "Replication": "Auto",
       "Description": "Line.ByStartAndEnd (startPoint: Point3D, endPoint: Point3D): Line"
+    },
+    {
+      "ConcreteType": "CoreNodeModels.Input.DoubleSlider, CoreNodeModels",
+      "NodeType": "NumberInputNode",
+      "NumberType": "Double",
+      "MaximumValue": 1000.0,
+      "MinimumValue": 0.0,
+      "StepValue": 1.0,
+      "InputValue": 800.0,
+      "Id": "add826bdc93c4bf498f086a284086acb",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "39d794b18b7c48f8822355f7864910cc",
+          "Name": "",
+          "Description": "Double",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "用于生成数字值的滑块。"
     }
   ],
   "Connectors": [
@@ -736,27 +751,21 @@
       "IsHidden": "False"
     },
     {
-      "Start": "bbebbf9792c64b64a2427010352c521e",
+      "Start": "1834d747fba049f1af25c1a683f78da1",
       "End": "ad834d0834dd4d3890edf16f5cf1c967",
-      "Id": "7d40b4e8a9c944a692d3a8aa8860dd4d",
+      "Id": "bb26bfee9b0c493792f9f813be6409ca",
       "IsHidden": "False"
     },
     {
-      "Start": "bbebbf9792c64b64a2427010352c521e",
+      "Start": "1834d747fba049f1af25c1a683f78da1",
       "End": "0d0a674d28d94878b19c13f17f517d65",
-      "Id": "b989426da5b045a687af3589d4a32eba",
+      "Id": "fc739572b9ff4baa97646724c7f6c182",
       "IsHidden": "False"
     },
     {
-      "Start": "50d49291967a4fefa67ca3ae424ec100",
-      "End": "947d4352390344b083cc9ddc82511b08",
-      "Id": "48f5fe283db54c3aaad4f5eeb448442a",
-      "IsHidden": "False"
-    },
-    {
-      "Start": "9b97845b320b4f469cfbc2759de8cf79",
+      "Start": "7b05864cffa34ee4be8f926324a63535",
       "End": "03ea813d90624b93bb78f2e448a69e11",
-      "Id": "4bee79ea6c1c460a8760203f0e414047",
+      "Id": "29c1ef899a6f4b3bb247d4b1071d613b",
       "IsHidden": "False"
     },
     {
@@ -776,6 +785,12 @@
       "End": "25c772f6667d45d9ae26ba6a07df51da",
       "Id": "ef9eeac047104663940b8e498694d755",
       "IsHidden": "False"
+    },
+    {
+      "Start": "39d794b18b7c48f8822355f7864910cc",
+      "End": "947d4352390344b083cc9ddc82511b08",
+      "Id": "8b44b2d8b11a409792fe0dbe0b745899",
+      "IsHidden": "False"
     }
   ],
   "Dependencies": [],
@@ -792,7 +807,7 @@
   ],
   "Author": "",
   "Linting": {
-    "activeLinter": "None",
+    "activeLinter": "无",
     "activeLinterId": "7b75fb44-43fd-4631-a878-29f4d5d8399a",
     "warningCount": 0,
     "errorCount": 0
@@ -808,7 +823,7 @@
       "RunPeriod": "1000"
     },
     "Camera": {
-      "Name": "Background Preview",
+      "Name": "背景预览",
       "EyeX": -17.0,
       "EyeY": 24.0,
       "EyeZ": 50.0,
@@ -828,8 +843,8 @@
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": 949.27358546450318,
-        "Y": 57.22182910508198
+        "X": 862.49305944090975,
+        "Y": 80.614840467963774
       },
       {
         "Name": "Curve.PointsAtEqualChordLength",
@@ -848,8 +863,8 @@
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": 755.6121170920635,
-        "Y": 400.2659824493652
+        "X": 817.76889286908761,
+        "Y": 377.4037200945977
       },
       {
         "Name": "List.ShiftIndices",
@@ -888,8 +903,8 @@
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": 1486.8327377171004,
-        "Y": 519.09627336508117
+        "X": 1550.2565250143427,
+        "Y": 575.10689071849
       },
       {
         "Name": "-",
@@ -908,8 +923,8 @@
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": -197.33112864387476,
-        "Y": 267.03205056401646
+        "X": -524.0558503445186,
+        "Y": 300.68609915120737
       },
       {
         "Name": "Number Slider",
@@ -918,8 +933,8 @@
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": -160.89234972793065,
-        "Y": 481.8650125649724
+        "X": -508.65085179556854,
+        "Y": 602.4586866690729
       },
       {
         "Name": "Point3D.ByCoordinates",
@@ -938,8 +953,8 @@
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": -234.373806487376,
-        "Y": -23.7109598747791
+        "X": -297.47514758835905,
+        "Y": -126.07535766081773
       },
       {
         "Name": "Code Block",
@@ -948,8 +963,8 @@
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": -9.3693664503067,
-        "Y": -193.705477446887
+        "X": -494.54856691564078,
+        "Y": 170.880048914347
       },
       {
         "Name": "Point3D.Orign",
@@ -990,6 +1005,16 @@
         "Excluded": false,
         "X": 2123.090467294644,
         "Y": 210.00657615069468
+      },
+      {
+        "Name": "Number Slider",
+        "ShowGeometry": true,
+        "Id": "add826bdc93c4bf498f086a284086acb",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": -515.48313141642382,
+        "Y": 452.25569919319105
       }
     ],
     "Annotations": [
@@ -1002,16 +1027,18 @@
         "HeightAdjustment": 0.0,
         "Nodes": [
           "efded030c71845e3bc55162ec27ece9b",
-          "42c787983d9f4ee2a8bee3a0d2af7e3f"
+          "42c787983d9f4ee2a8bee3a0d2af7e3f",
+          "add826bdc93c4bf498f086a284086acb",
+          "303d457a4bf44268b0756e6de1b81f8c"
         ],
         "HasNestedGroups": false,
-        "Left": -207.33112864387476,
-        "Top": 193.69871723068312,
-        "Width": 399.1054455826108,
-        "Height": 419.83296200095594,
+        "Left": -534.0558503445186,
+        "Top": 97.546715581013643,
+        "Width": 378.07166521561675,
+        "Height": 636.57863775472583,
         "FontSize": 36.0,
-        "InitialTop": 267.03205056401646,
-        "InitialHeight": 295.540392532747,
+        "InitialTop": 170.880048914347,
+        "InitialHeight": 359.83296200095594,
         "TextblockHeight": 63.333333333333336,
         "Background": "#FFC1D676"
       },
@@ -1019,7 +1046,7 @@
         "Id": "c3a8c97e108e420fbadaff1ea2998526",
         "Title": "Data",
         "DescriptionText": "<Double click here to edit group description>",
-        "IsExpanded": false,
+        "IsExpanded": true,
         "WidthAdjustment": 0.0,
         "HeightAdjustment": 0.0,
         "Nodes": [
@@ -1032,19 +1059,19 @@
           "1d4fbed7fd6642dd994a4e3468203081"
         ],
         "HasNestedGroups": false,
-        "Left": 745.6121170920635,
-        "Top": -6.1115042282513556,
-        "Width": 1032.6398229211538,
-        "Height": 368.0,
+        "Left": 807.76889286908761,
+        "Top": 7.2815071346304379,
+        "Width": 970.48304714412973,
+        "Height": 798.15871691719292,
         "FontSize": 36.0,
-        "InitialTop": 57.22182910508198,
-        "InitialHeight": 622.55003715008741,
-        "TextblockHeight": 53.333333333333336,
+        "InitialTop": 80.614840467963774,
+        "InitialHeight": 599.15702578720561,
+        "TextblockHeight": 63.333333333333336,
         "Background": "#FFC1D676"
       }
     ],
-    "X": 91.1659369519544,
-    "Y": 502.5834741100021,
-    "Zoom": 0.33734158741708486
+    "X": 431.55204452642738,
+    "Y": 130.42182374101804,
+    "Zoom": 0.7052397912616144
   }
 }

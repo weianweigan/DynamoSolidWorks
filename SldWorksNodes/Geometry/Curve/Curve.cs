@@ -1,4 +1,5 @@
 ﻿using Autodesk.DesignScript.Runtime;
+using SldWorksNodes.Manager;
 using SolidWorks.Interop.sldworks;
 using System.Collections.Generic;
 using System.Windows.Media;
@@ -47,7 +48,7 @@ namespace SldWorksNodes.Geometry
             var point = SwCurve.Evaluate(start) as double[];
             if (point != null)
             {
-                return Point3D.ByCoordinates(point[0], point[1], point[2]);
+                return _swUnit.ConvertBackPoint(Point3D.ByCoordinates(point[0], point[1], point[2]));
             }
             else
                 return null;
@@ -64,7 +65,7 @@ namespace SldWorksNodes.Geometry
             var point = SwCurve.Evaluate(end) as double[];
             if (point != null)
             {
-                return Point3D.ByCoordinates(point[0], point[1], point[2]);
+                return _swUnit.ConvertBackPoint(Point3D.ByCoordinates(point[0], point[1], point[2]));
             }
             else
                 return null;
@@ -118,10 +119,12 @@ namespace SldWorksNodes.Geometry
 
         public static Point3D PointAtParameter(Curve curve,double parameter)
         {
+            var swUnit = new UnitManager();
+
             var point = curve.SwCurve.Evaluate(parameter) as double[];
             if (point != null)
             {
-                return Point3D.ByCoordinates(point[0], point[1], point[2]);
+                return swUnit.ConvertBackPoint(Point3D.ByCoordinates(point[0], point[1], point[2]));
             }
             else
                 return null;
@@ -129,6 +132,8 @@ namespace SldWorksNodes.Geometry
 
         public static List<Point3D> PointsAtEqualChordLength(Curve curve,int divisions)
         {
+            var swUnit = new UnitManager();
+
             curve.SwCurve.GetEndParams(
                 out var start,
                 out var end,
@@ -142,7 +147,7 @@ namespace SldWorksNodes.Geometry
             {
                 var point = curve.SwCurve.Evaluate(start + i * incr) as double[];
                 if (point != null)
-                    points.Add(Point3D.ByCoordinates(point[0], point[1], point[2]));
+                    points.Add(swUnit.ConvertBackPoint(Point3D.ByCoordinates(point[0], point[1], point[2])));
             }
 
             return points;
@@ -178,7 +183,6 @@ namespace SldWorksNodes.Geometry
                     points.Add(Point3D.ByCoordinates(point[0], point[1], point[2]));
             }
             
-
             return points;
         }
         #endregion

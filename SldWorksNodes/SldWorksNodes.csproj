@@ -291,7 +291,7 @@
     <Compile Include="Geometry\Base\SheetBody.cs" />
     <Compile Include="Geometry\Surface\SurfaceBody.cs" />
     <Compile Include="Geometry\Base\SwBodyNode.cs" />
-    <Compile Include="Geometry\Base\Curve.cs" />
+    <Compile Include="Geometry\Curve\Curve.cs" />
     <Compile Include="Geometry\Curve\Vector3D.cs" />
     <Compile Include="Geometry\Solid\Cylinder.cs" />
     <Compile Include="Geometry\Solid\Sphere.cs" />

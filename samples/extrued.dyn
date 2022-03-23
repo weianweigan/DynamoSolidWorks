@@ -17,45 +17,6 @@
     {
       "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
       "NodeType": "FunctionNode",
-      "FunctionSignature": "SldWorksNodes.Geometry.Circle3D.ByCenterPointRadius@SldWorksNodes.Geometry.Point3D,double",
-      "Id": "3bb83444cf2e4877bd5e79dd30291436",
-      "Inputs": [
-        {
-          "Id": "a8f34f7e81804093943209a6eafb151f",
-          "Name": "center",
-          "Description": "Point3D",
-          "UsingDefaultValue": false,
-          "Level": 2,
-          "UseLevels": false,
-          "KeepListStructure": false
-        },
-        {
-          "Id": "a0cbf5e0bfa24748aca1202ad5b62cf5",
-          "Name": "radius",
-          "Description": "double",
-          "UsingDefaultValue": false,
-          "Level": 2,
-          "UseLevels": false,
-          "KeepListStructure": false
-        }
-      ],
-      "Outputs": [
-        {
-          "Id": "688195797f174c3b8a0ced7c5c86317f",
-          "Name": "Circle3D",
-          "Description": "Circle3D",
-          "UsingDefaultValue": false,
-          "Level": 2,
-          "UseLevels": false,
-          "KeepListStructure": false
-        }
-      ],
-      "Replication": "Auto",
-      "Description": "Circle3D.ByCenterPointRadius (center: Point3D, radius: double): Circle3D"
-    },
-    {
-      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
-      "NodeType": "FunctionNode",
       "FunctionSignature": "SldWorksNodes.Geometry.Point3D.Orign",
       "Id": "f834739b2af14dc792f7add4cfd7701a",
       "Inputs": [],
@@ -83,7 +44,7 @@
         {
           "Id": "5c39ec3d363a4cb3ac0c96b20d21471c",
           "Name": "",
-          "Description": "Value of expression at line 1",
+          "Description": "行 1 中的表达式值",
           "UsingDefaultValue": false,
           "Level": 2,
           "UseLevels": false,
@@ -92,7 +53,7 @@
         {
           "Id": "d71585016fb44075a686716aa9d1a711",
           "Name": "",
-          "Description": "Value of expression at line 2",
+          "Description": "行 2 中的表达式值",
           "UsingDefaultValue": false,
           "Level": 2,
           "UseLevels": false,
@@ -100,7 +61,7 @@
         }
       ],
       "Replication": "Disabled",
-      "Description": "Allows for DesignScript code to be authored directly"
+      "Description": "允许直接编写 DesignScript 代码"
     },
     {
       "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
@@ -178,26 +139,73 @@
         }
       ],
       "Replication": "Disabled",
-      "Description": "Makes a new list out of the given inputs"
+      "Description": "使新列表超出给定输入内容"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "SldWorksNodes.Geometry.Circle.ByCenterPointRadius@SldWorksNodes.Geometry.Point3D,double",
+      "Id": "69eee6c4e6ea4d078dd403574d0498ef",
+      "Inputs": [
+        {
+          "Id": "f0be86828ce247bfb6c403858e8a443d",
+          "Name": "center",
+          "Description": "Point3D",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "84fd444f151e4d168a93db5389e94c9b",
+          "Name": "radius",
+          "Description": "double",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "d7833514042641c29b05d3710317a9db",
+          "Name": "Circle",
+          "Description": "Circle",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "Circle.ByCenterPointRadius (center: Point3D, radius: double): Circle"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.CodeBlockNodeModel, DynamoCore",
+      "NodeType": "CodeBlockNode",
+      "Code": "10;",
+      "Id": "869785dfb1914772aab54d18eac347e7",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "e08f4fc67e0b4ae3b064d0a8d2eee076",
+          "Name": "",
+          "Description": "行 1 中的表达式值",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "允许直接编写 DesignScript 代码"
     }
   ],
   "Connectors": [
     {
-      "Start": "688195797f174c3b8a0ced7c5c86317f",
-      "End": "238ff14c439d4ce3ad06d50d5f4a86d3",
-      "Id": "6e82eeca3c6c46cbac65bce36a481c98",
-      "IsHidden": "False"
-    },
-    {
       "Start": "479638158c9d482496a2a5e428fff2b2",
-      "End": "a8f34f7e81804093943209a6eafb151f",
-      "Id": "e7cf0e6da8104c1cb5d37b1ac3b48a25",
-      "IsHidden": "False"
-    },
-    {
-      "Start": "5c39ec3d363a4cb3ac0c96b20d21471c",
-      "End": "a0cbf5e0bfa24748aca1202ad5b62cf5",
-      "Id": "9349f9ab1aff4b44af121a5ad2d4e320",
+      "End": "f0be86828ce247bfb6c403858e8a443d",
+      "Id": "2012c7279e8a47738e72fbbd6b047e27",
       "IsHidden": "False"
     },
     {
@@ -217,6 +225,18 @@
       "End": "e4323dd07e564500ace15d36767a0e5f",
       "Id": "09f866b7a10a4defa35e956f8fe05d6b",
       "IsHidden": "False"
+    },
+    {
+      "Start": "d7833514042641c29b05d3710317a9db",
+      "End": "238ff14c439d4ce3ad06d50d5f4a86d3",
+      "Id": "4c5b9f478aab48a38c913ef1bb47acf8",
+      "IsHidden": "False"
+    },
+    {
+      "Start": "e08f4fc67e0b4ae3b064d0a8d2eee076",
+      "End": "84fd444f151e4d168a93db5389e94c9b",
+      "Id": "c837bb3a50504ac78db6f301db434997",
+      "IsHidden": "False"
     }
   ],
   "Dependencies": [],
@@ -233,7 +253,7 @@
   ],
   "Author": "",
   "Linting": {
-    "activeLinter": "None",
+    "activeLinter": "无",
     "activeLinterId": "7b75fb44-43fd-4631-a878-29f4d5d8399a",
     "warningCount": 0,
     "errorCount": 0
@@ -249,7 +269,7 @@
       "RunPeriod": "1000"
     },
     "Camera": {
-      "Name": "Background Preview",
+      "Name": "背景预览",
       "EyeX": -17.0,
       "EyeY": 24.0,
       "EyeZ": 50.0,
@@ -262,16 +282,6 @@
     },
     "ConnectorPins": [],
     "NodeViews": [
-      {
-        "Name": "Circle3D.ByCenterPointRadius",
-        "ShowGeometry": true,
-        "Id": "3bb83444cf2e4877bd5e79dd30291436",
-        "IsSetAsInput": false,
-        "IsSetAsOutput": false,
-        "Excluded": false,
-        "X": 321.66666666666657,
-        "Y": 171.66666666666671
-      },
       {
         "Name": "Point3D.Orign",
         "ShowGeometry": true,
@@ -299,8 +309,8 @@
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": 780.10907516314842,
-        "Y": 294.10692807881526
+        "X": 802.01140029013891,
+        "Y": 345.21235337512644
       },
       {
         "Name": "List Create",
@@ -311,6 +321,26 @@
         "Excluded": false,
         "X": 455.82394494845659,
         "Y": 374.39303701499773
+      },
+      {
+        "Name": "Circle.ByCenterPointRadius",
+        "ShowGeometry": true,
+        "Id": "69eee6c4e6ea4d078dd403574d0498ef",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 360.6972411066472,
+        "Y": 115.62189712264137
+      },
+      {
+        "Name": "Code Block",
+        "ShowGeometry": true,
+        "Id": "869785dfb1914772aab54d18eac347e7",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 109.0,
+        "Y": 394.0
       }
     ],
     "Annotations": [],

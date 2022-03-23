@@ -1,5 +1,6 @@
 ﻿using Autodesk.DesignScript.Runtime;
 using SldWorksNodes.Geometry;
+using SldWorksNodes.Manager;
 using SolidWorks.Interop.sldworks;
 using System;
 using System.Collections.Generic;
@@ -71,6 +72,9 @@ namespace SldWorksNodes.Util
                 MathVector direction,
                 double length)
         {
+            var swUnit = new UnitManager();
+
+            var nLength = swUnit.ConvertDouble(length);
             //取三点
             List<Point3D> points = new List<Point3D>();
             foreach (var curve in curves)
@@ -104,7 +108,7 @@ namespace SldWorksNodes.Util
             var body = modeler.CreateExtrudedBody(
                 sheetBody,
                 direction,
-                length) as IBody2;
+                nLength) as IBody2;
 
             return body;
         }

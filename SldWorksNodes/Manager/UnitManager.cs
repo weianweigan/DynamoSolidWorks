@@ -85,6 +85,24 @@ namespace SldWorksNodes.Manager
             return value;
         }
 
+        public double ConvertBackDouble(double value)
+        {
+            switch (UnitType)
+            {
+                case UnitType.UseMM:
+                    value *= 1000;
+                    break;
+                case UnitType.UseMeter:                    
+                    break;
+                case UnitType.UseUserValueInSw:
+                    value = _lengthUnit.ConvertDoubleToSystemValue(value);
+                    break;
+                default:
+                    break;
+            }
+            return value;
+        }
+
         public Point3D ConvertPoint(Point3D point)
         {
             if (UnitType == UnitType.UseMeter)
@@ -93,6 +111,18 @@ namespace SldWorksNodes.Manager
             var x = ConvertDouble(point.X);
             var y = ConvertDouble(point.Y);
             var z = ConvertDouble(point.Z);
+
+            return new Point3D(x, y, z);
+        }
+
+        public Point3D ConvertBackPoint(Point3D point)
+        {
+            if (UnitType == UnitType.UseMeter)
+                return point;
+
+            var x = ConvertBackDouble(point.X);
+            var y = ConvertBackDouble(point.Y);
+            var z = ConvertBackDouble(point.Z);
 
             return new Point3D(x, y, z);
         }

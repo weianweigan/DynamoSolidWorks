@@ -39,12 +39,14 @@ namespace SldWorksNodes.Geometry
             var nW = _swUnit.ConvertDouble(width);
             var nH = _swUnit.ConvertDouble(height);
 
-            var body = BodyBuilder.CreateFromBox(
+            SwObject = BodyBuilder.CreateFromBox(
                        SldContextManager.Modeler,
                        new Point3D(0, 0, 0),
                        new Point3D(nL, nW, nH));
-            if (body == null)
+            if (SwObject == null)
                 throw new NullReferenceException("Create Body Error");
+
+            DisplayBody();
         }
         #endregion
 
