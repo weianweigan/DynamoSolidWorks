@@ -4,7 +4,7 @@ using SldWorksNodes.Util;
 
 namespace SldWorksNodes.Geometry
 {
-    public class CylindricalSurface:SurfaceBody
+    public class CylindricalSurface:Surface
     {
         internal CylindricalSurface(
             Point3D center, 
@@ -53,7 +53,7 @@ namespace SldWorksNodes.Geometry
         /// <param name="radius">Radius at the center</param>
         /// <param name="height">Height</param>
         /// <returns></returns>
-        public static SurfaceBody ByCenterDirectionsRaduis(
+        public static Surface ByCenterDirectionsRaduis(
             Point3D center,
             Vector3D direction,
             double radius,

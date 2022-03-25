@@ -12,6 +12,20 @@ namespace SldWorksNodes.Geometry
     public class SwBodyNode : SwNodeModel<IBody2>, IDisposable,ITempBody
     {
         protected Color _color = Colors.Yellow;
+
+        [IsVisibleInDynamoLibrary(false)]
+        public SwBodyNode(IBody2 body)
+        {
+            SwObject = body;
+            DisplayBody();
+        }
+
+        [IsVisibleInDynamoLibrary(false)]
+        public SwBodyNode()
+        {
+
+        }
+
         #region Action
 
         public void SetMaterialProperty(MaterialProperty materialProperty)
@@ -91,7 +105,7 @@ namespace SldWorksNodes.Geometry
         }
 
         [IsVisibleInDynamoLibrary(false)]
-        public void ClearBody()
+        public void ClearBody(bool hideOnly = false)
         {
             try
             {
@@ -104,7 +118,11 @@ namespace SldWorksNodes.Geometry
                     return;
 
                 doc.DeleteBody(SwObject);
-                SwObject = null;
+
+                if (!hideOnly)
+                {
+                    SwObject = null;
+                }
             }
             catch (Exception)
             {

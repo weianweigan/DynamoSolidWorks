@@ -392,7 +392,7 @@ namespace SolidWorks.Interop.sldworks
         /// <summary>
         /// 删除实体
         /// </summary>
-        public static void DeleteBody(this IModelDoc2 swModel, ref IBody2 body)
+        public static void DeleteBody(this IModelDoc2 swModel, IBody2 body)
         {
             if (body == null)
             {
@@ -403,8 +403,6 @@ namespace SolidWorks.Interop.sldworks
                 body.Hide(swModel);
             else
                 body.HideBody(true);
-
-            body = null;
         }
 
         /// <summary>

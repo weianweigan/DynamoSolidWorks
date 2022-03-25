@@ -288,8 +288,7 @@
     <Compile Include="Geometry\Curve\Ellipse.cs" />
     <Compile Include="Geometry\Curve\Line.cs" />
     <Compile Include="Geometry\Curve\Point3D.cs" />
-    <Compile Include="Geometry\Base\SheetBody.cs" />
-    <Compile Include="Geometry\Surface\SurfaceBody.cs" />
+    <Compile Include="Geometry\Surface\Surface.cs" />
     <Compile Include="Geometry\Base\SwBodyNode.cs" />
     <Compile Include="Geometry\Curve\Curve.cs" />
     <Compile Include="Geometry\Curve\Vector3D.cs" />

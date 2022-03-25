@@ -90,9 +90,18 @@ namespace SldWorksNodes.Brep
                 null;
         }
 
+        public Geometry.Surface CreateSheetBody()
+        {
+            var body = SwObject.CreateSheetBody() as IBody2;
+            if (body == null)
+                return null;
+
+            return new Geometry.Surface(body);
+        }
+
         public bool IsPlane()
         {
-            return (SwObject.GetSurface() as Surface).IsPlane();
+            return (SwObject.GetSurface() as SolidWorks.Interop.sldworks.Surface).IsPlane();
         }
         #endregion
 

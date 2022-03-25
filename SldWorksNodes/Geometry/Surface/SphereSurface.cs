@@ -3,7 +3,7 @@ using SldWorksNodes.Util;
 
 namespace SldWorksNodes.Geometry
 {
-    public class SphereSurface:SurfaceBody
+    public class SphereSurface:Surface
     {
         #region Ctor
         internal SphereSurface(Point3D center, double raduis)
@@ -16,7 +16,7 @@ namespace SldWorksNodes.Geometry
         #endregion
 
         #region Create
-        public static SurfaceBody ByCenterRadius(
+        public static Surface ByCenterRadius(
             Point3D center,
             double raduis)
         {

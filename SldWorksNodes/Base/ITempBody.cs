@@ -5,7 +5,7 @@ namespace SldWorksNodes.Base
     [IsVisibleInDynamoLibrary(false)]
     public interface ITempBody
     {
-        void ClearBody();
+        void ClearBody(bool hideOnly = false);
         void DisplayBody();
         void SetTransparency(double value);
     }
