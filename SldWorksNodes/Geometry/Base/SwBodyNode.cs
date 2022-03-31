@@ -56,7 +56,10 @@ namespace SldWorksNodes.Geometry
                 doc.DeleteSelection(false);
             }
 
-            var feat = ((IPartDoc)doc).CreateFeatureFromBody3(SwObject, false, (int)swCreateFeatureBodyOpts_e.swCreateFeatureBodySimplify) as IFeature;
+            var feat = ((IPartDoc)doc).CreateFeatureFromBody3(
+                SwObject,
+                false, 
+                (int)swCreateFeatureBodyOpts_e.swCreateFeatureBodySimplify) as IFeature;
 
             if (feat == null)
                 throw new NullReferenceException("Save Fail");

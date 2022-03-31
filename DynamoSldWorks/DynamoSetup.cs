@@ -15,6 +15,7 @@ using System.Runtime.InteropServices;
 using System.Windows;
 using System.Windows.Interop;
 using System.Windows.Markup;
+using Xarial.XCad.Base.Enums;
 using Xarial.XCad.SolidWorks;
 
 namespace DynamoSldWorks.View
@@ -149,16 +150,12 @@ namespace DynamoSldWorks.View
 
                 var res = _swApplication.ShowMessageBox(
                      Properties.Resources.StartNewVersionNeedReplaceDll, 
-                     Xarial.XCad.Base.Enums.MessageBoxIcon_e.Question, 
-                     Xarial.XCad.Base.Enums.MessageBoxButtons_e.YesNo);
+                     MessageBoxIcon_e.Question, 
+                     MessageBoxButtons_e.YesNo);
 
                 if (res == Xarial.XCad.Base.Enums.MessageBoxResult_e.Yes)
                 {
-                    AppDomain.CurrentDomain.ProcessExit += (sender,e) =>
-                    {
-                        Process.Start(newFile,$"{olderFile} {newFile}");
-                    };
-
+                    Process.Start(newFile,$"{olderFile} {newFile}");
                     Environment.Exit(0);
                 }
 
@@ -183,7 +180,7 @@ namespace DynamoSldWorks.View
         }
 #endregion
 
-#region Private Methods
+        #region Private Methods
         private void View_Closed(object sender, EventArgs e)
         {
             View.Closed -= View_Closed;
@@ -232,6 +229,6 @@ namespace DynamoSldWorks.View
             customization.AddElements(elements); //add all the elements to default section
 #endif
         }
-#endregion
+            #endregion
     }
 }
